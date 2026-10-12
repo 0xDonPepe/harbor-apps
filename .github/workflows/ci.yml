@@ -1,12 +1,27 @@
-# Verify every change with Harbor's own loader; publish every change to main as a catalog release.
+# Check every change with real Harbor releases; publish every change to main as a catalog release.
 # Harbor boxes download releases/latest/download/{catalog.zip,catalog.json} over HTTPS. There is no signature
 # (Harbor decision 158): trust is HTTPS to GitHub, exactly like Harbor's own self-update. catalog.json pins
 # catalog.zip by sha256 and size: an integrity check against truncated or mixed downloads, not a trust anchor.
 #
-# Two jobs:
-#   verify   every PR, manual run, and main push touching apps/, .harbor-ref or this file: Harbor's tools at the commit pinned in .harbor-ref check every app.
-#   release  main push/dispatch only: bundles with Harbor's tools at that commit, creates release c<serial>
-#            and marks it latest. The write token reaches only the two gh steps (never git, never pnpm).
+# Each app declares the oldest Harbor it runs on in its manifest: release.minHarbor (absent = 0.28.0, the first
+# Harbor that downloads catalogs; when set, 0.28.2 or newer, the first release that knows the field; Harbor
+# decision 161). CI proves the claim instead of computing it. The package format only grows, so an app that
+# validates with its declared release and with the latest release is good for every release in between.
+#
+# Four jobs:
+#   plan     every PR, manual run, and main push touching apps/, scripts/ or this file: with the LATEST published
+#            Harbor release, group the apps by declared minHarbor (pnpm catalog:plan) and check that every declared
+#            version is a published Harbor release (not a draft or prerelease) whose tag commit is on Harbor's main.
+#   check    one job per version, fail-fast off: Harbor at that release's commit validates the apps declaring it
+#            (a subset catalog built by scripts/subset.mjs). The latest release validates every app and checks the
+#            release.json hashes.
+#   bundle   main push/dispatch only, after plan and every check: read-only, no token. Bundles with the latest
+#            release's tools (catalog.zip, catalog.json, summary.json) and uploads dist/ as a workflow artifact.
+#   publish  the only job that may write: no Harbor checkout, no install, no package code. Downloads the artifact,
+#            creates release c<serial> and marks it latest. GH_TOKEN is set only on its two gh steps.
+# Harbor is always checked out at the commit sha that plan resolved and checked, never by a tag name that could move,
+# and each checkout gets the toolchain it names itself: Node from its package.json engines, pnpm from its
+# packageManager (every Harbor release since 0.28.0 has one).
 # Never put ${{ }} of commit or package text inside a run: script; pass values through env and quote them.
 name: catalog
 on:
@@ -14,7 +29,7 @@ on:
     branches: [main]
     paths:
       - 'apps/**'
-      - '.harbor-ref'
+      - 'scripts/**'
       - '.github/workflows/ci.yml'
   pull_request:
   workflow_dispatch:
@@ -26,62 +41,222 @@ defaults:
   run:
     shell: bash # bash --noprofile --norc -eo pipefail: a failing command in a pipe fails the step
 
+env:
+  HARBOR_REPO: carlosalaniz/harbor
+
 jobs:
-  verify:
+  plan:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     outputs:
-      harbor_ref: ${{ steps.harbor.outputs.ref }}
+      latest: ${{ steps.latest.outputs.version }}
+      latest_sha: ${{ steps.latest.outputs.sha }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      versions: ${{ steps.matrix.outputs.versions }}
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Read Harbor ref
-        id: harbor
+      - name: Latest Harbor release
+        id: latest
+        env:
+          GH_TOKEN: ${{ github.token }} # read-only token: API reads of Harbor's public releases
         run: |
-          ref=$(tr -d '[:space:]' < .harbor-ref)
-          if [[ ! "$ref" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "::error file=.harbor-ref::.harbor-ref must hold one full 40-hex commit sha of carlosalaniz/harbor (a commit on its main), not \"$ref\". Branches and tags move; the tools that check and bundle the catalog must not. See README.md, \"Bumping .harbor-ref\"."
+          if ! release=$(gh api "repos/$HARBOR_REPO/releases/latest"); then
+            echo "::error::cannot read the latest release of $HARBOR_REPO"
             exit 1
           fi
-          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          tag=$(jq -r .tag_name <<<"$release")
+          if [[ ! "$tag" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+            echo "::error::the latest $HARBOR_REPO release is tagged \"$tag\", not v<x.y.z>"
+            exit 1
+          fi
+          version=${BASH_REMATCH[1]}
+          if [[ "$(jq -r '.draft or .prerelease' <<<"$release")" != "false" ]]; then
+            echo "::error::the latest $HARBOR_REPO release $tag is a draft or a prerelease; only published releases may check or build the catalog"
+            exit 1
+          fi
+          sha=$(gh api "repos/$HARBOR_REPO/commits/$tag" --jq .sha)
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::cannot resolve the commit of $HARBOR_REPO $tag (got \"$sha\")"
+            exit 1
+          fi
+          # compare/<sha>...main is "ahead" or "identical" exactly when <sha> is an ancestor of main
+          status=$(gh api "repos/$HARBOR_REPO/compare/$sha...main" --jq .status)
+          if [[ "$status" != "ahead" && "$status" != "identical" ]]; then
+            echo "::error::$HARBOR_REPO $tag ($sha) is not on its main (compare status \"$status\"); only reviewed Harbor commits may check or build the catalog"
+            exit 1
+          fi
+          echo "::notice::latest Harbor release $tag ($sha)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
         with:
           repository: carlosalaniz/harbor
-          ref: ${{ steps.harbor.outputs.ref }}
+          ref: ${{ steps.latest.outputs.sha }}
           path: .harbor
           persist-credentials: false
+      - name: The latest Harbor release has catalog:plan
+        env:
+          LATEST: ${{ steps.latest.outputs.version }}
+        run: |
+          if ! jq -e '.scripts["catalog:plan"] | type == "string"' .harbor/package.json > /dev/null; then
+            echo "::error::the latest Harbor release (v$LATEST) has no catalog:plan; release Harbor 0.28.2 or newer first"
+            exit 1
+          fi
+      # the toolchain this Harbor commit names: pnpm from packageManager, Node from engines.node
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.16.1
+          package_json_file: .harbor/package.json
       - uses: actions/setup-node@v4
         with:
-          node-version: 24.12.0
+          node-version-file: .harbor/package.json
           cache: pnpm
           cache-dependency-path: .harbor/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
         working-directory: .harbor
-      - name: Validate every app as Harbor loads it
-        run: pnpm catalog:verify "$GITHUB_WORKSPACE/apps" --quiet
+      - name: Group apps by declared minHarbor
         working-directory: .harbor
-      - name: release.json hashes are current
-        run: pnpm catalog:hash --catalog "$GITHUB_WORKSPACE/apps" --check
-        working-directory: .harbor
+        run: |
+          # stdout: {"groups": [{"minHarbor": "0.28.0", "ids": ["actual", ...]}, ...]}; exit 1 on a bad declaration
+          pnpm -s catalog:plan "$GITHUB_WORKSPACE/apps" > "$GITHUB_WORKSPACE/plan.json"
+          jq . "$GITHUB_WORKSPACE/plan.json"
+      - name: Every declared minHarbor is a published Harbor release
+        id: matrix
+        env:
+          GH_TOKEN: ${{ github.token }} # read-only token
+          LATEST: ${{ steps.latest.outputs.version }}
+          LATEST_SHA: ${{ steps.latest.outputs.sha }}
+        run: |
+          # plan.json comes from package data: check its shape before any value of it is used
+          if ! jq -e '
+              (.groups | type == "array" and length > 0)
+              and all(.groups[]; (.minHarbor | type == "string" and test("^(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,5})$"))
+                and (.ids | type == "array" and length > 0 and all(.[]; type == "string" and test("^[a-z0-9]+(-[a-z0-9]+)*$"))))
+            ' plan.json > /dev/null; then
+            echo "::error::pnpm catalog:plan printed an unexpected document (want {\"groups\": [{\"minHarbor\": \"x.y.z\", \"ids\": [...]}]})"
+            exit 1
+          fi
+          planned=$(jq -r '[.groups[].ids[]] | sort | join(" ")' plan.json)
+          unique=$(jq -r '[.groups[].ids[]] | unique | join(" ")' plan.json)
+          indexed=$(jq -r '.packages | keys | sort | join(" ")' apps/index.json)
+          if [[ "$planned" != "$unique" || "$planned" != "$indexed" ]]; then
+            echo "::error file=apps/index.json::catalog:plan grouped [$planned] but apps/index.json lists [$indexed]; every app must be in exactly one group"
+            exit 1
+          fi
 
-  release:
-    needs: verify
+          # true when $1 > $2 (x.y.z, numeric per part)
+          newer() {
+            local IFS=. a b i
+            read -ra a <<<"$1"
+            read -ra b <<<"$2"
+            for i in 0 1 2; do
+              (( 10#${a[i]} > 10#${b[i]} )) && return 0
+              (( 10#${a[i]} < 10#${b[i]} )) && return 1
+            done
+            return 1
+          }
+
+          failed=0
+          entries=()
+          versions=()
+          while IFS=$'\t' read -r version ids; do
+            versions+=("$version")
+            [[ "$version" == "$LATEST" ]] && continue # the latest entry below checks every app anyway
+            apps=${ids// /, }
+            why=""
+            if newer 0.28.0 "$version"; then
+              why="Harbor before 0.28.0 does not download catalogs"
+            elif newer "$version" "$LATEST"; then
+              why="Harbor $version is newer than the latest Harbor release ($LATEST)"
+            elif ! release=$(gh api "repos/$HARBOR_REPO/releases/tags/v$version" 2>/dev/null); then
+              why="Harbor $version is not a published release of $HARBOR_REPO (no release tagged v$version)"
+            elif [[ "$(jq -r '.draft or .prerelease' <<<"$release")" != "false" ]]; then
+              why="Harbor release v$version is a draft or a prerelease"
+            else
+              sha=$(gh api "repos/$HARBOR_REPO/commits/v$version" --jq .sha 2>/dev/null || true)
+              if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+                why="cannot resolve the commit of Harbor v$version"
+              else
+                status=$(gh api "repos/$HARBOR_REPO/compare/$sha...main" --jq .status 2>/dev/null || true)
+                if [[ "$status" != "ahead" && "$status" != "identical" ]]; then
+                  why="Harbor v$version ($sha) is not on Harbor's main"
+                fi
+              fi
+            fi
+            if [[ -n "$why" ]]; then
+              for id in $ids; do
+                echo "::error file=apps/$id/manifest.yaml::$id declares release.minHarbor $version, but $why. Declare a published Harbor release (0.28.2 or newer), or leave it out for 0.28.0."
+              done
+              failed=1
+              continue
+            fi
+            echo "::notice::Harbor v$version ($sha) checks: $apps"
+            entries+=("$(jq -cn --arg version "$version" --arg sha "$sha" --arg ids "$ids" \
+              '{version: $version, sha: $sha, ids: $ids, label: (($ids | split(" ") | length) as $n | "\($n) app\(if $n == 1 then "" else "s" end)"), latest: false}')")
+          done < <(jq -r '.groups[] | [.minHarbor, (.ids | sort | join(" "))] | @tsv' plan.json)
+          (( failed == 0 )) || exit 1
+
+          entries=("$(jq -cn --arg version "$LATEST" --arg sha "$LATEST_SHA" --arg ids "$indexed" \
+            '{version: $version, sha: $sha, ids: $ids, label: "all \($ids | split(" ") | length) apps", latest: true}')" "${entries[@]}")
+          matrix=$(printf '%s\n' "${entries[@]}" | jq -cs '{include: .}')
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "versions=$(printf '%s\n' "${versions[@]}" | sort -t. -k1,1n -k2,2n -k3,3n -u | paste -sd, - | sed 's/,/, /g')" >> "$GITHUB_OUTPUT"
+          jq . <<<"$matrix"
+
+  check:
+    needs: plan
+    name: check with Harbor ${{ matrix.version }} (${{ matrix.label }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: carlosalaniz/harbor
+          ref: ${{ matrix.sha }}
+          path: .harbor
+          persist-credentials: false
+      # the toolchain this Harbor commit names: pnpm from packageManager, Node from engines.node
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: .harbor/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .harbor/package.json
+          cache: pnpm
+          cache-dependency-path: .harbor/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        working-directory: .harbor
+      - name: Validate the apps as this Harbor release loads them
+        env:
+          IDS: ${{ matrix.ids }}
+          VERSION: ${{ matrix.version }}
+        run: |
+          read -ra ids <<<"$IDS"
+          subset="$RUNNER_TEMP/catalog-$VERSION"
+          node scripts/subset.mjs apps "$subset" "${ids[@]}"
+          cd .harbor
+          pnpm catalog:verify "$subset" --quiet
+      - name: release.json hashes are current
+        if: matrix.latest
+        working-directory: .harbor
+        run: pnpm catalog:hash --catalog "$GITHUB_WORKSPACE/apps" --check
+
+  bundle:
+    needs: [plan, check]
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:
-      contents: write
-    # One release at a time, so two runs never both decide "no release yet" for the same serial. This does
-    # not order runs by commit: an older run that gets here after a newer release skips (see Decide).
-    concurrency:
-      group: catalog-release
-      cancel-in-progress: false
-    env:
-      GH_REPO: ${{ github.repository }}
+      contents: read
+    outputs:
+      serial: ${{ steps.serial.outputs.serial }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -105,24 +280,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: carlosalaniz/harbor
-          ref: ${{ needs.verify.outputs.harbor_ref }}
+          ref: ${{ needs.plan.outputs.latest_sha }}
           path: .harbor
-          fetch-depth: 0
           persist-credentials: false
-      - name: The pinned Harbor commit is on Harbor's main
-        env:
-          HARBOR_REF: ${{ needs.verify.outputs.harbor_ref }}
-        run: |
-          if ! git -C .harbor merge-base --is-ancestor "$HARBOR_REF" origin/main; then
-            echo "::error file=.harbor-ref::$HARBOR_REF is not on carlosalaniz/harbor main; only reviewed Harbor commits may build a published catalog."
-            exit 1
-          fi
+      # the toolchain this Harbor commit names: pnpm from packageManager, Node from engines.node
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.16.1
+          package_json_file: .harbor/package.json
       - uses: actions/setup-node@v4
         with:
-          node-version: 24.12.0
+          node-version-file: .harbor/package.json
           cache: pnpm
           cache-dependency-path: .harbor/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
@@ -132,14 +299,73 @@ jobs:
         env:
           SERIAL: ${{ steps.serial.outputs.serial }}
         run: |
+          # the latest Harbor release stamps each app's release.minHarbor into its index.json entry;
+          # summary.json ({serial, commit, packages: [{id, revision, version, minHarbor}]}) feeds the release notes
           rm -rf "$GITHUB_WORKSPACE/dist"
-          pnpm -s catalog:bundle "$GITHUB_WORKSPACE/apps" --out "$GITHUB_WORKSPACE/dist" --commit "$GITHUB_SHA" --serial "$SERIAL" | tee "$GITHUB_WORKSPACE/bundle.log"
-          mv "$GITHUB_WORKSPACE/bundle.log" "$GITHUB_WORKSPACE/dist/bundle.log"
+          pnpm -s catalog:bundle "$GITHUB_WORKSPACE/apps" --out "$GITHUB_WORKSPACE/dist" --commit "$GITHUB_SHA" --serial "$SERIAL" \
+            --summary "$GITHUB_WORKSPACE/dist/summary.json" | tee "$RUNNER_TEMP/bundle.log"
+          mv "$RUNNER_TEMP/bundle.log" "$GITHUB_WORKSPACE/dist/bundle.log"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalog-bundle
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: [plan, bundle]
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    # One release at a time, so two runs never both decide "no release yet" for the same serial. This does
+    # not order runs by commit: an older run that gets here after a newer release skips (see Decide).
+    concurrency:
+      group: catalog-release
+      cancel-in-progress: false
+    env:
+      GH_REPO: ${{ github.repository }}
+    # No checkout and no install: nothing from the packages or from Harbor runs here, so nothing can reach the
+    # write token through $GITHUB_PATH or $GITHUB_ENV. Only jq, bash and gh.
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: catalog-bundle
+          path: dist
+      - name: The bundle is this commit's
+        env:
+          SERIAL: ${{ needs.bundle.outputs.serial }}
+        run: |
+          if [[ ! "$SERIAL" =~ ^[1-9][0-9]*$ ]]; then
+            echo "::error::bad serial \"$SERIAL\""
+            exit 1
+          fi
+          for f in catalog.zip catalog.json summary.json; do
+            [[ -f "dist/$f" && ! -L "dist/$f" ]] || { echo "::error::the bundle artifact has no dist/$f"; exit 1; }
+          done
+          if ! jq -e --argjson serial "$SERIAL" --arg commit "$GITHUB_SHA" '.serial == $serial and .commit == $commit' dist/catalog.json > /dev/null; then
+            echo "::error::dist/catalog.json is not serial $SERIAL from $GITHUB_SHA"
+            exit 1
+          fi
+          # summary.json is package data: check its shape before any value of it is used
+          if ! jq -e --argjson serial "$SERIAL" --arg commit "$GITHUB_SHA" '
+              .serial == $serial and .commit == $commit
+              and (.packages | type == "array" and length > 0)
+              and all(.packages[];
+                (.id | type == "string" and test("^[a-z0-9]+(-[a-z0-9]+)*$"))
+                and (.revision | type == "string" and test("^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"))
+                and (.version == null or (.version | type == "string"))
+                and (.minHarbor == null or (.minHarbor | type == "string" and test("^(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,5})$"))))
+            ' dist/summary.json > /dev/null; then
+            echo "::error::dist/summary.json is not the summary of serial $SERIAL from $GITHUB_SHA (want {serial, commit, packages: [{id, revision, version, minHarbor}]})"
+            exit 1
+          fi
       - name: Decide
         id: decide
         env:
           GH_TOKEN: ${{ github.token }}
-          SERIAL: ${{ steps.serial.outputs.serial }}
+          SERIAL: ${{ needs.bundle.outputs.serial }}
         run: |
           if [[ ! "$SERIAL" =~ ^[1-9][0-9]*$ ]]; then
             echo "::error::bad serial \"$SERIAL\""
@@ -177,30 +403,33 @@ jobs:
             exit 1
           fi
           echo "publish=true" >> "$GITHUB_OUTPUT"
+      - name: Release notes
+        if: steps.decide.outputs.publish == 'true'
+        env:
+          LATEST: ${{ needs.plan.outputs.latest }}
+          VERSIONS: ${{ needs.plan.outputs.versions }}
+        run: |
+          # from summary.json (structured), never from the bundle log: release.version is free text
+          jq -r --arg latest "$LATEST" --arg versions "$VERSIONS" '
+            "App catalog for Harbor, built from \(.commit).",
+            "",
+            "Apps (id, revision, version, oldest Harbor that can run it):",
+            "",
+            (.packages | sort_by(.id)[] |
+              "- \(.id) r\(.revision)"
+              + (if .version == null then "" else " (\(.version))" end)
+              + (if .minHarbor == null then "" else " needs Harbor \(.minHarbor)+" end)),
+            "",
+            "Checked with Harbor \($latest) and each app'"'"'s declared minimum (\($versions))."
+          ' dist/summary.json > notes.md
+          cat notes.md
       - name: Publish release
         if: steps.decide.outputs.publish == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.decide.outputs.tag }}
-          SERIAL: ${{ steps.serial.outputs.serial }}
+          SERIAL: ${{ needs.bundle.outputs.serial }}
         run: |
-          {
-            echo "App catalog for Harbor, built from ${GITHUB_SHA}."
-            echo
-            echo "Apps (id, revision, version, oldest Harbor that can run it):"
-            echo
-            # bundle.log lines: `ok   <id>@<rev>[ (<version>)][ minHarbor=<x.y.z>]`
-            awk '$1 == "ok" {
-              split($2, a, "@"); v = ""; m = ""; inv = 0
-              for (i = 3; i <= NF; i++) {
-                if (!inv && v == "" && substr($i, 1, 1) == "(") inv = 1
-                if (inv) { v = (v == "" ? $i : v " " $i); if (substr($i, length($i), 1) == ")") inv = 0; continue }
-                if (index($i, "minHarbor=") == 1) m = substr($i, 11)
-              }
-              if (v != "") v = substr(v, 2, length(v) - 2)
-              print "- " a[1] " r" a[2] (v != "" ? " (" v ")" : "") (m != "" ? " needs Harbor " m "+" : "")
-            }' dist/bundle.log
-          } > notes.md
           title="Catalog $(date -u -d "@$SERIAL" +%Y-%m-%d) (${GITHUB_SHA:0:12})"
           gh release create "$TAG" dist/catalog.zip dist/catalog.json \
             --target "$GITHUB_SHA" --latest \

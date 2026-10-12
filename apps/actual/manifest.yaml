@@ -5,7 +5,7 @@ metadata:
   name: "Actual Budget"
   description: "Local-first personal finance: envelope budgeting with bank import, fast and private, synced through your own server."
 release:
-  revision: "1"
+  revision: "2"
 deployment:
   compose: compose.yaml
   multiInstance: true
@@ -39,6 +39,10 @@ presentation:
   sizeHint: "About 200 MB"
   category: finance
   icon: icon.svg
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
+    - shot-3.jpg
   developer: "Actual Budget contributors"
   website: https://actualbudget.org
   releaseNotes: "Actual Server 26.9.0."

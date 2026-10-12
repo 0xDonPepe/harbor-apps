@@ -5,7 +5,7 @@ metadata:
   name: "Nextcloud"
   description: "Files, calendar, contacts and office documents on your own machine. Sync clients for every platform; Nextcloud Office included via the recommended apps."
 release:
-  revision: "4"
+  revision: "5"
 deployment:
   compose: compose.yaml
   multiInstance: true
@@ -103,6 +103,10 @@ presentation:
   sizeHint: "About 2 GB, plus everyone's files"
   category: files
   icon: icon.svg
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
+    - shot-3.jpg
   developer: "Nextcloud GmbH and contributors"
   website: https://nextcloud.com
   releaseNotes: "Revision 4: Nextcloud Office (built-in CODE server) follows the main address after you publish or change it. Revision 3: sets Nextcloud up itself if it was never set up (no more localhost redirect after the setup page). Revision 2: works on every address at once (LAN, secure LAN, Tailscale, your domains); Harbor creates the admin login. Nextcloud 34.0.4 (Apache image) with PostgreSQL 17 and Redis; Nextcloud Office uses the built-in CODE server."

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "n8n",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "79505110a290f0b41905a3c3780f94b137f8ce655cde197b7f0e5413068f8495"
+      "sha256": "a805830f11182b5d0d0024426e6adf756ea4231ea26945803ed1ac61688e76ed"
     },
     "compose.yaml": {
       "sha256": "6fd2bb82776ee2ac89ecb162fba9d0f38a185fccf8865900bb7bfedde7f96973"
@@ -54,12 +54,19 @@
       "n8n 2.x task runners: internal mode inside the web container; no sidecar. External runners not qualified.",
       "Live run vm-2026-09-14T18-40-00: passed",
       "Fresh Ubuntu 24.04 x86-64 DigitalOcean droplet; A01-A16 all passed; browser demos recorded in the run directory",
-      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 104s; page title \"n8n.io - Workflow Automation\"; health 200)"
+      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 104s; page title \"n8n.io - Workflow Automation\"; health 200)",
+      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
     ]
   },
   "assets": {
     "icon.svg": {
       "sha256": "0161b8420a148f0db35a5a015b58e9ecff0d98cd26f193ce7439a340fb591668"
+    },
+    "shot-1.jpg": {
+      "sha256": "4937c7694622f26d65373d8af542744a716a0ecb50b27a8e0fccb730a8d7b273"
+    },
+    "shot-2.jpg": {
+      "sha256": "70ad32220c04fc6fcc19ca00e5a7fc0ad78281f5e6dce205a118aedf191a66e6"
     }
   }
 }

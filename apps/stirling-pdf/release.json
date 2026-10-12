@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "stirling-pdf",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "197fa9fa0a03bf2eac944e232220738b7c419e2ad5ab5299fde12abb77535d39"
+      "sha256": "f162d842124d36a06a002c4b25ad3f5186fd29336a9907587b9b1350468af8f7"
     },
     "compose.yaml": {
       "sha256": "2a6b510ed6d8d96b9aa98357df222d84e705c32fa784dafc6b6cc3b44b64a62e"
@@ -43,12 +43,19 @@
       "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; stirlingtools/stirling-pdf@sha256:b5b9e400c086e5334a4947a0d7cd589808f743f29267d7f41c18200cf4bc48b4); image config: ExposedPorts 8080/tcp, Volumes none, User root.",
       "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 202s; page title \"Stirling PDF\"; health 200)",
-      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1.",
+      "Revision 3 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 2."
     ]
   },
   "assets": {
     "icon.png": {
       "sha256": "ecdc9aaddfedb3b418f83c60227553866dff253f32410c13afc996e64e926cc2"
+    },
+    "shot-1.jpg": {
+      "sha256": "787c32320cf5d178b41deff5b9177ef0e77d8f795ebf87f6af2b51b0fe54d533"
+    },
+    "shot-2.jpg": {
+      "sha256": "8ae6fd4e3dd561724dcea5c2abb8e1b2fd0453e94496870cbcfb2bd571b8b3cf"
     }
   }
 }

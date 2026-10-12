@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "nextcloud",
-    "revision": "4"
+    "revision": "5"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "49c8d1ea50c64669922de7d96b1fe42132b16d99390daebc81a33f6cc9e78f90"
+      "sha256": "95df1c915f7f0e94834f15aca29d51d7578c184b7249a4f0576f1ff70e84f9c5"
     },
     "compose.yaml": {
       "sha256": "00aecb49aecd7e0c6fef589a2548b135b489cb02ed722ce208c609d8620a1deb"
@@ -51,12 +51,22 @@
     "status": "pending",
     "date": "2026-10-03",
     "notes": [
-      "Revision 4 (hook re-activates Nextcloud Office for the current main address) and revision 3 (decision 117: hook sets up a never-installed Nextcloud) await a live qualification run; revision 1 passed in catalog-2026-09-15T00-13-13."
+      "Revision 4 (hook re-activates Nextcloud Office for the current main address) and revision 3 (decision 117: hook sets up a never-installed Nextcloud) await a live qualification run; revision 1 passed in catalog-2026-09-15T00-13-13.",
+      "Revision 5 adds screenshots only (shot-1.jpg, shot-2.jpg, shot-3.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 4."
     ]
   },
   "assets": {
     "icon.svg": {
       "sha256": "c332ad568ebe57c5a177c16c153b1e2d87b1575485a4845222d8996092d74b01"
+    },
+    "shot-1.jpg": {
+      "sha256": "38f300e66119ea9b69c3c3195d553f450ebbf465c0f89e50849dac5fb54d9cd4"
+    },
+    "shot-2.jpg": {
+      "sha256": "2bd8bc798bc5b8c23eea3cc6621d354ce19859731b9ef15bec17dcc029260a9b"
+    },
+    "shot-3.jpg": {
+      "sha256": "d115839254e6046cb0c08b9a5da22afb248b544cacc1d63e5a1ccf0ae3b1378b"
     }
   }
 }

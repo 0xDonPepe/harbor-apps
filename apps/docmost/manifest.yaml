@@ -5,7 +5,7 @@ metadata:
   name: Docmost
   description: Docmost is an open-source collaborative wiki and documentation software. It is an open-source alternative to Confluence and Notion.
 release:
-  revision: "2"
+  revision: "3"
   version: 0.96.0-patch.1
 deployment:
   compose: compose.yaml
@@ -57,6 +57,9 @@ configuration:
     format: origin
 presentation:
   icon: icon.png
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
   tagline: An collaborative wiki and documentation software
   category: files
   developer: Docmost, Inc.

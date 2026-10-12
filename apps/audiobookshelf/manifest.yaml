@@ -5,7 +5,7 @@ metadata:
   name: "Audiobookshelf"
   description: "Self-hosted audiobook and podcast server with progress sync, mobile apps and a beautiful web player."
 release:
-  revision: "1"
+  revision: "2"
 deployment:
   compose: compose.yaml
   multiInstance: true
@@ -53,6 +53,9 @@ presentation:
   sizeHint: "About 300 MB, plus your audiobooks and podcasts"
   category: media
   icon: icon.svg
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
   developer: "advplyr"
   website: https://www.audiobookshelf.org
   releaseNotes: "Audiobookshelf 2.36.0."

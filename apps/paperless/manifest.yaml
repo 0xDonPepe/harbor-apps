@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: PAPERLESS_ADMIN_PASSWORD
   username: admin
 release:
-  revision: "2"
+  revision: "3"
   version: 3.3.0
   minHarbor: 0.28.4
 deployment:
@@ -77,6 +77,11 @@ secrets:
         environment: PAPERLESS_SECRET_KEY
 presentation:
   icon: icon.png
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
+    - shot-3.jpg
+    - shot-4.jpg
   tagline: Transform your physical documents into a searchable online archive
   category: files
   developer: Paperless-ngx Community

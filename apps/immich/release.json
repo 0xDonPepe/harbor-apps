@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "immich",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "0b3e0e4491c9fb89985f92a3c5a813809a09d68045a4782c7e96976c63ba6798"
+      "sha256": "4980d596a014fb4d0a1d4b3f68f049340656171c295f8e11088834d6f44b1125"
     },
     "compose.yaml": {
       "sha256": "f9ba4872477a26d2367d4c861878eef22a5afb21b0d187227ac3cee5a87bf9f2"
@@ -75,12 +75,19 @@
       "Digest of redis resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; valkey/valkey:8.1.3-bookworm); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
       "Digest of machine-learning resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/immich-machine-learning:v3.2.1); image config: ExposedPorts none, Volumes none, User root.",
       "Digest of server resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/immich-server:v3.2.1); image config: ExposedPorts 2283/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 131s; page title \"Welcome 🎉 - Immich\"; health 200)"
+      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 131s; page title \"Welcome 🎉 - Immich\"; health 200)",
+      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
     ]
   },
   "assets": {
     "icon.svg": {
       "sha256": "e76fa24d701d9b7a0ab0af0c1f7933cd94e8512a823e10b9d846931a4e49a0af"
+    },
+    "shot-1.jpg": {
+      "sha256": "54f4ddeb5d1c2ce69b09da0ea071ec069c0c38aedc4d9f2a336129156a61dfec"
+    },
+    "shot-2.jpg": {
+      "sha256": "05c67d1eda551d9d6954e83db93650f48839c0b7759226b8ab7ae4fe10172245"
     }
   }
 }

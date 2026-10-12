@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "paperless",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c3ba3bd3cc53ea8db9b0edd1713391f7ee1dd6ea6c4612e84d16167259b71b28"
+      "sha256": "36f3a65cfc2fcb340033571616c674f58b19d176fd558fc8b0e45343a4bf9713"
     },
     "compose.yaml": {
       "sha256": "955b8121d73851edb847443e98ecc545af75453147bc2f51445cf47222ebb724"
@@ -91,12 +91,25 @@
       "Digest of gotenberg resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; gotenberg/gotenberg@sha256:d03b8a04c6e6c5e568b38f57352266dee4674849b71818774025f8f48d869a9a); image config: ExposedPorts 3000/tcp, Volumes none, User gotenberg.",
       "Digest of tika resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; apache/tika@sha256:90b7fa1dc018434075fce9e1d9b88b1e3d0ea6979d0cf86e116c79a8073ae973); image config: ExposedPorts 9998/tcp, Volumes none, User 35002:35002.",
       "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 181s; page title \"Paperless-ngx sign in\"; health 302)",
-      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1.",
+      "Revision 3 adds screenshots only (shot-1.jpg, shot-2.jpg, shot-3.jpg, shot-4.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 2."
     ]
   },
   "assets": {
     "icon.png": {
       "sha256": "abe8b55099a98caed9bfea2d573d9812b3962bce4c33fba5327214d4b16dcc4f"
+    },
+    "shot-1.jpg": {
+      "sha256": "0ceeccf85b7d640cf64dd5e9f8893cb786315b383fa13e003f930849ef9c9d2a"
+    },
+    "shot-2.jpg": {
+      "sha256": "ff9f7f562ff2482cfb239f3d9d4d6cbd0704a4ce3909f2e571bf02d472086c80"
+    },
+    "shot-3.jpg": {
+      "sha256": "ec0eeefabef44eb78dca3311ed2d1777182b67a5e478d5073e92a571ff9ee88f"
+    },
+    "shot-4.jpg": {
+      "sha256": "b8ad38d0b507e6fdc2c573a6095eb9a53abee9e07916ba15ea95c18c48b3c956"
     }
   }
 }

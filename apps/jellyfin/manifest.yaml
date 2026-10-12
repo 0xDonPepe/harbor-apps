@@ -5,7 +5,7 @@ metadata:
   name: "Jellyfin"
   description: "Free media system: stream your movies, shows, music and photos to any device, no subscription, no tracking."
 release:
-  revision: "1"
+  revision: "2"
 deployment:
   compose: compose.yaml
   multiInstance: true
@@ -50,6 +50,10 @@ presentation:
   sizeHint: "About 1.5 GB, plus your media library"
   category: media
   icon: icon.svg
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
+    - shot-3.jpg
   developer: "Jellyfin Project"
   website: https://jellyfin.org
   releaseNotes: "Jellyfin 10.11.11. Software transcoding only (no GPU passthrough in this profile)."

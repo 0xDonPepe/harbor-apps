@@ -1,14 +1,12 @@
-# Verify every change with Harbor's own loader; publish every change to main as a signed catalog release.
-# Harbor boxes download releases/latest/download/{catalog.zip,catalog.json,catalog.json.sig} and only accept
-# a bundle whose signature verifies against the key pinned in Harbor (keys/harbor-apps.pub here).
+# Verify every change with Harbor's own loader; publish every change to main as a catalog release.
+# Harbor boxes download releases/latest/download/{catalog.zip,catalog.json} over HTTPS. There is no signature
+# (Harbor decision 158): trust is HTTPS to GitHub, exactly like Harbor's own self-update. catalog.json pins
+# catalog.zip by sha256 and size: an integrity check against truncated or mixed downloads, not a trust anchor.
 #
-# Four jobs, so the signing key never shares a runner with third-party code (Harbor decision 158):
-#   verify   every push/PR: Harbor's tools at the commit pinned in .harbor-ref check every app.
-#   bundle   main only: builds the UNSIGNED catalog.zip + catalog.json with Harbor's tools (runs Harbor's code
-#            and its npm dependencies, so it gets no secret and no write token).
-#   sign     main only, environment "catalog-signing" (the only place CATALOG_SIGNING_KEY exists): checks out
-#            only this repository, installs nothing, re-checks the bundle and runs scripts/sign.mjs.
-#   publish  main only: the one job with contents: write; creates release c<serial> and marks it latest.
+# Two jobs:
+#   verify   every push/PR/dispatch: Harbor's tools at the commit pinned in .harbor-ref check every app.
+#   release  main push/dispatch only: bundles with Harbor's tools at that commit, creates release c<serial>
+#            and marks it latest. The write token reaches only the two gh steps (never git, never pnpm).
 # Never put ${{ }} of commit or package text inside a run: script; pass values through env and quote them.
 name: catalog
 on:
@@ -16,8 +14,6 @@ on:
     branches: [main]
     paths:
       - 'apps/**'
-      - 'keys/**'
-      - 'scripts/**'
       - '.harbor-ref'
       - '.github/workflows/ci.yml'
   pull_request:
@@ -72,15 +68,20 @@ jobs:
         run: pnpm catalog:hash --catalog "$GITHUB_WORKSPACE/apps" --check
         working-directory: .harbor
 
-  bundle:
+  release:
     needs: verify
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     permissions:
-      contents: read
-    outputs:
-      serial: ${{ steps.serial.outputs.serial }}
+      contents: write
+    # One release at a time, so two runs never both decide "no release yet" for the same serial. This does
+    # not order runs by commit: an older run that gets here after a newer release skips (see Decide).
+    concurrency:
+      group: catalog-release
+      cancel-in-progress: false
+    env:
+      GH_REPO: ${{ github.repository }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -113,7 +114,7 @@ jobs:
           HARBOR_REF: ${{ needs.verify.outputs.harbor_ref }}
         run: |
           if ! git -C .harbor merge-base --is-ancestor "$HARBOR_REF" origin/main; then
-            echo "::error file=.harbor-ref::$HARBOR_REF is not on carlosalaniz/harbor main; only reviewed Harbor commits may build a signed catalog."
+            echo "::error file=.harbor-ref::$HARBOR_REF is not on carlosalaniz/harbor main; only reviewed Harbor commits may build a published catalog."
             exit 1
           fi
       - uses: pnpm/action-setup@v4
@@ -134,105 +135,14 @@ jobs:
           rm -rf "$GITHUB_WORKSPACE/dist"
           pnpm -s catalog:bundle "$GITHUB_WORKSPACE/apps" --out "$GITHUB_WORKSPACE/dist" --commit "$GITHUB_SHA" --serial "$SERIAL" | tee "$GITHUB_WORKSPACE/bundle.log"
           mv "$GITHUB_WORKSPACE/bundle.log" "$GITHUB_WORKSPACE/dist/bundle.log"
-          printf 'serial=%s\ncommit=%s\n' "$SERIAL" "$GITHUB_SHA" > "$GITHUB_WORKSPACE/dist/build.txt"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: catalog-unsigned
-          path: |
-            dist/catalog.zip
-            dist/catalog.json
-            dist/build.txt
-            dist/bundle.log
-          if-no-files-found: error
-          retention-days: 7
-
-  sign:
-    needs: bundle
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    # CATALOG_SIGNING_KEY exists only in this environment, whose deployment branch policy is main only.
-    environment: catalog-signing
-    permissions:
-      contents: read
-    outputs:
-      meta_sha256: ${{ steps.sign.outputs.meta_sha256 }}
-    steps:
-      # This repository only, nothing installed, nothing from Harbor: the only code that sees the key is
-      # scripts/check-bundle.mjs and scripts/sign.mjs (both dependency-free) at this very commit.
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24.12.0
-      - uses: actions/download-artifact@v4
-        with:
-          name: catalog-unsigned
-          path: dist
-      - name: Check the bundle
-        env:
-          EXPECT_SERIAL: ${{ needs.bundle.outputs.serial }}
-          EXPECT_COMMIT: ${{ github.sha }}
-        run: |
-          own=$(git log -1 --format=%ct)
-          if [[ "$own" != "$EXPECT_SERIAL" ]]; then
-            echo "::error::the bundle job's serial ($EXPECT_SERIAL) is not HEAD's committer time ($own)"
-            exit 1
-          fi
-          if (( own > $(date +%s) + 300 )); then
-            echo "::error::HEAD's committer time ($own) is more than 5 minutes in the future"
-            exit 1
-          fi
-          node scripts/check-bundle.mjs dist
-      - name: Sign
-        id: sign
-        env:
-          CATALOG_SIGNING_KEY: ${{ secrets.CATALOG_SIGNING_KEY }}
-        run: |
-          node scripts/sign.mjs dist
-          echo "meta_sha256=$(sha256sum dist/catalog.json | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: catalog-signature
-          path: dist/catalog.json.sig
-          if-no-files-found: error
-          retention-days: 7
-
-  publish:
-    needs: [bundle, sign]
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    permissions:
-      contents: write
-    # One publish at a time, so two runs never both decide "no release yet" for the same serial. This does
-    # not order runs by commit: an older run that reaches here after a newer release skips (see below).
-    concurrency:
-      group: catalog-publish
-      cancel-in-progress: false
-    env:
-      SERIAL: ${{ needs.bundle.outputs.serial }}
-      META_SHA256: ${{ needs.sign.outputs.meta_sha256 }}
-      GH_REPO: ${{ github.repository }}
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: catalog-unsigned
-          path: dist
-      - uses: actions/download-artifact@v4
-        with:
-          name: catalog-signature
-          path: dist
       - name: Decide
         id: decide
         env:
           GH_TOKEN: ${{ github.token }}
+          SERIAL: ${{ steps.serial.outputs.serial }}
         run: |
           if [[ ! "$SERIAL" =~ ^[1-9][0-9]*$ ]]; then
             echo "::error::bad serial \"$SERIAL\""
-            exit 1
-          fi
-          if [[ "$(sha256sum dist/catalog.json | cut -d' ' -f1)" != "$META_SHA256" ]]; then
-            echo "::error::dist/catalog.json is not the file the sign job signed"
             exit 1
           fi
           tag="c$SERIAL"
@@ -247,7 +157,7 @@ jobs:
               exit 1
             fi
             assets=$(gh release view "$tag" --json assets --jq '[.assets[].name] | sort | join(" ")' 2>/dev/null || true)
-            if [[ "$assets" != "catalog.json catalog.json.sig catalog.zip" ]]; then
+            if [[ "$assets" != "catalog.json catalog.zip" ]]; then
               echo "::error::$tag exists for this commit but its release is incomplete (assets: \"$assets\"). Delete the release and the tag, then re-run this workflow."
               exit 1
             fi
@@ -272,16 +182,17 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.decide.outputs.tag }}
+          SERIAL: ${{ steps.serial.outputs.serial }}
         run: |
           {
-            echo "Signed app catalog for Harbor, built from ${GITHUB_SHA}."
+            echo "App catalog for Harbor, built from ${GITHUB_SHA}."
             echo
             echo "Apps (id, revision, version):"
             echo
             awk '$1 == "ok" { split($2, a, "@"); v = $3; gsub(/[()]/, "", v); print "- " a[1] " r" a[2] (v != "" ? " (" v ")" : "") }' dist/bundle.log
           } > notes.md
           title="Catalog $(date -u -d "@$SERIAL" +%Y-%m-%d) (${GITHUB_SHA:0:12})"
-          gh release create "$TAG" dist/catalog.zip dist/catalog.json dist/catalog.json.sig \
+          gh release create "$TAG" dist/catalog.zip dist/catalog.json \
             --target "$GITHUB_SHA" --latest \
             --title "$title" \
             --notes-file notes.md

@@ -15,9 +15,6 @@ apps/<id>/compose.yaml   the services, Compose subset only, images pinned by dig
 apps/<id>/README.md      shown in the App Store
 apps/<id>/release.json   sha256 of every file, image digests, qualification result
 apps/<id>/icon.svg|png   optional icon (plus optional screenshots)
-keys/harbor-apps.pub     the public key Harbor uses to check each published catalog
-scripts/check-bundle.mjs re-checks the unsigned bundle in CI before it is signed
-scripts/sign.mjs         signs a bundle in CI
 .harbor-ref              the Harbor commit (full 40-hex sha, on Harbor's main) whose tools CI uses
 ```
 
@@ -40,7 +37,7 @@ Qualification (`"status": "passed"` in `release.json`) only ever comes from Harb
 
 ### minHarbor
 
-You normally do not set it. The bundle job works out which Harbor each app needs from the fields and
+You normally do not set it. The release job works out which Harbor each app needs from the fields and
 values it uses (Harbor's `src/packages/features.ts`, decision 159) and stamps `"minHarbor": "x.y.z"` on
 its entry in the published `index.json`. Older Harbor boxes still list such an app, but as unavailable
 ("needs Harbor x.y.z or newer"), and never install or update it.
@@ -54,24 +51,19 @@ commit that accepts the field before an app here uses it.
 
 ## How publishing works
 
-Every push to `main` that touches `apps/` (or the keys, scripts, `.harbor-ref` or the workflow) runs four
-jobs in `.github/workflows/ci.yml`. Pull requests run only the first.
+Every push to `main` that touches `apps/` (or `.harbor-ref` or the workflow) runs two jobs in
+`.github/workflows/ci.yml`. Pull requests run only the first.
 
 1. **verify** checks every app with Harbor's loader (Harbor checked out at `.harbor-ref`) and checks the
    hashes are current.
-2. **bundle** builds `apps/` into `catalog.zip` plus an unsigned `catalog.json` (its sha256, size, commit
-   and serial) with Harbor's tools, and hands both over as a workflow artifact. It runs Harbor's code and
-   its npm dependencies, so it gets no secret and only a read-only token.
-3. **sign** runs in the `catalog-signing` environment, the only place the key exists. It checks out only
-   this repository and installs nothing. It re-checks that `catalog.json` names this commit and serial and
-   that `catalog.zip` has exactly the sha256 and size `catalog.json` pins (`scripts/check-bundle.mjs`),
-   then signs `catalog.json` (`scripts/sign.mjs`, no dependencies).
-4. **publish** is the only job that may write to the repository. It creates a GitHub release tagged
-   `c<serial>` with the three files and marks it latest.
+2. **release** builds `apps/` into `catalog.zip` plus `catalog.json` (the zip's sha256 and size, the
+   commit and the serial) with Harbor's tools at the same commit, then creates a GitHub release tagged
+   `c<serial>` with the two files and marks it latest. It is the only job that may write to the
+   repository; the write token is passed only to the two `gh` steps.
 
 The serial is the commit's committer time (unix seconds). Harbor only ever moves to a higher serial, so:
 
-- A commit dated more than 5 minutes in the future fails the bundle job: it would freeze every box until
+- A commit dated more than 5 minutes in the future fails the release job: it would freeze every box until
   the clock caught up. Fix the clock and make a new commit.
 - A re-run for a commit that is already released does nothing.
 - A different commit in the same committer second as an existing release fails: make a new commit.
@@ -83,8 +75,8 @@ The serial is the commit's committer time (unix seconds). Harbor only ever moves
 `.harbor-ref` holds one full 40-hex commit sha of
 [carlosalaniz/harbor](https://github.com/carlosalaniz/harbor), and it must be a commit on Harbor's `main`.
 CI refuses a branch name, a tag, a short sha, or a commit that is not on Harbor's `main`. The reason is
-trust: the bundle job runs Harbor's code and its dependencies, and that code decides what goes into the
-catalog that is then signed. A branch or tag can move without anyone reviewing this repository. A pinned
+trust: the release job runs Harbor's code and its dependencies, and that code decides what goes into the
+published catalog. A branch or tag can move without anyone reviewing this repository. A pinned
 sha changes only through a reviewed commit here.
 
 To bump it, once the Harbor change you need is merged:
@@ -103,16 +95,17 @@ offline box has apps from the start.
 
 ## Trust
 
-Catalogs are signed with ed25519. The public key is in `keys/harbor-apps.pub` and is pinned in Harbor
-([`src/packages/catalog-bundle.ts`](https://github.com/carlosalaniz/harbor/blob/main/src/packages/catalog-bundle.ts)).
-A box ignores any catalog whose signature, checksum or contents do not check out, and keeps the one it has.
+There are no keys. A Harbor box downloads the catalog over HTTPS from this repository's GitHub releases,
+exactly the way it downloads its own updates from Harbor's releases: whoever can publish a release here is
+trusted, the same as for Harbor itself. Harbor runs as a root-equivalent service, so a signed catalog
+added little on top of that, for a lot of moving parts (key custody and rotation, more CI jobs); Harbor
+built signing and removed it before release (Harbor decision 158). Signing Harbor releases and this
+catalog together, with one key, is on Harbor's list for later (`docs/TODO.md`).
 
-The private key exists only as the `CATALOG_SIGNING_KEY` secret of the `catalog-signing` GitHub
-Environment of this repository (deployment branches: `main` only), plus an offline backup kept by the
-maintainer. There is no repository-level copy. It is never committed. Only the sign job can read it, and
-that job runs nothing but `scripts/check-bundle.mjs` and `scripts/sign.mjs` from this repository. The
-`CATALOG_SIGNING_KEY` variable is set only on the step that signs. `scripts/sign.mjs` refuses to sign if
-the secret does not match the pinned public key.
+`catalog.json` still pins `catalog.zip` by sha256 and size. That is an integrity check (a truncated
+download, or a zip from one release with the `catalog.json` of another), not a trust anchor. A box also
+refuses a catalog that is older than the one it has, dated more than a day in the future, too large, or
+that does not validate, and keeps the one it has.
 
-The sign job checks that the bundle is complete and consistent. It cannot tell whether the bundle job
-packed the right apps: that rests on the Harbor commit pinned in `.harbor-ref` and its locked dependencies.
+What goes into a release rests on this repository's reviewed commits and on the Harbor commit pinned in
+`.harbor-ref` with its locked dependencies.

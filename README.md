@@ -53,7 +53,7 @@ Every push to `main` that touches `apps/` (or the keys, scripts, `.harbor-ref` o
 
 The serial is the commit's committer time (unix seconds). Harbor only ever moves to a higher serial.
 
-Harbor boxes check for a new catalog every 6 hours, or right away with **Check for new apps** in the
+Harbor boxes (0.28.0 and newer) check for a new catalog every 6 hours, or right away with **Check for new apps** in the
 console or `harbor catalog refresh`. Each Harbor release also ships the latest catalog, so a new or
 offline box has apps from the start.
 
@@ -63,5 +63,6 @@ Catalogs are signed with ed25519. The public key is in `keys/harbor-apps.pub` an
 ([`src/packages/catalog-bundle.ts`](https://github.com/carlosalaniz/harbor/blob/main/src/packages/catalog-bundle.ts)).
 A box ignores any catalog whose signature, checksum or contents do not check out, and keeps the one it has.
 
-The private key exists only as the `CATALOG_SIGNING_KEY` Actions secret of this repository. It is never
-committed, and `scripts/sign.mjs` refuses to publish if the secret does not match the pinned public key.
+The private key exists only as the `CATALOG_SIGNING_KEY` Actions secret of this repository, plus an
+offline backup kept by the maintainer. It is never committed, and `scripts/sign.mjs` refuses to publish
+if the secret does not match the pinned public key.

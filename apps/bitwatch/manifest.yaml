@@ -5,7 +5,7 @@ metadata:
   name: Bitwatch
   description: Monitor Bitcoin addresses in the mempool and on-chain using the mempool.space API
 release:
-  revision: "1"
+  revision: "2"
   version: 1.8.0
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /app/server/data (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Monitor Bitcoin addresses in real-time
   category: finance
   developer: Zap-O-Matic

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "metube",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "7a46d5fbcbc419800ca36b93443c7844ffba7d91e7e2ce5e200fb7168605eef0"
+      "sha256": "215ea0e89ae7caee5f682be3848ceba4a8f7f248f4622b5192656a0f8dcbc6d5"
     },
     "compose.yaml": {
       "sha256": "0e3937f91322b83cb986e46d1f8f959467e058aecfd2fae6722465e0ce78b0a3"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package metube (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service metube: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of metube resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/alexta69/metube@sha256:df929ef2453fd75c1f1cbd8dafb309ee03ff18d8705c7c1e01642b1202d4a650); image config: ExposedPorts 8081/tcp, Volumes /downloads, User root.",
-      "Live catalog run catalog-2026-10-12T18-49-30-harbor-q01: passed (healthy after 24s; page title \"MeTube\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-49-30-harbor-q01: passed (healthy after 24s; page title \"MeTube\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "d4fe85f0e0773d9691751071e941efcbde44aae7b98966fd6987716033f6a1b6"
+    }
   }
 }

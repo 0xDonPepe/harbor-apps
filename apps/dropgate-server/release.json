@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "dropgate-server",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "fa41829302a5b58b4839ae1042f9ee18447a3dac2da4ce96c71d9edf0eb59563"
+      "sha256": "178ea8b6429f64c80b27f469089c37a3ab41d721a0203ede5741c5bc373438f4"
     },
     "compose.yaml": {
       "sha256": "5121259f1647e5719b6ea0c0a1c4dd0745d9aaabd1d1585f3b4390a40c3819b6"
@@ -42,7 +42,13 @@
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; willtda/dropgate-server@sha256:43698790fe341ea3fb0094bbdca701ecdf875a9c4b9c92b67f86c34c887c132b); image config: ExposedPorts 52443/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 37s; page title \"Dropgate Server\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 37s; page title \"Dropgate Server\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "78716f447e1574a4181cd6584260ce3a6021f95e5897d0514c44507e07e12cc9"
+    }
   }
 }

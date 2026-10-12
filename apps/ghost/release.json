@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "ghost",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "97cb155e9edf7fc91f1c6badf985c4a5fd4babd8519409185f26f5c2f6cdc2ef"
+      "sha256": "de6a2ce04504738e76437d9084926fb2f5cd61a39f47e37b64895408e2d12860"
     },
     "compose.yaml": {
       "sha256": "985fdbbbc768e877495b2333cc181d748d1f1038b48139d01e48bd5233c9cfe6"
@@ -54,7 +54,13 @@
       "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghost@sha256:55131b90d48c3cecae6c085f873b2067542ababd286b12d08474b2b34328e266); image config: ExposedPorts 2368/tcp, Volumes /var/lib/ghost/content, User root.",
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mysql@sha256:339598fe066c73daa4120f2d9dfefd3146c3519cd324748e1d3f9d2b6c71d10b); image config: ExposedPorts 3306/tcp,33060/tcp, Volumes /var/lib/mysql, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 139s; page title \"Ghost\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 139s; page title \"Ghost\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "49de76628a877482b111403098d8580bbeeb941f21ef6f68cece8fde9a7c4f4c"
+    }
   }
 }

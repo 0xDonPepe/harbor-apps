@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "budibase",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "0735edd18d6ed033854366ff9e2dc5ea85b2ff02c1e24970b6fcaa028390429c"
+      "sha256": "d41707df8c82692ed93c6c1239a03e31c3259c85f3d4448566e5c60a16105c94"
     },
     "compose.yaml": {
       "sha256": "4d2c7178963443ff0159d010ceaa5c7dc2533b7758a06980b24a42c081b7f556"
@@ -42,7 +42,13 @@
       "service budibase: stop_grace_period 1m dropped (Docker's default applies)",
       "service budibase: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of budibase resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; budibase/budibase@sha256:f05b90c2b8afc951feb99931bb4646d2c94af37d9c576ef3c4e01d4fdc296dc1); image config: ExposedPorts 2222/tcp,4000/tcp,4369/tcp,443/tcp,4984/tcp,5984/tcp,80/tcp,9100/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 191s; page title \"Budibase\"; health 301)"
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 191s; page title \"Budibase\"; health 301)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "63e33c9a52d4dca52166edf61c2ffa3ddb1abf66a4416326cbf54c67b5da942e"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "fossflow",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "5f8487edee83d6fef3666ca3f2a41637187266d2b6fea4757b07b86289c7f833"
+      "sha256": "2831c63c28c4028a9b6638e1d3c7caad176a9f75433f9b3bc9546794f3bc5e64"
     },
     "compose.yaml": {
       "sha256": "58f375d7149e3d72a334dee923c7b4a8a0f65252951fdeeda5ac93dd618481b5"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package fossflow (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; stnsmith/fossflow@sha256:c0813b19a9c8a3b8d13901de0e35edf7d9300ae8327a905ff520239d5624dafc); image config: ExposedPorts 3001/tcp,80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 48s; page title \"FossFLOW - Isometric Diagramming Tool\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 48s; page title \"FossFLOW - Isometric Diagramming Tool\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "104ef32ff81ae31a433bf0c89987197fea2e4ea6359e8bd4e54b6c6edad157d8"
+    }
   }
 }

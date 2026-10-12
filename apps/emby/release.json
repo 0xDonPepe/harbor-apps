@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "emby",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f75c64f40ef493c7b9b5cbd46366fe701663ddbc02a4d4b1ed954318f308ae45"
+      "sha256": "b6dee6ba099f1f223aa284851f5d4f16f7a9ffc4b8be2362c909603f0d9a6bf2"
     },
     "compose.yaml": {
       "sha256": "d729563795288487abf6a3b661fb7dd33779408a770faf9f320c78edf1ab96f7"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package emby (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "GPU access dropped: runs on the CPU",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/emby@sha256:9642a578312eac8ca5ec0b979c90b22d96021db9551bfab6a7c89b3f2098c1ff); image config: ExposedPorts 8096/tcp,8920/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 50s; page title \"9382df6e54bf\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 50s; page title \"9382df6e54bf\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "b35a32c66ae04ade64e6ccba1052650b1317c38290fd94f425b64f1bb1eb2ff0"
+    }
   }
 }

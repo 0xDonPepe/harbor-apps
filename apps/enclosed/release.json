@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "enclosed",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "94c97fb192ba72666ad83c891ea674d411ca8d864d043b176c1ac1e6fa27cec5"
+      "sha256": "12f9797ff47aebcca4bbb5377175817b2f2753a848fd28c72f1d5a8c21bbd352"
     },
     "compose.yaml": {
       "sha256": "121eaa58b1e66eed41116b3aff6e533124410f477ba127438ba6a1b70d00003d"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; corentinth/enclosed@sha256:0631baee489b974cf16ffe3884c814e7bcc75df7bd36662b8ded76443b768d06); image config: ExposedPorts 8787/tcp, Volumes none, User nonroot.",
-      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 46s; page title \"Enclosed - Send private and secure notes\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 46s; page title \"Enclosed - Send private and secure notes\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "3dc72e9a429aa00137a34d2e66ed2327da527b7092622f9cc6141d5ed32b2ea5"
+    }
   }
 }

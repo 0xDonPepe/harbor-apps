@@ -9,7 +9,7 @@ defaultCredentials:
   password: admin
   note: Change it after the first login.
 release:
-  revision: "1"
+  revision: "2"
   version: 13.2.3
 deployment:
   compose: compose.yaml
@@ -37,6 +37,7 @@ storage:
     purpose: Data at /var/lib/grafana (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: The open-source platform for monitoring and observability
   category: network
   developer: Grafana Labs

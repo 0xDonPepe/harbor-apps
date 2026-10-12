@@ -9,7 +9,7 @@ defaultCredentials:
   password: admin
   note: Change it after the first login.
 release:
-  revision: "1"
+  revision: "2"
   version: 4.7.1
 deployment:
   compose: compose.yaml
@@ -37,6 +37,7 @@ storage:
     purpose: Data at /config (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Track groceries, chores, recipes, and household tasks
   category: files
   developer: Grocy

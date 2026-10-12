@@ -5,7 +5,7 @@ metadata:
   name: OmniTools
   description: Self-hosted collection of powerful web-based tools for everyday tasks. No ads, no tracking, just fast, accessible utilities right from your browser!
 release:
-  revision: "1"
+  revision: "2"
   version: 0.6.0
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: An all-in-one collection of powerful web-based tools for everyday tasks
   category: files
   developer: Ibrahima Gaye Coulibaly

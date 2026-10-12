@@ -5,7 +5,7 @@ metadata:
   name: Tor Browser
   description: unofficial git repo -- report bugs/issues/pull requests on https://gitlab.torproject.org/ --
 release:
-  revision: "1"
+  revision: "2"
   version: 15.0.17
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /config (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: An invisible shield for your browsing experience
   category: network
   developer: The Tor Project

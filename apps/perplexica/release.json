@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "perplexica",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "a51838ef832bff408a61446f629e8f62978ba9115ca922fb4c75a634ddc40d45"
+      "sha256": "c1cf8cd17d056ae473fec41379023fc758ffb6fc060ac8a6d58822df25b7ce75"
     },
     "compose.yaml": {
       "sha256": "78c99b811c647bfe72645ab881a3c646a97cdfbd7c006e9188d5b9ea1fe873a6"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package perplexica (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; itzcrazykns1337/vane@sha256:61f2bbf3386ff3df08911fb3de0e1893b04702a4d49ef13fbadbda937b47ab7c); image config: ExposedPorts 3000/tcp,8080/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 248s; page title \"Chat - Vane\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 248s; page title \"Chat - Vane\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "d6032a12044cc33ae34577942baad82ecf711931004ec26cb9a11e9757ea6829"
+    }
   }
 }

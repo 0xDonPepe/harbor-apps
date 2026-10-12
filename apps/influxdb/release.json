@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "influxdb",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "6b91c3286732c5b6f5a01874dc866ae82154d0d47c0e5d18306e9973aa62c5e0"
+      "sha256": "5fbee78609c0f9ee929637df2ee9ad37425dd70de90adac7b71353adc93b81fd"
     },
     "compose.yaml": {
       "sha256": "dbd34d3327a27e742cb6c0b33971b30bf5649f68ffb70b28bc8514c9de27198c"
@@ -56,7 +56,13 @@
       "service chronograf: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of influxdb resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; influxdb@sha256:f5eb5cd107f845529dac36359527ed6448d421c5359cedbfc9d66beffcf669af); image config: ExposedPorts 8086/tcp, Volumes /var/lib/influxdb, User influxdb.",
       "Digest of chronograf resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; chronograf@sha256:1aa585346868ef0859c507b2c8544a175ad308024765929f5df5b64a9679031d); image config: ExposedPorts 8888/tcp, Volumes /var/lib/chronograf, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 41s; page title \"Chronograf\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 41s; page title \"Chronograf\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "19f0ba0e586d17331328dd926327ae9f61ad58571e985b490593e668296f0883"
+    }
   }
 }

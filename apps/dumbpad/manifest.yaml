@@ -5,7 +5,7 @@ metadata:
   name: DumbPad
   description: A Dumb Pad with collaborative editing, fuzzy search, & markdown preview functionality
 release:
-  revision: "1"
+  revision: "2"
   version: 1.0.4-patch.1
 deployment:
   compose: compose.yaml
@@ -38,6 +38,7 @@ configuration:
     endpoint: web
     format: origin
 presentation:
+  icon: icon.png
   tagline: A notepad with collaborative editing, fuzzy search, & markdown preview
   category: files
   developer: DumbWareio

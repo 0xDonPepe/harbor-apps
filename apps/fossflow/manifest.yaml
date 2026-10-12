@@ -5,7 +5,7 @@ metadata:
   name: FossFLOW
   description: Make beautiful isometric infrastructure diagrams
 release:
-  revision: "1"
+  revision: "2"
   version: b69fc2e-patch.1
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /data/diagrams (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Make beautiful isometric infrastructure diagrams
   category: network
   developer: stan-smith

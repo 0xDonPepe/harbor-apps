@@ -5,7 +5,7 @@ metadata:
   name: LibreOffice
   description: Do more - easier, quicker, smarter
 release:
-  revision: "1"
+  revision: "2"
   version: 7.6.7-patch.1
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /config (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Do more - easier, quicker, smarter
   category: files
   developer: The Document Foundation

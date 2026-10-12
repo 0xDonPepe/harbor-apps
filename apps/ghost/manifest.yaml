@@ -5,7 +5,7 @@ metadata:
   name: Ghost
   description: Independent technology for modern publishing, memberships, subscriptions and newsletters.
 release:
-  revision: "1"
+  revision: "2"
   version: 6.69.0
 deployment:
   compose: compose.yaml
@@ -43,6 +43,7 @@ configuration:
     endpoint: web
     format: origin
 presentation:
+  icon: icon.png
   tagline: A platform for creators to publish, grow, and monetize their content
   category: files
   developer: Ghost Foundation Ltd

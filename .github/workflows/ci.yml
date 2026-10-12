@@ -57,6 +57,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Every app has an icon
+        run: node scripts/require-icons.mjs apps
       - name: Latest Harbor release
         id: latest
         env:

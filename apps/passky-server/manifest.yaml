@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: ADMIN_PASSWORD
   username: admin
 release:
-  revision: "1"
+  revision: "2"
   version: 8.1.8-patch.1
 deployment:
   compose: compose.yaml
@@ -37,6 +37,7 @@ storage:
     purpose: Data at /var/www/html/databases (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Simple, modern, lightweight, open source and secure password manager
   category: files
   developer: Rabbit Company LLC

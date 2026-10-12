@@ -14,8 +14,9 @@ apps/<id>/manifest.yaml  what Harbor needs to know (endpoints, storage, health, 
 apps/<id>/compose.yaml   the services, Compose subset only, images pinned by digest
 apps/<id>/README.md      shown in the App Store
 apps/<id>/release.json   sha256 of every file, image digests, qualification result
-apps/<id>/icon.svg|png   optional icon (plus optional screenshots)
+apps/<id>/icon.svg|png   the app's icon: required here (CI checks it), up to 256 KiB (plus optional screenshots)
 scripts/subset.mjs       CI helper: a catalog dir with only some apps (to check them with an older Harbor)
+scripts/require-icons.mjs CI check: every app names an existing .svg/.png icon in presentation.icon
 ```
 
 ## Add or update an app

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "baikal",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "aa3541380ce25851b69dfda53204f196a77318e6a9e3b1865ae5a83ff301437f"
+      "sha256": "517d20291f676e97c3573268da41c375031e7120e941140a6fd42ea19e2b70a1"
     },
     "compose.yaml": {
       "sha256": "f89c303fd85af155f4abb75c10968abd1c5be534d9e7c7f72cb8a38dfdeaa63c"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package baikal (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/aalmenar/baikal@sha256:f83c70831ebe2ca9ba84ba7b60927f25941f0fba88bdea6bbebe1d0464bb2aa7); image config: ExposedPorts 80/tcp, Volumes /var/www/baikal/Specific,/var/www/baikal/config, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 33s; page title \"Baïkal Maintenance\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 33s; page title \"Baïkal Maintenance\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "e858c3f6a8e19085e2b623f310b3adb06cb51b7b5dfe08f99012d198b4021eb6"
+    }
   }
 }

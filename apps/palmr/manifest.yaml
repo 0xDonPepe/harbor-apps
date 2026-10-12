@@ -5,7 +5,7 @@ metadata:
   name: Palmr
   description: 🌴 Palmr. is an open-source file-sharing platform focused on privacy and security. It enables users to upload, manage, and share files with features like password protection, custom links, and access control without tracking or limitations. Designed for seamless and secure sharin
 release:
-  revision: "1"
+  revision: "2"
   version: 3.3.2-beta
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /app/server (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Open-Source File Transfer
   category: files
   developer: kyantech

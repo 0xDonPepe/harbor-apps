@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "bark-wallet",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "ce969957ad676e698cc2059baa502e0307bd75fffb6609a1b9245a9c942123f0"
+      "sha256": "10b9169590e9f9b6f7326211615f98dd4da392942e60d6c9695a8b43104efcc0"
     },
     "compose.yaml": {
       "sha256": "6b3bb73022286ce91315df674f4cfc9cd014b26181a163f8cbe7072391590db2"
@@ -68,7 +68,13 @@
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; secondark/bark-web@sha256:c7ee6f6f92bc0e67d98dc0336ec85d4a3ac96e323cd8fb758175747532e1bcae); image config: ExposedPorts 8080/tcp, Volumes none, User 101.",
       "Digest of api resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; secondark/bark-web-api@sha256:2ccf75c99873e99182d61f64cd2d9ff03fb376812bbc9a9e43abd10d9afc38ab); image config: ExposedPorts 4001/tcp, Volumes none, User node.",
       "Digest of barkd resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; secondark/bark@sha256:30a91f2c31a16ec7d1a4d7744989ff2113fd003febb75aedfe2449db9133e671); image config: ExposedPorts none, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 47s; page title \"Bark Wallet\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 47s; page title \"Bark Wallet\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "f798dea1f36cc6360ded6832819f04709e0ea5a7b1bba2254251682c24b7a1cf"
+    }
   }
 }

@@ -5,7 +5,7 @@ metadata:
   name: ChatBot UI
   description: AI chat for any model.
 release:
-  revision: "1"
+  revision: "2"
   version: 2023.04.20
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: ChatGPT but better
   category: ai
   developer: Mckay Wrigley

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "zen",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c853002360e3b0fb44c255cf184c93922e3629499117fd87659b2248dab79ef9"
+      "sha256": "61d985d9abe8d824bfb5a706319b4202ccd569ae1e97f566751256c8097e2e95"
     },
     "compose.yaml": {
       "sha256": "940a7049565692aef7187f64c94a60cca8b329d14107cebee2ebd00a6c87c10b"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package zen (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/sheshbabu/zen/zen@sha256:370d7ae0d8b4d06593b44ffa1cfde5d15c7f80abe4bbe8d94e86d8d29e250270); image config: ExposedPorts none, Volumes /data,/images, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 22s; page title \"Zen\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 22s; page title \"Zen\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "d6644bb81a0d37e6dd0a34a48163323b00c10eeeb4cad693e2d3dbf76de58831"
+    }
   }
 }

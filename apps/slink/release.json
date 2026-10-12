@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "slink",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "9f288bd6e101aa6af01aeb99b4ccd3b153d16f67e9ad079419231ba74f15f5a6"
+      "sha256": "715d64719563b8603f7706752224679198304c49fee5028b9f63b304ce68a7e9"
     },
     "compose.yaml": {
       "sha256": "6093da246c6f64ee73018a4d6947f0e03ed0a4bbc93ffaa53fd334450d3434ae"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; anirdev/slink@sha256:73b0f66bd474be47ee1e1f7be00e0aa55116cb3981a01f920c066ef38a9b9e46); image config: ExposedPorts 3000/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 52s; page title \"Explore Gallery | Slink\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 52s; page title \"Explore Gallery | Slink\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "fe06b800daf9e0259715fd6477103ac470691e4df27bb84ac573cbb5b3df6047"
+    }
   }
 }

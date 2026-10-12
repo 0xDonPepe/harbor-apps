@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: APP_ADMIN_PASSWORD
   username: umbrel@umbrel.local
 release:
-  revision: "1"
+  revision: "2"
   version: "6.3"
 deployment:
   compose: compose.yaml
@@ -62,6 +62,7 @@ storage:
     purpose: Data at /var/lib/mysql (db)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: A collaborative plant tracking and management application
   category: files
   developer: Daniel Brendel

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "trip",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f3ad709856adc348d54e09d2826c80993ab9ad7eb522646d04cefaab315e758a"
+      "sha256": "080e6e2d474a6bfc2ef638706b8054596b097269413fb92d4ad6387a9684e290"
     },
     "compose.yaml": {
       "sha256": "9bb4ad48713e849699021b4795879e2f82eb481d93941dabf3c979822ee7a165"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package trip (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/itskovacs/trip@sha256:a554617e98f6431a1e1855ad4a7d7e61ccdf22e97c62285057d635ad52063afa); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 32s; page title \"TRIP - Authentication\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 32s; page title \"TRIP - Authentication\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "44ed7257925992144b80c4f41359183225b6f1c390759c7fd67273f80814b66c"
+    }
   }
 }

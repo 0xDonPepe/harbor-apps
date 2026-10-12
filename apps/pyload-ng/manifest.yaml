@@ -9,7 +9,7 @@ defaultCredentials:
   password: pyload
   note: Change it after the first login.
 release:
-  revision: "1"
+  revision: "2"
   version: 0.5.0-patch.1
 deployment:
   compose: compose.yaml
@@ -44,6 +44,7 @@ storage:
       hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
       required: false
 presentation:
+  icon: icon.png
   tagline: The free and open-source Download Manager
   category: files
   developer: pyload

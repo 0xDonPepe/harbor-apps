@@ -5,7 +5,7 @@ metadata:
   name: Bark Wallet
   description: One wallet for Lightning, Ark, and on-chain
 release:
-  revision: "1"
+  revision: "2"
   version: 0.8.0-patch.1
 deployment:
   compose: compose.yaml
@@ -35,6 +35,7 @@ storage:
     purpose: Data at /wallet-data (api)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: One wallet for Lightning, Ark, and on-chain
   category: finance
   developer: Second

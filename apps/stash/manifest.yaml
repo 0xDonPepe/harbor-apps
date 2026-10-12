@@ -5,7 +5,7 @@ metadata:
   name: Stash
   description: Hoard everything. Find Anything.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.0.1-patch.1
 deployment:
   compose: compose.yaml
@@ -37,6 +37,7 @@ storage:
     purpose: Data at /app/models (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Hoard everything, find anything — your private on-device AI inbox
   category: ai
   developer: Stash

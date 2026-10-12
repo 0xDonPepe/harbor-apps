@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "influxdb2",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c98c0b00d02815a54d632fdf206bb10d189e1cb48200f3a4eec853e1607e41dc"
+      "sha256": "633c9c85847a8ca876c84b0826576976e259cde85192a21ab5f6b5384876424f"
     },
     "compose.yaml": {
       "sha256": "68cde68ca49955c69be412b1e1d362ff61437f1854680e8cbd1bbd5accac411e"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package influxdb2 (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; influxdb@sha256:1cb8fa92ff9d13518d8198dae872b7ea523757a03c655d12a67175b1ab7a72f0); image config: ExposedPorts 8086/tcp, Volumes /etc/influxdb2,/var/lib/influxdb2, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 36s; page title \"InfluxDB\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 36s; page title \"InfluxDB\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "19f0ba0e586d17331328dd926327ae9f61ad58571e985b490593e668296f0883"
+    }
   }
 }

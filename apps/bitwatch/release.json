@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "bitwatch",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "8ed79f47948bb43caf698ea7f47d56889a310294c67f406a42a25c981326fe06"
+      "sha256": "dd960c68c56dc18d490f41eea8b31abfd3522689d3f19257945881066480a088"
     },
     "compose.yaml": {
       "sha256": "626d36e6174e322e70dc054beb22ec20be2241feed22feec34d582b16ce4d19c"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/zapomatic/bitwatch@sha256:e5f868dcb1a750fad48090b56301d36bc0b87f397d176b57d150e2d4edebd350); image config: ExposedPorts 3117/tcp, Volumes none, User 1000.",
-      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 48s; page title \"Bitwatch\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 48s; page title \"Bitwatch\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "327e73f129824d5e3409868c1aed8d4e816fa6b0a54ad955f16f7419d3d9e955"
+    }
   }
 }

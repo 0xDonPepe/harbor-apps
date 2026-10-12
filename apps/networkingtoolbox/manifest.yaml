@@ -5,7 +5,7 @@ metadata:
   name: Networking Toolbox
   description: 🛜 100+ offline-first networking tools and utilities
 release:
-  revision: "1"
+  revision: "2"
   version: 1.6.0
   minHarbor: 0.28.4
 deployment:
@@ -29,6 +29,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: The all-in-one offline-first networking toolbox for sysadmins
   category: developer
   developer: Alicia Sykes

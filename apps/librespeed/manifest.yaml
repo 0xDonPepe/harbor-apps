@@ -5,7 +5,7 @@ metadata:
   name: LibreSpeed
   description: Self-hosted Speed Test for HTML5 and more. Easy setup, examples, configurable, mobile friendly. Supports PHP, Node, Multiple servers, and more
 release:
-  revision: "1"
+  revision: "2"
   version: 6.3.0
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /config (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Free and open source speedtest
   category: network
   developer: LibreSpeed

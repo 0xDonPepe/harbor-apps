@@ -5,7 +5,7 @@ metadata:
   name: MeTube
   description: Self-hosted video downloader for YouTube and other sites (web UI for yt-dlp)
 release:
-  revision: "1"
+  revision: "2"
   version: 2026.10.09
   minHarbor: 0.28.4
 deployment:
@@ -37,6 +37,7 @@ storage:
       hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
       required: false
 presentation:
+  icon: icon.png
   tagline: Download videos from YouTube
   category: media
   developer: Alex Shnitman

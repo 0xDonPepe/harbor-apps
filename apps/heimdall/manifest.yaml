@@ -5,7 +5,7 @@ metadata:
   name: Heimdall
   description: An Application dashboard and launcher
 release:
-  revision: "1"
+  revision: "2"
   version: 2.8.3
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /config (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Organize your most used web sites in a simple way
   category: files
   developer: LinuxServer.io

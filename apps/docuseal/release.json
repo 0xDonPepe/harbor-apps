@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "docuseal",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "223b1b74a559f25250ad7e9785196817c14e191952ccd7f5e8dadd03b3bd07f5"
+      "sha256": "faf7ac3eedc64c01aacdddf49bec9b335f2dc5a95a3e03db4eb39f011417788d"
     },
     "compose.yaml": {
       "sha256": "c27f823e5f1c93340d9ae6a84ceb9b8fed0cb81d05fea044dcd2b2c5bf272c1f"
@@ -55,7 +55,13 @@
       "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; docuseal/docuseal@sha256:e171808ce8dabb08491a49a6d8c477670a65ddce5e3de4764904b63a4487940f); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; postgres@sha256:0321e2252ebfeecb8bc1a899755084d29bce872953e1a5a3e25ec0860b739098); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 53s; page title \"DocuSeal | Open Source Document Signing\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 53s; page title \"DocuSeal | Open Source Document Signing\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "11cf1834d6b12cd8a44f4740b349b1819f8309225d62b51eac2627bdd2b308ba"
+    }
   }
 }

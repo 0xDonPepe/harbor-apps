@@ -5,7 +5,7 @@ metadata:
   name: Foldergram
   description: Self-hosted folder-based Instagram-style photo and video gallery app.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.2.2-patch.1
 deployment:
   compose: compose.yaml
@@ -45,6 +45,7 @@ storage:
     purpose: Data at /app/data/previews (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: A private Instagram-style feed for your memories
   category: files
   developer: Sajjad Ali

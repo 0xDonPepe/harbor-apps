@@ -5,7 +5,7 @@ metadata:
   name: changedetection.io
   description: Best and simplest tool for website change detection, web page monitoring, and website change alerts. Perfect for tracking content changes, price drops, restock alerts, and website defacement monitoring—all for free or enjoy our SaaS plan!
 release:
-  revision: "1"
+  revision: "2"
   version: 0.60.8
 deployment:
   compose: compose.yaml
@@ -38,6 +38,7 @@ configuration:
     endpoint: web
     format: origin
 presentation:
+  icon: icon.png
   tagline: Website change detection and alerts
   category: automation
   developer: dgtlmoon

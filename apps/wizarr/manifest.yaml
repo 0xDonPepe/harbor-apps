@@ -5,7 +5,7 @@ metadata:
   name: Wizarr
   description: Wizarr is an advanced user invitation and management system for Jellyfin, Plex, Emby etc.
 release:
-  revision: "1"
+  revision: "2"
   version: 2026.9.1-patch.1
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /data (app)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: An advanced invitation and management system for media servers
   category: media
   developer: Wizarr

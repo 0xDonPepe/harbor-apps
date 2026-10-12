@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "heimdall",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "3d6e95b687079b950d5d8b2d0f462f60bb99f2debe0fb0d5f2ec90fea721705d"
+      "sha256": "28c33abaa7a58bcc6d79dbde79db25ae568e5608d809afb13ec9eed7b5c692e1"
     },
     "compose.yaml": {
       "sha256": "d9ad2d38a1b27e86415f3703cf6b799d429c13aa71dd0037e472663399ba763a"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package heimdall (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/heimdall@sha256:287e48152967820922969ced1e990949063679d84c11ce988726c4195b52a47f); image config: ExposedPorts 443/tcp,80/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 47s; page title \"Heimdall\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 47s; page title \"Heimdall\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "b05cb5bfd6aaa182467a4fdec84147ddf9e650f1b643056de12eaca6fd8d9d75"
+    }
   }
 }

@@ -5,7 +5,7 @@ metadata:
   name: Morphos server
   description: Self-hosted file converter server
 release:
-  revision: "1"
+  revision: "2"
   version: 0.6.0
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: Self-hosted file converter
   category: files
   developer: Dan Vergara

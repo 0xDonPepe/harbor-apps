@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "wavelog",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "afe54945c63da1a24be8b5e29ef4239aa8e201ffc4903e300139ebb2e4846ebc"
+      "sha256": "fee88b70daeaf335eadfad9c036d19760a05956b18190c1c7e2adabfb61ff1e9"
     },
     "compose.yaml": {
       "sha256": "1726c67692c3c07da1f9b2359ec3a4665c79c845963f4b5dd6a72ffdcae6a15b"
@@ -53,7 +53,13 @@
       "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/wavelog/wavelog@sha256:600c3205ca2b5d7976beedabd023cb91e3f3dfdf45b5d58708dab75ade3b94e3); image config: ExposedPorts 80/tcp, Volumes none, User root.",
       "Digest of wavelog-db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 48s; page title \"Install | Wavelog\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 48s; page title \"Install | Wavelog\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "343d3b97a9dbaf8740a5ccd2d5a22fe319ec196ae34053a775d90f3fb280159b"
+    }
   }
 }

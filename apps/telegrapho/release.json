@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "telegrapho",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c264d916646c7bb8dbc155094012d7d83855a60aa75e71a640bcd6bc72ca34f5"
+      "sha256": "258f2d5bab045ca50b11b9a3ef0aafd32a03ae0e1069577a4deb6b632e2ce58a"
     },
     "compose.yaml": {
       "sha256": "a0e8338a671d603347ce3ccc7a8d7c5adcd54e54fee4205c921a0e5acf9b9ea5"
@@ -42,7 +42,13 @@
       "service app: stop_grace_period 1m dropped (Docker's default applies)",
       "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/egzola/telegrapho@sha256:9486b185b993398cc651158a9292c2fa54eb83254c83d610759988fb20b413b8); image config: ExposedPorts 3712/tcp, Volumes none, User app.",
-      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 40s; page title \"Telegrapho\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 40s; page title \"Telegrapho\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "32468bf9753213a9e0dab98d3b31294b206ba3791f992615d6c58db2cbebd616"
+    }
   }
 }

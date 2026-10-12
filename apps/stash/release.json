@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "stash",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "e826899b4e47c3f80da47d7bab0ac71543f40624b85876ffea33dede52678add"
+      "sha256": "f1a68524f6437ae330fbb6781ba2d45132b5f37ad7da7b72b7a7b5dc535ecf28"
     },
     "compose.yaml": {
       "sha256": "5434bc03425a60d9c6000639bd9bf1be52c63ffb7d039f2cc1b3f2fd5ac1ad80"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package stash (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; savewithstash/stash@sha256:fdca95d75438eba149d31d303cfe7ed3b194a5938b10d1cca184b49cd8511271); image config: ExposedPorts 5173/tcp, Volumes /app/data,/app/models, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 140s; page title \"Stash\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 140s; page title \"Stash\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "6ac4df548a902abe6c8382ae059bc6666a347b4dcb26f3107e73203b3b7e4b14"
+    }
   }
 }

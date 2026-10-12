@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "pinchflat",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "a848031ab3e3a9acdf673486bdfc21eb08740d21a6f41d5d6b99f787a82211ec"
+      "sha256": "754bb792d3b19ed0deed0b162e1b776dc1fc3ae5f05cee6e3d4692f08195a8a3"
     },
     "compose.yaml": {
       "sha256": "d784320d6fa53597535cdff6bb185f759837dda56306ebf836148f7aef1d9d63"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package pinchflat (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/kieraneglin/pinchflat@sha256:4e975edf58f0861a5cbfe8fc6aac4851ff5a02dfc3f05ffeea4982e3084a5a4a); image config: ExposedPorts 8945/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 55s; page title \"Pinchflat\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 55s; page title \"Pinchflat\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "298bd8ab615a54d18e37224f52894f63eb7de8921c001b151d6f433e217490cc"
+    }
   }
 }

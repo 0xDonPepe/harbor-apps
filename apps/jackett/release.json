@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "jackett",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "6d0880ed7132feef39acb4db4aa53ed276e3949f03ded1ef2f780d9f15b7a6c3"
+      "sha256": "edf6a48391de1cc7268d4f724a779eaf5bb3fd79d30c2a73543e83ee2470b44d"
     },
     "compose.yaml": {
       "sha256": "973f5feb4912e7350ce17a6aef8f8a47a8dbe8f3e8c754a1270f6f9a1b74b1a6"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package jackett (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service server: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/jackett@sha256:1e3f3203b1f8bd947d534e854b9dbed03571b1532a7f3769399b21cb2de93c32); image config: ExposedPorts 9117/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 40s; page title \"Jackett\"; health 301)"
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 40s; page title \"Jackett\"; health 301)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "4d243e049c90746c98b357ddecf3af408b6062e53685ae91035d0aa2eb75ddae"
+    }
   }
 }

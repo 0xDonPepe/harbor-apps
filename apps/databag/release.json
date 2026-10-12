@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "databag",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "2eebe844dac2fd6b6fc6c088bb8a829dde6a69c45803d853461367c522b2bc27"
+      "sha256": "797853c0e6dbf31c2dd6fb370d329ea049233de912ab6ac7e918bf9f684f50dc"
     },
     "compose.yaml": {
       "sha256": "65e70a2949d91554747ac94dc8be261365437f516f8354f57551039e097fb877"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package databag (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; balzack/databag@sha256:37c4ab38f64842afa44ed8aea0e47271112795180708f0cb7be8ee7c7defebac); image config: ExposedPorts 7000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 51s; page title \"Databag\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 51s; page title \"Databag\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "5b14b6b50441083e59ceccd79e7c5e952c6197aa74ef5ca42d1b4f4eb8a5444b"
+    }
   }
 }

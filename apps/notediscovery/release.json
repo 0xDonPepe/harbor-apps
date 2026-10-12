@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "notediscovery",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "cb7d9c1403da273d8fcc8ba27e8b8fef588d8c51f101dcf670559e520317ce0c"
+      "sha256": "85ae3630168a2a76d3b298b08999665e176e258c132e5bd28387e2e5258e6be7"
     },
     "compose.yaml": {
       "sha256": "9d749f5657a5cd52bf264a72984f7f037ace15feb27caf108220c0c8986e622e"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/gamosoft/notediscovery@sha256:13e3566146428db028ec0cfb3e0c0db6dc87b53cc475d19aefc2e2e6d1b37cc2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 36s; page title \"NoteDiscovery\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 36s; page title \"NoteDiscovery\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "a0cd79d05407383e9861c0647ecb94e8820391eac7f2ef6537911cc4ebc19f60"
+    }
   }
 }

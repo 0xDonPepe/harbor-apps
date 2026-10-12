@@ -5,7 +5,7 @@ metadata:
   name: Bitaxe Sentry
   description: A monitoring system for Bitaxe miners that tracks performance metrics, sends alerts, and provides a web dashboard
 release:
-  revision: "1"
+  revision: "2"
   version: 0.8.0-patch.1
 deployment:
   compose: compose.yaml
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /var/lib/bitaxe (sentry)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Bitaxe stats and alerts, all in one
   category: finance
   developer: Zach Price

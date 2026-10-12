@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "pingvin-share",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "4b3c5c5eefd96ccb338d3f99708955f0cd7c0e498c054b2562013d2b44add92b"
+      "sha256": "08dd0ca366ad8b00e9ee362a28e48a0ae2b323bac9552a65dc33698f82a5af46"
     },
     "compose.yaml": {
       "sha256": "920a2d7b73042104f5a150afcb0ec0dc461b39d0e93457b7a61eaabffe78403c"
@@ -43,7 +43,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; stonith404/pingvin-share@sha256:6bf2bcd3043ee68cb61264f0857511ccf7f212fdb984382b7f2d491635184ad6); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 62s; page title \"Home - Pingvin Share\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 62s; page title \"Home - Pingvin Share\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "dbcefd53f8d05f708fc43d18954c776f99e8b2095c20d2d35cc34edb602b6b61"
+    }
   }
 }

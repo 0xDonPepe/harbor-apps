@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "dumbpad",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "414c66469d19db29529f16416030e26938a7cbe346c98d555bf38b1c2ea3e31a"
+      "sha256": "a17387c59225d69648b3ce07a9b2cc7d0ef273a78cbae3561cc0e06195151868"
     },
     "compose.yaml": {
       "sha256": "aee9dc6ebc5a60d9bdd6b8205866d6ca7179f271833900c19dcb0eb8909d4607"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package dumbpad (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dumbwareio/dumbpad@sha256:03e4216d7842958287bccf6c51dde1c41735b35235844fb87c70b4443143ada6); image config: ExposedPorts 3000/tcp, Volumes /app/data, User node.",
-      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 37s; page title \"DumbPad - Simple Notes\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 37s; page title \"DumbPad - Simple Notes\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "28a1944eb7ca1d2baa316af17d465a729b76dbd62112d1af10f74aec44c0cfa8"
+    }
   }
 }

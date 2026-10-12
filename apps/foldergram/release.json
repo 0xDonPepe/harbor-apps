@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "foldergram",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "5ae418eb504593a91d83a3d9fc297e2baf9cd24bc546b10bda3ee74eb654898e"
+      "sha256": "b19bdddd1ed9a3f1327568722770122de897ee5317f4ccc1e4cd149afc15d279"
     },
     "compose.yaml": {
       "sha256": "7fe9c349c449dda47e63491d792e49bd1c2739f1e603078612f39aa5a151c3e8"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package foldergram (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/foldergram/foldergram@sha256:f72dfe39d9042555fd1b509a06f6c93c8b9a8be02541c80135a9a8f25fe362d4); image config: ExposedPorts 4141/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 46s; page title \"Foldergram\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 46s; page title \"Foldergram\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "64b6f364efe8ff594a5c72f8db1693d0063ad2a1edfecb56ffaadcece9c68a06"
+    }
   }
 }

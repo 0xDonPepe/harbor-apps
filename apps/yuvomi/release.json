@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "yuvomi",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c4ffb3552ba23137a76a02e3404a9f2b684624a7e5038afa4a926a707f44db57"
+      "sha256": "2eff70dfbf3e5f4bba405afdb0ca8e5e4c364f0176008de12aecacfd40e0e5cb"
     },
     "compose.yaml": {
       "sha256": "b1ff018455b19815816d4585addc1cad19deff1c8d49cf049b77df6986a3f688"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package yuvomi (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/ulsklyc/yuvomi@sha256:b1c126285d762698021b840116e17097339132b5d333df52522e983229c529c4); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 54s; page title \"Yuvomi\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 54s; page title \"Yuvomi\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "7a2c001b7d6cf0505974e75c4706a73418bd6fd75d0e81e65327fe574b06e34e"
+    }
   }
 }

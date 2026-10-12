@@ -5,7 +5,7 @@ metadata:
   name: ZeroNote
   description: ZeroNote is an open-source, offline-first unified app that replaces your password manager, bookmark manager, notes app, and 2FA authenticator with a single encrypted note-taking system powered by smart tags, where everything is stored locally on your device with zero-knowledge en
 release:
-  revision: "1"
+  revision: "2"
   version: 1.0.12
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: All your notes, passwords, bookmarks, and 2FA in one secure, offline-first app
   category: files
   developer: besoeasy

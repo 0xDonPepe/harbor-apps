@@ -5,7 +5,7 @@ metadata:
   name: PicoClaw
   description: Tiny, Fast, and Deployable anywhere — automate the mundane, unleash your creativity
 release:
-  revision: "1"
+  revision: "2"
   version: 0.3.1-patch.1
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /data (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Ultra-lightweight personal AI assistant
   category: ai
   developer: Sipeed

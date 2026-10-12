@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "picoclaw",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "980a46def79c1162d8fb694105b3da0a3b8b144b3140e8560f9d485aacdf035e"
+      "sha256": "8e29931168569ef403c5919d24f913bd6cad29f5f7ee5bd0a414892334d36533"
     },
     "compose.yaml": {
       "sha256": "1a83245d252397e90427aa73e2d47a762b8fac280ca129969e8258a50bbe97c0"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package picoclaw (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; sipeed/picoclaw@sha256:ed830c6cb71f59785062433159c45c2363465cd02046f8dd2822bd24a39510c2); image config: ExposedPorts none, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 26s; page title \"PicoClaw\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 26s; page title \"PicoClaw\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "8bbffda5e88d65684eeb899001fb1e3213e63dd0d70594f48e6c6a9acd5fde78"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "mstream",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "e82f23e98dd22f08d434ce1e13c2bcf8b31b039375bdc62788c0983c0f341e76"
+      "sha256": "9c77d8d41ac84844c5762f56ec80770a018c81348f050b3d1a7c1e9fb2c5925e"
     },
     "compose.yaml": {
       "sha256": "c75e6332f5f8c809034edff8e544a1d4df6e2637c4fd86a15acef5049a7c401f"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package mstream (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/mstream@sha256:087024466308b1cb67b805c32b26613054c4c3705fc663bea7c790045c90ecb5); image config: ExposedPorts 3000/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 49s; page title \"mStream Music\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 49s; page title \"mStream Music\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "ced42f1e8e29fc06a24ebf7d1992264b901b8327d960dab7e994ba97124288d8"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "changedetection-io",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f530ee0214616c1424312684be4b166e1af8fde39d4f9ffebd66fd82c7cba675"
+      "sha256": "9fb511d8876a0be6eafbafb5cdbe36bc695daa924dfef63e1646e5ff09b250ad"
     },
     "compose.yaml": {
       "sha256": "daaeb401f2d1c35ee4099271f1ca54cd2485f175fa8242ec72bcc1f9071dd705"
@@ -42,7 +42,13 @@
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service app: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/dgtlmoon/changedetection.io@sha256:34df3680db1cbffc45ac1e9c1514bc0507dd0c5b5fde47d1992fe6f14a7b40e4); image config: ExposedPorts 5000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 53s; page title \"Change Detection\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 53s; page title \"Change Detection\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "32e4e46a2a89a16d098f2368858be59a772458a0833b97e1ce03913d671ce82b"
+    }
   }
 }

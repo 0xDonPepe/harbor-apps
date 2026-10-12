@@ -5,7 +5,7 @@ metadata:
   name: VERT
   description: The next-generation file converter. Open source, fully local* and free forever.
 release:
-  revision: "1"
+  revision: "2"
   version: f5ecdec
   minHarbor: 0.28.4
 deployment:
@@ -38,6 +38,7 @@ configuration:
     endpoint: web
     format: origin
 presentation:
+  icon: icon.png
   tagline: A file conversion utility
   category: files
   developer: VERT

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "element",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f4e047e3cd919aa6343a1c04ab592d6de726a2471ece1400e51c80daaac085b8"
+      "sha256": "48c68a449b0ad2a4daa2571cf06052ad4569e735bf862ce7f7482edad24c6959"
     },
     "compose.yaml": {
       "sha256": "6fa80396038040e20ad488700949b17dcdb78d5ad223f16c3fc6a05e8ec3234c"
@@ -43,7 +43,13 @@
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; vectorim/element-web@sha256:3e7dbd4424de9e11c812bc740acf2725b2abe66ea0d0802023b56fd85d3fa09a); image config: ExposedPorts 8080/tcp, Volumes none, User nginx.",
-      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 34s; page title \"Element\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 34s; page title \"Element\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "52d05c488d21fc9f29574ba2870d269a79b4770a008512e51aa911791e60f7b9"
+    }
   }
 }

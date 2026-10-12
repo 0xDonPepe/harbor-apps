@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "hermes-agent",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "73b45336c9e738b18f622d9e6e1cae6508ed961f8c37464a472e49ceee4d50d1"
+      "sha256": "05394ccb0113563bf582e459120e367728be27a8fd034c99ded3594c4a932932"
     },
     "compose.yaml": {
       "sha256": "f8e7ec56fc17aa5ebecc49e6a7cbc3c2d47e30fe919bdd2181ceeb26cb050217"
@@ -42,7 +42,13 @@
       "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/getumbrel/hermes-agent-umbrel@sha256:1cc27c346ccefe75c0cd52f281a231a47f864cab1c2cc26271ad8b8ad9531ad0); image config: ExposedPorts 18789/tcp, Volumes /opt/data, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 120s; page title \"Hermes Agent - Dashboard\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 120s; page title \"Hermes Agent - Dashboard\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "3597cbce7487207c99a01622887a9411821c8e57a0a246cf03bbdfaa29ebd658"
+    }
   }
 }

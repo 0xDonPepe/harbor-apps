@@ -5,7 +5,7 @@ metadata:
   name: Strix
   description: Smart IP camera stream finder. Tests 102K+ URL patterns in 30 seconds. Supports 67K camera models. Generates ready Frigate/go2rtc configs.
 release:
-  revision: "1"
+  revision: "2"
   version: 2.2.0
   minHarbor: 0.28.4
 deployment:
@@ -29,6 +29,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: IP camera stream discovery tool for Frigate
   category: automation
   developer: eduard256

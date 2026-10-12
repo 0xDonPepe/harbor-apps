@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "wordpress",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "29437b9c99b4a8e1e7f23309d4d086200a936b804e2a0d9df5f5d54108d15067"
+      "sha256": "78f92276d3b84bb9366d930ce66c53e6ce0a027c7f2460012826b1eb41b4cacc"
     },
     "compose.yaml": {
       "sha256": "57277452422d125941db98a3843bfa6ab72b0726ac6569b44b7dfe2572c529b1"
@@ -54,7 +54,13 @@
       "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; wordpress@sha256:8ecd8d8e374167ea22235acf30f80d1165b82f07ffa5bcef90c1cad8f7be251f); image config: ExposedPorts 80/tcp, Volumes /var/www/html, User root.",
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:2d50fe0f77dac919396091e527e5e148a9de690e58f32875f113bef6506a17f5); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 52s; page title \"WordPress › Installation\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 52s; page title \"WordPress › Installation\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "691b66f2761e97633e7f8827499a2127a721e591a90c9c567509351ab8aeeaa9"
+    }
   }
 }

@@ -5,7 +5,7 @@ metadata:
   name: PearCircle Seeder
   description: Private, peer-to-peer location sharing — no accounts, no servers, no subscriptions.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.1.4
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /data (app)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Keep your PearCircle circles online 24/7
   category: network
   developer: PeerLoom

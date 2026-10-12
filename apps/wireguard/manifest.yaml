@@ -5,7 +5,7 @@ metadata:
   name: WireGuard
   description: "Your own VPN server with a web page to add devices: each one gets a config file or a QR code for the WireGuard app (wg-easy)."
 release:
-  revision: "1"
+  revision: "2"
   version: "15.3.0"
   minHarbor: "0.29.0"
 deployment:
@@ -46,6 +46,7 @@ storage:
     purpose: "VPN keys, devices and settings"
     retention: retain
 presentation:
+  icon: icon.png
   tagline: "Your own VPN, with a page to add devices"
   category: network
   developer: "wg-easy"

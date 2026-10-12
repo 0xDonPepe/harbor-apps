@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "librephotos",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "5fb247f2869234de932a4bf5dc2dcd8a7e8e74c98af5efd6deba710ab2415bcd"
+      "sha256": "1cb9c8be4aee55e8c85750980e1a04b947e76cbd6c72885b0f554511e63f5b5c"
     },
     "compose.yaml": {
       "sha256": "f7eb453e58bc51cc42fb2e5456d119de659e1a8b301fdfd32f9c7fe67b534496"
@@ -76,7 +76,13 @@
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; pgautoupgrade/pgautoupgrade@sha256:2ec008ae5f0a2e5dd8f4d2475df41cf3ccc9562acf49bd668fcc0c061944b9bf); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
       "Digest of frontend resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; reallibrephotos/librephotos-frontend@sha256:e2fb909607b1d9552c033a9432446eadb6b693289af2b4b016da55d50724afcb); image config: ExposedPorts 3000/tcp,8080/tcp, Volumes none, User static.",
       "Digest of backend resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; reallibrephotos/librephotos@sha256:3f4d6fa163bf41f2cd496aca342307fec8b827fe4a7ced1e7773a050ef7a5dca); image config: ExposedPorts 8001/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 152s; page title \"LibrePhotos\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 152s; page title \"LibrePhotos\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "67067ef1b54181be5bbf63d471edd6a8ed82cc54cf3da24349811a2a0fd86574"
+    }
   }
 }

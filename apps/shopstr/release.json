@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "shopstr",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "e235c301217ac2770a3cd3fe95369a48da90f628a0a5cd83710f30a612f1e7e4"
+      "sha256": "eaea75d673f276728411db5fc70edc9005aa6416d72e1ec9dd0569ba3fd004b0"
     },
     "compose.yaml": {
       "sha256": "4dda05f77341124a822719643e77d9908f7249ab44430cf851c1d8eb0d1173d3"
@@ -43,7 +43,13 @@
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; calvadev/shopstr@sha256:b123e9d16f4267ea766813cbc12ac0989afcea03a72b42edfa37b64951ececdb); image config: ExposedPorts 3000/tcp, Volumes none, User nextjs.",
-      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 67s; page title \"Shopstr\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 67s; page title \"Shopstr\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "6dfd710389751a6fec65da2b2aa5afd697133d2205c6d623ffd33452d7ae7133"
+    }
   }
 }

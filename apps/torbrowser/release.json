@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "torbrowser",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "27a9fd8017a1d887a5bc2d7548fe5f362a557bf554379ab39148db16fca0c229"
+      "sha256": "30cee79f8f372316ef09aaedb8dfba6b72ed57187ef2d109d6f438331126d21d"
     },
     "compose.yaml": {
       "sha256": "b1e01df58b79a93ae81ceb338afb6eb1577a1099477aced1f89cf9399b1ea79e"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package torbrowser (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dennysubke/torbrowser@sha256:b0c12dbc6b93338ef02f57186f47a57952f864e31f015a9fb47fa6c5afc0d0b1); image config: ExposedPorts 5800/tcp,5900/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 49s; page title \"Tor Browser\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 49s; page title \"Tor Browser\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "9832819d5328ba145b4e0717b297b4ca4001be81ba86a60de6644e0452277489"
+    }
   }
 }

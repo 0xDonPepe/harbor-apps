@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "ollama",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f9e224abd4e71f26d0688e124b9af1cc0ff71dfc81206d4426c393f2b74e964d"
+      "sha256": "e2736350229a7a358c796c2a2722a05a5b2a8555651355262b317ed7bad9a2f9"
     },
     "compose.yaml": {
       "sha256": "05dba8909531992566b676fd0bd8fa40ff45cd5a1fdd7d824dac8e0cdc1a2ba4"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package ollama (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "GPU access dropped: runs on the CPU",
       "Digest of ollama resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ollama/ollama@sha256:adca95a12c2b386a8f9a995e7fa0600e187e3323b5e5522f5a6c3b1ec73eff99); image config: ExposedPorts 11434/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 146s; page title \"\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 146s; page title \"\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "7170488c0f88b9f7986a140ddbd6d5d0dc29ee6b6a0a5b1679880ce1671738fb"
+    }
   }
 }

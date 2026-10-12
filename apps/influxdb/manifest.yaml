@@ -5,7 +5,7 @@ metadata:
   name: InfluxDB
   description: Scalable datastore for metrics, events, and real-time analytics
 release:
-  revision: "1"
+  revision: "2"
   version: 1.13.1
 deployment:
   compose: compose.yaml
@@ -49,6 +49,7 @@ secrets:
       - service: chronograf
         environment: INFLUXDB_PASSWORD
 presentation:
+  icon: icon.png
   tagline: High performance time series database
   category: developer
   developer: InfluxData

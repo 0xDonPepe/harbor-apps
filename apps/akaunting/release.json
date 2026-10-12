@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "akaunting",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "07253e649e48a6c309a57cbc67367ce0a2e994ed41071c07f4f76468bae05422"
+      "sha256": "15c940470fd582d42f935c5f6ba9ce53531e2c924356a2084344f9201ef27b18"
     },
     "compose.yaml": {
       "sha256": "092dbe38613c833480ca239d3795f4ac62c60063e4a7810c78f9a063d378b533"
@@ -53,7 +53,13 @@
       "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; akaunting/akaunting@sha256:918bbc77981e5b96ab6aa6838491cfa7c98cb4ee7bbf9532ee083e7e66d04255); image config: ExposedPorts 80/tcp, Volumes none, User root.",
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:2bcbaec92bd9d4f6591bc8103d3a8e6d0512ee2235506e47a2e129d190444405); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 93s; page title \"Login\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 93s; page title \"Login\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "0b9a6a3b4bf7d07acf8e16391319fdf9648dd2b3a6fc31dae5ffa95478073ecf"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "vert",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f8eedc0cfacfd90fd31227c919b936884ab6f5e351c54964d2c012730f6f9cea"
+      "sha256": "ac30550cde741a6ff90dc6f62ec0b96709edf63072977cc223def35994651370"
     },
     "compose.yaml": {
       "sha256": "b689181fc7b606be7a3ab4584b132902f768671fd87e7f0f9bd4e369ef235072"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package vert (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/vert-sh/vert@sha256:7bc5ab4864c9a2fd760f63c4057f5d287055f33c6d29a040faaedb5b424863c0); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 27s; page title \"VERT.sh\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 27s; page title \"VERT.sh\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "0f320aec9fb68ebbf83a216dee86ea5e487d19b23b560f9f5978bd26fc3575a8"
+    }
   }
 }

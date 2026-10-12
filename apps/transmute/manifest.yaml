@@ -5,7 +5,7 @@ metadata:
   name: Transmute
   description: Self hosted file converter and compression tool for images, video, audio, json, excel and more. Supports over 3,000 conversions!
 release:
-  revision: "1"
+  revision: "2"
   version: 2.1.1
 deployment:
   compose: compose.yaml
@@ -41,6 +41,7 @@ secrets:
       - service: web
         environment: AUTH_SECRET_KEY
 presentation:
+  icon: icon.png
   tagline: An efficient tool for transforming files on your Umbrel
   category: files
   developer: Transmute

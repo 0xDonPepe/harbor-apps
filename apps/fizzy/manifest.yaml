@@ -5,7 +5,7 @@ metadata:
   name: Fizzy
   description: Kanban as it should be. Not as it has been.
 release:
-  revision: "1"
+  revision: "2"
   version: 5f45e54-patch.1
 deployment:
   compose: compose.yaml
@@ -41,6 +41,7 @@ secrets:
       - service: server
         environment: SECRET_KEY_BASE
 presentation:
+  icon: icon.png
   tagline: Kanban as it should be. Not as it has been.
   category: other
   developer: 37signals

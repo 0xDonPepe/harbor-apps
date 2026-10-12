@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: FLATNOTES_PASSWORD
   username: admin
 release:
-  revision: "1"
+  revision: "2"
   version: 5.5.5-patch.1
   minHarbor: 0.28.4
 deployment:
@@ -46,6 +46,7 @@ secrets:
       - service: server
         environment: FLATNOTES_SECRET_KEY
 presentation:
+  icon: icon.png
   tagline: A self-hosted, database-less markdown note-taking app
   category: files
   developer: Adam Dullage

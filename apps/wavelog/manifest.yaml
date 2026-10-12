@@ -5,7 +5,7 @@ metadata:
   name: Wavelog
   description: Webbased Amateur Radio Logging Software - Log your contacts from everywhere!
 release:
-  revision: "1"
+  revision: "2"
   version: 3.2.3
 deployment:
   compose: compose.yaml
@@ -46,6 +46,7 @@ storage:
     purpose: Data at /var/lib/mysql (wavelog-db)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Amateur radio logging software
   category: other
   developer: DF2ET, DJ7NT, HB9HIL, LA8AJA

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "thinkdashboard",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c40722b3fe6db5706d6632a74c34192434f1eec246e546661f129c0e541c70ce"
+      "sha256": "16d4502b8f45b085d169aa43b67cd0fae3edfa64bb1e551949183319f4027de8"
     },
     "compose.yaml": {
       "sha256": "ffb29a4e84e0817646ce90b35c5e3e3f6fb3f380dca987248a2e3c4a78a13bec"
@@ -42,7 +42,13 @@
       "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/matiasdesuu/thinkdashboard@sha256:3bd3ac29fcd0329673a1b4946e4e63ecc55239e6221a00bd4b407a5343c55079); image config: ExposedPorts 8080/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 23s; page title \"Dashboard\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 23s; page title \"Dashboard\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "731bf006a9f1f1f6b4cb34f21dcb25c41d4a8766746fcddc7e97f2fa91e41502"
+    }
   }
 }

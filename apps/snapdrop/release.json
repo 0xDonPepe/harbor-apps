@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "snapdrop",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "5b67a341a6d0797c410037eb9bbc0b63f913c7d7d8a0d437f2ec566ad107db16"
+      "sha256": "05a9fa0354e0625720d5aa97e7d5d11a9069d986c032b6de94336e15be2fc851"
     },
     "compose.yaml": {
       "sha256": "643458cc93bece0ad38400b5192008fcdd1cb829e0057dab79fd32fb35ee343e"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package snapdrop (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/snapdrop@sha256:3e0af233372e6ae7ac711397d40cbe2797cefe13220d65e5e284a64252cc0c2c); image config: ExposedPorts 443/tcp,80/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 32s; page title \"Snapdrop\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 32s; page title \"Snapdrop\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "6f9d6a62729d79ab7954e3df79599af60ab3ba02a2087cda75add569919ae35e"
+    }
   }
 }

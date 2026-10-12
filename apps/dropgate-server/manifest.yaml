@@ -5,7 +5,7 @@ metadata:
   name: Dropgate Server
   description: A self-hosted, privacy-first file sharing system with both hosted upload and direct P2P transfer capabilities.
 release:
-  revision: "1"
+  revision: "2"
   version: 3.0.13-patch.1
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /usr/src/app/uploads (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Self-hosted, privacy-first file sharing with hosted upload and P2P transfer
   category: files
   developer: Diamond Digital Development

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "btctracker",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "efd9a3d42f443c146a13779f8b1231bca02d7d5046f1f131f9a8b4c01f1e2d9a"
+      "sha256": "7e9bb99c7cbb1ff03040b911f67481b1f1e45c4f1c0fd681f3e9b5e8bb4e9312"
     },
     "compose.yaml": {
       "sha256": "6b13318576d60500421a6e628416af89c297cc29e7cbd7e5b46bc7537b559fe3"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package btctracker (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; thewilqq/btc-tracker@sha256:0c7beea5e0791cc39c9294f0a62faa24aa2ef42ed04571b63977c0afe085321b); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 55s; page title \"BTC Tracker\"; health 307)"
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 55s; page title \"BTC Tracker\"; health 307)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "72452dd0ee4d35dbca65047e8fe797469218f7e2d81cd3d289e113ccf1487033"
+    }
   }
 }

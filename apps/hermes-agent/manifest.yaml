@@ -5,7 +5,7 @@ metadata:
   name: Hermes Agent
   description: The agent that grows with you
 release:
-  revision: "1"
+  revision: "2"
   version: 2026.9.24
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /opt/data (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: The AI agent that grows with you
   category: ai
   developer: Nous Research

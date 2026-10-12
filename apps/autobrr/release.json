@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "autobrr",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "b5804725a3074e58d17b2714a073edf99aa95ae9f524bcddce288b8dabcae2fc"
+      "sha256": "9b316a87b7a4a72f502030b55159b9b0806b51378af3cbdbd05b21c36db33c96"
     },
     "compose.yaml": {
       "sha256": "377c1a1ec749df6bd606fc684fc11bb123d00b1b2e364550cf98cd323b032d7c"
@@ -42,7 +42,13 @@
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/autobrr/autobrr@sha256:e200008d43fe6cd2d944c9bcf20900cfb8ba8a8e509625bb78ee51910b994005); image config: ExposedPorts 7474/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 22s; page title \"autobrr\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 22s; page title \"autobrr\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "770c4bdf68a7fff2851b262222fff82c84d420e0863fec9a3a4effd9ee9fe4c0"
+    }
   }
 }

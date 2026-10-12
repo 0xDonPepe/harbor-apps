@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: LEAFWIKI_ADMIN_PASSWORD
   username: admin
 release:
-  revision: "1"
+  revision: "2"
   version: 0.14.1
 deployment:
   compose: compose.yaml
@@ -45,6 +45,7 @@ secrets:
       - service: web
         environment: LEAFWIKI_JWT_SECRET
 presentation:
+  icon: icon.png
   tagline: A real wiki app without the heavy stack
   category: files
   developer: perber

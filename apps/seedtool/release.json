@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "seedtool",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "a5ea1a5241617055a0a7b9174b7d741f63869c2a242620b0b368769219a5802b"
+      "sha256": "83df640d261e13af0c87f49e649e920e9d816b7440e422fe75ff59ae75ce5a08"
     },
     "compose.yaml": {
       "sha256": "46f55a4c0746ead9c5589fbcadc6a09141de21e3b61ea62f8e2e147d37e035fc"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package seedtool (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dennysubke/seedtool@sha256:ab5a3bd42d7d4d0afc9c77ea9448e5d34244b66d7064eac75247601934fb90cc); image config: ExposedPorts 8080/tcp, Volumes none, User 101.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 30s; page title \"Seed Tool\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 30s; page title \"Seed Tool\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "19a9cfbcc65e9b1da71662691de71f84a3e2dcbcef0b2202315a3c3c4e7ce791"
+    }
   }
 }

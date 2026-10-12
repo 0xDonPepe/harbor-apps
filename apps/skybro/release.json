@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "skybro",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f2347fff1473299963f5e38fe311b64713bb56f2dcd61dccbb3bfdb2c128429b"
+      "sha256": "9cb3ab586c1e8bbf8554905810114136c106cb45d7359d1f7788666891ccc8f7"
     },
     "compose.yaml": {
       "sha256": "d4c43838ba78df4aeba12970cbc0f6e325e41eee1197a242b73866f73d788b63"
@@ -56,7 +56,13 @@
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of tracker resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; xdeekay/skybro-tracker@sha256:9425a99b0f1cfbf8a4cf39ee4ca8876496d20750e9b960109fc9d5b1eeaa2c67); image config: ExposedPorts none, Volumes none, User root.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; xdeekay/skybro-dashboard@sha256:83ad07aee074ab3d827db00c081eea0e6bf17e7f104ff6ac635bc7dbe6ce2eea); image config: ExposedPorts none, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 35s; page title \"SkyBro\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 35s; page title \"SkyBro\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "4c541782673a7c4c6f5244e12e85c9bbc3e26e8d2297f48276c54ae2750418b5"
+    }
   }
 }

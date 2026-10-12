@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "gitea-mirror",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "4e59b151157f0418bfb5df9dd260fda5431d7a64f33503fa1fbc3bcf5c125cdc"
+      "sha256": "e57a8fc1229e1a5dc839263ecc43be15e8a59413d42ed8daf580cde815db4605"
     },
     "compose.yaml": {
       "sha256": "8f9ff06f218fb64bb9416e3d6b3726fad0cb5870e42eb918b0e4b6980eac2317"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/raylabshq/gitea-mirror@sha256:786b193599c60138a3fa04b8d7abc45faef9748af030d49da802c5a478314154); image config: ExposedPorts 4321/tcp, Volumes /app/data, User gitea-mirror.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 46s; page title \"Setup Admin Account - Gitea Mirror\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 46s; page title \"Setup Admin Account - Gitea Mirror\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "55bae5ea59641ab393a199587651c7f0a85a303a817d674d8c837cc5fa30028b"
+    }
   }
 }

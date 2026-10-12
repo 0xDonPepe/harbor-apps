@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "flatnotes",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "446966a1a0a5f2bf54821c777342fb5f581911bc475c542805429b3c119ddfbb"
+      "sha256": "222818eab2d15c6036379b69831f79e074e287fb181d103818a56df5ebd5e9b2"
     },
     "compose.yaml": {
       "sha256": "2af2484b3b242d81f2e0598178400e92e1516cf5f40f212a27e0704ba22a3895"
@@ -42,7 +42,13 @@
       "service server: stop_grace_period 1m dropped (Docker's default applies)",
       "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dullage/flatnotes@sha256:ca4b40ee7491aabf6b52bbb20ab140145cb96981d4b3fe96ab1e797ac6cd93e5); image config: ExposedPorts 8080/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 37s; page title \"flatnotes\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 37s; page title \"flatnotes\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "f1e66cae2142f11632aaf7dee96dbcf8a6ef7a335c009cad21898125f385ce50"
+    }
   }
 }

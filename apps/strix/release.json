@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "strix",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "75747ffe6e41e35c34fd94645530ac8c129558b8a4a56aa2cd2cd0b8f1db4981"
+      "sha256": "107e563bd5b110c16606ec68d9ce884818b5a5199f13eb16820ffa6f4df81bc4"
     },
     "compose.yaml": {
       "sha256": "7b18af621d05b37a5f8ad1f3a2dd296171cc7324c7786fb1fcbcbe6d84d269c4"
@@ -43,7 +43,13 @@
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; eduard256/strix@sha256:c000c723b985a5f4a98e8d738dc1b04294e6b7343fcf2576031c2732abb82789); image config: ExposedPorts 4567/tcp, Volumes none, User nobody.",
-      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 25s; page title \"Strix - Camera Stream Discovery\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 25s; page title \"Strix - Camera Stream Discovery\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "2108a343da44e3dd741ff939fc277c0ff060bd24758231c2b65064d56ead535c"
+    }
   }
 }

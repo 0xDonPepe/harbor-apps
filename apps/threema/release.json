@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "threema",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "762191006508a6ff26a6d8e1c69d2a8d121e75000aeef3eb9106cab70f0b47b7"
+      "sha256": "61049b5602001955e5a04d76cd430437dc7ea9d09ae8bcd123989a5e51f74e42"
     },
     "compose.yaml": {
       "sha256": "17f55a760b77f403812ee2ce79cea41dec5501416034e41f2867bb0bb72a4f2b"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package threema (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dennysubke/threema-web@sha256:01f8b0ca6322f11579610b012c3440001743efb593dd845668a4e1f3d881e1a2); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 29s; page title \"Threema Web\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 29s; page title \"Threema Web\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "beaa8130fd247e469c75be448a98f1a60d263e573866ab7c0870da9fc187befb"
+    }
   }
 }

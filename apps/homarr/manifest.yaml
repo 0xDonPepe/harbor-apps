@@ -5,7 +5,7 @@ metadata:
   name: Homarr
   description: A modern and easy to use dashboard. 80+ integrations. 20K+ icons built in. Authentication out of the box. No YAML, drag and drop configuration.
 release:
-  revision: "1"
+  revision: "2"
   version: 2.4.1
 deployment:
   compose: compose.yaml
@@ -43,6 +43,7 @@ secrets:
       - service: web
         environment: SECRET_ENCRYPTION_KEY
 presentation:
+  icon: icon.png
   tagline: A customizable browser home page
   category: files
   developer: homarr-labs

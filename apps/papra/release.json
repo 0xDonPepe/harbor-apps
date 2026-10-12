@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "papra",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "6f2616dd02e86fd6e3fbb37e07ec80498879cd6ba85bb4e60465125e76e8e2cb"
+      "sha256": "8c132b548b8c0575b661e21aaea2d64919f13c8805e92c5c0d3a252804c83792"
     },
     "compose.yaml": {
       "sha256": "57917c8a3be5f2f984462ca3db8fe550fb83ec6182fbde555049e3d9fdf5ff4c"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package papra (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/papra-hq/papra@sha256:a281cb44176dbe5323e0f7ea2d6fd34d58914a3a8525c36437a086d1d7c4fef8); image config: ExposedPorts 1221/tcp, Volumes none, User nonroot.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 51s; page title \"Papra - Document archiving and sharing platform\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 51s; page title \"Papra - Document archiving and sharing platform\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "49b29f4cbe6f311d9343c0539eeb4cd26d6885e1a070459c5974ac8f78ca6b1e"
+    }
   }
 }

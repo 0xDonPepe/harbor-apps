@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "homarr",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "3e0e749cf404e37bdd43ae9900a354fd86fbc539ecd594f0a1fc4015b09565e6"
+      "sha256": "d64c819dd7fb9abe4e4bf8b1474e6413cd8012aef938e7776be123e02dea2990"
     },
     "compose.yaml": {
       "sha256": "fb91a98490a6e122811f0d2b363ea7017e803e4c9a7f3361ee4bf4e22c37c66b"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package homarr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/homarr-labs/homarr@sha256:447267051fd7f3c76087498ad96c8b969f57c6762eaeb78717b69388ae1a781a); image config: ExposedPorts 7575/tcp, Volumes /appdata, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 63s; page title \"Homarr\"; health 307)"
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 63s; page title \"Homarr\"; health 307)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "4ec868ca3916fd6d071fdafc1fb893fb2756904db9ddd9eb9aa90857ff80c19c"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "nutstash-wallet",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "5d642f88299518a0f35925064609be57d73bf5ab6fb46eac1469c5c2003111e3"
+      "sha256": "744af2200d08119ae0f530cad1e3239b759d733ad249e5a3203b47f9431b199a"
     },
     "compose.yaml": {
       "sha256": "10301cb24652b96f897120a9df07710be847bb7eb91473f5194f013fb49a6652"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package nutstash-wallet (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/gandlafbtc/nutstash-wallet@sha256:8a585c4a6545e68e9a1c8fcf2a0a15ef401ad040accf925234451fe1b838d180); image config: ExposedPorts 3000/tcp, Volumes none, User node.",
-      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 45s; page title \"\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 45s; page title \"\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "d5ecc713b89502455d784197706632c40013953e2b3e8a33ef0e0e15a5ba6c35"
+    }
   }
 }

@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: ADMIN_PASSWORD
   username: umbrel@umbrel.local
 release:
-  revision: "1"
+  revision: "2"
   version: 3.1.21
 deployment:
   compose: compose.yaml
@@ -38,6 +38,7 @@ storage:
     purpose: Data at /var/lib/mysql (db)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: An intuitive accounting solution for small businesses and freelancers
   category: finance
   developer: Akaunting Inc.

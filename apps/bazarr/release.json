@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "bazarr",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "fedaba31dbc0923b3c06cf37a0d424cbe82491452ddeb61a4bb2c0948d080c47"
+      "sha256": "ad7fcbc82dd14baee568ba52e2a35ca58f7330806bbc6e3333908349db53ce57"
     },
     "compose.yaml": {
       "sha256": "5b6f8c8ef3f01f0aed349ff873e2756f34f9fa46000619e669d56e7b9bb45bbb"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package bazarr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/bazarr@sha256:8b30e81c4aec2991f469e78fae8afaa89ecc9b21a80e3897f50427216b55470c); image config: ExposedPorts 6767/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 64s; page title \"General - Bazarr (Settings)\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 64s; page title \"General - Bazarr (Settings)\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "38798a080110c8bf0a518f88ef200b5630805517e0527e7c305f95284504c35e"
+    }
   }
 }

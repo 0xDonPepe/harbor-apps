@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "satoshi-dashboard",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "96bd1aeb41145b2de9ba68297e830282904353572a57327559cabb6a0e1d42f6"
+      "sha256": "fe47a49b6b7c3906849b1652ff90f57f04dffe136c52bcb99e9f588c8ef68602"
     },
     "compose.yaml": {
       "sha256": "f7992b76c2c5bb034fc5f84ee6cbf1a0809109958eb2ad977c8b3ca8b32946ba"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/satoshi-dashboard/main@sha256:35ae82af78d972aeb621689e0a1e7dd76fa1c2835dca054c489179a09a279506); image config: ExposedPorts 8787/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 42s; page title \"Bitcoin Dashboard - Live BTC Price, Market Cap & Network Stats\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 42s; page title \"Bitcoin Dashboard - Live BTC Price, Market Cap & Network Stats\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "19fe811ee859ce502474b204c8ba2c2b00db01e31a462f67493df51546e42f9e"
+    }
   }
 }

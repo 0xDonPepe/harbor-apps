@@ -5,7 +5,7 @@ metadata:
   name: OpenCode
   description: The open source coding agent.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.19.0
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /home/opencode (app)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: The open source AI coding agent
   category: ai
   developer: Anomaly

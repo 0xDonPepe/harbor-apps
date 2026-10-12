@@ -5,7 +5,7 @@ metadata:
   name: Baikal
   description: Baïkal is a Calendar+Contacts server
 release:
-  revision: "1"
+  revision: "2"
   version: 0.11.1
 deployment:
   compose: compose.yaml
@@ -37,6 +37,7 @@ storage:
     purpose: Data at /var/www/baikal/Specific (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: A lightweight calendar and contacts server
   category: network
   developer: fruux GmbH

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "morphos",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "8dff8ca8dff55d7be6f0acd3b6a3e6308b5c2ba2aa2e0d31384a83044e07740b"
+      "sha256": "37dbb8854fd47a6e805878fe511d42ac2f9de48e1247dc77afb1cb0945b7369e"
     },
     "compose.yaml": {
       "sha256": "b8b464dc994fcf00618ac757b857277d263abbad821a01e80a7c2bab79ddc52c"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package morphos (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/danvergara/morphos-server@sha256:3d6f64ef386cbb6a7c5d55526e1a69da2d3661a1996d757897e92bf4369088f5); image config: ExposedPorts 8080/tcp, Volumes none, User morphos.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 79s; page title \"Upload your file\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 79s; page title \"Upload your file\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "bfffbb4cf87cb2a5686887dde1a36919416329c001837c355831cb19f71ff7cc"
+    }
   }
 }

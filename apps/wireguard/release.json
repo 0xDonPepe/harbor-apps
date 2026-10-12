@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "wireguard",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "8863ba2fe170d78e6710e3ce3a66f4f177e6c061cd997088bee7748746b50d28"
+      "sha256": "dfcd79503e0b039923e595c4776d5355a3dd60a9d2271435c17f6ede106703c2"
     },
     "compose.yaml": {
       "sha256": "0b32b548ee799178775c2b7b498e09f5a274976451c853b83bd49f19b9f22e3b"
@@ -39,7 +39,13 @@
     },
     "notes": [
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/wg-easy/wg-easy@sha256:93bbd593e07bab98d02807a28770ac87ab6c48818e319e68c1f66561feb99876); image config: ExposedPorts none, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T19-51-04-harbor-q01: passed (healthy after 93s; page title \"WireGuard\"; health 302)"
+      "Live catalog run catalog-2026-10-12T19-51-04-harbor-q01: passed (healthy after 93s; page title \"WireGuard\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "4ea0ebc8d3d9da617fd1c6a7340af3e76648515fb0b32ea9d8e1e634ff59d8ca"
+    }
   }
 }

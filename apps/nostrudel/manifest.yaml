@@ -5,7 +5,7 @@ metadata:
   name: noStrudel
   description: A sandbox for exploring nostr
 release:
-  revision: "1"
+  revision: "2"
   version: 1.1.0
 deployment:
   compose: compose.yaml
@@ -29,6 +29,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: A sandbox for exploring nostr
   category: other
   developer: hzrd149

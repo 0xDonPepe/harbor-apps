@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: ADMIN_PASSWORD
   username: admin
 release:
-  revision: "1"
+  revision: "2"
   version: 2026w14-patch.1
 deployment:
   compose: compose.yaml
@@ -64,6 +64,7 @@ secrets:
       - service: backend
         environment: SECRET_KEY
 presentation:
+  icon: icon.png
   tagline: A photo management service
   category: files
   developer: LibrePhotos

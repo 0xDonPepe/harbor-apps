@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "fizzy",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "dab5690263c8052798c605825874890dfcf8271f9c86791e1dbb73e188f86176"
+      "sha256": "0f47cb4ba63f19b143a550f2fa5a9f8269fbae048b8a088c8be0632e2c988e79"
     },
     "compose.yaml": {
       "sha256": "fc3bf2b6c509c83752da45a53e8ccf889129e7b468dd053ee9da284503cf62e2"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package fizzy (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/mauricewipf/fizzy-umbrel@sha256:2d7a493a8933aa784b4d06cc96bd8b047beaf19173d1eec04c767e9dd7f4c28b); image config: ExposedPorts 80/tcp, Volumes none, User 1000:1000.",
-      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 45s; page title \"Enter your email | Fizzy\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 45s; page title \"Enter your email | Fizzy\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "a4feb91de4ddcf972377d060699de2952a7de42e8f7c655eceac0e4d78ee2a7c"
+    }
   }
 }

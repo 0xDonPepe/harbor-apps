@@ -5,7 +5,7 @@ metadata:
   name: Kiwix
   description: "Command line Kiwix tools: kiwix-serve, kiwix-manage, ..."
 release:
-  revision: "1"
+  revision: "2"
   version: 3.8.2-patch.2
 deployment:
   compose: compose.yaml
@@ -36,6 +36,7 @@ storage:
       hint: "Optional: a folder on this machine to use for /data, such as a folder on a large drive"
       required: false
 presentation:
+  icon: icon.png
   tagline: Access knowledge anytime, anywhere without an internet connection
   category: files
   developer: Kiwix

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "booklore",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "721c1ed55c4efd22c01f11ae8e764b334715093bd82309e12b48e5df8cf14e7b"
+      "sha256": "0a8aa218e9f7bcddc6c58f169a31e6a7dacdaa32f41523b8a851bcd46d884de5"
     },
     "compose.yaml": {
       "sha256": "8996084d7456cd9ec99f1575fe0886ea517d25c91bb8d1e60d627154698e6760"
@@ -54,7 +54,13 @@
       "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/booklore-app/booklore@sha256:f92dae443c38098bf8348742465f6f3b17b619cb8f0e5c2cf195dcdfbb88eaeb); image config: ExposedPorts 6060/tcp, Volumes none, User root.",
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:b30cc65b57a11a2e791ad5c06284e599fe9f1bf3fe9081a88d85bcf36389be4a); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 89s; page title \"BookLore\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 89s; page title \"BookLore\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "606fa2e451b6d8230e3e73ba1e91a73dae635915ce2a439185b625a54c186e09"
+    }
   }
 }

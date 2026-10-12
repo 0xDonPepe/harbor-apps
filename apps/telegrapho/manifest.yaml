@@ -5,7 +5,7 @@ metadata:
   name: Telegrapho
   description: Private self-hosted realtime text bridge between your devices.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.0.1
   minHarbor: 0.28.4
 deployment:
@@ -29,6 +29,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: Private copy and paste between your devices
   category: network
   developer: egzola

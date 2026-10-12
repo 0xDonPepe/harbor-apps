@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "chatbot-ui",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "45326cdcd07e2794265d25b66994af0ac82eb847e291641f5e2e429ff1ba2760"
+      "sha256": "51bcefe344d96579eaac74cf0a70d514799cd9893adef3b8e14b1af3484ae7ea"
     },
     "compose.yaml": {
       "sha256": "f609433ba62a259cbe40a928091085b124ce0804490c9344efa14f9b25d3e089"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package chatbot-ui (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/mckaywrigley/chatbot-ui@sha256:569dffe6043136f03de86bde38453a58d05150f29476239dc1da4ce2573b4101); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 47s; page title \"Chatbot UI\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 47s; page title \"Chatbot UI\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "a2cf190a1c819eb58db8518e1c6bcd0e91184f304522f6e41ed5ecb1d60994a4"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "passky-client",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "49d01145362c5b6eff531447719eab42413b28d5986134ef5ccb3184dcf65917"
+      "sha256": "12f39cf90e666e4c8ca4e172541d66b4db8b456354755af87b556ce13a0bbc97"
     },
     "compose.yaml": {
       "sha256": "e6e70057a4f7c292214a090cd2e6ec65258818ae3726f3733099a6ee8f463704"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package passky-client (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; rabbitcompany/passky-client@sha256:9c144ceb22920c60dc659c8635f48a92be4bffdb7dc768aba0d26a9a42c3005d); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 26s; page title \"Passky\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 26s; page title \"Passky\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "5b00605ab9608428ee960dd2c55ced0737cded18845e57f8a2f13e417181b902"
+    }
   }
 }

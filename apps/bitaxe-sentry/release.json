@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "bitaxe-sentry",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "a6f5d9d953b45639f412ed9f1662025074668e24bd508cc2d68b903e5d0edcf0"
+      "sha256": "63371351d6bf3dfa68317ca4dfafbf3ff5f333beb1a74cc67d4fcb18f4fe3627"
     },
     "compose.yaml": {
       "sha256": "fe2e4d00fc95392b331684cd624a63801efa12dc2e1741435141b1bfd1f1fe7b"
@@ -56,7 +56,13 @@
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of sentry resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb); image config: ExposedPorts none, Volumes none, User appuser.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb); image config: ExposedPorts none, Volumes none, User appuser.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 47s; page title \"Dashboard - Bitaxe Sentry\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 47s; page title \"Dashboard - Bitaxe Sentry\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "0c54a2c46bb41ff75e046f83da5a98ba64c418765241baf8ed80eaef356c01e1"
+    }
   }
 }

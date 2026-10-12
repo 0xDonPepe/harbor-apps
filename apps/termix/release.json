@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "termix",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "916f8368b89798e751112ea3cd1b70d44fd98142bc2729864e134a5f1d3d9551"
+      "sha256": "462ac08af7d0f58cc5898939604b567f27350aa2f2790f5d60b8a867424908cd"
     },
     "compose.yaml": {
       "sha256": "9d520b98a39e9464b05b37a415fa274d17b95879cb2a7872bd3e346f75ad2861"
@@ -54,7 +54,13 @@
       "service guacd: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/lukegus/termix@sha256:d64c841a560c54aa7c27b0e6bbd2fbf8b51073565040d2a6bfbc127f0a72cf1e); image config: ExposedPorts 8080/tcp, Volumes /app/data, User root.",
       "Digest of guacd resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; guacamole/guacd@sha256:8974eaa9ba32f713daf311e7cc8cd7e4cdfba1edea39eed75524e78ef4b08f4f); image config: ExposedPorts 4822/tcp, Volumes none, User guacd.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 48s; page title \"Termix\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 48s; page title \"Termix\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "ed4728c4b312eea809928c2b9ce5d686db023ed10075323d947f51dde84a7999"
+    }
   }
 }

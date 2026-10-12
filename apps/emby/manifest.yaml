@@ -5,7 +5,7 @@ metadata:
   name: Emby
   description: Emby Server is a personal media server with apps on just about every device.
 release:
-  revision: "1"
+  revision: "2"
   version: 4.10.1.0
 deployment:
   compose: compose.yaml
@@ -40,6 +40,7 @@ storage:
       hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
       required: false
 presentation:
+  icon: icon.png
   tagline: A personal media server
   category: media
   developer: Emby LLC

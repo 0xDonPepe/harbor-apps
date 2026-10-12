@@ -5,7 +5,7 @@ metadata:
   name: WikiJS
   description: Wiki.js | Next Generation Open Source Wiki
 release:
-  revision: "1"
+  revision: "2"
   version: 2.5.315
 deployment:
   compose: compose.yaml
@@ -41,6 +41,7 @@ storage:
     purpose: Data at /config (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Make documentation a joy to write
   category: developer
   developer: Requarks

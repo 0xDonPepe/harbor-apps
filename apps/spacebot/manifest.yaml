@@ -5,7 +5,7 @@ metadata:
   name: Spacebot
   description: An AI agent for teams, communities, and multi-user environments.
 release:
-  revision: "1"
+  revision: "2"
   version: 0.5.0-patch.1
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /data (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: AI agent for teams, communities, and multi-user environments
   category: ai
   developer: Spacedrive Technology Inc.

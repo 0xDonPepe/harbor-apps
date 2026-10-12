@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "myspeed",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "d2f77bf4ccc116dc420e06e37d4966137d2711b0e4d01e139abe4d3d4f5eea49"
+      "sha256": "88aa819d5107f0a2d374e5126d2aff13aa7351e9f34b07bbd2f067ba61ae3e8e"
     },
     "compose.yaml": {
       "sha256": "681a5f81a6fc3792b2fa287ba3eebd1f8c5e5169aa0644821f9e4330a2a23e25"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package myspeed (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; germannewsmaker/myspeed@sha256:3a3e774b3f78d930a5a962d625b99bcb3d71730bfeb4a6b93e04fd38cfe7d9a9); image config: ExposedPorts 5216/tcp, Volumes /myspeed/data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 51s; page title \"MySpeed\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 51s; page title \"MySpeed\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "cd4898822dbd037e55855b3f050f36ee11bef5bfb2c30d9f2451ea4b0902b431"
+    }
   }
 }

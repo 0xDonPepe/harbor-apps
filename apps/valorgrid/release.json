@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "valorgrid",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "44d414d84b2162193adce9501ef4cbd5885304e9d25d8108de9a5b2079d3950f"
+      "sha256": "36dd50acad4064990de9b8124b0e4948e02fff80849889e7203dca905f9dd133"
     },
     "compose.yaml": {
       "sha256": "efe548837324ff36342a3a501078c8fa8792f4a81ce46a23dd66b5f1e725bf66"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package valorgrid (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/aivm23/valorgrid@sha256:e02967996cee5376e71578d8e97d6d756a48f7cf9c30e3548bad8396f95bd3c6); image config: ExposedPorts 1325/tcp, Volumes /app/.backups,/data, User node.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 48s; page title \"ValorGrid\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 48s; page title \"ValorGrid\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "e51235c2fa32e7a187d713c13a4d468f952049422ca2ac4513e531874dad69c8"
+    }
   }
 }

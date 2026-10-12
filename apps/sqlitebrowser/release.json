@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "sqlitebrowser",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "be65bc866af320494e7aed4909923ecee8b6c7a27a34ad9ed1cd0e654985f58e"
+      "sha256": "c98a1224e3f26355ff15e24eb3dbe399824a2b27ebda113b858d632f447a4b4e"
     },
     "compose.yaml": {
       "sha256": "4983b74b83095e9dac57aafcfa6d247bf94f5cbb44df7ff4802b2e15c0fdda31"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package sqlitebrowser (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/sqlitebrowser@sha256:1b1e81f0af222af3353a4c8d3c4737264a1816a43e4410819430335fa099b1da); image config: ExposedPorts 3000/tcp,3001/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 65s; page title \"SQLiteBrowser\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 65s; page title \"SQLiteBrowser\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "fac5e7a3feb488f989eca75a915237778545220cd65089006a08b9ddc88e77fa"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "cashu-me",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "cbcd3600b8eac25ab9e677545feae1a3a86dccc39ee050043ffee1f95a9df051"
+      "sha256": "0e5e60267b73054d7a4c2ae77c4407782d7fb62a927a34988ceb39538606f8d0"
     },
     "compose.yaml": {
       "sha256": "a80651f2d16b490fd6a408f2a068d8cf42dc352be6fd1aed01b044cfda82efb0"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package cashu-me (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; rstmsn/cashu-me@sha256:46cf3752f58e20b7fd191b270208f6f41aa143ba950fddb0efb390ed3ea2851b); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 27s; page title \"Cashu.me\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 27s; page title \"Cashu.me\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "de3b3354e3ab09247442a26cf8e9a88d9800d1bec188167724116ea820e5c5b3"
+    }
   }
 }

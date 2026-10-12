@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "wingfit",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "7bf9e46b6471d3c004ee6599c38d0826eebbe8d2ab95aa6314890591b5e0b6e8"
+      "sha256": "703eb9b0c1679fce29762caed0509bba9d59eda286e78624c4d88c0b66ce8128"
     },
     "compose.yaml": {
       "sha256": "1a4581b81205fe10747b9228585b4e31c1be6d0f7580547b9fa8e9db06723572"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package wingfit (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/itskovacs/wingfit@sha256:fed5dcc1c8abdec6409f4272caa08f9a6f1d2a3c8e1f9a13b3459c2ffea8a360); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 37s; page title \"Wingfit - Authentication\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 37s; page title \"Wingfit - Authentication\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "fed9e27b05b332c493a8c6661cec2b351ea769ef360c8f6c0f98e129b2adaaac"
+    }
   }
 }

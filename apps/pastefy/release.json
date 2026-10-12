@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "pastefy",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c77c4bf6f0f7d2d595f7a63f014e1cd6d8612d7d487a474f1ada8a5d67b683f9"
+      "sha256": "6c210bca24dbc9642cfad1659384edba95a85287ecbb7880b0a58db471720100"
     },
     "compose.yaml": {
       "sha256": "7e97a23669b186eb1281dfecb3b742e31e4ba7996949d84252ea4863798ffdce"
@@ -54,7 +54,13 @@
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:5dfb3093333fa0ea53194ddef0a2bfa21d3b1e1353bd228b22610cd6fc0c04da); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; interaapps/pastefy@sha256:353ce246ccf24ab1dec42e3c387744b47925065c207699f0bf1ce8e560619ca9); image config: ExposedPorts 1337/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 48s; page title \"Pastefy • Share your code snippets\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 48s; page title \"Pastefy • Share your code snippets\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "6b52a745904faa64337e3d6121a9e5074a2e295acab6e4b91e91d65aae24a3b9"
+    }
   }
 }

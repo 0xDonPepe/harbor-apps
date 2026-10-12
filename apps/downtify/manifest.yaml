@@ -9,7 +9,7 @@ defaultCredentials:
   password: downtify
   note: Change it after the first login.
 release:
-  revision: "1"
+  revision: "2"
   version: 3.4.0
   minHarbor: 0.28.4
 deployment:
@@ -45,6 +45,7 @@ storage:
     purpose: Data at /data (downtify)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Download Spotify music with album art and metadata
   category: media
   developer: Henrique Sebastião

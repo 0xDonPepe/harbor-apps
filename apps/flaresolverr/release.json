@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "flaresolverr",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "566a1acacec5a2515b587a012821624abe60b143932fc4dccd9e3be92e83b72a"
+      "sha256": "0e91805b2d1369d3383b92db980ff6322fbddd999d6aaf59c4e9ffea11f9d73f"
     },
     "compose.yaml": {
       "sha256": "04485a5e81c53ed880aac80c20ae240a81830a147290ea69dd75050b33ce2a12"
@@ -53,7 +53,13 @@
       "service web: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mrsunglasses/flaresolverr-status@sha256:5a12b6ee183b64b87546b5f30537abaf333f7b2cd83856e6e2bcca874d165dc9); image config: ExposedPorts 8000/tcp, Volumes none, User app.",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/flaresolverr/flaresolverr@sha256:c80ae007ce2ccdcd217a12426e4f039ef763ff90738c808d38810c3e59323767); image config: ExposedPorts 8191/tcp,8192/tcp, Volumes /config, User flaresolverr.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 45s; page title \"FlareSolverr Status\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 45s; page title \"FlareSolverr Status\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "0ac5532d93e65930f9749f777b58b86c66a0ecf50cf92c5914cc3165bac75064"
+    }
   }
 }

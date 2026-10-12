@@ -5,7 +5,7 @@ metadata:
   name: Pingvin Share
   description: A self-hosted file sharing platform that combines lightness and beauty, perfect for seamless and efficient file sharing.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.13.0
   minHarbor: 0.28.4
 deployment:
@@ -38,6 +38,7 @@ storage:
     purpose: Data at /opt/app/frontend/public/img (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Self-hosted file sharing platform
   category: files
   developer: Elias Schneider

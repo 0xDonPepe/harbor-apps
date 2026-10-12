@@ -5,7 +5,7 @@ metadata:
   name: Budibase
   description: AI agents, automations and apps that run your operations. Model agnostic.
 release:
-  revision: "1"
+  revision: "2"
   version: 3.41.3-patch.1
   minHarbor: 0.28.4
 deployment:
@@ -42,6 +42,7 @@ secrets:
       - service: budibase
         environment: JWT_SECRET
 presentation:
+  icon: icon.png
   tagline: The low code platform you'll enjoy using
   category: developer
   developer: Budibase

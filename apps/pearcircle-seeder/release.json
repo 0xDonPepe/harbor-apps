@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "pearcircle-seeder",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "c849758bb07a1afefc3acf24ac3d73ed268d082d489650b4d2a9188afd1e093b"
+      "sha256": "e7fc01e96cceb034e32d41a1d962e7914bd0a846751ee4d6e0e8c387592a264a"
     },
     "compose.yaml": {
       "sha256": "a120a1919bad168e42933c601eace08e4729044bff84020b1654d68a63aa7cf8"
@@ -42,7 +42,13 @@
       "service app: stop_grace_period 1m dropped (Docker's default applies)",
       "service app: security_opt no-new-privileges dropped",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/peerloomllc/pearcircle-seeder@sha256:ad80eaa9156c19f13c02c19f0d70602724ec2bec8002dfb25cb580e18f35f400); image config: ExposedPorts 8730/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 37s; page title \"PearCircle Seeder\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 37s; page title \"PearCircle Seeder\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "2ee391705f7ab4bdb759a3ca28dec091837f0e1f731603d589b33c51b716c4c9"
+    }
   }
 }

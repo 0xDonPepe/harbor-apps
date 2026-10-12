@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "homebox",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "94f43c1e9cafd9ae24e48869c7aac4a649228fda10b89302daf5c4111dcc9bbb"
+      "sha256": "5af8e6a327a35834c1f3fc9bfd32ccc315399b93aed30fe9e4a761c1ca1df13b"
     },
     "compose.yaml": {
       "sha256": "7ed9c6265ed5d285e668eaa0129af354d3fbdb56262ba2a538379a59488699af"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/sysadminsmedia/homebox@sha256:b1ad7e3c63f732a5f6daa466e8116be4f545b3b120383a64dcb62beb00a660cc); image config: ExposedPorts 7745/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 24s; page title \"HomeBox | Organize and Tag Your Stuff\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 24s; page title \"HomeBox | Organize and Tag Your Stuff\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "2cdfc474cc9e615dff6bc408046def275fd1792a44affefea8237e80d03f0025"
+    }
   }
 }

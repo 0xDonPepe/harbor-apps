@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "llama-gpt",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "0bcce5b5f6ea5ec53f280683ac141b7590592653077474949511d0dcc8264ae2"
+      "sha256": "2dc399ddb682976c63ceb01201afa73c6fdbfcd0f87ea656b12db9d39fdb9050"
     },
     "compose.yaml": {
       "sha256": "278f67f3ce1287cfbd5c9f0e1a2f14be159b3b6ff1296041ad785719d398ff9b"
@@ -53,7 +53,13 @@
       "dropped host hooks (pre-install): they only prepare Umbrel bind folders",
       "Digest of llama-gpt-api resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/getumbrel/llama-gpt-api@sha256:57a4323a0254732a45841f447ae4ef733df6510413b692a0589c0e2b68d9ef51); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
       "Digest of llama-gpt-ui resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/getumbrel/llama-gpt-ui@sha256:1ad8a3463e7971b77e6deda8b6a230a42fbe283899d88e12448603e474fedaef); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 250s; page title \"LlamaGPT\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 250s; page title \"LlamaGPT\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "a09cd74c24475da4a330bae8a3bdacdd6d86bf75be4fcaf4849445c9fba73988"
+    }
   }
 }

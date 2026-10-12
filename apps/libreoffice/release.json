@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "libreoffice",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "7e685e76f866e691abaed5386c8ec4046fe8cff2ba5206bcf6b1a4e26f42ec37"
+      "sha256": "29666272817035e0bec318ef16fb9ffe68316da4dece76d2961c258656ab7727"
     },
     "compose.yaml": {
       "sha256": "1477ce57313c794fecf24e42dddcc707e342b799059bd110102e1b21d94d0906"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package libreoffice (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service server: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/libreoffice@sha256:a62c7f094f2a7ed8145983d04f54ca80d85b557bbdda0f9aa784ccb6267b70e8); image config: ExposedPorts 3000/tcp,3001/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 63s; page title \"LibreOffice\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 63s; page title \"LibreOffice\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "5d4c466f331b7719cbb8d39a307b153ce68166198bc42981d114d8a5f143d37a"
+    }
   }
 }

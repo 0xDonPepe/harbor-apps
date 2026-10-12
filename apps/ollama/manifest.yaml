@@ -5,7 +5,7 @@ metadata:
   name: Ollama
   description: Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.
 release:
-  revision: "1"
+  revision: "2"
   version: 0.40.3
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /root/.ollama (ollama)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Self-host open source AI models like DeepSeek-R1, Llama, and more
   category: ai
   developer: Ollama

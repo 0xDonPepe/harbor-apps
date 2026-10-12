@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "gupt",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "2e52af4fbc3c3fad62617b7afa62bddec869181bef5155c7865cbaf5aef1952b"
+      "sha256": "366fe460ed96295883c66ff3995cbcd153b3bf0c9c427339ff32da1b2a455fbc"
     },
     "compose.yaml": {
       "sha256": "aa8abcd4fb91ed83b8b0ffdfc880418aa90577f789543e5d2f4e6dc676966818"
@@ -42,7 +42,13 @@
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service web: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/besoeasy/gupt@sha256:45da18ce6f99dff0b386e168b2be35bbca4496ddc4619a4db5c2ff4d7e968636); image config: ExposedPorts 2019/tcp,443/tcp,443/udp,80/tcp,8000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 22s; page title \"GUPT — Anonymous Privacy Suite\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 22s; page title \"GUPT — Anonymous Privacy Suite\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "590847baf0a405dc2a9c2d5553f92bdcf4b670db39594b99675fdf5b30ba3f1d"
+    }
   }
 }

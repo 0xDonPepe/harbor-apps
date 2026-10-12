@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "webcheck",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "bb5b61758b8d6cb6d7a13daeb41e2a3fa3894f20ed776344592e35a90a145e9a"
+      "sha256": "690dd4e3aa79809d44296b7af4176e7f8551ab12d24ec1d392f28a8dddccd32f"
     },
     "compose.yaml": {
       "sha256": "20bd771db0fdfab38084b9b4fb3e14559c411232ac1a45080c996f41100eb908"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package webcheck (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/lissy93/web-check@sha256:6fb2b5a58e4fa77afb724a7e6e041f876c081e2f9340b7ba6520ac4d4fc2290a); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 50s; page title \"Web Check\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 50s; page title \"Web Check\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "b7acd1c3b7eeaa49414228de3b0c64f6909017de327f6f1f95529b1e0f18c16e"
+    }
   }
 }

@@ -5,7 +5,7 @@ metadata:
   name: Chatpad AI
   description: Not just another ChatGPT user-interface!
 release:
-  revision: "1"
+  revision: "2"
   version: bb5f4a
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: Premium quality UI for ChatGPT
   category: ai
   developer: Andrei Canta

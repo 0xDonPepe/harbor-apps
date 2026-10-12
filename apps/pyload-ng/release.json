@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "pyload-ng",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "166638d2ca7f1e9382b4bf3f41363ec4117d994063247effe949fe7f9cec17fe"
+      "sha256": "cc2436a7b3f5c9ebc38ac2f7aa607957caafa8229d03236bd958374c64e36c03"
     },
     "compose.yaml": {
       "sha256": "e12e23581f387cfef47556392c0d8e231a0806aa7ca9c2740bef3c2bd16f9464"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package pyload-ng (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/pyload-ng@sha256:0ef3e1d15183eb7f517742afe2f75b42c1d58e14640f8d5741f6e88d2d7b9ab5); image config: ExposedPorts 8000/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 44s; page title \"Login - pyLoad\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 44s; page title \"Login - pyLoad\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "5b2da76a576b011d0902c10657a19a3d6ecdf89f3a3e3aa0c1048ae612832c9a"
+    }
   }
 }

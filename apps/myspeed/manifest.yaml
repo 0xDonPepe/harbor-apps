@@ -5,7 +5,7 @@ metadata:
   name: MySpeed
   description: A speed test analysis software that shows your internet speed for up to 30 days
 release:
-  revision: "1"
+  revision: "2"
   version: 1.0.9-patch.1
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /myspeed/data (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Speed test analysis software that shows your internet speed for up to 30 days
   category: network
   developer: Mathias Wagner

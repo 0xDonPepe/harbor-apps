@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: ADMIN_PASS
   username: admin
 release:
-  revision: "1"
+  revision: "2"
   version: 2.2.0-patch.1
 deployment:
   compose: compose.yaml
@@ -51,6 +51,7 @@ configuration:
     endpoint: web
     format: origin
 presentation:
+  icon: icon.png
   tagline: Invio is a self-hosted invoicing app without the bloat
   category: finance
   developer: kittendevv

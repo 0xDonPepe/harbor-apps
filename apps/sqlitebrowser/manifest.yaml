@@ -5,7 +5,7 @@ metadata:
   name: SQLite Browser
   description: 'Official home of the DB Browser for SQLite (DB4S) project. Previously known as "SQLite Database Browser" and "Database Browser for SQLite". Website at:'
 release:
-  revision: "1"
+  revision: "2"
   version: 3.13.1-patch.1
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /config (app)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: A database browser for SQLite
   category: developer
   developer: SQLiteBrowser

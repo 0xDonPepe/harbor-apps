@@ -5,7 +5,7 @@ metadata:
   name: Trip
   description: 🗺️ Minimalist POI Map Tracker and Trip Planner. Self-hosted.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.50.1
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /app/storage (app)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Minimalist Map Tracker and Trip Planner
   category: files
   developer: itskovacs

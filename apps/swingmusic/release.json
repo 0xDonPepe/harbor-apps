@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "swingmusic",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "8e827ae7b0fd147bd8ab71283ba73cc05496bfb5e51d88bca8057b4c82cfa8aa"
+      "sha256": "b9ddf2b4f6d94e403a172feca99764229b5b9a3617f48aba51f27893491cd777"
     },
     "compose.yaml": {
       "sha256": "0aae5ab75855d1002f07a4f6cc507b9367f405af15281d730ccd2d24e03ff975"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package swingmusic (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/swingmx/swingmusic@sha256:a49155d1809bc6ad09d87d76cc91648c149fc80146b5e10260e70fe1cfa78175); image config: ExposedPorts 1970/tcp, Volumes /config,/music, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 53s; page title \"Swing Music\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 53s; page title \"Swing Music\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "a73aad9821d22dac04a2add66dcab36e7cadbd6945e7d967fd0d7b016b655116"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "kiwix",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "b65f7be390a014f0cb45730d4b4c97d4651e7900dd2edd0dad01d92322a9a788"
+      "sha256": "0e8c09cbd3a45ac891a8138b825444281fd11ce9b6daa2629d44cc4d27d5b808"
     },
     "compose.yaml": {
       "sha256": "c90edcd5555e6e21a408419a5faf28f99e70d26a0b77cd668dc1787b8f104c79"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package kiwix (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/kiwix/kiwix-serve@sha256:e478554a9920412eeb5ce1d73f24e4b28445ebed233187cdd03c623c32be46a5); image config: ExposedPorts 80/tcp,8080/tcp, Volumes /data, User user.",
-      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 23s; page title \"Welcome to Kiwix Server\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 23s; page title \"Welcome to Kiwix Server\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "a4d78ad02b7a4dba0b295513006ceee04ae1ae74d683dda3895c22b5c499d019"
+    }
   }
 }

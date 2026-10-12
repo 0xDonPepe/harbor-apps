@@ -5,7 +5,7 @@ metadata:
   name: Passky Client
   description: Website for Passky (password manager)
 release:
-  revision: "1"
+  revision: "2"
   version: 8.1.1
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: Simple, modern, lightweight, open source and secure password manager
   category: files
   developer: Rabbit Company LLC

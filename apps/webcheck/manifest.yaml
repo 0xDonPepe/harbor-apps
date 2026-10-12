@@ -5,7 +5,7 @@ metadata:
   name: WebCheck
   description: 🕵️‍♂️ All-in-one OSINT tool for analysing any website
 release:
-  revision: "1"
+  revision: "2"
   version: 2.3.0
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /app/data (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: An all-in-one Open Source Intelligence tool for analyzing any website
   category: network
   developer: Alicia Sykes

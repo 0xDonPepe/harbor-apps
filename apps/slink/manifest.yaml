@@ -5,7 +5,7 @@ metadata:
   name: Slink
   description: Self-hosted image hosting and sharing platform with private links, collections, S3/SMB storage, OIDC SSO and ShareX support.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.14.1
   minHarbor: 0.28.4
 deployment:
@@ -43,6 +43,7 @@ configuration:
     endpoint: web
     format: origin
 presentation:
+  icon: icon.png
   tagline: A powerful, privacy-first image sharing platform
   category: files
   developer: Andrii Kryvoviaz

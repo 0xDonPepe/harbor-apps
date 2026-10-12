@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "paperless",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "e26eaccf76278d396696bc2d13b41ff8aa50471ae557400d9a260da4ec6b714e"
+      "sha256": "c3ba3bd3cc53ea8db9b0edd1713391f7ee1dd6ea6c4612e84d16167259b71b28"
     },
     "compose.yaml": {
       "sha256": "955b8121d73851edb847443e98ecc545af75453147bc2f51445cf47222ebb724"
@@ -90,7 +90,13 @@
       "Digest of webserver resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/paperless-ngx/paperless-ngx@sha256:6b94799bc769a063b3340cc5847402e626d4d91d29a295a8e747f8e9bead4207); image config: ExposedPorts 8000/tcp, Volumes /usr/src/paperless/consume,/usr/src/paperless/data,/usr/src/paperless/export,/usr/src/paperless/media, User root.",
       "Digest of gotenberg resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; gotenberg/gotenberg@sha256:d03b8a04c6e6c5e568b38f57352266dee4674849b71818774025f8f48d869a9a); image config: ExposedPorts 3000/tcp, Volumes none, User gotenberg.",
       "Digest of tika resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; apache/tika@sha256:90b7fa1dc018434075fce9e1d9b88b1e3d0ea6979d0cf86e116c79a8073ae973); image config: ExposedPorts 9998/tcp, Volumes none, User 35002:35002.",
-      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 181s; page title \"Paperless-ngx sign in\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 181s; page title \"Paperless-ngx sign in\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "abe8b55099a98caed9bfea2d573d9812b3962bce4c33fba5327214d4b16dcc4f"
+    }
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "convertx",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "5decc8a9da29eb0c7f1b9886aaf7c47133515288e05977acd3ec73fb4e004b07"
+      "sha256": "6ea54ef355a916dcbb5b2353eb60625e42d65896f6ca3cb59c387b9bb30a811c"
     },
     "compose.yaml": {
       "sha256": "3d45273a92f25b4ce1322bc10e9b48a8d3c6645391af60b327434beed78a99ff"
@@ -42,7 +42,13 @@
       "service server: stop_grace_period 1m dropped (Docker's default applies)",
       "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; c4illin/convertx@sha256:8590a21a16adb8514a8be55b74ad0112bf58ba772328a53f7b40528fcf8fa013); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 109s; page title \"ConvertX | Setup\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 109s; page title \"ConvertX | Setup\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "6431504e67809bd2f4de13d27a21607d9f77350fb854ac203b8490f2c9a150b7"
+    }
   }
 }

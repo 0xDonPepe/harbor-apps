@@ -5,7 +5,7 @@ metadata:
   name: Element
   description: A glossy Matrix collaboration client for the web.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.12.30
   minHarbor: 0.28.4
 deployment:
@@ -29,6 +29,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: A glossy Matrix client compatible with Synapse
   category: other
   developer: New Vector Ltd

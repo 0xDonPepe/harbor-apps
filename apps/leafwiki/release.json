@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "leafwiki",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "079caff281b342b8d124c4e87a469ced5234b23da6fe825ce8c797b59b5dee7e"
+      "sha256": "d379df703929d74692aedfa6e381a9484919e3a9d476780c0aecb1e408d644ef"
     },
     "compose.yaml": {
       "sha256": "83b3dd00b3d759cb1ff4f5ef0127ce696716a51009be59ee20b250862056dd50"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package leafwiki (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/perber/leafwiki@sha256:d11cf3c73760fef930b509dd52e69bd4c220ab612361d026714129d67251b535); image config: ExposedPorts 8080/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 22s; page title \"Login - LeafWiki\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 22s; page title \"Login - LeafWiki\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "3948fa8b8bf3eae01bd291a00a5f80f2d0770c7de39f37864772dc11f1e3f8ec"
+    }
   }
 }

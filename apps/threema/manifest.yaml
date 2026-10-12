@@ -5,7 +5,7 @@ metadata:
   name: Threema Web
   description: The Threema Web application.
 release:
-  revision: "1"
+  revision: "2"
   version: 2.6.5
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: An intuitive and secure web client for Threema users
   category: files
   developer: Threema GmbH

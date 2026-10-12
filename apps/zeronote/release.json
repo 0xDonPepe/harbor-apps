@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "zeronote",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "eed0ab08e7df0b320415bcd781df2b28ad33d0930af46315e1fc16a529dd55ab"
+      "sha256": "885557bacb1694409b8e297c03e6c611aa149f00379e03ae24050c4dc4a71ac6"
     },
     "compose.yaml": {
       "sha256": "fa8d5c7431a3f29432635a198e6fc353ed3d927215489dc23740fbefb50f4859"
@@ -42,7 +42,13 @@
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service app: stop_grace_period 5m dropped (Docker's default applies)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/besoeasy/zeronote@sha256:208586649fcf38a86b73f2b7ed5888d71faac38729fd00c5a793ab90b09ecf2f); image config: ExposedPorts 80/tcp,8000/tcp, Volumes none, User nginx.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 25s; page title \"ZeroNote - Zero Knowledge Encrypted Notes\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 25s; page title \"ZeroNote - Zero Knowledge Encrypted Notes\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "62d8b727b3233e1785878300b27a311a35b65ce8040c9ac790773c4f7d0dcc95"
+    }
   }
 }

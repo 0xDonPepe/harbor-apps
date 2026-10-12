@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "yamtrack",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "f18269dde46c7db81a839a303902115c312aec1dcd2364a41f182df32318f802"
+      "sha256": "90a5166ebe6a01abe28df740a563f272d365911b1ea0df4f064efcf1b4d17f02"
     },
     "compose.yaml": {
       "sha256": "2a4cfc36b6ee5aeb29d237aa34be0d23437c1eb02c9ac17347ecc0d9eb9bea86"
@@ -55,7 +55,13 @@
       "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/fuzzygrim/yamtrack@sha256:78497b454b2b52d3b1062f6fd238351d714cff0895db4369e49ace36f4622e75); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
       "Digest of redis resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; redis@sha256:b43d2dcbbdb1f9e1582e3a0f37e53bf79038522ccffb56a25858969d7a9b6c11); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 124s; page title \"Login - Yamtrack\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 124s; page title \"Login - Yamtrack\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "05f98fa0808a090ada0edc6daed92c14cf8a8cf7522cb6efc86c0d908abafa3e"
+    }
   }
 }

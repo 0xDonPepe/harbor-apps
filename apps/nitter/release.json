@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "nitter",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "498bfc61fadc73c9080afc04fd05b10811788ed3b07477c81069bab12b508459"
+      "sha256": "77999d32f30033630e3d3055513a3443d83d294483573a55cb6f69aefbe6168a"
     },
     "compose.yaml": {
       "sha256": "a3692cf668f2a0bd5e29a194992dc96d20b449b4717d9785d67ea90ff7e1944a"
@@ -56,7 +56,13 @@
       "service redis: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ceramicwhite/nitter@sha256:594a184c3a834c29957ddd917800d61f3d560411d26fa6cf389bef350d4c4ac6); image config: ExposedPorts 8080/tcp, Volumes none, User nitter.",
       "Digest of redis resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; redis@sha256:e10f55f92478715698a2cef97c2bbdc48df2a05081edd884938903aa60df6396); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 42s; page title \"nitter\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 42s; page title \"nitter\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "d149273186bb0561779fd106a1c3367a664788f6faac896ac2333287b9f59c97"
+    }
   }
 }

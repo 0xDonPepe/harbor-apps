@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "etherpad",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "61b30a349335c05672486d7f5fb834c2f0a2dcfa638b1d999c717411d50d9a48"
+      "sha256": "bbae87bc0a20813e7853ef5a29b6dcfdce3fb303856a1c3c20c20a0cb309059b"
     },
     "compose.yaml": {
       "sha256": "3fcc408545c5755948a7480c6952b1849e213433f2d3b2d6546ba06ef11be2a2"
@@ -56,7 +56,13 @@
       "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; etherpad/etherpad@sha256:c5f4a44406fab46238ce8ea9a0fbf92b3f83a8fd079ec016ded8fdb7f4986d09); image config: ExposedPorts 9001/tcp, Volumes none, User etherpad.",
       "Digest of postgres resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; postgres@sha256:93a6166360be8f1d116b7ea97ebb8dea9e2c9c746349e952738bbba72a961d7c); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 71s; page title \"Etherpad\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 71s; page title \"Etherpad\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "0651c24ccad36915d36f25dd52238c11b3445a9b380a50c9a3ef84b62a6a430d"
+    }
   }
 }

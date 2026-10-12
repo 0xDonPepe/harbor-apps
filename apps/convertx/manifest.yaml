@@ -5,7 +5,7 @@ metadata:
   name: ConvertX
   description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 release:
-  revision: "1"
+  revision: "2"
   version: 0.19.0
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /app/data (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Self-hosted online file converter
   category: files
   developer: Emrik Östling

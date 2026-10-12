@@ -5,7 +5,7 @@ metadata:
   name: Shopstr
   description: A global, permissionless Nostr marketplace for Bitcoin commerce
 release:
-  revision: "1"
+  revision: "2"
   version: 0.7.5
   minHarbor: 0.28.4
 deployment:
@@ -29,6 +29,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: Shop freely
   category: finance
   developer: calvadev

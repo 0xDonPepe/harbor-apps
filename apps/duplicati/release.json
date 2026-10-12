@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "duplicati",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "06a2688209dc111c5834bd5212813520b3e21e260689fb17beb4efa658222c0d"
+      "sha256": "1e469abcdac65cd1d64f59f448fa97a263a75628af332e920d0db91ae292e86f"
     },
     "compose.yaml": {
       "sha256": "bc062a2808bf8a4fedb7c529141b39104a79d10f1fbabc3524b82f64668c920d"
@@ -42,7 +42,13 @@
       "service duplicati: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service duplicati: stop_grace_period 1m dropped (Docker's default applies)",
       "Digest of duplicati resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; duplicati/duplicati@sha256:e32e280cc30e98ac5cea8d2b339cd19810b1b39e638fb9d39253786630104de0); image config: ExposedPorts 8200/tcp, Volumes /data, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 39s; page title \"Duplicati ngclient\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 39s; page title \"Duplicati ngclient\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "89f38250865c98305d794372ad8a0f4a1c723e8668cf882a2a8fd4c6f7017eec"
+    }
   }
 }

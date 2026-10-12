@@ -5,7 +5,7 @@ metadata:
   name: Vane
   description: Vane is an AI-powered answering engine.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.12.2-patch.1
 deployment:
   compose: compose.yaml
@@ -37,6 +37,7 @@ storage:
     purpose: Data at /home/perplexica/uploads (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: An AI-powered answering engine
   category: ai
   developer: Kushagra Srivastava

@@ -9,7 +9,7 @@ provisionedCredentials:
   passwordEnv: ADMIN_PASSWORD
   username: admin
 release:
-  revision: "1"
+  revision: "2"
   version: 3.3.8
   minHarbor: 0.28.4
 deployment:
@@ -47,6 +47,7 @@ storage:
     purpose: Data at /var/lib/postgresql/data/pgdata (postgres)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: An intuitive tool for real-time collaborative writing
   category: files
   developer: The Etherpad Foundation

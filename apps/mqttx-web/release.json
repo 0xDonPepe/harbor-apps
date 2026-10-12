@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "mqttx-web",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "d533206eb1ee4b7c3e077b0b9ab90952c4457fa4781693fca52d6a314655364a"
+      "sha256": "6b6961f441e5a607dc9444bf358c275dfc5fb5b67cff7c5934a681d5b1c4e981"
     },
     "compose.yaml": {
       "sha256": "116ee0ad6108801453a63d6f93fdb64a55fcfa3af44ac4a38722f45b2cede374"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package mqttx-web (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; emqx/mqttx-web@sha256:e777a2221a4e92ea0b87b3170a96ae09d4e557d2dc80c694175669762f47cfd0); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 36s; page title \"Easy-to-Use Online MQTT Client | Try Now\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 36s; page title \"Easy-to-Use Online MQTT Client | Try Now\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "44108bc8da968b74dbf9eaab0ffed52779a9f4a1300ae64e344f5efa9f0d78e4"
+    }
   }
 }

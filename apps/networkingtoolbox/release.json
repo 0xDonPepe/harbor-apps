@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "networkingtoolbox",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "3cc0122396cb60ad75650748dcc12127d03e8eb9b158d5951535ecba978bf55d"
+      "sha256": "170d1c6681127daf0f15003e8833f979d08f5240242d478ff9710497f8de0e10"
     },
     "compose.yaml": {
       "sha256": "e1abe7d9a54a8ac5db6c137d41dcf202470122736f7227fb60187f837b7441b5"
@@ -42,7 +42,13 @@
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "service app: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/lissy93/networking-toolbox@sha256:4e97330fb310e1a5fbe185b1bf859270902ddef7934b88cecc6b3def98d21eaa); image config: ExposedPorts 3000/tcp, Volumes none, User sveltekit.",
-      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 21s; page title \"Networking Toolbox\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 21s; page title \"Networking Toolbox\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "c95e2989c4b79f9d35890bab12bd54efd2fb66ad0c90b060fb211d5ed480a47f"
+    }
   }
 }

@@ -5,7 +5,7 @@ metadata:
   name: Papra
   description: The minimalistic document archiving platform.
 release:
-  revision: "1"
+  revision: "2"
   version: 26.6.2-patch.1
 deployment:
   compose: compose.yaml
@@ -46,6 +46,7 @@ configuration:
     endpoint: web
     format: origin
 presentation:
+  icon: icon.png
   tagline: The minimalistic document archiving platform
   category: files
   developer: Papra

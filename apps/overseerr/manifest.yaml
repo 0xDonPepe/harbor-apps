@@ -5,7 +5,7 @@ metadata:
   name: Overseerr
   description: Request management and media discovery tool for the Plex ecosystem
 release:
-  revision: "1"
+  revision: "2"
   version: 1.35.0
 deployment:
   compose: compose.yaml
@@ -33,6 +33,7 @@ storage:
     purpose: Data at /config (server)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Beautiful media discovery
   category: media
   developer: Ryan Cohen

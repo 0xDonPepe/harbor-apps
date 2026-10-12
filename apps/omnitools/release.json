@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "omnitools",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "b974986dcc8f63c34e5c7f5583ad4daeca512cf8d9432c0ed8b1c47839f8d885"
+      "sha256": "2242f2446bdabb94fd9bf12b643ffa6718f043f6135eeabbb22353c10b0bbe4a"
     },
     "compose.yaml": {
       "sha256": "08d655ecd4af50b5facba246b9eb67666b7111655d60c430bc4b1ebc74903fa8"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package omnitools (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: security_opt no-new-privileges dropped",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; iib0011/omni-tools@sha256:3f35a17d8d81caa33c7caec0198eb561dee212a5f48d8303d8f7b182c930fb71); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 27s; page title \"OmniTools\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 27s; page title \"OmniTools\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "123e7a054e052096f4f31e9a677c6320b74a8427420a041d07d7fce3c80c8eac"
+    }
   }
 }

@@ -5,7 +5,7 @@ metadata:
   name: BookLore
   description: "BookLore: A self-hosted, multi-user digital library with smart shelves, auto metadata, Kobo & KOReader sync, BookDrop imports, OPDS support, and a built-in reader for EPUB, PDF, and comics."
 release:
-  revision: "1"
+  revision: "2"
   version: 2.4.0
 deployment:
   compose: compose.yaml
@@ -46,6 +46,7 @@ storage:
     purpose: Data at /var/lib/mysql (db)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: An app for managing and reading books
   category: files
   developer: BookLore

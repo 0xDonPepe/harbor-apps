@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "ersatztv-legacy",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "ef52056b75a5e7a4900bdc9a08f678a35d02cdb784ad09cfaca19e05726e882f"
+      "sha256": "e73394bea9de87cf65f935fb39aab511bfda0cec752b6fa998b57efc77008f3e"
     },
     "compose.yaml": {
       "sha256": "9daf6e515dfad8b53002e3e22cf0bd52295cc2e3d3e290f61d09c1aff3d4ead0"
@@ -42,7 +42,13 @@
       "GPU access dropped: runs on the CPU",
       "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/ersatztv/legacy@sha256:51882de2022420da21654ceeed2cda50af418e5ad165d050bc393e99a06d02ca); image config: ExposedPorts none, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 74s; page title \"ErsatzTV Legacy\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 74s; page title \"ErsatzTV Legacy\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "9c359daa438cabe5ade647b3573428fce1284d19ac37510a0464be68aa9dedf4"
+    }
   }
 }

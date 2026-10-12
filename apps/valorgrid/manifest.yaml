@@ -5,7 +5,7 @@ metadata:
   name: ValorGrid
   description: App local y privada para controlar, importar y visualizar tu cartera con Windows, Excel, SQLite y Docker.
 release:
-  revision: "1"
+  revision: "2"
   version: 3.36.3
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /data (app)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Private and auditable investment portfolio tracking
   category: finance
   developer: aivm23

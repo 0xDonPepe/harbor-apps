@@ -5,7 +5,7 @@ metadata:
   name: Bitcoin Seed Tool
   description: A toolkit for generating, verifying, and recovering Bitcoin seeds
 release:
-  revision: "1"
+  revision: "2"
   version: 2.3.0
 deployment:
   compose: compose.yaml
@@ -28,6 +28,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: A toolkit for generating, verifying, and recovering Bitcoin seeds
   category: finance
   developer: BitcoinQnA

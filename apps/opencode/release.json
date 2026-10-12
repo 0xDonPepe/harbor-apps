@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "opencode",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "9ba19641c1366f98c961d333c10531f70b1aef269dcb7f2a49d29472a5e4691e"
+      "sha256": "fd35f060a977c4fac7c8d4c8ff1e10089b73c3e993ba0123eaea10aa5f33be67"
     },
     "compose.yaml": {
       "sha256": "52fe0554f393736cbc59b590a5f635bdd20fac79c8910adf75ae0eb1a18170f6"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package opencode (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/anomalyco/opencode@sha256:543fe6b18470c9e4787e9be9813c4d340fba5738085b833ea76fb330ddff514a); image config: ExposedPorts none, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 50s; page title \"OpenCode\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 50s; page title \"OpenCode\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "0d913d1ddda1179bd6bb30ed6003e50087045ac08ec81d2c5ced412a8d70135c"
+    }
   }
 }

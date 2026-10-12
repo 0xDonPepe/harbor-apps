@@ -5,7 +5,7 @@ metadata:
   name: Nitter
   description: Alternative Twitter front-end
 release:
-  revision: "1"
+  revision: "2"
   version: 38985af
 deployment:
   compose: compose.yaml
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /data (redis)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: Browse Twitter without tracking or ads
   category: other
   developer: Zedeus

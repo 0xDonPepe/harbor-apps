@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "snort",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "a2ec69587f1b813eb0411bfcb2053eef0f03a4b7db31f6e00b76ac0fa99ba437"
+      "sha256": "47b30afb8dc720fd14f1ad995460f6fb09769974e6c614c998dc3afad244f97a"
     },
     "compose.yaml": {
       "sha256": "913ea39080813e6af1323d0f307d195e51618e02eb7762c727462bd7116145a5"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package snort (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; voidic/snort@sha256:410778efd4d74f001bb20e91e9f752bda8bb2e5d5f796a2020b253be8b9ca099); image config: ExposedPorts 8080/tcp, Volumes none, User 101.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 27s; page title \"Snort - Nostr\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 27s; page title \"Snort - Nostr\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "84ecb98635d6b079295c7e24686ae5923bb84fe2fce3c5936223dae1f3474897"
+    }
   }
 }

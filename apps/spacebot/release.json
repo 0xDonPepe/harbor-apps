@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "spacebot",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "44d83ba7c80baecda90d4f0ef490c9dd7af8390ce67f48e3a5f7200841dd148c"
+      "sha256": "e9b8176f19a66ce02fc9df25888882c25e941ad9d33a444590078890007c5000"
     },
     "compose.yaml": {
       "sha256": "24c8e5ead476f4787692adb363bf2bdb4e43121af1d10573b0f6476d465dd3d4"
@@ -43,7 +43,13 @@
       "service server: stop_grace_period 1m dropped (Docker's default applies)",
       "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/spacedriveapp/spacebot@sha256:ccd9411f72def62b192e44aed23446b94e6e4774d55d7100a94de1531029f6ed); image config: ExposedPorts 18789/tcp,19898/tcp,9090/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 50s; page title \"Spacebot\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 50s; page title \"Spacebot\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "404530625fb9b00b174b46266285ae2ab653a2da884b18df7ffec66bb09daa4c"
+    }
   }
 }

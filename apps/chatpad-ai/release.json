@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "chatpad-ai",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "b3030feef90e4c83d1a6b8a28291754a9e1e0a8c4fede69d56cd434b52eec76e"
+      "sha256": "52336b4a550e67508a33b80ab13bc2141c1bf1fd3b015a7e1290c9c27b8cd07e"
     },
     "compose.yaml": {
       "sha256": "0c834e65468b40bac47276fdac0c19fc83f142a85b0bcf6a998be66bb29d5df3"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package chatpad-ai (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/deiucanta/chatpad@sha256:15155e3a09fd677d578583f6bd3848c991cf768997400e37bc4c27e62a918a7e); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 23s; page title \"Chatpad AI\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 23s; page title \"Chatpad AI\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "99709658e0af066c273c486bff7ef6805312fdd8554354d8770082ac61e3b598"
+    }
   }
 }

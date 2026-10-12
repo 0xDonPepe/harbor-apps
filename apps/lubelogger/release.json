@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "lubelogger",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "791d81be868633b80ed9921b7da1cb0142a9398503dcf57755b3d7c0dc0f56b5"
+      "sha256": "cbae9958dd6860d97a46887bc7551106492f0c58ba6a8dc0248c7bc912a8a9af"
     },
     "compose.yaml": {
       "sha256": "ab9be4036501bf0b7bbc41793bda7319a6d545bd5b4b3f10ce3d90a526e3f0bc"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package lubelogger (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/hargata/lubelogger@sha256:c9d2bbb48c7f84d90e54496e2cd60422e56a5f2345c8a539ebe09f77e629d321); image config: ExposedPorts 8080/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 29s; page title \"Garage - LubeLogger\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 29s; page title \"Garage - LubeLogger\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "539f41dfdf06693fb0523d0a4bb48626ae56b818d762fd50c724275377538e11"
+    }
   }
 }

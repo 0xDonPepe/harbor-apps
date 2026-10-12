@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "transmute",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "4d129c58a5b023e057cc799a065d4d1e8e953631c1094dd7f100106df577d91d"
+      "sha256": "2809f1abf70ae76d6629d54a39461288478aa54e41a257417c595dc9e7a5d0d2"
     },
     "compose.yaml": {
       "sha256": "d098e953b82a506a5aa744db015a18df9fa3ee4515d8fce324d6d6ab5a8f0c35"
@@ -40,7 +40,13 @@
     "notes": [
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package transmute (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/transmute-app/transmute@sha256:87b669d835d9e68bdbc4082ab061cb361cd3ecee69c14ccfa9a3814d326b6707); image config: ExposedPorts 3313/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 121s; page title \"Transmute - Sign In\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 121s; page title \"Transmute - Sign In\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "7a45c673372fe9cad9d82f46859e3764a851079e7c16a1ec1a0b21303a1d1913"
+    }
   }
 }

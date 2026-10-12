@@ -5,7 +5,7 @@ metadata:
   name: Whoogle Search
   description: A self-hosted, ad-free, privacy-respecting metasearch engine
 release:
-  revision: "1"
+  revision: "2"
   version: 1.2.4
   minHarbor: 0.28.4
 deployment:
@@ -29,6 +29,7 @@ health:
 ui:
   primaryEndpoint: web
 presentation:
+  icon: icon.png
   tagline: A self-hosted, ad-free, privacy-respecting metasearch engine
   category: network
   developer: Ben Busby

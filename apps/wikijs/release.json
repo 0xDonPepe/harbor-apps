@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "wikijs",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "e452d8cca6de003c38fbf79ee2a788778c761a6407f86d8e955348d64a26928d"
+      "sha256": "173f42da2314cfdeca36f9807100c60a81e38b27413f8e6945baa44c54109e46"
     },
     "compose.yaml": {
       "sha256": "8955f5f2847bf7311033b6080b21f64f09124f2a6794721f22a433c8cbae8f42"
@@ -42,7 +42,13 @@
       "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
       "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/wikijs@sha256:1cbb7cd39f62b12025b6cb5fea4f95629833162c72bf0604c568090f343c8665); image config: ExposedPorts 3000/tcp, Volumes /config, User root.",
-      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 49s; page title \"Wiki.js Setup\"; health 200)"
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 49s; page title \"Wiki.js Setup\"; health 200)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "a2c622f568fd5c4ccfc1f84fd0e0e848a0bc0648facbe73d15aa9298b5edc54b"
+    }
   }
 }

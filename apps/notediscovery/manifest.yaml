@@ -5,7 +5,7 @@ metadata:
   name: NoteDiscovery
   description: Your Self-Hosted Knowledge Base
 release:
-  revision: "1"
+  revision: "2"
   version: 0.31.7
   minHarbor: 0.28.4
 deployment:
@@ -34,6 +34,7 @@ storage:
     purpose: Data at /app/data (web)
     retention: retain
 presentation:
+  icon: icon.png
   tagline: A lightweight, privacy-focused note-taking application
   category: files
   developer: Guillermo Villar

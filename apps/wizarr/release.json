@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "wizarr",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "864cf37dacf0abbf75ac3f3e079baa762d616425a1b03278721c780639ddb657"
+      "sha256": "7c8b0e7ee8769c744e4a4d2d96519c22162d136ec3d323efa63db58b0095907d"
     },
     "compose.yaml": {
       "sha256": "3592d45ed4ffec1379b696f42a58034c811fdd1fa6851e0b100aa41af80a1194"
@@ -41,7 +41,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package wizarr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/wizarrrr/wizarr@sha256:3e89f4850092d60f532406209100f5e929e06dd679bfd78c5f3559065f2854e0); image config: ExposedPorts 5690/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 60s; page title \"Setup Wizarr - None\"; health 302)"
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 60s; page title \"Setup Wizarr - None\"; health 302)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "e1880c3d5912652ed1eeedbf0347d4c3d3bdbc450ab6dcd133bb8f73a6fe5e48"
+    }
   }
 }

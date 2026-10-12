@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "invio",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "27a13bfca6f3d57903e160f87d678f24c7d7e3e21fce578d4456b92e99a93627"
+      "sha256": "7e411c7723e05022672f5de481f8b0367f6decdc44d5efbeccaa6147e3b17d3b"
     },
     "compose.yaml": {
       "sha256": "a58e0bc128dca50848f6f8f6ff6dd0ca29eeb4e72db27b2e816302083fc8e7d6"
@@ -52,7 +52,13 @@
       "Drafted by scripts/umbrel-import.mjs from the Umbrel package invio (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
       "Digest of backend resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/kittendevv/invio-backend@sha256:402c3b2255021834fefeeaaae32cd0f68563a2205dbd6b99914a42cf89e699b5); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
       "Digest of frontend resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/kittendevv/invio-frontend@sha256:b2a48dc3bfa04771a2b658905268dfc766958c72be6f783f141e313c189c61b8); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 71s; page title \"Invio\"; health 303)"
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 71s; page title \"Invio\"; health 303)",
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
     ]
+  },
+  "assets": {
+    "icon.png": {
+      "sha256": "ef7b0d984730ebcd695f8256c701c64789a94426bbff901c42cf5aab45d96da2"
+    }
   }
 }

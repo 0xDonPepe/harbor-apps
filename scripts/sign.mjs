@@ -6,7 +6,7 @@
 // or CATALOG_PUBLIC_KEY_FILE for a local test key). A key that does not match fails here, before anything
 // is released, and leaves no signature behind.
 import { createPrivateKey, createPublicKey, sign, verify } from 'node:crypto';
-import { readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -20,6 +20,8 @@ function fail(message) {
   console.error(`sign: ${message}`);
   process.exit(1);
 }
+
+if (!existsSync(metaFile)) fail(`${metaFile} is missing: did the bundle step fail?`);
 
 const pem = process.env.CATALOG_SIGNING_KEY;
 if (!pem || !pem.trim()) fail('CATALOG_SIGNING_KEY is empty (an ed25519 private key, PKCS8 PEM)');

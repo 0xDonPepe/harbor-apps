@@ -1,7 +1,15 @@
 # Verify every change with Harbor's own loader; publish every change to main as a signed catalog release.
 # Harbor boxes download releases/latest/download/{catalog.zip,catalog.json,catalog.json.sig} and only accept
 # a bundle whose signature verifies against the key pinned in Harbor (keys/harbor-apps.pub here).
-# The Harbor checkout comes from the ref in .harbor-ref (a branch, tag or sha of carlosalaniz/harbor).
+#
+# Four jobs, so the signing key never shares a runner with third-party code (Harbor decision 158):
+#   verify   every push/PR: Harbor's tools at the commit pinned in .harbor-ref check every app.
+#   bundle   main only: builds the UNSIGNED catalog.zip + catalog.json with Harbor's tools (runs Harbor's code
+#            and its npm dependencies, so it gets no secret and no write token).
+#   sign     main only, environment "catalog-signing" (the only place CATALOG_SIGNING_KEY exists): checks out
+#            only this repository, installs nothing, re-checks the bundle and runs scripts/sign.mjs.
+#   publish  main only: the one job with contents: write; creates release c<serial> and marks it latest.
+# Never put ${{ }} of commit or package text inside a run: script; pass values through env and quote them.
 name: catalog
 on:
   push:
@@ -18,20 +26,35 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    shell: bash # bash --noprofile --norc -eo pipefail: a failing command in a pipe fails the step
+
 jobs:
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    outputs:
+      harbor_ref: ${{ steps.harbor.outputs.ref }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Read Harbor ref
         id: harbor
-        run: echo "ref=$(tr -d '[:space:]' < .harbor-ref)" >> "$GITHUB_OUTPUT"
+        run: |
+          ref=$(tr -d '[:space:]' < .harbor-ref)
+          if [[ ! "$ref" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=.harbor-ref::.harbor-ref must hold one full 40-hex commit sha of carlosalaniz/harbor (a commit on its main), not \"$ref\". Branches and tags move; the tools that check and bundle the catalog must not. See README.md, \"Bumping .harbor-ref\"."
+            exit 1
+          fi
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
         with:
           repository: carlosalaniz/harbor
           ref: ${{ steps.harbor.outputs.ref }}
           path: .harbor
+          persist-credentials: false
       - uses: pnpm/action-setup@v4
         with:
           version: 10.16.1
@@ -49,84 +72,216 @@ jobs:
         run: pnpm catalog:hash --catalog "$GITHUB_WORKSPACE/apps" --check
         working-directory: .harbor
 
-  release:
+  bundle:
     needs: verify
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
-      contents: write
-    # one release at a time, oldest first, so "latest" always ends on the newest catalog
-    concurrency:
-      group: catalog-release
-      cancel-in-progress: false
-    env:
-      GH_TOKEN: ${{ github.token }}
+      contents: read
+    outputs:
+      serial: ${{ steps.serial.outputs.serial }}
     steps:
       - uses: actions/checkout@v4
-      - name: Serial and tag
+        with:
+          persist-credentials: false
+      - name: Serial
         id: serial
         run: |
           serial=$(git log -1 --format=%ct)
-          echo "serial=$serial" >> "$GITHUB_OUTPUT"
-          echo "tag=c$serial" >> "$GITHUB_OUTPUT"
-          echo "date=$(date -u -d "@$serial" +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
-          echo "short=$(git rev-parse --short=12 HEAD)" >> "$GITHUB_OUTPUT"
-          if gh release view "c$serial" >/dev/null 2>&1; then
-            echo "c$serial is already released; nothing to do"
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          latest=$(gh release view --json tagName --jq .tagName 2>/dev/null || true)
-          if [ -n "$latest" ] && [ "${latest#c}" -ge "$serial" ]; then
-            echo "::error::HEAD's committer time ($serial) is not newer than the latest release $latest; Harbor would never pick it up. Make a new commit."
+          now=$(date +%s)
+          if [[ ! "$serial" =~ ^[1-9][0-9]*$ ]]; then
+            echo "::error::could not read HEAD's committer time (got \"$serial\")"
             exit 1
           fi
-          echo "skip=false" >> "$GITHUB_OUTPUT"
-      - name: Read Harbor ref
-        if: steps.serial.outputs.skip != 'true'
-        id: harbor
-        run: echo "ref=$(tr -d '[:space:]' < .harbor-ref)" >> "$GITHUB_OUTPUT"
+          # Harbor only ever moves to a higher serial: a future-dated commit would freeze every box until
+          # the clock caught up, so refuse anything more than 5 minutes ahead of the runner's clock.
+          if (( serial > now + 300 )); then
+            echo "::error::HEAD's committer time ($serial, $(date -u -d "@$serial" +%FT%TZ)) is more than 5 minutes in the future (runner clock $(date -u -d "@$now" +%FT%TZ)). Fix the clock and make a new commit."
+            exit 1
+          fi
+          echo "serial=$serial" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
-        if: steps.serial.outputs.skip != 'true'
         with:
           repository: carlosalaniz/harbor
-          ref: ${{ steps.harbor.outputs.ref }}
+          ref: ${{ needs.verify.outputs.harbor_ref }}
           path: .harbor
+          fetch-depth: 0
+          persist-credentials: false
+      - name: The pinned Harbor commit is on Harbor's main
+        env:
+          HARBOR_REF: ${{ needs.verify.outputs.harbor_ref }}
+        run: |
+          if ! git -C .harbor merge-base --is-ancestor "$HARBOR_REF" origin/main; then
+            echo "::error file=.harbor-ref::$HARBOR_REF is not on carlosalaniz/harbor main; only reviewed Harbor commits may build a signed catalog."
+            exit 1
+          fi
       - uses: pnpm/action-setup@v4
-        if: steps.serial.outputs.skip != 'true'
         with:
           version: 10.16.1
       - uses: actions/setup-node@v4
-        if: steps.serial.outputs.skip != 'true'
         with:
           node-version: 24.12.0
           cache: pnpm
           cache-dependency-path: .harbor/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
-        if: steps.serial.outputs.skip != 'true'
         working-directory: .harbor
       - name: Bundle
-        if: steps.serial.outputs.skip != 'true'
         working-directory: .harbor
+        env:
+          SERIAL: ${{ steps.serial.outputs.serial }}
         run: |
-          pnpm -s catalog:bundle "$GITHUB_WORKSPACE/apps" --out "$GITHUB_WORKSPACE/dist" --commit "$GITHUB_SHA" --serial "${{ steps.serial.outputs.serial }}" | tee "$GITHUB_WORKSPACE/bundle.log"
+          rm -rf "$GITHUB_WORKSPACE/dist"
+          pnpm -s catalog:bundle "$GITHUB_WORKSPACE/apps" --out "$GITHUB_WORKSPACE/dist" --commit "$GITHUB_SHA" --serial "$SERIAL" | tee "$GITHUB_WORKSPACE/bundle.log"
+          mv "$GITHUB_WORKSPACE/bundle.log" "$GITHUB_WORKSPACE/dist/bundle.log"
+          printf 'serial=%s\ncommit=%s\n' "$SERIAL" "$GITHUB_SHA" > "$GITHUB_WORKSPACE/dist/build.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalog-unsigned
+          path: |
+            dist/catalog.zip
+            dist/catalog.json
+            dist/build.txt
+            dist/bundle.log
+          if-no-files-found: error
+          retention-days: 7
+
+  sign:
+    needs: bundle
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    # CATALOG_SIGNING_KEY exists only in this environment, whose deployment branch policy is main only.
+    environment: catalog-signing
+    permissions:
+      contents: read
+    outputs:
+      meta_sha256: ${{ steps.sign.outputs.meta_sha256 }}
+    steps:
+      # This repository only, nothing installed, nothing from Harbor: the only code that sees the key is
+      # scripts/check-bundle.mjs and scripts/sign.mjs (both dependency-free) at this very commit.
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.12.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: catalog-unsigned
+          path: dist
+      - name: Check the bundle
+        env:
+          EXPECT_SERIAL: ${{ needs.bundle.outputs.serial }}
+          EXPECT_COMMIT: ${{ github.sha }}
+        run: |
+          own=$(git log -1 --format=%ct)
+          if [[ "$own" != "$EXPECT_SERIAL" ]]; then
+            echo "::error::the bundle job's serial ($EXPECT_SERIAL) is not HEAD's committer time ($own)"
+            exit 1
+          fi
+          if (( own > $(date +%s) + 300 )); then
+            echo "::error::HEAD's committer time ($own) is more than 5 minutes in the future"
+            exit 1
+          fi
+          node scripts/check-bundle.mjs dist
       - name: Sign
-        if: steps.serial.outputs.skip != 'true'
+        id: sign
         env:
           CATALOG_SIGNING_KEY: ${{ secrets.CATALOG_SIGNING_KEY }}
-        run: node scripts/sign.mjs dist
+        run: |
+          node scripts/sign.mjs dist
+          echo "meta_sha256=$(sha256sum dist/catalog.json | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalog-signature
+          path: dist/catalog.json.sig
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: [bundle, sign]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    # One publish at a time, so two runs never both decide "no release yet" for the same serial. This does
+    # not order runs by commit: an older run that reaches here after a newer release skips (see below).
+    concurrency:
+      group: catalog-publish
+      cancel-in-progress: false
+    env:
+      SERIAL: ${{ needs.bundle.outputs.serial }}
+      META_SHA256: ${{ needs.sign.outputs.meta_sha256 }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: catalog-unsigned
+          path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          name: catalog-signature
+          path: dist
+      - name: Decide
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ ! "$SERIAL" =~ ^[1-9][0-9]*$ ]]; then
+            echo "::error::bad serial \"$SERIAL\""
+            exit 1
+          fi
+          if [[ "$(sha256sum dist/catalog.json | cut -d' ' -f1)" != "$META_SHA256" ]]; then
+            echo "::error::dist/catalog.json is not the file the sign job signed"
+            exit 1
+          fi
+          tag="c$SERIAL"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+          # 1. The tag exists: a re-run of this commit is fine, a different commit in the same second is not.
+          exists=$(gh api "repos/$GH_REPO/git/matching-refs/tags/$tag" --jq "any(.[]; .ref == \"refs/tags/$tag\")")
+          if [[ "$exists" == "true" ]]; then
+            tagged=$(gh api "repos/$GH_REPO/commits/$tag" --jq .sha)
+            if [[ "$tagged" != "$GITHUB_SHA" ]]; then
+              echo "::error::$tag was already released from $tagged; $GITHUB_SHA has the same committer second as an existing release, and Harbor would never pick it up. Make a new commit."
+              exit 1
+            fi
+            assets=$(gh release view "$tag" --json assets --jq '[.assets[].name] | sort | join(" ")' 2>/dev/null || true)
+            if [[ "$assets" != "catalog.json catalog.json.sig catalog.zip" ]]; then
+              echo "::error::$tag exists for this commit but its release is incomplete (assets: \"$assets\"). Delete the release and the tag, then re-run this workflow."
+              exit 1
+            fi
+            echo "::notice::$tag is already released from this commit; nothing to do"
+            exit 0
+          fi
+
+          # 2. A release at least as new exists: fine when a newer commit replaced this one, clock skew otherwise.
+          latest=$(gh release view --json tagName --jq .tagName 2>/dev/null || true)
+          if [[ "$latest" =~ ^c([0-9]+)$ ]] && (( BASH_REMATCH[1] >= SERIAL )); then
+            tip=$(gh api "repos/$GH_REPO/git/ref/heads/main" --jq .object.sha)
+            if [[ "$tip" != "$GITHUB_SHA" ]]; then
+              echo "::notice::$latest is newer than $tag and main has moved on to $tip; that commit publishes the catalog"
+              exit 0
+            fi
+            echo "::error::HEAD's committer time ($SERIAL) is not newer than the latest release $latest; Harbor would never pick it up. Check the committer's clock and make a new commit."
+            exit 1
+          fi
+          echo "publish=true" >> "$GITHUB_OUTPUT"
       - name: Publish release
-        if: steps.serial.outputs.skip != 'true'
+        if: steps.decide.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.decide.outputs.tag }}
         run: |
           {
             echo "Signed app catalog for Harbor, built from ${GITHUB_SHA}."
             echo
             echo "Apps (id, revision, version):"
             echo
-            awk '$1 == "ok" { split($2, a, "@"); v = $3; gsub(/[()]/, "", v); print "- " a[1] " r" a[2] (v != "" ? " (" v ")" : "") }' bundle.log
+            awk '$1 == "ok" { split($2, a, "@"); v = $3; gsub(/[()]/, "", v); print "- " a[1] " r" a[2] (v != "" ? " (" v ")" : "") }' dist/bundle.log
           } > notes.md
-          gh release create "${{ steps.serial.outputs.tag }}" dist/catalog.zip dist/catalog.json dist/catalog.json.sig \
+          title="Catalog $(date -u -d "@$SERIAL" +%Y-%m-%d) (${GITHUB_SHA:0:12})"
+          gh release create "$TAG" dist/catalog.zip dist/catalog.json dist/catalog.json.sig \
             --target "$GITHUB_SHA" --latest \
-            --title "Catalog ${{ steps.serial.outputs.date }} (${{ steps.serial.outputs.short }})" \
+            --title "$title" \
             --notes-file notes.md

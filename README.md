@@ -9,7 +9,7 @@ a `release.json` with file hashes. No code runs from here; Harbor validates ever
 ## Layout
 
 ```
-apps/index.json          the list of apps: id -> { revision, dir, optional minHarbor }
+apps/index.json          the list of apps: id -> { revision, dir, optional minHarbor (normally computed) }
 apps/<id>/manifest.yaml  what Harbor needs to know (endpoints, storage, health, presentation)
 apps/<id>/compose.yaml   the services, Compose subset only, images pinned by digest
 apps/<id>/README.md      shown in the App Store
@@ -40,8 +40,17 @@ Qualification (`"status": "passed"` in `release.json`) only ever comes from Harb
 
 ### minHarbor
 
-An app that needs a newer Harbor feature sets `"minHarbor": "x.y.z"` on its entry in `apps/index.json`.
-Older Harbor boxes still list it, but as unavailable ("needs Harbor x.y.z or newer"), and never install it.
+You normally do not set it. The bundle job works out which Harbor each app needs from the fields and
+values it uses (Harbor's `src/packages/features.ts`, decision 159) and stamps `"minHarbor": "x.y.z"` on
+its entry in the published `index.json`. Older Harbor boxes still list such an app, but as unavailable
+("needs Harbor x.y.z or newer"), and never install or update it.
+
+If you do set `"minHarbor"` by hand in `apps/index.json` (for a behaviour the table cannot see), the
+bundle keeps the higher of yours and the computed one, and `pnpm catalog:verify` fails when yours is lower.
+It prints `minHarbor declared=… computed=…` for every app.
+
+A new package field reaches this catalog only after Harbor learns it: bump `.harbor-ref` to a Harbor
+commit that accepts the field before an app here uses it.
 
 ## How publishing works
 

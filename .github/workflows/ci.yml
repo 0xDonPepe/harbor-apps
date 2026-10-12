@@ -132,7 +132,7 @@ jobs:
           if ! jq -e '
               (.groups | type == "array" and length > 0)
               and all(.groups[]; (.minHarbor | type == "string" and test("^(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,5})$"))
-                and (.ids | type == "array" and length > 0 and all(.[]; type == "string" and test("^[a-z0-9]+(-[a-z0-9]+)*$"))))
+                and (.ids | type == "array" and length > 0 and all(.[]; type == "string" and test("^[a-z][a-z0-9-]{0,62}$"))))
             ' plan.json > /dev/null; then
             echo "::error::pnpm catalog:plan printed an unexpected document (want {\"groups\": [{\"minHarbor\": \"x.y.z\", \"ids\": [...]}]})"
             exit 1
@@ -353,7 +353,7 @@ jobs:
               .serial == $serial and .commit == $commit
               and (.packages | type == "array" and length > 0)
               and all(.packages[];
-                (.id | type == "string" and test("^[a-z0-9]+(-[a-z0-9]+)*$"))
+                (.id | type == "string" and test("^[a-z][a-z0-9-]{0,62}$"))
                 and (.revision | type == "string" and test("^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"))
                 and (.version == null or (.version | type == "string"))
                 and (.minHarbor == null or (.minHarbor | type == "string" and test("^(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,3})\\.(0|[1-9][0-9]{0,5})$"))))

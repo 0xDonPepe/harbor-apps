@@ -8,7 +8,7 @@
 import { copyFileSync, lstatSync, mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 
-const ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const ID = /^[a-z][a-z0-9-]{0,62}$/;
 
 function fail(message) {
   console.error(`subset: ${message}`);

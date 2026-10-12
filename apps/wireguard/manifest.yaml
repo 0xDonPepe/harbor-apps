@@ -1,0 +1,53 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: wireguard
+  name: WireGuard
+  description: "Your own VPN server with a web page to add devices: each one gets a config file or a QR code for the WireGuard app (wg-easy)."
+release:
+  revision: "1"
+  version: "15.3.0"
+  minHarbor: "0.29.0"
+deployment:
+  compose: compose.yaml
+  multiInstance: false
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 51821
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+ports:
+  wireguard:
+    service: app
+    containerPort: 51820
+    hostPort: 51820
+    protocol: udp
+    purpose: WireGuard VPN tunnels
+permissions:
+  app: [net-admin, ip-forwarding]
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 302]
+  timeoutSeconds: 5
+  deadlineSeconds: 180
+ui:
+  primaryEndpoint: web
+setup:
+  endpoint: web
+  instructions: "Open WireGuard and create your admin account. When it asks for the host, give the address your devices will use to reach this machine from outside (your public IP or a domain), and port 51820. Then forward UDP 51820 on your router to this machine."
+storage:
+  - id: config
+    composeVolume: config
+    purpose: "VPN keys, devices and settings"
+    retention: retain
+presentation:
+  tagline: "Your own VPN, with a page to add devices"
+  category: network
+  developer: "wg-easy"
+  website: https://wg-easy.github.io/wg-easy/
+  sizeHint: "About 100 MB"

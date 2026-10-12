@@ -1,0 +1,14 @@
+services:
+  app:
+    image: ghcr.io/wg-easy/wg-easy@sha256:93bbd593e07bab98d02807a28770ac87ab6c48818e319e68c1f66561feb99876 # tag: 15.3.0
+    environment:
+      PORT: "51821"
+      # Harbor serves the page over plain http on the LAN; turn on secure addresses or Tailscale for HTTPS
+      INSECURE: "true"
+      # IPv4 tunnels only: wg-easy's IPv6 rules need the ip6table_nat module, which a container without
+      # SYS_MODULE cannot load and a stock Docker host does not have loaded
+      DISABLE_IPV6: "true"
+    volumes:
+      - {type: volume, source: config, target: /etc/wireguard}
+volumes:
+  config: {}

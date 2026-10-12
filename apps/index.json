@@ -529,6 +529,10 @@
       "revision": "1",
       "dir": "wingfit"
     },
+    "wireguard": {
+      "revision": "1",
+      "dir": "wireguard"
+    },
     "wizarr": {
       "revision": "1",
       "dir": "wizarr"

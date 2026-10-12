@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "wireguard",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "8863ba2fe170d78e6710e3ce3a66f4f177e6c061cd997088bee7748746b50d28"
+    },
+    "compose.yaml": {
+      "sha256": "0b32b548ee799178775c2b7b498e09f5a274976451c853b83bd49f19b9f22e3b"
+    },
+    "README.md": {
+      "sha256": "5801cdbf510bf4281cf2ac2e7e35e9cc38e947d2189060abdb8fd62490d7b3b1"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/wg-easy/wg-easy@sha256:93bbd593e07bab98d02807a28770ac87ab6c48818e319e68c1f66561feb99876",
+      "repository": "ghcr.io/wg-easy/wg-easy",
+      "tag": "15.3.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:e30672a84b78efb1612aa0a6eef43b0403fd7393667856116e6f53c4aca3d03d",
+      "appVersion": "15.3.0",
+      "imageCreated": "2026-05-18T10:21:22Z",
+      "source": "https://ghcr.io/wg-easy/wg-easy"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "15.3.0"
+    },
+    "notes": [
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/wg-easy/wg-easy@sha256:93bbd593e07bab98d02807a28770ac87ab6c48818e319e68c1f66561feb99876); image config: ExposedPorts none, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T19-51-04-harbor-q01: passed (healthy after 93s; page title \"WireGuard\"; health 302)"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: tautulli
+  name: tautulli
+  description: A Python based monitoring and tracking tool for Plex Media Server.
+release:
+  revision: "1"
+  version: 2.18.2
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 8181
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (web)
+    retention: retain
+presentation:
+  tagline: Monitor your Plex Media Server
+  category: media
+  developer: Tautulli
+  website: https://tautulli.com/

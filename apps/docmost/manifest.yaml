@@ -1,0 +1,62 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: docmost
+  name: Docmost
+  description: Docmost is an open-source collaborative wiki and documentation software. It is an open-source alternative to Confluence and Notion.
+release:
+  revision: "1"
+  version: 0.96.0-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    db: infrastructure
+    redis: infrastructure
+endpoints:
+  web:
+    service: web
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: docmost-data
+    composeVolume: docmost-data
+    purpose: Data at /app/data/storage (web)
+    retention: retain
+  - id: db-data
+    composeVolume: db-data
+    purpose: Data at /var/lib/postgresql/data (db)
+    retention: retain
+  - id: redis-data
+    composeVolume: redis-data
+    purpose: Data at /data (redis)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: web
+        environment: APP_SECRET
+configuration:
+  - service: web
+    environment: APP_URL
+    endpoint: web
+    format: origin
+presentation:
+  tagline: An collaborative wiki and documentation software
+  category: files
+  developer: Docmost, Inc.
+  website: https://docmost.com/

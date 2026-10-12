@@ -1,0 +1,51 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: foldergram
+  name: Foldergram
+  description: Self-hosted folder-based Instagram-style photo and video gallery app.
+release:
+  revision: "1"
+  version: 1.2.2-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 4141
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: gallery
+    composeVolume: gallery
+    purpose: Data at /app/data/gallery (web)
+    retention: retain
+  - id: db
+    composeVolume: db
+    purpose: Data at /app/data/db (web)
+    retention: retain
+  - id: thumbnails
+    composeVolume: thumbnails
+    purpose: Data at /app/data/thumbnails (web)
+    retention: retain
+  - id: previews
+    composeVolume: previews
+    purpose: Data at /app/data/previews (web)
+    retention: retain
+presentation:
+  tagline: A private Instagram-style feed for your memories
+  category: files
+  developer: Sajjad Ali
+  website: https://foldergram.github.io/

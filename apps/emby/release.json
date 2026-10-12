@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "emby",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "f75c64f40ef493c7b9b5cbd46366fe701663ddbc02a4d4b1ed954318f308ae45"
+    },
+    "compose.yaml": {
+      "sha256": "d729563795288487abf6a3b661fb7dd33779408a770faf9f320c78edf1ab96f7"
+    },
+    "README.md": {
+      "sha256": "6eed9267add018cb5d6c9e9072cfcb8f62ffbc6d3e3c224288291443256134ed"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/emby@sha256:9642a578312eac8ca5ec0b979c90b22d96021db9551bfab6a7c89b3f2098c1ff",
+      "repository": "linuxserver/emby",
+      "tag": "version-4.10.1.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:05a24b56077c87094a8aa657aa0589c37868e00d4b061a25c8b448e94429e796",
+      "appVersion": "ersion-4.10.1.0",
+      "imageCreated": "2026-09-30T00:51:07Z",
+      "source": "https://hub.docker.com/r/linuxserver/emby"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "ersion-4.10.1.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package emby (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "GPU access dropped: runs on the CPU",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/emby@sha256:9642a578312eac8ca5ec0b979c90b22d96021db9551bfab6a7c89b3f2098c1ff); image config: ExposedPorts 8096/tcp,8920/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 50s; page title \"9382df6e54bf\"; health 302)"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "fossflow",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "5f8487edee83d6fef3666ca3f2a41637187266d2b6fea4757b07b86289c7f833"
+    },
+    "compose.yaml": {
+      "sha256": "58f375d7149e3d72a334dee923c7b4a8a0f65252951fdeeda5ac93dd618481b5"
+    },
+    "README.md": {
+      "sha256": "07a73cd1125369704451e175f02a1b5a7f7710901fb221c3b17fdae8c3afe4ce"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "stnsmith/fossflow@sha256:c0813b19a9c8a3b8d13901de0e35edf7d9300ae8327a905ff520239d5624dafc",
+      "repository": "stnsmith/fossflow",
+      "tag": "master-b69fc2e",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:1a1e42ffed79f0fb5d84b2eb184714ccea9dc6b610a3cc1a5bb1c8e4eeee0fb1",
+      "appVersion": "master-b69fc2e",
+      "imageCreated": "2026-05-14T03:23:49Z",
+      "source": "https://hub.docker.com/r/stnsmith/fossflow"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "master-b69fc2e"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package fossflow (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; stnsmith/fossflow@sha256:c0813b19a9c8a3b8d13901de0e35edf7d9300ae8327a905ff520239d5624dafc); image config: ExposedPorts 3001/tcp,80/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 48s; page title \"FossFLOW - Isometric Diagramming Tool\"; health 200)"
+    ]
+  }
+}

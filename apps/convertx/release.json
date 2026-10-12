@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "convertx",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "5decc8a9da29eb0c7f1b9886aaf7c47133515288e05977acd3ec73fb4e004b07"
+    },
+    "compose.yaml": {
+      "sha256": "3d45273a92f25b4ce1322bc10e9b48a8d3c6645391af60b327434beed78a99ff"
+    },
+    "README.md": {
+      "sha256": "9c21f66b9c2b8eb0cca247727ce3068ae9ff9dfd63ac8e16ac2079c1225178db"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "c4illin/convertx@sha256:8590a21a16adb8514a8be55b74ad0112bf58ba772328a53f7b40528fcf8fa013",
+      "repository": "c4illin/convertx",
+      "tag": "v0.19.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:a64d03997fa2686608ed31121e090f21eb8e91dfd2eb06a6aba86480deabe8c1",
+      "appVersion": "0.19.0",
+      "imageCreated": "2026-09-26T00:28:50Z",
+      "source": "https://hub.docker.com/r/c4illin/convertx"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "0.19.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package convertx (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: stop_grace_period 1m dropped (Docker's default applies)",
+      "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; c4illin/convertx@sha256:8590a21a16adb8514a8be55b74ad0112bf58ba772328a53f7b40528fcf8fa013); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 109s; page title \"ConvertX | Setup\"; health 302)"
+    ]
+  }
+}

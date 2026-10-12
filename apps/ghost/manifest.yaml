@@ -1,0 +1,49 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: ghost
+  name: Ghost
+  description: Independent technology for modern publishing, memberships, subscriptions and newsletters.
+release:
+  revision: "1"
+  version: 6.69.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    db: infrastructure
+endpoints:
+  web:
+    service: web
+    containerPort: 2368
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: content
+    composeVolume: content
+    purpose: Data at /var/lib/ghost/content (web)
+    retention: retain
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/lib/mysql (db)
+    retention: retain
+configuration:
+  - service: web
+    environment: url
+    endpoint: web
+    format: origin
+presentation:
+  tagline: A platform for creators to publish, grow, and monetize their content
+  category: files
+  developer: Ghost Foundation Ltd
+  website: https://ghost.org/

@@ -1,0 +1,51 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: ersatztv-legacy
+  name: ErsatzTV Legacy
+  description: Open-source platform that transforms your personal media library into live, custom TV channels.
+release:
+  revision: "1"
+  version: 26.11.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 8409
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (web)
+    retention: retain
+  - id: transcode
+    composeVolume: transcode
+    purpose: Data at /transcode (web)
+    retention: retain
+  - id: downloads
+    composeVolume: downloads
+    purpose: Data at /media (web)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /media, such as a folder on a large drive"
+      required: false
+      readOnly: true
+presentation:
+  tagline: Build your own live TV channels
+  category: media
+  developer: ErsatzTV
+  website: https://ersatztv.org

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "flaresolverr",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "566a1acacec5a2515b587a012821624abe60b143932fc4dccd9e3be92e83b72a"
+    },
+    "compose.yaml": {
+      "sha256": "04485a5e81c53ed880aac80c20ae240a81830a147290ea69dd75050b33ce2a12"
+    },
+    "README.md": {
+      "sha256": "653225e2ac02714b26c273e360f97c7c01f4734c87c1dcc60a2bbd19823474fc"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "mrsunglasses/flaresolverr-status@sha256:5a12b6ee183b64b87546b5f30537abaf333f7b2cd83856e6e2bcca874d165dc9",
+      "repository": "mrsunglasses/flaresolverr-status",
+      "tag": "0.0.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:9fc93a910bf3599d03b8c14627dbfa71b232589993748ccdbed4fe7ca49653aa",
+      "appVersion": "0.0.2",
+      "imageCreated": "2025-11-08T21:03:41Z",
+      "source": "https://hub.docker.com/r/mrsunglasses/flaresolverr-status"
+    },
+    "server": {
+      "reference": "ghcr.io/flaresolverr/flaresolverr@sha256:c80ae007ce2ccdcd217a12426e4f039ef763ff90738c808d38810c3e59323767",
+      "repository": "ghcr.io/flaresolverr/flaresolverr",
+      "tag": "v3.5.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:4ad0ed7de64622f9823594bf7bc237149158fca881f875aafbdd8456f6467134",
+      "appVersion": "3.5.2",
+      "imageCreated": "2026-09-12T01:25:17Z",
+      "source": "https://ghcr.io/flaresolverr/flaresolverr"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.0.2",
+      "server": "3.5.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package flaresolverr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mrsunglasses/flaresolverr-status@sha256:5a12b6ee183b64b87546b5f30537abaf333f7b2cd83856e6e2bcca874d165dc9); image config: ExposedPorts 8000/tcp, Volumes none, User app.",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/flaresolverr/flaresolverr@sha256:c80ae007ce2ccdcd217a12426e4f039ef763ff90738c808d38810c3e59323767); image config: ExposedPorts 8191/tcp,8192/tcp, Volumes /config, User flaresolverr.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 45s; page title \"FlareSolverr Status\"; health 200)"
+    ]
+  }
+}

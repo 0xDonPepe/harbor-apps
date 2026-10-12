@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "influxdb",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "6b91c3286732c5b6f5a01874dc866ae82154d0d47c0e5d18306e9973aa62c5e0"
+    },
+    "compose.yaml": {
+      "sha256": "dbd34d3327a27e742cb6c0b33971b30bf5649f68ffb70b28bc8514c9de27198c"
+    },
+    "README.md": {
+      "sha256": "e273d58c226e93fc4bdb0896bc1eba25f3b6316a3b4ad011d243262970b148fd"
+    }
+  },
+  "images": {
+    "influxdb": {
+      "reference": "influxdb@sha256:f5eb5cd107f845529dac36359527ed6448d421c5359cedbfc9d66beffcf669af",
+      "repository": "influxdb",
+      "tag": "1.13.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:d05e28998731e13c15bde5bf06b156bc96f161f46d6210f88298a137171cc07f",
+      "appVersion": "1.13.1",
+      "imageCreated": "2026-09-11T22:01:01Z",
+      "source": "https://hub.docker.com/_/influxdb"
+    },
+    "chronograf": {
+      "reference": "chronograf@sha256:1aa585346868ef0859c507b2c8544a175ad308024765929f5df5b64a9679031d",
+      "repository": "chronograf",
+      "tag": "1.11.4",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:91d1bc450462e134e8c9c745deef90897c3076ec955a822db729ac04748e783b",
+      "appVersion": "1.11.4",
+      "imageCreated": "2026-08-25T00:51:10Z",
+      "source": "https://hub.docker.com/_/chronograf"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "influxdb": "1.13.1",
+      "chronograf": "1.11.4"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package influxdb (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "service influxdb: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service influxdb: stop_grace_period 1m dropped (Docker's default applies)",
+      "service chronograf: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of influxdb resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; influxdb@sha256:f5eb5cd107f845529dac36359527ed6448d421c5359cedbfc9d66beffcf669af); image config: ExposedPorts 8086/tcp, Volumes /var/lib/influxdb, User influxdb.",
+      "Digest of chronograf resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; chronograf@sha256:1aa585346868ef0859c507b2c8544a175ad308024765929f5df5b64a9679031d); image config: ExposedPorts 8888/tcp, Volumes /var/lib/chronograf, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 41s; page title \"Chronograf\"; health 200)"
+    ]
+  }
+}

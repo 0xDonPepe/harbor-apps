@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "palmr",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "afec888b26a587d1daf63f77b2b6ecdd350901b50526da5021d50192002b68d8"
+    },
+    "compose.yaml": {
+      "sha256": "e5a480d20160b57b6d7c51724d4840cf2c3de3002bb928251a7c6120a8303afc"
+    },
+    "README.md": {
+      "sha256": "5a4397e91a62e18005836751a3c646183246741fa9130ed867e191439b5ded5f"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "kyantech/palmr@sha256:043dd6cdbb4d9985b376915020fb26c2037b19876674273eac310ab04cdf16f4",
+      "repository": "kyantech/palmr",
+      "tag": "v3.3.2-beta",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:6a69bbda505296feb6a7386a3efbc63b4fc606800eaf74ce3d4bf6e6e563bf40",
+      "appVersion": "3.3.2-beta",
+      "imageCreated": "2025-12-10T14:54:05Z",
+      "source": "https://hub.docker.com/r/kyantech/palmr"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "3.3.2-beta"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package palmr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: stop_grace_period 1m dropped (Docker's default applies)",
+      "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; kyantech/palmr@sha256:043dd6cdbb4d9985b376915020fb26c2037b19876674273eac310ab04cdf16f4); image config: ExposedPorts 3333/tcp,5487/tcp,9378/tcp,9379/tcp, Volumes /app/server, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 70s; page title \"Palmr.\"; health 200)"
+    ]
+  }
+}

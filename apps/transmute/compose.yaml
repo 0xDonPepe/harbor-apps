@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ghcr.io/transmute-app/transmute@sha256:87b669d835d9e68bdbc4082ab061cb361cd3ecee69c14ccfa9a3814d326b6707 # tag: 2.1.1
+    volumes:
+      - {type: volume, source: data, target: "/app/data"}
+volumes:
+  data: {}

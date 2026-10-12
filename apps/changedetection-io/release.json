@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "changedetection-io",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "f530ee0214616c1424312684be4b166e1af8fde39d4f9ffebd66fd82c7cba675"
+    },
+    "compose.yaml": {
+      "sha256": "daaeb401f2d1c35ee4099271f1ca54cd2485f175fa8242ec72bcc1f9071dd705"
+    },
+    "README.md": {
+      "sha256": "98e40e394c110ae6bf5e8de127ab92e7f98ade6cd77cd4ba1f23462b18fbfa74"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/dgtlmoon/changedetection.io@sha256:34df3680db1cbffc45ac1e9c1514bc0507dd0c5b5fde47d1992fe6f14a7b40e4",
+      "repository": "ghcr.io/dgtlmoon/changedetection.io",
+      "tag": "0.60.8",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:aa36286677a1ea637bc46e99e0247b5e97faf709214e775e7720d43dcef0d6fc",
+      "appVersion": "0.60.8",
+      "imageCreated": "2026-09-28T07:43:05Z",
+      "source": "https://ghcr.io/dgtlmoon/changedetection.io"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "0.60.8"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package changedetection-io (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service app: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/dgtlmoon/changedetection.io@sha256:34df3680db1cbffc45ac1e9c1514bc0507dd0c5b5fde47d1992fe6f14a7b40e4); image config: ExposedPorts 5000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 53s; page title \"Change Detection\"; health 200)"
+    ]
+  }
+}

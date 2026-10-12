@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "baikal",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "aa3541380ce25851b69dfda53204f196a77318e6a9e3b1865ae5a83ff301437f"
+    },
+    "compose.yaml": {
+      "sha256": "f89c303fd85af155f4abb75c10968abd1c5be534d9e7c7f72cb8a38dfdeaa63c"
+    },
+    "README.md": {
+      "sha256": "f0c02a74d89e9bb9ef06d1dc52580e22e7a19846c52bb1446d58b16b37a770f9"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/aalmenar/baikal@sha256:f83c70831ebe2ca9ba84ba7b60927f25941f0fba88bdea6bbebe1d0464bb2aa7",
+      "repository": "ghcr.io/aalmenar/baikal",
+      "tag": "0.11.1-nginx",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:6fa037abd16a7c6bf10a2524e36a171f9b36f90355bc83ce4242f9f1074a94c8",
+      "appVersion": "0.11.1-nginx",
+      "imageCreated": "2026-01-16T18:49:29Z",
+      "source": "https://ghcr.io/aalmenar/baikal"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.11.1-nginx"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package baikal (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/aalmenar/baikal@sha256:f83c70831ebe2ca9ba84ba7b60927f25941f0fba88bdea6bbebe1d0464bb2aa7); image config: ExposedPorts 80/tcp, Volumes /var/www/baikal/Specific,/var/www/baikal/config, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 33s; page title \"Baïkal Maintenance\"; health 302)"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "spacebot",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "44d83ba7c80baecda90d4f0ef490c9dd7af8390ce67f48e3a5f7200841dd148c"
+    },
+    "compose.yaml": {
+      "sha256": "24c8e5ead476f4787692adb363bf2bdb4e43121af1d10573b0f6476d465dd3d4"
+    },
+    "README.md": {
+      "sha256": "2ea6da0911d56a88853070ad5f79594d079a583e2391d576c2aecb51e547b978"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "ghcr.io/spacedriveapp/spacebot@sha256:ccd9411f72def62b192e44aed23446b94e6e4774d55d7100a94de1531029f6ed",
+      "repository": "ghcr.io/spacedriveapp/spacebot",
+      "tag": "v0.5.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:b31ecabfe0a339a08586cdb6d1b1a74423072f832554f74b42ee073ebdd2b3e2",
+      "appVersion": "0.5.0",
+      "imageCreated": "2026-05-07T06:16:30Z",
+      "source": "https://ghcr.io/spacedriveapp/spacebot"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "0.5.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package spacebot (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service server: stop_grace_period 1m dropped (Docker's default applies)",
+      "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/spacedriveapp/spacebot@sha256:ccd9411f72def62b192e44aed23446b94e6e4774d55d7100a94de1531029f6ed); image config: ExposedPorts 18789/tcp,19898/tcp,9090/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 50s; page title \"Spacebot\"; health 200)"
+    ]
+  }
+}

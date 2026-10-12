@@ -1,0 +1,82 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: paperless
+  name: Paperless-ngx
+  description: "A community-supported supercharged document management system: scan, index and archive all your documents"
+provisionedCredentials:
+  service: webserver
+  passwordEnv: PAPERLESS_ADMIN_PASSWORD
+  username: admin
+release:
+  revision: "1"
+  version: 3.3.0
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    broker: infrastructure
+    db: infrastructure
+    webserver: application
+    gotenberg: application
+    tika: application
+endpoints:
+  web:
+    service: webserver
+    containerPort: 8000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: redisdata
+    composeVolume: redisdata
+    purpose: Data at /data (broker)
+    retention: retain
+  - id: pgdata
+    composeVolume: pgdata
+    purpose: Data at /var/lib/postgresql/data (db)
+    retention: retain
+  - id: data
+    composeVolume: data
+    purpose: Data at /usr/src/paperless/data (webserver)
+    retention: retain
+  - id: media
+    composeVolume: media
+    purpose: Data at /usr/src/paperless/media (webserver)
+    retention: retain
+  - id: paperless-export
+    composeVolume: paperless-export
+    purpose: Data at /usr/src/paperless/export (webserver)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /usr/src/paperless/export, such as a folder on a large drive"
+      required: false
+  - id: paperless-consume
+    composeVolume: paperless-consume
+    purpose: Data at /usr/src/paperless/consume (webserver)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /usr/src/paperless/consume, such as a folder on a large drive"
+      required: false
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: webserver
+        environment: PAPERLESS_SECRET_KEY
+presentation:
+  tagline: Transform your physical documents into a searchable online archive
+  category: files
+  developer: Paperless-ngx Community
+  website: https://docs.paperless-ngx.com/

@@ -1,0 +1,47 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: wikijs
+  name: WikiJS
+  description: Wiki.js | Next Generation Open Source Wiki
+release:
+  revision: "1"
+  version: 2.5.315
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (server)
+    retention: retain
+  - id: repo
+    composeVolume: repo
+    purpose: Data at /app/wiki/data/repo (server)
+    retention: retain
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (server)
+    retention: retain
+presentation:
+  tagline: Make documentation a joy to write
+  category: developer
+  developer: Requarks
+  website: https://js.wiki/

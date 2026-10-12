@@ -1,0 +1,20 @@
+services:
+  app:
+    image: stirlingtools/stirling-pdf@sha256:b5b9e400c086e5334a4947a0d7cd589808f743f29267d7f41c18200cf4bc48b4 # tag: 3.1.0
+    environment:
+      DOCKER_ENABLE_SECURITY: "false"
+      INSTALL_BOOK_AND_ADVANCED_HTML_OPS: "true"
+      LANGS: ALL
+      SECURITY_ENABLELOGIN: "false"
+    volumes:
+      - {type: volume, source: tessdata, target: "/usr/share/tessdata"}
+      - {type: volume, source: configs, target: "/configs"}
+      - {type: volume, source: logs, target: "/logs"}
+      - {type: volume, source: pipeline, target: "/pipeline"}
+    healthcheck:
+      disable: true
+volumes:
+  tessdata: {}
+  configs: {}
+  logs: {}
+  pipeline: {}

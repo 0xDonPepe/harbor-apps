@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "snapdrop",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "5b67a341a6d0797c410037eb9bbc0b63f913c7d7d8a0d437f2ec566ad107db16"
+    },
+    "compose.yaml": {
+      "sha256": "643458cc93bece0ad38400b5192008fcdd1cb829e0057dab79fd32fb35ee343e"
+    },
+    "README.md": {
+      "sha256": "4e4357dad8e2c23c6ca38837f502e08962bf5f5b03a37c373353f80fce49f79b"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/snapdrop@sha256:3e0af233372e6ae7ac711397d40cbe2797cefe13220d65e5e284a64252cc0c2c",
+      "repository": "linuxserver/snapdrop",
+      "tag": "version-b8b78cc2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:b25e0b4b9fe6f6d6749bf19f6d31605799b0016c9387468451f5b1b7d2c2b2d1",
+      "appVersion": "ersion-b8b78cc2",
+      "imageCreated": "2025-02-20T01:20:25Z",
+      "source": "https://hub.docker.com/r/linuxserver/snapdrop"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "ersion-b8b78cc2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package snapdrop (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/snapdrop@sha256:3e0af233372e6ae7ac711397d40cbe2797cefe13220d65e5e284a64252cc0c2c); image config: ExposedPorts 443/tcp,80/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 32s; page title \"Snapdrop\"; health 200)"
+    ]
+  }
+}

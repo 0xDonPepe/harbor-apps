@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "foldergram",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "5ae418eb504593a91d83a3d9fc297e2baf9cd24bc546b10bda3ee74eb654898e"
+    },
+    "compose.yaml": {
+      "sha256": "7fe9c349c449dda47e63491d792e49bd1c2739f1e603078612f39aa5a151c3e8"
+    },
+    "README.md": {
+      "sha256": "e152b0150232f8c5a1cbca39ed2697bb30108f2ba19d765d12a7a1f93a8025ee"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/foldergram/foldergram@sha256:f72dfe39d9042555fd1b509a06f6c93c8b9a8be02541c80135a9a8f25fe362d4",
+      "repository": "ghcr.io/foldergram/foldergram",
+      "tag": "1.2.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:923218faff1edb6bdc7e6abc80884059830dc61ac28cdccb1580a74c58e98700",
+      "appVersion": "1.2.2",
+      "imageCreated": "2026-06-01T09:56:04Z",
+      "source": "https://ghcr.io/foldergram/foldergram"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.2.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package foldergram (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/foldergram/foldergram@sha256:f72dfe39d9042555fd1b509a06f6c93c8b9a8be02541c80135a9a8f25fe362d4); image config: ExposedPorts 4141/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 46s; page title \"Foldergram\"; health 200)"
+    ]
+  }
+}

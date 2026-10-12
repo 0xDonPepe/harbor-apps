@@ -1,0 +1,41 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: termix
+  name: Termix
+  description: Self-hosted, plugin-based server management.
+release:
+  revision: "1"
+  version: 2.9.2
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    guacd: application
+endpoints:
+  web:
+    service: web
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /app/data (web)
+    retention: retain
+presentation:
+  tagline: Manage your servers with built-in SSH, tunnels, and file access
+  category: developer
+  developer: LukeGus
+  website: https://docs.termix.site/

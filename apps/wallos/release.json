@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "wallos",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c091dbf9f8c6239a9e3d02eb7c3bdcae8dffc61a52f05639ad9bbb4d1f6b383f"
+    },
+    "compose.yaml": {
+      "sha256": "e715608b4c88c38116706c31ce768ee62c6446f8275cbca1f22c16f5b01e2b4f"
+    },
+    "README.md": {
+      "sha256": "2c33e972b683e27ae266c92e2bd297984fd1a50069f79b49c42fba581c852fa3"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "bellamy/wallos@sha256:0006879778f31a962a3873f7682514b92a3c7665dcbc4764fcc241ad968eaccd",
+      "repository": "bellamy/wallos",
+      "tag": "5.8.3",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:5cc6cf4ac1dbee35b2b91885bad75f6dabd9488218f313872ca0b0a09d635678",
+      "appVersion": "5.8.3",
+      "imageCreated": "2026-10-01T16:36:23Z",
+      "source": "https://hub.docker.com/r/bellamy/wallos"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "5.8.3"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package wallos (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: stop_grace_period 1m dropped (Docker's default applies)",
+      "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; bellamy/wallos@sha256:0006879778f31a962a3873f7682514b92a3c7665dcbc4764fcc241ad968eaccd); image config: ExposedPorts 80/tcp,9000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 40s; page title \"Wallos - Subscription Tracker\"; health 302)"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+services:
+  web:
+    image: ghcr.io/raylabshq/gitea-mirror@sha256:786b193599c60138a3fa04b8d7abc45faef9748af030d49da802c5a478314154 # tag: v3.40.3
+    environment:
+      BETTER_AUTH_TRUSTED_ORIGINS: "*"
+      NODE_ENV: production
+      DATABASE_URL: file:data/gitea-mirror.db
+      HOST: 0.0.0.0
+      PORT: "4321"
+      MIRROR_ISSUE_CONCURRENCY: "3"
+      MIRROR_PULL_REQUEST_CONCURRENCY: "5"
+    volumes:
+      - {type: volume, source: data, target: "/app/data"}
+    healthcheck:
+      disable: true
+volumes:
+  data: {}

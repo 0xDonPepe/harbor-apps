@@ -1,0 +1,52 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: stirling-pdf
+  name: Stirling PDF
+  description: "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere"
+release:
+  revision: "1"
+  version: 3.1.0
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: tessdata
+    composeVolume: tessdata
+    purpose: Data at /usr/share/tessdata (app)
+    retention: retain
+  - id: configs
+    composeVolume: configs
+    purpose: Data at /configs (app)
+    retention: retain
+  - id: logs
+    composeVolume: logs
+    purpose: Data at /logs (app)
+    retention: retain
+  - id: pipeline
+    composeVolume: pipeline
+    purpose: Data at /pipeline (app)
+    retention: retain
+presentation:
+  tagline: Merge, split, rotate, and convert PDFs with ease
+  category: files
+  developer: Stirling Tools
+  website: https://stirlingtools.com/

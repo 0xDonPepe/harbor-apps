@@ -1,0 +1,15 @@
+services:
+  web:
+    image: ghcr.io/ulsklyc/yuvomi@sha256:b1c126285d762698021b840116e17097339132b5d333df52522e983229c529c4 # tag: 2.76.0
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      DB_PATH: /data/yuvomi.db
+      BACKUP_DIR: /backups
+      SESSION_SECURE: "false"
+    volumes:
+      - {type: volume, source: app, target: "/data"}
+      - {type: volume, source: backups, target: "/backups"}
+volumes:
+  app: {}
+  backups: {}

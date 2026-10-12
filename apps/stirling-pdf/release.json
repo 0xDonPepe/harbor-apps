@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "stirling-pdf",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "bf0577bac1ecacf9daaa68318d9af33104cb1b03aa58b30d3ee4679b76d88f1e"
+    },
+    "compose.yaml": {
+      "sha256": "2a6b510ed6d8d96b9aa98357df222d84e705c32fa784dafc6b6cc3b44b64a62e"
+    },
+    "README.md": {
+      "sha256": "7f33dc1e7c5a5398135f2ae3872546b7c24827d0c65807889b54ad7ae7b55aac"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "stirlingtools/stirling-pdf@sha256:b5b9e400c086e5334a4947a0d7cd589808f743f29267d7f41c18200cf4bc48b4",
+      "repository": "stirlingtools/stirling-pdf",
+      "tag": "3.1.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:0b33f7ed24912de5b65b90ada2b1b42e2abc24f2029f8692adc944a148522f74",
+      "appVersion": "3.1.0",
+      "imageCreated": "2026-10-05T23:03:16Z",
+      "source": "https://hub.docker.com/r/stirlingtools/stirling-pdf"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "3.1.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package stirling-pdf (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: stop_grace_period 1m dropped (Docker's default applies)",
+      "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; stirlingtools/stirling-pdf@sha256:b5b9e400c086e5334a4947a0d7cd589808f743f29267d7f41c18200cf4bc48b4); image config: ExposedPorts 8080/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 202s; page title \"Stirling PDF\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: homebox
+  name: HomeBox
+  description: A continuation of HomeBox the inventory and organization system built for the Home User
+release:
+  revision: "1"
+  version: 0.26.2-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 7745
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (web)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: web
+        environment: HBOX_AUTH_API_KEY_PEPPER
+presentation:
+  tagline: An inventory and organization system built for the home user
+  category: files
+  developer: SysAdmins Media
+  website: https://homebox.software

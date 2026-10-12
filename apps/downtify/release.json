@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "downtify",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "67ef59325737986e9b2cd988aac1a2b2833c874ef8f93182750ebf1394339dcb"
+    },
+    "compose.yaml": {
+      "sha256": "ba02b7feac36266831a88f8eb52dd59bc1faed40349f92c9f5e626e8113f5d9e"
+    },
+    "README.md": {
+      "sha256": "09d52a3bfd619c51aea96a18e462bc370d5d96bd64c5b8617bd86f83612c1d36"
+    }
+  },
+  "images": {
+    "downtify": {
+      "reference": "ghcr.io/henriquesebastiao/downtify@sha256:6cd5efad47b86b77b5c4eb8930d183ac8d960dd3b0fd31275bbf93256eb78254",
+      "repository": "ghcr.io/henriquesebastiao/downtify",
+      "tag": "3.4.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:302dd6f3722de661eea37ec10d91a8275069028e4a9eccb9e79afe364def0185",
+      "appVersion": "3.4.0",
+      "imageCreated": "2026-10-02T11:23:29Z",
+      "source": "https://ghcr.io/henriquesebastiao/downtify"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "downtify": "3.4.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package downtify (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service downtify: stop_grace_period 1m dropped (Docker's default applies)",
+      "service downtify: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of downtify resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/henriquesebastiao/downtify@sha256:6cd5efad47b86b77b5c4eb8930d183ac8d960dd3b0fd31275bbf93256eb78254); image config: ExposedPorts 8000/tcp, Volumes /data,/downloads, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 41s; page title \"Downtify\"; health 200)"
+    ]
+  }
+}

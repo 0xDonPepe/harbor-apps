@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "perplexica",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "a51838ef832bff408a61446f629e8f62978ba9115ca922fb4c75a634ddc40d45"
+    },
+    "compose.yaml": {
+      "sha256": "78c99b811c647bfe72645ab881a3c646a97cdfbd7c006e9188d5b9ea1fe873a6"
+    },
+    "README.md": {
+      "sha256": "3438078aa46806e904e90d1e4639f5793ae42fc956d6e434d687cd7033128ed3"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "itzcrazykns1337/vane@sha256:61f2bbf3386ff3df08911fb3de0e1893b04702a4d49ef13fbadbda937b47ab7c",
+      "repository": "itzcrazykns1337/vane",
+      "tag": "v1.12.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:11fad047ffb236dde04272ea8beaa1fa64a7e7c059a5ed5df98049bbd15661c8",
+      "appVersion": "1.12.2",
+      "imageCreated": "2026-04-10T13:38:12Z",
+      "source": "https://hub.docker.com/r/itzcrazykns1337/vane"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.12.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package perplexica (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; itzcrazykns1337/vane@sha256:61f2bbf3386ff3df08911fb3de0e1893b04702a4d49ef13fbadbda937b47ab7c); image config: ExposedPorts 3000/tcp,8080/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 248s; page title \"Chat - Vane\"; health 200)"
+    ]
+  }
+}

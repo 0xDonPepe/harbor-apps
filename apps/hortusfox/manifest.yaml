@@ -1,0 +1,68 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: hortusfox
+  name: HortusFox
+  description: Self-hosted collaborative plant management and tracking system for plant enthusiasts
+provisionedCredentials:
+  service: app
+  passwordEnv: APP_ADMIN_PASSWORD
+  username: umbrel@umbrel.local
+release:
+  revision: "1"
+  version: "6.3"
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+    db: infrastructure
+endpoints:
+  web:
+    service: app
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: images
+    composeVolume: images
+    purpose: Data at /var/www/html/public/img (app)
+    retention: retain
+  - id: attachments
+    composeVolume: attachments
+    purpose: Data at /var/www/html/public/attachments (app)
+    retention: retain
+  - id: logs
+    composeVolume: logs
+    purpose: Data at /var/www/html/app/logs (app)
+    retention: retain
+  - id: backup
+    composeVolume: backup
+    purpose: Data at /var/www/html/public/backup (app)
+    retention: retain
+  - id: themes
+    composeVolume: themes
+    purpose: Data at /var/www/html/public/themes (app)
+    retention: retain
+  - id: migrate
+    composeVolume: migrate
+    purpose: Data at /var/www/html/app/migrations (app)
+    retention: retain
+  - id: db-data
+    composeVolume: db-data
+    purpose: Data at /var/lib/mysql (db)
+    retention: retain
+presentation:
+  tagline: A collaborative plant tracking and management application
+  category: files
+  developer: Daniel Brendel
+  website: https://www.hortusfox.com/

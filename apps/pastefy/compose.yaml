@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mariadb@sha256:5dfb3093333fa0ea53194ddef0a2bfa21d3b1e1353bd228b22610cd6fc0c04da # tag: 11.4.5
+    environment:
+      MYSQL_ROOT_PASSWORD: tyooe
+      MYSQL_DATABASE: pastefy
+      MYSQL_USER: pastefy
+      MYSQL_PASSWORD: tyooe
+    volumes:
+      - {type: volume, source: db, target: "/var/lib/mysql"}
+  app:
+    image: interaapps/pastefy@sha256:353ce246ccf24ab1dec42e3c387744b47925065c207699f0bf1ce8e560619ca9 # tag: 7.1.6
+    environment:
+      HTTP_SERVER_CORS: "*"
+      DATABASE_DRIVER: mysql
+      DATABASE_NAME: pastefy
+      DATABASE_USER: pastefy
+      DATABASE_PASSWORD: tyooe
+      DATABASE_HOST: db
+      DATABASE_PORT: "3306"
+    depends_on:
+      db:
+        condition: service_started
+volumes:
+  db: {}

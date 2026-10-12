@@ -1,0 +1,14 @@
+services:
+  server:
+    image: ghcr.io/mauricewipf/fizzy-umbrel@sha256:2d7a493a8933aa784b4d06cc96bd8b047beaf19173d1eec04c767e9dd7f4c28b # tag: 5f45e54
+    environment:
+      RAILS_ENV: production
+      DATABASE_ADAPTER: sqlite
+      ACTIVE_STORAGE_SERVICE: local
+      SOLID_QUEUE_IN_PUMA: "true"
+      FORCE_SSL: "false"
+      ASSUME_SSL: "false"
+    volumes:
+      - {type: volume, source: app, target: "/rails/storage"}
+volumes:
+  app: {}

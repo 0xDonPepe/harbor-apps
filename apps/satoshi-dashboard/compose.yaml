@@ -1,0 +1,11 @@
+services:
+  web:
+    image: ghcr.io/satoshi-dashboard/main@sha256:35ae82af78d972aeb621689e0a1e7dd76fa1c2835dca054c489179a09a279506 # tag: v1.1.0
+    environment:
+      SERVE_STATIC: "true"
+      API_PORT: "8410"
+      API_HOST: 0.0.0.0
+    volumes:
+      - {type: volume, source: data, target: "/app/server/.runtime-cache"}
+volumes:
+  data: {}

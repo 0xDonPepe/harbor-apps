@@ -1,0 +1,12 @@
+services:
+  server:
+    image: linuxserver/bazarr@sha256:8b30e81c4aec2991f469e78fae8afaa89ecc9b21a80e3897f50427216b55470c # tag: 1.6.2
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+      - {type: volume, source: downloads, target: "/downloads"}
+volumes:
+  config: {}
+  downloads: {}

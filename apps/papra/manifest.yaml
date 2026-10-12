@@ -1,0 +1,52 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: papra
+  name: Papra
+  description: The minimalistic document archiving platform.
+release:
+  revision: "1"
+  version: 26.6.2-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 1221
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /app/app-data (server)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: server
+        environment: AUTH_SECRET
+configuration:
+  - service: server
+    environment: APP_BASE_URL
+    endpoint: web
+    format: origin
+presentation:
+  tagline: The minimalistic document archiving platform
+  category: files
+  developer: Papra
+  website: https://papra.app

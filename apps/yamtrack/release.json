@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "yamtrack",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "f18269dde46c7db81a839a303902115c312aec1dcd2364a41f182df32318f802"
+    },
+    "compose.yaml": {
+      "sha256": "2a4cfc36b6ee5aeb29d237aa34be0d23437c1eb02c9ac17347ecc0d9eb9bea86"
+    },
+    "README.md": {
+      "sha256": "9756323142d141408ef1f7a20704e43f4032a57b14529527cc4c2425a4230f55"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/fuzzygrim/yamtrack@sha256:78497b454b2b52d3b1062f6fd238351d714cff0895db4369e49ace36f4622e75",
+      "repository": "ghcr.io/fuzzygrim/yamtrack",
+      "tag": "0.26.3",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:186754674a14c1c3ab094f59c1906a6256f09ab7a27665491a83be982fcc4d18",
+      "appVersion": "0.26.3",
+      "imageCreated": "2026-08-23T21:20:11Z",
+      "source": "https://ghcr.io/fuzzygrim/yamtrack"
+    },
+    "redis": {
+      "reference": "redis@sha256:b43d2dcbbdb1f9e1582e3a0f37e53bf79038522ccffb56a25858969d7a9b6c11",
+      "repository": "redis",
+      "tag": "8.0.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:07c689dad77c543eee9c4e98563c021a7b531d0f87d982aa109414492b5483e1",
+      "appVersion": "8.0.2",
+      "imageCreated": "2025-05-29T16:02:07Z",
+      "source": "https://hub.docker.com/_/redis"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.26.3",
+      "redis": "8.0.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package yamtrack (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: security_opt no-new-privileges dropped",
+      "service redis: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/fuzzygrim/yamtrack@sha256:78497b454b2b52d3b1062f6fd238351d714cff0895db4369e49ace36f4622e75); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of redis resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; redis@sha256:b43d2dcbbdb1f9e1582e3a0f37e53bf79038522ccffb56a25858969d7a9b6c11); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 124s; page title \"Login - Yamtrack\"; health 302)"
+    ]
+  }
+}

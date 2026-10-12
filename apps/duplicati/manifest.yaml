@@ -1,0 +1,55 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: duplicati
+  name: Duplicati
+  description: Store securely encrypted backups in the cloud!
+release:
+  revision: "1"
+  version: 2.4.0.1_stable_2026-10-07
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    duplicati: application
+endpoints:
+  web:
+    service: duplicati
+    containerPort: 8200
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (duplicati)
+    retention: retain
+  - id: storage
+    composeVolume: storage
+    purpose: Data at /umbrel (duplicati)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /umbrel, such as a folder on a large drive"
+      required: false
+secrets:
+  - id: app-password
+    bytes: 32
+    encoding: hex
+    retention: retain
+    showOnce: Duplicati password
+    bindings:
+      - service: duplicati
+        environment: DUPLICATI__WEBSERVICE_PASSWORD
+presentation:
+  tagline: Store securely encrypted backups in the cloud
+  category: files
+  developer: Duplicati
+  website: https://duplicati.com/

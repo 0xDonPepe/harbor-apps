@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "wizarr",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "864cf37dacf0abbf75ac3f3e079baa762d616425a1b03278721c780639ddb657"
+    },
+    "compose.yaml": {
+      "sha256": "3592d45ed4ffec1379b696f42a58034c811fdd1fa6851e0b100aa41af80a1194"
+    },
+    "README.md": {
+      "sha256": "c3ae3122ae75461b41d8f47c901bf0f791861b835079a04b79ce3dcc0c1659b4"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/wizarrrr/wizarr@sha256:3e89f4850092d60f532406209100f5e929e06dd679bfd78c5f3559065f2854e0",
+      "repository": "ghcr.io/wizarrrr/wizarr",
+      "tag": "v2026.9.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:091ecf81ead34318a6bb11c4222076ba9a353127628c0138af7cd5548dac2709",
+      "appVersion": "2026.9.1",
+      "imageCreated": "2026-09-14T10:54:48Z",
+      "source": "https://ghcr.io/wizarrrr/wizarr"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "2026.9.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package wizarr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/wizarrrr/wizarr@sha256:3e89f4850092d60f532406209100f5e929e06dd679bfd78c5f3559065f2854e0); image config: ExposedPorts 5690/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 60s; page title \"Setup Wizarr - None\"; health 302)"
+    ]
+  }
+}

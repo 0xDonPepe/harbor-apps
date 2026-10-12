@@ -1,0 +1,12 @@
+services:
+  app:
+    image: ghcr.io/dgtlmoon/changedetection.io@sha256:34df3680db1cbffc45ac1e9c1514bc0507dd0c5b5fde47d1992fe6f14a7b40e4 # tag: 0.60.8
+    environment:
+      USE_X_SETTINGS: "1"
+      HIDE_REFERER: "true"
+      TZ: Etc/UTC
+      DISABLE_VERSION_CHECK: "true"
+    volumes:
+      - {type: volume, source: data, target: "/datastore"}
+volumes:
+  data: {}

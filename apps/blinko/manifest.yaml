@@ -1,0 +1,62 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: blinko
+  name: Blinko
+  description: An open-source, self-hosted personal AI note tool prioritizing privacy, built using TypeScript .
+release:
+  revision: "1"
+  version: 1.8.8-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    db: infrastructure
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 1111
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/lib/postgresql/data (db)
+    retention: retain
+  - id: app
+    composeVolume: app
+    purpose: Data at /app/.blinko (app)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: app
+        environment: NEXTAUTH_SECRET
+configuration:
+  - service: app
+    environment: NEXTAUTH_URL
+    endpoint: web
+    format: origin
+  - service: app
+    environment: NEXT_PUBLIC_BASE_URL
+    endpoint: web
+    format: origin
+presentation:
+  tagline: An AI-powered hub for your ideas and notes
+  category: files
+  developer: Blinko
+  website: https://blinko-demo.vercel.app/

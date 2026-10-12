@@ -5,6 +5,10 @@
       "revision": "1",
       "dir": "actual"
     },
+    "akaunting": {
+      "revision": "1",
+      "dir": "akaunting"
+    },
     "anythingllm": {
       "revision": "1",
       "dir": "anythingllm"
@@ -13,29 +17,253 @@
       "revision": "1",
       "dir": "audiobookshelf"
     },
+    "autobrr": {
+      "revision": "1",
+      "dir": "autobrr"
+    },
+    "baikal": {
+      "revision": "1",
+      "dir": "baikal"
+    },
+    "bark-wallet": {
+      "revision": "1",
+      "dir": "bark-wallet"
+    },
+    "bazarr": {
+      "revision": "1",
+      "dir": "bazarr"
+    },
     "bentopdf": {
       "revision": "1",
       "dir": "bentopdf"
+    },
+    "bitaxe-sentry": {
+      "revision": "1",
+      "dir": "bitaxe-sentry"
+    },
+    "bitwatch": {
+      "revision": "1",
+      "dir": "bitwatch"
+    },
+    "blinko": {
+      "revision": "1",
+      "dir": "blinko"
+    },
+    "booklore": {
+      "revision": "1",
+      "dir": "booklore"
+    },
+    "btctracker": {
+      "revision": "1",
+      "dir": "btctracker"
+    },
+    "budibase": {
+      "revision": "1",
+      "dir": "budibase"
+    },
+    "cashu-me": {
+      "revision": "1",
+      "dir": "cashu-me"
+    },
+    "changedetection-io": {
+      "revision": "1",
+      "dir": "changedetection-io"
+    },
+    "chatbot-ui": {
+      "revision": "1",
+      "dir": "chatbot-ui"
+    },
+    "chatpad-ai": {
+      "revision": "1",
+      "dir": "chatpad-ai"
+    },
+    "convertx": {
+      "revision": "1",
+      "dir": "convertx"
+    },
+    "databag": {
+      "revision": "1",
+      "dir": "databag"
+    },
+    "docmost": {
+      "revision": "1",
+      "dir": "docmost"
+    },
+    "docuseal": {
+      "revision": "1",
+      "dir": "docuseal"
+    },
+    "downtify": {
+      "revision": "1",
+      "dir": "downtify"
+    },
+    "dropgate-server": {
+      "revision": "1",
+      "dir": "dropgate-server"
+    },
+    "dumbpad": {
+      "revision": "1",
+      "dir": "dumbpad"
+    },
+    "duplicati": {
+      "revision": "1",
+      "dir": "duplicati"
+    },
+    "element": {
+      "revision": "1",
+      "dir": "element"
+    },
+    "emby": {
+      "revision": "1",
+      "dir": "emby"
+    },
+    "enclosed": {
+      "revision": "1",
+      "dir": "enclosed"
+    },
+    "ersatztv-legacy": {
+      "revision": "1",
+      "dir": "ersatztv-legacy"
+    },
+    "etherpad": {
+      "revision": "1",
+      "dir": "etherpad"
     },
     "excalidraw": {
       "revision": "1",
       "dir": "excalidraw"
     },
+    "fizzy": {
+      "revision": "1",
+      "dir": "fizzy"
+    },
+    "flaresolverr": {
+      "revision": "1",
+      "dir": "flaresolverr"
+    },
+    "flatnotes": {
+      "revision": "1",
+      "dir": "flatnotes"
+    },
+    "foldergram": {
+      "revision": "1",
+      "dir": "foldergram"
+    },
     "forgejo": {
       "revision": "1",
       "dir": "forgejo"
+    },
+    "fossflow": {
+      "revision": "1",
+      "dir": "fossflow"
     },
     "freshrss": {
       "revision": "1",
       "dir": "freshrss"
     },
+    "ghost": {
+      "revision": "1",
+      "dir": "ghost"
+    },
+    "gitea-mirror": {
+      "revision": "1",
+      "dir": "gitea-mirror"
+    },
+    "grafana": {
+      "revision": "1",
+      "dir": "grafana"
+    },
+    "grocy": {
+      "revision": "1",
+      "dir": "grocy"
+    },
+    "gupt": {
+      "revision": "1",
+      "dir": "gupt"
+    },
+    "heimdall": {
+      "revision": "1",
+      "dir": "heimdall"
+    },
+    "hermes-agent": {
+      "revision": "1",
+      "dir": "hermes-agent"
+    },
+    "homarr": {
+      "revision": "1",
+      "dir": "homarr"
+    },
+    "homebox": {
+      "revision": "1",
+      "dir": "homebox"
+    },
+    "hortusfox": {
+      "revision": "1",
+      "dir": "hortusfox"
+    },
     "immich": {
       "revision": "1",
       "dir": "immich"
     },
+    "influxdb": {
+      "revision": "1",
+      "dir": "influxdb"
+    },
+    "influxdb2": {
+      "revision": "1",
+      "dir": "influxdb2"
+    },
+    "invio": {
+      "revision": "1",
+      "dir": "invio"
+    },
+    "jackett": {
+      "revision": "1",
+      "dir": "jackett"
+    },
     "jellyfin": {
       "revision": "1",
       "dir": "jellyfin"
+    },
+    "jotty": {
+      "revision": "1",
+      "dir": "jotty"
+    },
+    "kiwix": {
+      "revision": "1",
+      "dir": "kiwix"
+    },
+    "langflow": {
+      "revision": "1",
+      "dir": "langflow"
+    },
+    "leafwiki": {
+      "revision": "1",
+      "dir": "leafwiki"
+    },
+    "libreoffice": {
+      "revision": "1",
+      "dir": "libreoffice"
+    },
+    "librephotos": {
+      "revision": "1",
+      "dir": "librephotos"
+    },
+    "librespeed": {
+      "revision": "1",
+      "dir": "librespeed"
+    },
+    "llama-gpt": {
+      "revision": "1",
+      "dir": "llama-gpt"
+    },
+    "localai": {
+      "revision": "1",
+      "dir": "localai"
+    },
+    "lubelogger": {
+      "revision": "1",
+      "dir": "lubelogger"
     },
     "mealie": {
       "revision": "1",
@@ -45,6 +273,26 @@
       "revision": "1",
       "dir": "memos"
     },
+    "metube": {
+      "revision": "1",
+      "dir": "metube"
+    },
+    "morphos": {
+      "revision": "1",
+      "dir": "morphos"
+    },
+    "mqttx-web": {
+      "revision": "1",
+      "dir": "mqttx-web"
+    },
+    "mstream": {
+      "revision": "1",
+      "dir": "mstream"
+    },
+    "myspeed": {
+      "revision": "1",
+      "dir": "myspeed"
+    },
     "n8n": {
       "revision": "1",
       "dir": "n8n"
@@ -53,21 +301,257 @@
       "revision": "1",
       "dir": "navidrome"
     },
+    "networkingtoolbox": {
+      "revision": "1",
+      "dir": "networkingtoolbox"
+    },
     "nextcloud": {
       "revision": "4",
       "dir": "nextcloud"
+    },
+    "nitter": {
+      "revision": "1",
+      "dir": "nitter"
+    },
+    "nostrudel": {
+      "revision": "1",
+      "dir": "nostrudel"
+    },
+    "notediscovery": {
+      "revision": "1",
+      "dir": "notediscovery"
+    },
+    "nutstash-wallet": {
+      "revision": "1",
+      "dir": "nutstash-wallet"
+    },
+    "ollama": {
+      "revision": "1",
+      "dir": "ollama"
+    },
+    "omnitools": {
+      "revision": "1",
+      "dir": "omnitools"
     },
     "open-webui": {
       "revision": "1",
       "dir": "open-webui"
     },
+    "opencode": {
+      "revision": "1",
+      "dir": "opencode"
+    },
+    "overseerr": {
+      "revision": "1",
+      "dir": "overseerr"
+    },
+    "palmr": {
+      "revision": "1",
+      "dir": "palmr"
+    },
+    "paperless": {
+      "revision": "1",
+      "dir": "paperless"
+    },
+    "papra": {
+      "revision": "1",
+      "dir": "papra"
+    },
+    "passky-client": {
+      "revision": "1",
+      "dir": "passky-client"
+    },
+    "passky-server": {
+      "revision": "1",
+      "dir": "passky-server"
+    },
+    "pastefy": {
+      "revision": "1",
+      "dir": "pastefy"
+    },
+    "pearcircle-seeder": {
+      "revision": "1",
+      "dir": "pearcircle-seeder"
+    },
+    "perplexica": {
+      "revision": "1",
+      "dir": "perplexica"
+    },
+    "picoclaw": {
+      "revision": "1",
+      "dir": "picoclaw"
+    },
+    "pinchflat": {
+      "revision": "1",
+      "dir": "pinchflat"
+    },
+    "pingvin-share": {
+      "revision": "1",
+      "dir": "pingvin-share"
+    },
+    "pyload-ng": {
+      "revision": "1",
+      "dir": "pyload-ng"
+    },
+    "remmina": {
+      "revision": "1",
+      "dir": "remmina"
+    },
+    "rotki": {
+      "revision": "1",
+      "dir": "rotki"
+    },
+    "satoshi-dashboard": {
+      "revision": "1",
+      "dir": "satoshi-dashboard"
+    },
+    "seedtool": {
+      "revision": "1",
+      "dir": "seedtool"
+    },
+    "shopstr": {
+      "revision": "1",
+      "dir": "shopstr"
+    },
+    "skybro": {
+      "revision": "1",
+      "dir": "skybro"
+    },
+    "slink": {
+      "revision": "1",
+      "dir": "slink"
+    },
+    "snapdrop": {
+      "revision": "1",
+      "dir": "snapdrop"
+    },
+    "snort": {
+      "revision": "1",
+      "dir": "snort"
+    },
+    "spacebot": {
+      "revision": "1",
+      "dir": "spacebot"
+    },
+    "sqlitebrowser": {
+      "revision": "1",
+      "dir": "sqlitebrowser"
+    },
+    "stash": {
+      "revision": "1",
+      "dir": "stash"
+    },
+    "stirling-pdf": {
+      "revision": "1",
+      "dir": "stirling-pdf"
+    },
+    "strix": {
+      "revision": "1",
+      "dir": "strix"
+    },
+    "super-productivity": {
+      "revision": "1",
+      "dir": "super-productivity"
+    },
+    "swingmusic": {
+      "revision": "1",
+      "dir": "swingmusic"
+    },
+    "tautulli": {
+      "revision": "1",
+      "dir": "tautulli"
+    },
+    "telegrapho": {
+      "revision": "1",
+      "dir": "telegrapho"
+    },
+    "termix": {
+      "revision": "1",
+      "dir": "termix"
+    },
+    "thinkdashboard": {
+      "revision": "1",
+      "dir": "thinkdashboard"
+    },
+    "threema": {
+      "revision": "1",
+      "dir": "threema"
+    },
+    "torbrowser": {
+      "revision": "1",
+      "dir": "torbrowser"
+    },
+    "transmute": {
+      "revision": "1",
+      "dir": "transmute"
+    },
+    "trip": {
+      "revision": "1",
+      "dir": "trip"
+    },
     "uptime-kuma": {
       "revision": "1",
       "dir": "uptime-kuma"
     },
+    "valorgrid": {
+      "revision": "1",
+      "dir": "valorgrid"
+    },
     "vaultwarden": {
       "revision": "1",
       "dir": "vaultwarden"
+    },
+    "vert": {
+      "revision": "1",
+      "dir": "vert"
+    },
+    "wallos": {
+      "revision": "1",
+      "dir": "wallos"
+    },
+    "wavelog": {
+      "revision": "1",
+      "dir": "wavelog"
+    },
+    "webcheck": {
+      "revision": "1",
+      "dir": "webcheck"
+    },
+    "whoogle-search": {
+      "revision": "1",
+      "dir": "whoogle-search"
+    },
+    "wikijs": {
+      "revision": "1",
+      "dir": "wikijs"
+    },
+    "wingfit": {
+      "revision": "1",
+      "dir": "wingfit"
+    },
+    "wizarr": {
+      "revision": "1",
+      "dir": "wizarr"
+    },
+    "wordpress": {
+      "revision": "1",
+      "dir": "wordpress"
+    },
+    "yamtrack": {
+      "revision": "1",
+      "dir": "yamtrack"
+    },
+    "yuvomi": {
+      "revision": "1",
+      "dir": "yuvomi"
+    },
+    "zen": {
+      "revision": "1",
+      "dir": "zen"
+    },
+    "zeronote": {
+      "revision": "1",
+      "dir": "zeronote"
     }
   }
 }

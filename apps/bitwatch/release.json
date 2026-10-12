@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "bitwatch",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "8ed79f47948bb43caf698ea7f47d56889a310294c67f406a42a25c981326fe06"
+    },
+    "compose.yaml": {
+      "sha256": "626d36e6174e322e70dc054beb22ec20be2241feed22feec34d582b16ce4d19c"
+    },
+    "README.md": {
+      "sha256": "c990a4fa2389b551ee74c689383fb3b871ddae930549c1fa4cb4cdde978c2906"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/zapomatic/bitwatch@sha256:e5f868dcb1a750fad48090b56301d36bc0b87f397d176b57d150e2d4edebd350",
+      "repository": "ghcr.io/zapomatic/bitwatch",
+      "tag": "v1.8.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:e1ad9502b5c509c5b807f4fa785915d1490f60763dba2889f1eff6e13f6a8399",
+      "appVersion": "1.8.0",
+      "imageCreated": "2026-09-23T02:59:48Z",
+      "source": "https://ghcr.io/zapomatic/bitwatch"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.8.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package bitwatch (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/zapomatic/bitwatch@sha256:e5f868dcb1a750fad48090b56301d36bc0b87f397d176b57d150e2d4edebd350); image config: ExposedPorts 3117/tcp, Volumes none, User 1000.",
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 48s; page title \"Bitwatch\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: metube
+  name: MeTube
+  description: Self-hosted video downloader for YouTube and other sites (web UI for yt-dlp)
+release:
+  revision: "1"
+  version: 2026.10.09
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    metube: application
+endpoints:
+  web:
+    service: metube
+    containerPort: 8081
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: downloads-metube
+    composeVolume: downloads-metube
+    purpose: Data at /downloads (metube)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
+      required: false
+presentation:
+  tagline: Download videos from YouTube
+  category: media
+  developer: Alex Shnitman
+  website: https://github.com/alexta69/metube

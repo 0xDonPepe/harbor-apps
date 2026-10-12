@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "libreoffice",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "7e685e76f866e691abaed5386c8ec4046fe8cff2ba5206bcf6b1a4e26f42ec37"
+    },
+    "compose.yaml": {
+      "sha256": "1477ce57313c794fecf24e42dddcc707e342b799059bd110102e1b21d94d0906"
+    },
+    "README.md": {
+      "sha256": "5e576bc80c0210412cfc16312b7770bd2836c4fffdd1afbb8c6109d011cbd1e0"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/libreoffice@sha256:a62c7f094f2a7ed8145983d04f54ca80d85b557bbdda0f9aa784ccb6267b70e8",
+      "repository": "linuxserver/libreoffice",
+      "tag": "7.6.7",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:f1ee53a1b88c81d9175995b39b89b9e17df37a60ba69b13130bc74ec7b39a1a2",
+      "appVersion": "7.6.7",
+      "imageCreated": "2024-08-05T22:55:41Z",
+      "source": "https://hub.docker.com/r/linuxserver/libreoffice"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "7.6.7"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package libreoffice (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/libreoffice@sha256:a62c7f094f2a7ed8145983d04f54ca80d85b557bbdda0f9aa784ccb6267b70e8); image config: ExposedPorts 3000/tcp,3001/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 63s; page title \"LibreOffice\"; health 200)"
+    ]
+  }
+}

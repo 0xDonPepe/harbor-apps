@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: wizarr
+  name: Wizarr
+  description: Wizarr is an advanced user invitation and management system for Jellyfin, Plex, Emby etc.
+release:
+  revision: "1"
+  version: 2026.9.1-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 5690
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (app)
+    retention: retain
+presentation:
+  tagline: An advanced invitation and management system for media servers
+  category: media
+  developer: Wizarr
+  website: https://github.com/wizarrrr/wizarr

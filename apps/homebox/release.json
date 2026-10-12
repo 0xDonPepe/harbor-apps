@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "homebox",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "94f43c1e9cafd9ae24e48869c7aac4a649228fda10b89302daf5c4111dcc9bbb"
+    },
+    "compose.yaml": {
+      "sha256": "7ed9c6265ed5d285e668eaa0129af354d3fbdb56262ba2a538379a59488699af"
+    },
+    "README.md": {
+      "sha256": "5d71d91962f89e2cce55e2067c2c561cdecc3f5ac6c38b87868f369eba98297a"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/sysadminsmedia/homebox@sha256:b1ad7e3c63f732a5f6daa466e8116be4f545b3b120383a64dcb62beb00a660cc",
+      "repository": "ghcr.io/sysadminsmedia/homebox",
+      "tag": "0.26.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:835c1075b94a33529714e9ae724f8b4dae9b6f323d469f6413ecdca03971bf7a",
+      "appVersion": "0.26.2",
+      "imageCreated": "2026-06-14T02:01:16Z",
+      "source": "https://ghcr.io/sysadminsmedia/homebox"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.26.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package homebox (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/sysadminsmedia/homebox@sha256:b1ad7e3c63f732a5f6daa466e8116be4f545b3b120383a64dcb62beb00a660cc); image config: ExposedPorts 7745/tcp, Volumes /data, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 24s; page title \"HomeBox | Organize and Tag Your Stuff\"; health 200)"
+    ]
+  }
+}

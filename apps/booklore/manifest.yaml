@@ -1,0 +1,52 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: booklore
+  name: BookLore
+  description: "BookLore: A self-hosted, multi-user digital library with smart shelves, auto metadata, Kobo & KOReader sync, BookDrop imports, OPDS support, and a built-in reader for EPUB, PDF, and comics."
+release:
+  revision: "1"
+  version: 2.4.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    db: infrastructure
+endpoints:
+  web:
+    service: web
+    containerPort: 6060
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: app
+    composeVolume: app
+    purpose: Data at /app/data (web)
+    retention: retain
+  - id: books
+    composeVolume: books
+    purpose: Data at /books (web)
+    retention: retain
+  - id: bookdrop
+    composeVolume: bookdrop
+    purpose: Data at /bookdrop (web)
+    retention: retain
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/lib/mysql (db)
+    retention: retain
+presentation:
+  tagline: An app for managing and reading books
+  category: files
+  developer: BookLore
+  website: https://demo.booklore.dev/login

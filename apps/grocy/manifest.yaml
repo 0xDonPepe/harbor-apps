@@ -1,0 +1,43 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: grocy
+  name: Grocy
+  description: ERP beyond your fridge - Grocy is a web-based self-hosted groceries & household management solution for your home
+defaultCredentials:
+  username: admin
+  password: admin
+  note: Change it after the first login.
+release:
+  revision: "1"
+  version: 4.7.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (server)
+    retention: retain
+presentation:
+  tagline: Track groceries, chores, recipes, and household tasks
+  category: files
+  developer: Grocy
+  website: https://grocy.info/

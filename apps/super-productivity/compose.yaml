@@ -1,0 +1,3 @@
+services:
+  web:
+    image: johannesjo/super-productivity@sha256:5013128f5c8af8f7f836d6bfce9b7678f64aa4de803637f6d164a51162a3e33c # tag: v19.2.0

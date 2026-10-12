@@ -1,0 +1,70 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: librephotos
+  name: LibrePhotos
+  description: You can find here the Dockerfiles for the automated build process of LibrePhotos.
+provisionedCredentials:
+  service: backend
+  passwordEnv: ADMIN_PASSWORD
+  username: admin
+release:
+  revision: "1"
+  version: 2026w14-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    proxy: application
+    db: application
+    frontend: application
+    backend: application
+endpoints:
+  web:
+    service: proxy
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: photos
+    composeVolume: photos
+    purpose: Data at /data (proxy)
+    retention: retain
+  - id: protected-media
+    composeVolume: protected-media
+    purpose: Data at /protected_media (proxy)
+    retention: retain
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/lib/postgresql/data (db)
+    retention: retain
+  - id: logs
+    composeVolume: logs
+    purpose: Data at /logs (backend)
+    retention: retain
+  - id: cache
+    composeVolume: cache
+    purpose: Data at /root/.cache (backend)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: backend
+        environment: SECRET_KEY
+presentation:
+  tagline: A photo management service
+  category: files
+  developer: LibrePhotos
+  website: https://docs.librephotos.com/

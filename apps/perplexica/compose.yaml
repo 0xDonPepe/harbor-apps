@@ -1,0 +1,9 @@
+services:
+  web:
+    image: itzcrazykns1337/vane@sha256:61f2bbf3386ff3df08911fb3de0e1893b04702a4d49ef13fbadbda937b47ab7c # tag: v1.12.2
+    volumes:
+      - {type: volume, source: app-data, target: "/home/perplexica/data"}
+      - {type: volume, source: uploads, target: "/home/perplexica/uploads"}
+volumes:
+  app-data: {}
+  uploads: {}

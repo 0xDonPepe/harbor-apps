@@ -1,0 +1,5 @@
+services:
+  web:
+    image: eduard256/strix@sha256:c000c723b985a5f4a98e8d738dc1b04294e6b7343fcf2576031c2732abb82789 # tag: 2.2.0
+    healthcheck:
+      disable: true

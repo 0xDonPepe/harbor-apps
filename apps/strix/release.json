@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "strix",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "75747ffe6e41e35c34fd94645530ac8c129558b8a4a56aa2cd2cd0b8f1db4981"
+    },
+    "compose.yaml": {
+      "sha256": "7b18af621d05b37a5f8ad1f3a2dd296171cc7324c7786fb1fcbcbe6d84d269c4"
+    },
+    "README.md": {
+      "sha256": "22a079f981c5fc5a479c1a09227137b021c155a5ecc077c6f4d8b686a7386eb2"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "eduard256/strix@sha256:c000c723b985a5f4a98e8d738dc1b04294e6b7343fcf2576031c2732abb82789",
+      "repository": "eduard256/strix",
+      "tag": "2.2.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:e2ad36ccb18b5e01279a478aebe5dbadde82f219666ed54a8852f3d0e259435e",
+      "appVersion": "2.2.0",
+      "imageCreated": "2026-08-24T10:55:50Z",
+      "source": "https://hub.docker.com/r/eduard256/strix"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "2.2.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package strix (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; eduard256/strix@sha256:c000c723b985a5f4a98e8d738dc1b04294e6b7343fcf2576031c2732abb82789); image config: ExposedPorts 4567/tcp, Volumes none, User nobody.",
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 25s; page title \"Strix - Camera Stream Discovery\"; health 200)"
+    ]
+  }
+}

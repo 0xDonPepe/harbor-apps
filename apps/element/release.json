@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "element",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "f4e047e3cd919aa6343a1c04ab592d6de726a2471ece1400e51c80daaac085b8"
+    },
+    "compose.yaml": {
+      "sha256": "6fa80396038040e20ad488700949b17dcdb78d5ad223f16c3fc6a05e8ec3234c"
+    },
+    "README.md": {
+      "sha256": "ca82cf2e8d7c018eb49d7c3b8788734b47f9acaccdd0668e5fb368145768e1b3"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "vectorim/element-web@sha256:3e7dbd4424de9e11c812bc740acf2725b2abe66ea0d0802023b56fd85d3fa09a",
+      "repository": "vectorim/element-web",
+      "tag": "v1.12.30",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:9189d2871ecc9ba8a79a1a94c29c4696648fbaa7a6979092919d9b18d0f1ae09",
+      "appVersion": "1.12.30",
+      "imageCreated": "2026-09-29T13:18:12Z",
+      "source": "https://hub.docker.com/r/vectorim/element-web"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.12.30"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package element (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user nginx:nginx dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; vectorim/element-web@sha256:3e7dbd4424de9e11c812bc740acf2725b2abe66ea0d0802023b56fd85d3fa09a); image config: ExposedPorts 8080/tcp, Volumes none, User nginx.",
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 34s; page title \"Element\"; health 200)"
+    ]
+  }
+}

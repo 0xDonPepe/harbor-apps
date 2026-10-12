@@ -1,0 +1,23 @@
+services:
+  api:
+    image: localai/localai@sha256:f1bc435659b9da49180e868fdd0361915171a740cd947bf081b62a896a7ea8d0 # tag: v4.11.0
+    environment:
+      MODELS_PATH: /models
+      LOCALAI_BACKENDS_PATH: /backends
+      LOCALAI_EXTERNAL_BACKENDS: cpu-llama-cpp
+      LOCALAI_FORCE_META_BACKEND_CAPABILITY_RUN_FILE: /nonexistent
+      NVIDIA_DISABLE_REQUIRE: "true"
+    volumes:
+      - {type: volume, source: models, target: "/models"}
+      - {type: volume, source: backends, target: "/backends"}
+      - {type: volume, source: data, target: "/data"}
+      - {type: volume, source: configuration, target: "/configuration"}
+      - {type: volume, source: images, target: "/tmp/generated/images"}
+    healthcheck:
+      disable: true
+volumes:
+  models: {}
+  backends: {}
+  data: {}
+  configuration: {}
+  images: {}

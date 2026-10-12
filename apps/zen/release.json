@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "zen",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c853002360e3b0fb44c255cf184c93922e3629499117fd87659b2248dab79ef9"
+    },
+    "compose.yaml": {
+      "sha256": "940a7049565692aef7187f64c94a60cca8b329d14107cebee2ebd00a6c87c10b"
+    },
+    "README.md": {
+      "sha256": "3fb72e3c63d2db0c9de0575cc53551b60957b4aea1d77864f9e7ed424ce29331"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/sheshbabu/zen/zen@sha256:370d7ae0d8b4d06593b44ffa1cfde5d15c7f80abe4bbe8d94e86d8d29e250270",
+      "repository": "ghcr.io/sheshbabu/zen/zen",
+      "tag": "1.5.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:4958a4dadd009d45fd5b7183ba2d54c3a7cb5735bb28a61f24a42ece83409bf6",
+      "appVersion": "1.5.0",
+      "imageCreated": "2025-10-26T08:57:36Z",
+      "source": "https://ghcr.io/sheshbabu/zen/zen"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "1.5.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package zen (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/sheshbabu/zen/zen@sha256:370d7ae0d8b4d06593b44ffa1cfde5d15c7f80abe4bbe8d94e86d8d29e250270); image config: ExposedPorts none, Volumes /data,/images, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 22s; page title \"Zen\"; health 200)"
+    ]
+  }
+}

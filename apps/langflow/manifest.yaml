@@ -1,0 +1,52 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: langflow
+  name: Langflow
+  description: Langflow is a powerful tool for building and deploying AI-powered agents and workflows.
+release:
+  revision: "1"
+  version: 1.12.5
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+    db: infrastructure
+endpoints:
+  web:
+    service: app
+    containerPort: 7860
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: app
+    composeVolume: app
+    purpose: Data at /app/langflow (app)
+    retention: retain
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/lib/postgresql/data (db)
+    retention: retain
+secrets:
+  - id: app-password
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: app
+        environment: LANGFLOW_SUPERUSER_PASSWORD
+presentation:
+  tagline: Build AI agents and workflows visually
+  category: ai
+  developer: Langflow
+  website: https://www.langflow.org/

@@ -1,0 +1,43 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: stash
+  name: Stash
+  description: Hoard everything. Find Anything.
+release:
+  revision: "1"
+  version: 1.0.1-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 5173
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: app
+    composeVolume: app
+    purpose: Data at /app/data (web)
+    retention: retain
+  - id: models
+    composeVolume: models
+    purpose: Data at /app/models (web)
+    retention: retain
+presentation:
+  tagline: Hoard everything, find anything — your private on-device AI inbox
+  category: ai
+  developer: Stash
+  website: https://github.com/savewithstash/stash

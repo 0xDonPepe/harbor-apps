@@ -1,0 +1,51 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: downtify
+  name: Downtify
+  description: Download and listen to your music, playlists, and podcasts, along with album art and metadata
+defaultCredentials:
+  username: admin
+  password: downtify
+  note: Change it after the first login.
+release:
+  revision: "1"
+  version: 3.4.0
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    downtify: application
+endpoints:
+  web:
+    service: downtify
+    containerPort: 8000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: downloads-downtify
+    composeVolume: downloads-downtify
+    purpose: Data at /downloads (downtify)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
+      required: false
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (downtify)
+    retention: retain
+presentation:
+  tagline: Download Spotify music with album art and metadata
+  category: media
+  developer: Henrique Sebastião
+  website: https://github.com/henriquesebastiao/downtify

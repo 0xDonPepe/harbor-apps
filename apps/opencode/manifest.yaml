@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: opencode
+  name: OpenCode
+  description: The open source coding agent.
+release:
+  revision: "1"
+  version: 1.19.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 4096
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: opencode
+    composeVolume: opencode
+    purpose: Data at /home/opencode (app)
+    retention: retain
+presentation:
+  tagline: The open source AI coding agent
+  category: ai
+  developer: Anomaly
+  website: https://opencode.ai/

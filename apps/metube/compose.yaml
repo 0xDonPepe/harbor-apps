@@ -1,0 +1,11 @@
+services:
+  metube:
+    image: ghcr.io/alexta69/metube@sha256:df929ef2453fd75c1f1cbd8dafb309ee03ff18d8705c7c1e01642b1202d4a650 # tag: 2026.10.09
+    environment:
+      DELETE_FILE_ON_TRASHCAN: "true"
+    volumes:
+      - {type: volume, source: downloads-metube, target: "/downloads"}
+    healthcheck:
+      disable: true
+volumes:
+  downloads-metube: {}

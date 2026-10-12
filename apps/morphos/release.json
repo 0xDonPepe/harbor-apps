@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "morphos",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "8dff8ca8dff55d7be6f0acd3b6a3e6308b5c2ba2aa2e0d31384a83044e07740b"
+    },
+    "compose.yaml": {
+      "sha256": "b8b464dc994fcf00618ac757b857277d263abbad821a01e80a7c2bab79ddc52c"
+    },
+    "README.md": {
+      "sha256": "5cbdc23eee068a39a234e0dd632edb79d4ba8636c561668fac9848811037dec2"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/danvergara/morphos-server@sha256:3d6f64ef386cbb6a7c5d55526e1a69da2d3661a1996d757897e92bf4369088f5",
+      "repository": "ghcr.io/danvergara/morphos-server",
+      "tag": "0.6.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:3ca3c1e09c6ad2bbc3331becde766baaf54f9144f6a5cd3de7a24a16f8ad0eec",
+      "appVersion": "0.6.0",
+      "imageCreated": "2024-09-21T03:33:27Z",
+      "source": "https://ghcr.io/danvergara/morphos-server"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.6.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package morphos (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/danvergara/morphos-server@sha256:3d6f64ef386cbb6a7c5d55526e1a69da2d3661a1996d757897e92bf4369088f5); image config: ExposedPorts 8080/tcp, Volumes none, User morphos.",
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 79s; page title \"Upload your file\"; health 200)"
+    ]
+  }
+}

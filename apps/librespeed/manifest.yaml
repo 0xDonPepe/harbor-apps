@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: librespeed
+  name: LibreSpeed
+  description: Self-hosted Speed Test for HTML5 and more. Easy setup, examples, configurable, mobile friendly. Supports PHP, Node, Multiple servers, and more
+release:
+  revision: "1"
+  version: 6.3.0
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (server)
+    retention: retain
+presentation:
+  tagline: Free and open source speedtest
+  category: network
+  developer: LibreSpeed
+  website: https://librespeed.org/

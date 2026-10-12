@@ -1,0 +1,48 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: databag
+  name: Databag
+  description: fast & lightweight self-hosted messenger
+release:
+  revision: "1"
+  version: 0.1.18-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 7000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: databag
+    composeVolume: databag
+    purpose: Data at /var/lib/databag (web)
+    retention: retain
+secrets:
+  - id: app-password
+    bytes: 32
+    encoding: hex
+    retention: retain
+    showOnce: Databag password
+    bindings:
+      - service: web
+        environment: ADMIN
+presentation:
+  tagline: A tiny self-hosted federated messenger for the decentralized web
+  category: other
+  developer: Pierre Balzack
+  website: https://github.com/balzack/databag

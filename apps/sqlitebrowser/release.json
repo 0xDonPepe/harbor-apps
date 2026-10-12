@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "sqlitebrowser",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "be65bc866af320494e7aed4909923ecee8b6c7a27a34ad9ed1cd0e654985f58e"
+    },
+    "compose.yaml": {
+      "sha256": "4983b74b83095e9dac57aafcfa6d247bf94f5cbb44df7ff4802b2e15c0fdda31"
+    },
+    "README.md": {
+      "sha256": "f148689e884ac2c5013154d012d5c1d61853d962083ae14d2cfd38f03d46c800"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "linuxserver/sqlitebrowser@sha256:1b1e81f0af222af3353a4c8d3c4737264a1816a43e4410819430335fa099b1da",
+      "repository": "linuxserver/sqlitebrowser",
+      "tag": "3.13.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:2f763c68c9526c5042fcb4b58ec9c459644f267328db40e71de5bf72b9a9d510",
+      "appVersion": "3.13.1",
+      "imageCreated": "2025-02-15T02:41:46Z",
+      "source": "https://hub.docker.com/r/linuxserver/sqlitebrowser"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "3.13.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package sqlitebrowser (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/sqlitebrowser@sha256:1b1e81f0af222af3353a4c8d3c4737264a1816a43e4410819430335fa099b1da); image config: ExposedPorts 3000/tcp,3001/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 65s; page title \"SQLiteBrowser\"; health 200)"
+    ]
+  }
+}

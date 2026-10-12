@@ -1,0 +1,33 @@
+services:
+  web:
+    image: secondark/bark-web@sha256:c7ee6f6f92bc0e67d98dc0336ec85d4a3ac96e323cd8fb758175747532e1bcae # tag: 0.8.0
+    depends_on:
+      api:
+        condition: service_started
+      barkd:
+        condition: service_started
+  api:
+    image: secondark/bark-web-api@sha256:2ccf75c99873e99182d61f64cd2d9ff03fb376812bbc9a9e43abd10d9afc38ab # tag: 0.8.0
+    environment:
+      PORT: "4001"
+      WALLET_DIR: /wallet-data/.bark
+      WALLET_DATA_PATH: /Apps/bark-wallet/data/wallet/.bark/
+      BARKD_URL: http://barkd:4000
+      ARK_SERVER: https://ark.second.tech
+      CHAIN_SOURCE: https://mempool.second.tech/api
+      BARK_NETWORK: mainnet
+    volumes:
+      - {type: volume, source: wallet, target: "/wallet-data", read_only: true}
+    depends_on:
+      barkd:
+        condition: service_started
+  barkd:
+    image: secondark/bark@sha256:30a91f2c31a16ec7d1a4d7744989ff2113fd003febb75aedfe2449db9133e671 # tag: 0.6.2
+    command:
+      - sh
+      - -c
+      - mkdir -p /data/.bark && chown -R 1000:1000 /data && exec setpriv --reuid 1000 --regid 1000 --clear-groups /usr/local/bin/barkd --port 4000 --host 0.0.0.0 --datadir /data/.bark --expose-mnemonic
+    volumes:
+      - {type: volume, source: wallet, target: "/data"}
+volumes:
+  wallet: {}

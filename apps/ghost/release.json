@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "ghost",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "97cb155e9edf7fc91f1c6badf985c4a5fd4babd8519409185f26f5c2f6cdc2ef"
+    },
+    "compose.yaml": {
+      "sha256": "985fdbbbc768e877495b2333cc181d748d1f1038b48139d01e48bd5233c9cfe6"
+    },
+    "README.md": {
+      "sha256": "d23ede1554017f92cea18cc3dd83fb00f3a356d84bbfb20d52c7c408a3ac7e6a"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghost@sha256:55131b90d48c3cecae6c085f873b2067542ababd286b12d08474b2b34328e266",
+      "repository": "ghost",
+      "tag": "6.69.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:5bd9c840eb97394695f6f5cb5e0a13b47c5a059ebbcb0c26f66afe4631b5dc5b",
+      "appVersion": "6.69.0",
+      "imageCreated": "2026-10-07T19:19:15Z",
+      "source": "https://hub.docker.com/_/ghost"
+    },
+    "db": {
+      "reference": "mysql@sha256:339598fe066c73daa4120f2d9dfefd3146c3519cd324748e1d3f9d2b6c71d10b",
+      "repository": "mysql",
+      "tag": "8.4.4",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:cf47e4de19a5473dbe250162757a0bc764f841becc55f2cf3b4f584ac00265df",
+      "appVersion": "8.4.4",
+      "imageCreated": "2025-01-21T17:21:51Z",
+      "source": "https://hub.docker.com/_/mysql"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "6.69.0",
+      "db": "8.4.4"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package ghost (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghost@sha256:55131b90d48c3cecae6c085f873b2067542ababd286b12d08474b2b34328e266); image config: ExposedPorts 2368/tcp, Volumes /var/lib/ghost/content, User root.",
+      "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mysql@sha256:339598fe066c73daa4120f2d9dfefd3146c3519cd324748e1d3f9d2b6c71d10b); image config: ExposedPorts 3306/tcp,33060/tcp, Volumes /var/lib/mysql, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 139s; page title \"Ghost\"; health 200)"
+    ]
+  }
+}

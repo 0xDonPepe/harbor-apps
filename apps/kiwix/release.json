@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "kiwix",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "b65f7be390a014f0cb45730d4b4c97d4651e7900dd2edd0dad01d92322a9a788"
+    },
+    "compose.yaml": {
+      "sha256": "c90edcd5555e6e21a408419a5faf28f99e70d26a0b77cd668dc1787b8f104c79"
+    },
+    "README.md": {
+      "sha256": "d2b268fdd9f5067a07c0cad325b13e6d9de60437c793a1640bc2c773591d7deb"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/kiwix/kiwix-serve@sha256:e478554a9920412eeb5ce1d73f24e4b28445ebed233187cdd03c623c32be46a5",
+      "repository": "ghcr.io/kiwix/kiwix-serve",
+      "tag": "3.8.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:2ebf0615402bd6ad803ab39f738246cd10619b280d34621dea646112c53194bf",
+      "appVersion": "3.8.2",
+      "imageCreated": "2026-09-11T09:28:43Z",
+      "source": "https://ghcr.io/kiwix/kiwix-serve"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "3.8.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package kiwix (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/kiwix/kiwix-serve@sha256:e478554a9920412eeb5ce1d73f24e4b28445ebed233187cdd03c623c32be46a5); image config: ExposedPorts 80/tcp,8080/tcp, Volumes /data, User user.",
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 23s; page title \"Welcome to Kiwix Server\"; health 200)"
+    ]
+  }
+}

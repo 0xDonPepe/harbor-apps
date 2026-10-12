@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "enclosed",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "94c97fb192ba72666ad83c891ea674d411ca8d864d043b176c1ac1e6fa27cec5"
+    },
+    "compose.yaml": {
+      "sha256": "121eaa58b1e66eed41116b3aff6e533124410f477ba127438ba6a1b70d00003d"
+    },
+    "README.md": {
+      "sha256": "a837ac010b92d7255ced7338c1428e21d7e61bac2d6cf374533ee032462c6c49"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "corentinth/enclosed@sha256:0631baee489b974cf16ffe3884c814e7bcc75df7bd36662b8ded76443b768d06",
+      "repository": "corentinth/enclosed",
+      "tag": "1.16.0-rootless",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:9e9cbc6e769066bbc343d31e651156fec40b9e48fb97032c8ce2bb58c7845853",
+      "appVersion": "1.16.0-rootless",
+      "imageCreated": "2025-07-22T19:23:14Z",
+      "source": "https://hub.docker.com/r/corentinth/enclosed"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.16.0-rootless"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package enclosed (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; corentinth/enclosed@sha256:0631baee489b974cf16ffe3884c814e7bcc75df7bd36662b8ded76443b768d06); image config: ExposedPorts 8787/tcp, Volumes none, User nonroot.",
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 46s; page title \"Enclosed - Send private and secure notes\"; health 200)"
+    ]
+  }
+}

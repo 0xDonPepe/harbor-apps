@@ -1,0 +1,10 @@
+services:
+  web:
+    image: dennysubke/torbrowser@sha256:b0c12dbc6b93338ef02f57186f47a57952f864e31f015a9fb47fa6c5afc0d0b1 # tag: 15.0.17
+    environment:
+      DARK_MODE: "1"
+      WEB_AUDIO: "1"
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+volumes:
+  config: {}

@@ -1,0 +1,49 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: slink
+  name: Slink
+  description: Self-hosted image hosting and sharing platform with private links, collections, S3/SMB storage, OIDC SSO and ShareX support.
+release:
+  revision: "1"
+  version: 1.14.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: var
+    composeVolume: var
+    purpose: Data at /app/var/data (web)
+    retention: retain
+  - id: images
+    composeVolume: images
+    purpose: Data at /app/slink/images (web)
+    retention: retain
+configuration:
+  - service: web
+    environment: ORIGIN
+    endpoint: web
+    format: origin
+presentation:
+  tagline: A powerful, privacy-first image sharing platform
+  category: files
+  developer: Andrii Kryvoviaz
+  website: https://docs.slinkapp.io/

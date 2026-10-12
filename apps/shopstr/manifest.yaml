@@ -1,0 +1,35 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: shopstr
+  name: Shopstr
+  description: A global, permissionless Nostr marketplace for Bitcoin commerce
+release:
+  revision: "1"
+  version: 0.7.5
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+presentation:
+  tagline: Shop freely
+  category: finance
+  developer: calvadev
+  website: https://calva.dev

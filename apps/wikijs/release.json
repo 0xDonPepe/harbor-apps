@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "wikijs",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "e452d8cca6de003c38fbf79ee2a788778c761a6407f86d8e955348d64a26928d"
+    },
+    "compose.yaml": {
+      "sha256": "8955f5f2847bf7311033b6080b21f64f09124f2a6794721f22a433c8cbae8f42"
+    },
+    "README.md": {
+      "sha256": "841539fe42f61b7ab8fb8c5548a324bfa9a329b747f52f86fe95e78a2228ba15"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/wikijs@sha256:1cbb7cd39f62b12025b6cb5fea4f95629833162c72bf0604c568090f343c8665",
+      "repository": "linuxserver/wikijs",
+      "tag": "2.5.315",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:540f222f3c8d267ed2c5ffac1b7bf0d6a4dd7352540bd5d44030307095a02f26",
+      "appVersion": "2.5.315",
+      "imageCreated": "2026-09-21T14:31:50Z",
+      "source": "https://hub.docker.com/r/linuxserver/wikijs"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "2.5.315"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package wikijs (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/wikijs@sha256:1cbb7cd39f62b12025b6cb5fea4f95629833162c72bf0604c568090f343c8665); image config: ExposedPorts 3000/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 49s; page title \"Wiki.js Setup\"; health 200)"
+    ]
+  }
+}

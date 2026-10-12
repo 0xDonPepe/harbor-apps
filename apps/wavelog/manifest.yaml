@@ -1,0 +1,52 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: wavelog
+  name: Wavelog
+  description: Webbased Amateur Radio Logging Software - Log your contacts from everywhere!
+release:
+  revision: "1"
+  version: 3.2.3
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+    wavelog-db: infrastructure
+endpoints:
+  web:
+    service: app
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /var/www/html/application/config/docker (app)
+    retention: retain
+  - id: uploads
+    composeVolume: uploads
+    purpose: Data at /var/www/html/uploads (app)
+    retention: retain
+  - id: userdata
+    composeVolume: userdata
+    purpose: Data at /var/www/html/userdata (app)
+    retention: retain
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/lib/mysql (wavelog-db)
+    retention: retain
+presentation:
+  tagline: Amateur radio logging software
+  category: other
+  developer: DF2ET, DJ7NT, HB9HIL, LA8AJA
+  website: https://www.wavelog.org

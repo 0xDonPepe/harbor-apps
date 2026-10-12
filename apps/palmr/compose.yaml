@@ -1,0 +1,12 @@
+services:
+  server:
+    image: kyantech/palmr@sha256:043dd6cdbb4d9985b376915020fb26c2037b19876674273eac310ab04cdf16f4 # tag: v3.3.2-beta
+    environment:
+      PALMR_UID: "1000"
+      PALMR_GID: "1000"
+    volumes:
+      - {type: volume, source: data, target: "/app/server"}
+    healthcheck:
+      disable: true
+volumes:
+  data: {}

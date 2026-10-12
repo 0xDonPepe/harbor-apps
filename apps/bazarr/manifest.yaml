@@ -1,0 +1,46 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: bazarr
+  name: Bazarr
+  description: Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.
+release:
+  revision: "1"
+  version: 1.6.2
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 6767
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (server)
+    retention: retain
+  - id: downloads
+    composeVolume: downloads
+    purpose: Data at /downloads (server)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
+      required: false
+presentation:
+  tagline: Manage and download subtitles for Sonarr and Radarr
+  category: media
+  developer: morpheus65535
+  website: https://www.bazarr.media/

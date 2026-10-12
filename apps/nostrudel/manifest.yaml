@@ -1,0 +1,35 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: nostrudel
+  name: noStrudel
+  description: A sandbox for exploring nostr
+release:
+  revision: "1"
+  version: 1.1.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    cors: application
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+presentation:
+  tagline: A sandbox for exploring nostr
+  category: other
+  developer: hzrd149
+  website: https://github.com/hzrd149/nostrudel

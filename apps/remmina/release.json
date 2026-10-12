@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "remmina",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "54e1d6f2465cd9ad6a03deacca6159306cac99870d9630cb1bf35feaf194a04e"
+    },
+    "compose.yaml": {
+      "sha256": "1f2d9eba3efbf6cef8dac1236e19977f304510c4c23bacb65f72b289fc2c892e"
+    },
+    "README.md": {
+      "sha256": "fb5868671e1e2ab8b493998a15da79c80dbd357ee1b880e534b0ded86005e1ce"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/remmina@sha256:ca2b6788bad28d864086649fc276ce696cac9cdf69e6976b85497b341ed07d8d",
+      "repository": "linuxserver/remmina",
+      "tag": "1.4.35",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:15a5bc38523c6735e08008a7b29dd13d0791a929c5f3baacdfa26156d01fda1e",
+      "appVersion": "1.4.35",
+      "imageCreated": "2024-10-02T14:43:37Z",
+      "source": "https://hub.docker.com/r/linuxserver/remmina"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "1.4.35"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package remmina (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/remmina@sha256:ca2b6788bad28d864086649fc276ce696cac9cdf69e6976b85497b341ed07d8d); image config: ExposedPorts 3000/tcp,3001/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 75s; page title \"Remmina\"; health 200)"
+    ]
+  }
+}

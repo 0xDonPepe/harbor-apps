@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "booklore",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "721c1ed55c4efd22c01f11ae8e764b334715093bd82309e12b48e5df8cf14e7b"
+    },
+    "compose.yaml": {
+      "sha256": "8996084d7456cd9ec99f1575fe0886ea517d25c91bb8d1e60d627154698e6760"
+    },
+    "README.md": {
+      "sha256": "f59168dde3729726f020e8bf151b648abb3eb6e26d8af3bf9479be560b456fbc"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/booklore-app/booklore@sha256:f92dae443c38098bf8348742465f6f3b17b619cb8f0e5c2cf195dcdfbb88eaeb",
+      "repository": "ghcr.io/booklore-app/booklore",
+      "tag": "v2.4.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:8dfc862bcf28b3da356702d0b966acbe6a4de19ef45b708e23e21419a8bce8ed",
+      "appVersion": "2.4.0",
+      "imageCreated": "2026-09-19T16:32:32Z",
+      "source": "https://ghcr.io/booklore-app/booklore"
+    },
+    "db": {
+      "reference": "mariadb@sha256:b30cc65b57a11a2e791ad5c06284e599fe9f1bf3fe9081a88d85bcf36389be4a",
+      "repository": "mariadb",
+      "tag": "12.0.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:f85578448fc01b193932701c22c6fefcc161f575949c8520d5dce5033d4356d3",
+      "appVersion": "12.0.2",
+      "imageCreated": "2025-08-08T08:15:27Z",
+      "source": "https://hub.docker.com/_/mariadb"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "2.4.0",
+      "db": "12.0.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package booklore (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/booklore-app/booklore@sha256:f92dae443c38098bf8348742465f6f3b17b619cb8f0e5c2cf195dcdfbb88eaeb); image config: ExposedPorts 6060/tcp, Volumes none, User root.",
+      "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:b30cc65b57a11a2e791ad5c06284e599fe9f1bf3fe9081a88d85bcf36389be4a); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 89s; page title \"BookLore\"; health 200)"
+    ]
+  }
+}

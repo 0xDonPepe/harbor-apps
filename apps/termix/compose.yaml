@@ -1,0 +1,24 @@
+services:
+  web:
+    image: ghcr.io/lukegus/termix@sha256:d64c841a560c54aa7c27b0e6bbd2fbf8b51073565040d2a6bfbc127f0a72cf1e # tag: release-2.9.2
+    environment:
+      GUACD_HOST: guacd
+      GUACD_TUNNEL_HOST: web
+      GUACD_RECORDING_PATH: /termix-data/session_recordings/guacamole
+      POSTHOG_API_KEY: ""
+      ENABLE_TELEMETRY: "false"
+    volumes:
+      - {type: volume, source: data, target: "/app/data"}
+    depends_on:
+      guacd:
+        condition: service_started
+    healthcheck:
+      disable: true
+  guacd:
+    image: guacamole/guacd@sha256:8974eaa9ba32f713daf311e7cc8cd7e4cdfba1edea39eed75524e78ef4b08f4f # tag: 1.6.0
+    volumes:
+      - {type: volume, source: data, target: "/termix-data"}
+    healthcheck:
+      disable: true
+volumes:
+  data: {}

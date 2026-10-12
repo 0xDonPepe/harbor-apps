@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "papra",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "6f2616dd02e86fd6e3fbb37e07ec80498879cd6ba85bb4e60465125e76e8e2cb"
+    },
+    "compose.yaml": {
+      "sha256": "57917c8a3be5f2f984462ca3db8fe550fb83ec6182fbde555049e3d9fdf5ff4c"
+    },
+    "README.md": {
+      "sha256": "daf36bfac915a80f77632ad849f7b7151dcffd645b987507648a014ffa93d4de"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "ghcr.io/papra-hq/papra@sha256:a281cb44176dbe5323e0f7ea2d6fd34d58914a3a8525c36437a086d1d7c4fef8",
+      "repository": "ghcr.io/papra-hq/papra",
+      "tag": "26.6.2-rootless",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:7512ade4f436688782c85e07da559fc3af73e80ed568f674fda11c960a2e9d02",
+      "appVersion": "26.6.2-rootless",
+      "imageCreated": "2026-09-01T16:36:16Z",
+      "source": "https://ghcr.io/papra-hq/papra"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "26.6.2-rootless"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package papra (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/papra-hq/papra@sha256:a281cb44176dbe5323e0f7ea2d6fd34d58914a3a8525c36437a086d1d7c4fef8); image config: ExposedPorts 1221/tcp, Volumes none, User nonroot.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 51s; page title \"Papra - Document archiving and sharing platform\"; health 200)"
+    ]
+  }
+}

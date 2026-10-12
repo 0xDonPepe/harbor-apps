@@ -1,0 +1,44 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: dumbpad
+  name: DumbPad
+  description: A Dumb Pad with collaborative editing, fuzzy search, & markdown preview functionality
+release:
+  revision: "1"
+  version: 1.0.4-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /app/data (web)
+    retention: retain
+configuration:
+  - service: web
+    environment: BASE_URL
+    endpoint: web
+    format: origin
+presentation:
+  tagline: A notepad with collaborative editing, fuzzy search, & markdown preview
+  category: files
+  developer: DumbWareio
+  website: https://github.com/DumbWareio/DumbPad

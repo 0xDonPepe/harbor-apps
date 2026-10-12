@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: sqlitebrowser
+  name: SQLite Browser
+  description: 'Official home of the DB Browser for SQLite (DB4S) project. Previously known as "SQLite Database Browser" and "Database Browser for SQLite". Website at:'
+release:
+  revision: "1"
+  version: 3.13.1-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (app)
+    retention: retain
+presentation:
+  tagline: A database browser for SQLite
+  category: developer
+  developer: SQLiteBrowser
+  website: https://sqlitebrowser.org/

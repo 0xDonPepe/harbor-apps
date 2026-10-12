@@ -1,0 +1,45 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: pastefy
+  name: Pastefy
+  description: Pastefy is an feature-rich Open Source self-hostable Pastebin.
+release:
+  revision: "1"
+  version: 7.1.6-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    db: infrastructure
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/lib/mysql (db)
+    retention: retain
+configuration:
+  - service: app
+    environment: SERVER_NAME
+    endpoint: web
+    format: origin
+presentation:
+  tagline: An easy paste for seamless sharing
+  category: developer
+  developer: InteraApps
+  website: https://pastefy.app/

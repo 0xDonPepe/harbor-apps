@@ -1,0 +1,13 @@
+services:
+  web:
+    image: ghcr.io/fccview/jotty@sha256:df965e56fe2e3ce056351425b8ff5d7df991a6596dfa807c73c91cf5eaa30c86 # tag: 1.28.0
+    environment:
+      NODE_ENV: production
+    volumes:
+      - {type: volume, source: app, target: "/app/data"}
+      - {type: volume, source: config, target: "/app/config"}
+      - {type: volume, source: cache, target: "/app/.next/cache"}
+volumes:
+  app: {}
+  config: {}
+  cache: {}

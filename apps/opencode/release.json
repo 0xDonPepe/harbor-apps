@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "opencode",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "9ba19641c1366f98c961d333c10531f70b1aef269dcb7f2a49d29472a5e4691e"
+    },
+    "compose.yaml": {
+      "sha256": "52fe0554f393736cbc59b590a5f635bdd20fac79c8910adf75ae0eb1a18170f6"
+    },
+    "README.md": {
+      "sha256": "f928439c876dbfe733790c603bc47021b8c0d054d273a7e538e50a71875f7bfb"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/anomalyco/opencode@sha256:543fe6b18470c9e4787e9be9813c4d340fba5738085b833ea76fb330ddff514a",
+      "repository": "ghcr.io/anomalyco/opencode",
+      "tag": "1.19.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:60dc29bd3d2473aa6a3fddbff92fce4d9ebc01f1ff5bae6967d86adc3a502c2f",
+      "appVersion": "1.19.0",
+      "imageCreated": "2026-10-11T01:37:59Z",
+      "source": "https://ghcr.io/anomalyco/opencode"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "1.19.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package opencode (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/anomalyco/opencode@sha256:543fe6b18470c9e4787e9be9813c4d340fba5738085b833ea76fb330ddff514a); image config: ExposedPorts none, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 50s; page title \"OpenCode\"; health 200)"
+    ]
+  }
+}

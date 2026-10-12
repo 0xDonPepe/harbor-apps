@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: hermes-agent
+  name: Hermes Agent
+  description: The agent that grows with you
+release:
+  revision: "1"
+  version: 2026.9.24
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 18789
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: hermes
+    composeVolume: hermes
+    purpose: Data at /opt/data (web)
+    retention: retain
+presentation:
+  tagline: The AI agent that grows with you
+  category: ai
+  developer: Nous Research
+  website: https://hermes-agent.nousresearch.com

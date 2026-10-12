@@ -1,0 +1,18 @@
+services:
+  tracker:
+    image: xdeekay/skybro-tracker@sha256:9425a99b0f1cfbf8a4cf39ee4ca8876496d20750e9b960109fc9d5b1eeaa2c67 # tag: 1.6.2
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+    healthcheck:
+      disable: true
+  web:
+    image: xdeekay/skybro-dashboard@sha256:83ad07aee074ab3d827db00c081eea0e6bf17e7f104ff6ac635bc7dbe6ce2eea # tag: 1.6.2
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+    depends_on:
+      tracker:
+        condition: service_started
+    healthcheck:
+      disable: true
+volumes:
+  data: {}

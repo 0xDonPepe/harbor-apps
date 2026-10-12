@@ -1,0 +1,41 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: skybro
+  name: SkyBro
+  description: SkyBro is a real-time sky tracker for your home. It runs silently in the   background 24/7 and alerts you the moment something interesting is overhead.
+release:
+  revision: "1"
+  version: 1.6.2-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    tracker: application
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 5000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (tracker)
+    retention: retain
+presentation:
+  tagline: Live aircraft, satellite, weather & astronomy tracker
+  category: network
+  developer: xDeeKay
+  website: https://github.com/xDeeKay/SkyBro

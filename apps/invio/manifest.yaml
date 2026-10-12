@@ -1,0 +1,57 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: invio
+  name: Invio
+  description: Self-hosted invoicing without the bloat.
+provisionedCredentials:
+  service: backend
+  passwordEnv: ADMIN_PASS
+  username: admin
+release:
+  revision: "1"
+  version: 2.2.0-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    backend: application
+    frontend: application
+endpoints:
+  web:
+    service: frontend
+    containerPort: 8000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /app/data (backend)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: backend
+        environment: JWT_SECRET
+configuration:
+  - service: frontend
+    environment: ORIGIN
+    endpoint: web
+    format: origin
+presentation:
+  tagline: Invio is a self-hosted invoicing app without the bloat
+  category: finance
+  developer: kittendevv
+  website: https://github.com/kittendevv/invio

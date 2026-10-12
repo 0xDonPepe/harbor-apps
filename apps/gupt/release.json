@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "gupt",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "2e52af4fbc3c3fad62617b7afa62bddec869181bef5155c7865cbaf5aef1952b"
+    },
+    "compose.yaml": {
+      "sha256": "aa8abcd4fb91ed83b8b0ffdfc880418aa90577f789543e5d2f4e6dc676966818"
+    },
+    "README.md": {
+      "sha256": "8e5da33410944d0e77f5def5945d217802afa3fa025b74f1600d81a88678066e"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/besoeasy/gupt@sha256:45da18ce6f99dff0b386e168b2be35bbca4496ddc4619a4db5c2ff4d7e968636",
+      "repository": "ghcr.io/besoeasy/gupt",
+      "tag": "5.0.33",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:a36cad800f12c3c5f4b014083db4665f0b02ad97f68c76ea2398a59237400cc7",
+      "appVersion": "5.0.33",
+      "imageCreated": "2026-10-11T14:21:14Z",
+      "source": "https://ghcr.io/besoeasy/gupt"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "5.0.33"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package gupt (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/besoeasy/gupt@sha256:45da18ce6f99dff0b386e168b2be35bbca4496ddc4619a4db5c2ff4d7e968636); image config: ExposedPorts 2019/tcp,443/tcp,443/udp,80/tcp,8000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 22s; page title \"GUPT — Anonymous Privacy Suite\"; health 200)"
+    ]
+  }
+}

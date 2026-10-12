@@ -1,0 +1,11 @@
+services:
+  server:
+    image: linuxserver/wikijs@sha256:1cbb7cd39f62b12025b6cb5fea4f95629833162c72bf0604c568090f343c8665 # tag: 2.5.315
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+      - {type: volume, source: repo, target: "/app/wiki/data/repo"}
+      - {type: volume, source: config, target: "/config"}
+volumes:
+  data: {}
+  repo: {}
+  config: {}

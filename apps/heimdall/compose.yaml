@@ -1,0 +1,10 @@
+services:
+  server:
+    image: linuxserver/heimdall@sha256:287e48152967820922969ced1e990949063679d84c11ce988726c4195b52a47f # tag: 2.8.3
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+volumes:
+  config: {}

@@ -1,0 +1,25 @@
+services:
+  web:
+    image: ceramicwhite/nitter@sha256:594a184c3a834c29957ddd917800d61f3d560411d26fa6cf389bef350d4c4ac6 # tag: build-38985af
+    command:
+      - /bin/sh
+      - -c
+      - sed -i  -e 's/localhost/redis/g'  -e 's/redisPassword = ""/redisPassword = "moneyprintergobrrr"/g'  -e 's/theme = "Nitter"/theme = "auto_(twitter)"/g'  /src/nitter.conf && ./nitter
+    depends_on:
+      redis:
+        condition: service_started
+  redis:
+    image: redis@sha256:e10f55f92478715698a2cef97c2bbdc48df2a05081edd884938903aa60df6396 # tag: 6.2.2-buster
+    command:
+      - redis-server
+      - --save
+      - "60"
+      - "1"
+      - --loglevel
+      - warning
+      - --requirepass
+      - moneyprintergobrrr
+    volumes:
+      - {type: volume, source: redis, target: "/data"}
+volumes:
+  redis: {}

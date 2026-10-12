@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: pearcircle-seeder
+  name: PearCircle Seeder
+  description: Private, peer-to-peer location sharing — no accounts, no servers, no subscriptions.
+release:
+  revision: "1"
+  version: 1.1.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 8730
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (app)
+    retention: retain
+presentation:
+  tagline: Keep your PearCircle circles online 24/7
+  category: network
+  developer: PeerLoom
+  website: https://peerloomllc.com

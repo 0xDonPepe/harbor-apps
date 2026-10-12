@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "nutstash-wallet",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "5d642f88299518a0f35925064609be57d73bf5ab6fb46eac1469c5c2003111e3"
+    },
+    "compose.yaml": {
+      "sha256": "10301cb24652b96f897120a9df07710be847bb7eb91473f5194f013fb49a6652"
+    },
+    "README.md": {
+      "sha256": "8c717a3318ec8ba36703732bada04e285040de3a6fc7abe2fb702a5186ea3d1d"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/gandlafbtc/nutstash-wallet@sha256:8a585c4a6545e68e9a1c8fcf2a0a15ef401ad040accf925234451fe1b838d180",
+      "repository": "ghcr.io/gandlafbtc/nutstash-wallet",
+      "tag": "0.1.10",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:70b5da210d0296b3caec008f13568ed8c419c53e36d5f8562fb9d3a42b9473e5",
+      "appVersion": "0.1.10",
+      "imageCreated": "2023-04-18T04:39:11Z",
+      "source": "https://ghcr.io/gandlafbtc/nutstash-wallet"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.1.10"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package nutstash-wallet (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/gandlafbtc/nutstash-wallet@sha256:8a585c4a6545e68e9a1c8fcf2a0a15ef401ad040accf925234451fe1b838d180); image config: ExposedPorts 3000/tcp, Volumes none, User node.",
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 45s; page title \"\"; health 200)"
+    ]
+  }
+}

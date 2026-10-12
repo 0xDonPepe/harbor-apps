@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "wingfit",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "7bf9e46b6471d3c004ee6599c38d0826eebbe8d2ab95aa6314890591b5e0b6e8"
+    },
+    "compose.yaml": {
+      "sha256": "1a4581b81205fe10747b9228585b4e31c1be6d0f7580547b9fa8e9db06723572"
+    },
+    "README.md": {
+      "sha256": "c17e628ef70ce24a51fd8a944301f123fe982db5a38db91f6a859f69d1ba6db4"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/itskovacs/wingfit@sha256:fed5dcc1c8abdec6409f4272caa08f9a6f1d2a3c8e1f9a13b3459c2ffea8a360",
+      "repository": "ghcr.io/itskovacs/wingfit",
+      "tag": "5.3.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:6946d526d9d74eb3bbe6a9098dfd3cda32b21db2bfc81dc4ceb7f2d7006c0380",
+      "appVersion": "5.3.1",
+      "imageCreated": "2025-08-11T15:54:03Z",
+      "source": "https://ghcr.io/itskovacs/wingfit"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "5.3.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package wingfit (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/itskovacs/wingfit@sha256:fed5dcc1c8abdec6409f4272caa08f9a6f1d2a3c8e1f9a13b3459c2ffea8a360); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 37s; page title \"Wingfit - Authentication\"; health 200)"
+    ]
+  }
+}

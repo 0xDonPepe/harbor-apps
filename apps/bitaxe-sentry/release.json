@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "bitaxe-sentry",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "a6f5d9d953b45639f412ed9f1662025074668e24bd508cc2d68b903e5d0edcf0"
+    },
+    "compose.yaml": {
+      "sha256": "fe2e4d00fc95392b331684cd624a63801efa12dc2e1741435141b1bfd1f1fe7b"
+    },
+    "README.md": {
+      "sha256": "a5c9ed3c102f1bd9c6b1893b05d21c083ef30354210234afca08627838f9c5f4"
+    }
+  },
+  "images": {
+    "sentry": {
+      "reference": "zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb",
+      "repository": "zachprice105/bitaxe-sentry",
+      "tag": "v0.8.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:959e4bdbccefc6b91edd2313337764d80e170051049304d40805b2c54754cea6",
+      "appVersion": "0.8.0",
+      "imageCreated": "2026-07-19T20:21:27Z",
+      "source": "https://hub.docker.com/r/zachprice105/bitaxe-sentry"
+    },
+    "web": {
+      "reference": "zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb",
+      "repository": "zachprice105/bitaxe-sentry",
+      "tag": "v0.8.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:959e4bdbccefc6b91edd2313337764d80e170051049304d40805b2c54754cea6",
+      "appVersion": "0.8.0",
+      "imageCreated": "2026-07-19T20:21:27Z",
+      "source": "https://hub.docker.com/r/zachprice105/bitaxe-sentry"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "sentry": "0.8.0",
+      "web": "0.8.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package bitaxe-sentry (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service sentry: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service sentry: stop_grace_period 1m dropped (Docker's default applies)",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of sentry resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb); image config: ExposedPorts none, Volumes none, User appuser.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb); image config: ExposedPorts none, Volumes none, User appuser.",
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 47s; page title \"Dashboard - Bitaxe Sentry\"; health 200)"
+    ]
+  }
+}

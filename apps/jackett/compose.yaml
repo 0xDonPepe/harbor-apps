@@ -1,0 +1,12 @@
+services:
+  server:
+    image: linuxserver/jackett@sha256:1e3f3203b1f8bd947d534e854b9dbed03571b1532a7f3769399b21cb2de93c32 # tag: 0.24.2816
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - {type: volume, source: data, target: "/config"}
+      - {type: volume, source: downloads, target: "/downloads"}
+volumes:
+  data: {}
+  downloads: {}

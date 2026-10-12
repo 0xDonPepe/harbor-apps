@@ -1,0 +1,3 @@
+services:
+  web:
+    image: ghcr.io/deiucanta/chatpad@sha256:15155e3a09fd677d578583f6bd3848c991cf768997400e37bc4c27e62a918a7e # tag: bb5f4abb36b45320df69dfccb64e734f36ca9bb3

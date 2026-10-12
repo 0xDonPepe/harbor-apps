@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "leafwiki",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "079caff281b342b8d124c4e87a469ced5234b23da6fe825ce8c797b59b5dee7e"
+    },
+    "compose.yaml": {
+      "sha256": "83b3dd00b3d759cb1ff4f5ef0127ce696716a51009be59ee20b250862056dd50"
+    },
+    "README.md": {
+      "sha256": "525ab688668e4a17d6c0e9e5d8fe996e1161e2522bf45521c87f364ada165617"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/perber/leafwiki@sha256:d11cf3c73760fef930b509dd52e69bd4c220ab612361d026714129d67251b535",
+      "repository": "ghcr.io/perber/leafwiki",
+      "tag": "v0.14.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:7d5e07f4467579c4a8272c1c917367703d42d45c0ae92709494a80ecb4b08b8b",
+      "appVersion": "0.14.1",
+      "imageCreated": "2026-10-09T16:09:04Z",
+      "source": "https://ghcr.io/perber/leafwiki"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.14.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package leafwiki (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/perber/leafwiki@sha256:d11cf3c73760fef930b509dd52e69bd4c220ab612361d026714129d67251b535); image config: ExposedPorts 8080/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 22s; page title \"Login - LeafWiki\"; health 200)"
+    ]
+  }
+}

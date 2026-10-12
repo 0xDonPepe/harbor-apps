@@ -1,0 +1,26 @@
+services:
+  app:
+    image: ghcr.io/wavelog/wavelog@sha256:600c3205ca2b5d7976beedabd023cb91e3f3dfdf45b5d58708dab75ade3b94e3 # tag: 3.2.3
+    environment:
+      CI_ENV: docker
+    volumes:
+      - {type: volume, source: config, target: "/var/www/html/application/config/docker"}
+      - {type: volume, source: uploads, target: "/var/www/html/uploads"}
+      - {type: volume, source: userdata, target: "/var/www/html/userdata"}
+    depends_on:
+      wavelog-db:
+        condition: service_started
+  wavelog-db:
+    image: mariadb@sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06 # tag: 11.4
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: yes
+      MARIADB_DATABASE: wavelog
+      MARIADB_USER: wavelog
+      MARIADB_PASSWORD: wavelog
+    volumes:
+      - {type: volume, source: db, target: "/var/lib/mysql"}
+volumes:
+  config: {}
+  uploads: {}
+  userdata: {}
+  db: {}

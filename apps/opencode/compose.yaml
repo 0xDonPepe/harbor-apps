@@ -1,0 +1,15 @@
+services:
+  app:
+    image: ghcr.io/anomalyco/opencode@sha256:543fe6b18470c9e4787e9be9813c4d340fba5738085b833ea76fb330ddff514a # tag: 1.19.0
+    command:
+      - serve
+      - --hostname
+      - 0.0.0.0
+      - --port
+      - "4096"
+    environment:
+      HOME: /home/opencode
+    volumes:
+      - {type: volume, source: opencode, target: "/home/opencode"}
+volumes:
+  opencode: {}

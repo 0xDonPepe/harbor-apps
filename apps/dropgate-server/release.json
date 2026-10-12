@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "dropgate-server",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "fa41829302a5b58b4839ae1042f9ee18447a3dac2da4ce96c71d9edf0eb59563"
+    },
+    "compose.yaml": {
+      "sha256": "5121259f1647e5719b6ea0c0a1c4dd0745d9aaabd1d1585f3b4390a40c3819b6"
+    },
+    "README.md": {
+      "sha256": "6825a5cf9fd251aeb8a5059a998e323774b00f0a2c15c3ade9eeaac3a1d4ad50"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "willtda/dropgate-server@sha256:43698790fe341ea3fb0094bbdca701ecdf875a9c4b9c92b67f86c34c887c132b",
+      "repository": "willtda/dropgate-server",
+      "tag": "3.0.13",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:87fb6eabf1f97ea2ba19b6d4c52789c6687ffbb9b2e6499bcc58d6f6915c8a09",
+      "appVersion": "3.0.13",
+      "imageCreated": "2026-04-25T11:24:14Z",
+      "source": "https://hub.docker.com/r/willtda/dropgate-server"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "3.0.13"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package dropgate-server (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; willtda/dropgate-server@sha256:43698790fe341ea3fb0094bbdca701ecdf875a9c4b9c92b67f86c34c887c132b); image config: ExposedPorts 52443/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 37s; page title \"Dropgate Server\"; health 200)"
+    ]
+  }
+}

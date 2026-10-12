@@ -1,0 +1,7 @@
+services:
+  web:
+    image: benbusby/whoogle-search@sha256:6ae072238642b7e5860c8fa7f68cf06be797eb4e2278fc41d17d3b5e8a051eea # tag: 1.2.4
+    environment:
+      EXPOSE_PORT: "6420"
+    healthcheck:
+      disable: true

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "flatnotes",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "446966a1a0a5f2bf54821c777342fb5f581911bc475c542805429b3c119ddfbb"
+    },
+    "compose.yaml": {
+      "sha256": "2af2484b3b242d81f2e0598178400e92e1516cf5f40f212a27e0704ba22a3895"
+    },
+    "README.md": {
+      "sha256": "40fc5d0026e2c05a20f35f7031f92f04a9bc7bae4334e0dad878219a69c03fbd"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "dullage/flatnotes@sha256:ca4b40ee7491aabf6b52bbb20ab140145cb96981d4b3fe96ab1e797ac6cd93e5",
+      "repository": "dullage/flatnotes",
+      "tag": "v5.5.5",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c3c883b677ecf840bb5abca2cdd8955357fdd1cb1b2d82f91d9502d0db5b2c1a",
+      "appVersion": "5.5.5",
+      "imageCreated": "2026-08-29T07:04:44Z",
+      "source": "https://hub.docker.com/r/dullage/flatnotes"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "5.5.5"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package flatnotes (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: stop_grace_period 1m dropped (Docker's default applies)",
+      "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dullage/flatnotes@sha256:ca4b40ee7491aabf6b52bbb20ab140145cb96981d4b3fe96ab1e797ac6cd93e5); image config: ExposedPorts 8080/tcp, Volumes /data, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 37s; page title \"flatnotes\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+services:
+  app:
+    image: ghcr.io/danielbrendel/hortusfox-web@sha256:a26d2333a4c0c0786c9d384c176d45c3f15bb748d327c1340a64ce636555a51e # tag: v6.3
+    environment:
+      APP_ADMIN_EMAIL: umbrel@umbrel.local
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_DATABASE: hortusfox
+      DB_USERNAME: user
+      DB_PASSWORD: password
+      DB_CHARSET: utf8mb4
+    volumes:
+      - {type: volume, source: images, target: "/var/www/html/public/img"}
+      - {type: volume, source: attachments, target: "/var/www/html/public/attachments"}
+      - {type: volume, source: logs, target: "/var/www/html/app/logs"}
+      - {type: volume, source: backup, target: "/var/www/html/public/backup"}
+      - {type: volume, source: themes, target: "/var/www/html/public/themes"}
+      - {type: volume, source: migrate, target: "/var/www/html/app/migrations"}
+    depends_on:
+      db:
+        condition: service_started
+  db:
+    image: mariadb@sha256:c5c82ddc074b9236fda87127934a1da726ecac68e9de083fd0e0d11a7bedc077 # tag: 11.4.7
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: hortusfox
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - {type: volume, source: db-data, target: "/var/lib/mysql"}
+volumes:
+  images: {}
+  attachments: {}
+  logs: {}
+  backup: {}
+  themes: {}
+  migrate: {}
+  db-data: {}

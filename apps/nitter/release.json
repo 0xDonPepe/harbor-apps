@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "nitter",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "498bfc61fadc73c9080afc04fd05b10811788ed3b07477c81069bab12b508459"
+    },
+    "compose.yaml": {
+      "sha256": "a3692cf668f2a0bd5e29a194992dc96d20b449b4717d9785d67ea90ff7e1944a"
+    },
+    "README.md": {
+      "sha256": "22202bae6f5cf442537e0d3fb828bf235869c988df3fd45da4a7cdad875594c5"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ceramicwhite/nitter@sha256:594a184c3a834c29957ddd917800d61f3d560411d26fa6cf389bef350d4c4ac6",
+      "repository": "ceramicwhite/nitter",
+      "tag": "build-38985af",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:0383a9e67cabec50d1560fc0b01cb2d299d94f84612fb2fe927ab4f11729d3b1",
+      "appVersion": "build-38985af",
+      "imageCreated": "2023-06-08T00:27:35Z",
+      "source": "https://hub.docker.com/r/ceramicwhite/nitter"
+    },
+    "redis": {
+      "reference": "redis@sha256:e10f55f92478715698a2cef97c2bbdc48df2a05081edd884938903aa60df6396",
+      "repository": "redis",
+      "tag": "6.2.2-buster",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:31d8532024007f377fd91ba5e1ca99350f76135ab524c7e8fffddc9d2664e501",
+      "appVersion": "6.2.2-buster",
+      "imageCreated": "2021-04-20T23:46:01Z",
+      "source": "https://hub.docker.com/_/redis"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "build-38985af",
+      "redis": "6.2.2-buster"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package nitter (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service redis: stop_grace_period 1m dropped (Docker's default applies)",
+      "service redis: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ceramicwhite/nitter@sha256:594a184c3a834c29957ddd917800d61f3d560411d26fa6cf389bef350d4c4ac6); image config: ExposedPorts 8080/tcp, Volumes none, User nitter.",
+      "Digest of redis resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; redis@sha256:e10f55f92478715698a2cef97c2bbdc48df2a05081edd884938903aa60df6396); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 42s; page title \"nitter\"; health 200)"
+    ]
+  }
+}

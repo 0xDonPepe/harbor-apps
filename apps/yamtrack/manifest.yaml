@@ -1,0 +1,53 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: yamtrack
+  name: Yamtrack
+  description: A self hosted media tracker.
+release:
+  revision: "1"
+  version: 0.26.3-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    redis: infrastructure
+endpoints:
+  web:
+    service: web
+    containerPort: 8000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: db
+    composeVolume: db
+    purpose: Data at /yamtrack/db (web)
+    retention: retain
+  - id: redis
+    composeVolume: redis
+    purpose: Data at /data (redis)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: web
+        environment: SECRET
+presentation:
+  tagline: A self hosted media tracker
+  category: media
+  developer: Xila Cai
+  website: https://github.com/FuzzyGrim/Yamtrack

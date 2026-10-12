@@ -1,0 +1,57 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: gitea-mirror
+  name: Gitea Mirror
+  description: Gitea Mirror auto-syncs GitHub repos to your self-hosted Gitea/Forgejo, with a sleek Web UI and easy Docker deployment.
+release:
+  revision: "1"
+  version: 3.40.3
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 4321
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /app/data (web)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: web
+        environment: BETTER_AUTH_SECRET
+configuration:
+  - service: web
+    environment: BETTER_AUTH_URL
+    endpoint: web
+    format: origin
+  - service: web
+    environment: PUBLIC_BETTER_AUTH_URL
+    endpoint: web
+    format: origin
+presentation:
+  tagline: Mirror your GitHub repositories to a Gitea instance automatically
+  category: developer
+  developer: RayLabs HQ
+  website: https://github.com/raylabshq/gitea-mirror

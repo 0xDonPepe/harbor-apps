@@ -1,0 +1,10 @@
+services:
+  server:
+    image: linuxserver/snapdrop@sha256:3e0af233372e6ae7ac711397d40cbe2797cefe13220d65e5e284a64252cc0c2c # tag: version-b8b78cc2
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+volumes:
+  config: {}

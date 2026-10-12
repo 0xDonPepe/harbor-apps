@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "localai",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c09755c362ab1b34925bc09c8e74868460ac2278d8e82d980ba41fa7dc1b17d3"
+    },
+    "compose.yaml": {
+      "sha256": "fb860ec085f96a0768df42436d77e7704c764471c103425fef3e41ef52dcd903"
+    },
+    "README.md": {
+      "sha256": "f7a1a11eefab07ba8f1a2a80ab1fae7baae30a29736c9a94d56383401aee7569"
+    }
+  },
+  "images": {
+    "api": {
+      "reference": "localai/localai@sha256:f1bc435659b9da49180e868fdd0361915171a740cd947bf081b62a896a7ea8d0",
+      "repository": "localai/localai",
+      "tag": "v4.11.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:feb954091998e3d2d937a50d5f139c237ef54392f7d30f00d907fb44b4ace6f4",
+      "appVersion": "4.11.0",
+      "imageCreated": "2026-10-02T23:17:32Z",
+      "source": "https://hub.docker.com/r/localai/localai"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "api": "4.11.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package localai (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "GPU access dropped: runs on the CPU",
+      "service api healthcheck timeout 20m clamped to Harbor's range",
+      "service api: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of api resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; localai/localai@sha256:f1bc435659b9da49180e868fdd0361915171a740cd947bf081b62a896a7ea8d0); image config: ExposedPorts 8080/tcp, Volumes /backends,/configuration,/data,/models, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 47s; page title \"LocalAI\"; health 301)"
+    ]
+  }
+}

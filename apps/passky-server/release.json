@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "passky-server",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "85ed1164332a6a7dd6e2fca132c33142b8036bc65d1750def22198f0fa8d63bf"
+    },
+    "compose.yaml": {
+      "sha256": "354e30fb85de7ca35579ca89d29e2822bbbbe9fb0d907237a5b82aaec2973df9"
+    },
+    "README.md": {
+      "sha256": "b7d6e26a6a7d9cc74bb6b6194f4c047bfda4eb781a2a52374ac404b7f78f8896"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "rabbitcompany/passky-server@sha256:e9bf7b9ecdf4904f1e3893b5968e98cbb61d4984bca1482081df2f59df05fca6",
+      "repository": "rabbitcompany/passky-server",
+      "tag": "8.1.8",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:4970a0e12697bb7a72dba4d1b5aff06943069118f2fa62736ff6bb08a06e2388",
+      "appVersion": "8.1.8",
+      "imageCreated": "2024-11-05T18:47:19Z",
+      "source": "https://hub.docker.com/r/rabbitcompany/passky-server"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "8.1.8"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package passky-server (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; rabbitcompany/passky-server@sha256:e9bf7b9ecdf4904f1e3893b5968e98cbb61d4984bca1482081df2f59df05fca6); image config: ExposedPorts 443/tcp,80/tcp,9000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 43s; page title \"Passky\"; health 200)"
+    ]
+  }
+}

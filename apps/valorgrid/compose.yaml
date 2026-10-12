@@ -1,0 +1,17 @@
+services:
+  app:
+    image: ghcr.io/aivm23/valorgrid@sha256:e02967996cee5376e71578d8e97d6d756a48f7cf9c30e3548bad8396f95bd3c6 # tag: v3.36.3
+    environment:
+      HOST: 0.0.0.0
+      PORT: "1325"
+      PORTFOLIO_DB_PATH: /data/portfolio.sqlite
+      VALORGRID_BACKUP_DIR: /data/backups
+      VALORGRID_AUTH_USER: valorgrid
+      VALORGRID_AUTH_PASSWORD: ""
+      VALORGRID_ALPHA_VANTAGE_API_KEY: ""
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+    healthcheck:
+      disable: true
+volumes:
+  data: {}

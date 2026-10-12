@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "ersatztv-legacy",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "ef52056b75a5e7a4900bdc9a08f678a35d02cdb784ad09cfaca19e05726e882f"
+    },
+    "compose.yaml": {
+      "sha256": "9daf6e515dfad8b53002e3e22cf0bd52295cc2e3d3e290f61d09c1aff3d4ead0"
+    },
+    "README.md": {
+      "sha256": "96b0fbd28cef3ccb6560ecff9fa25fa9728592899a6593c1fdc690e6fb085a52"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/ersatztv/legacy@sha256:51882de2022420da21654ceeed2cda50af418e5ad165d050bc393e99a06d02ca",
+      "repository": "ghcr.io/ersatztv/legacy",
+      "tag": "v26.11.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:64be992cab8dc94a098639f361f0647b967ad4d608496250d3d5ae3f087b8c90",
+      "appVersion": "26.11.1",
+      "imageCreated": "2026-10-06T20:20:14Z",
+      "source": "https://ghcr.io/ersatztv/legacy"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "26.11.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package ersatztv-legacy (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "GPU access dropped: runs on the CPU",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/ersatztv/legacy@sha256:51882de2022420da21654ceeed2cda50af418e5ad165d050bc393e99a06d02ca); image config: ExposedPorts none, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 74s; page title \"ErsatzTV Legacy\"; health 200)"
+    ]
+  }
+}

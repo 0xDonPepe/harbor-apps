@@ -1,0 +1,19 @@
+services:
+  web:
+    image: ghcr.io/fuzzygrim/yamtrack@sha256:78497b454b2b52d3b1062f6fd238351d714cff0895db4369e49ace36f4622e75 # tag: 0.26.3
+    environment:
+      REDIS_URL: redis://redis:6379
+    volumes:
+      - {type: volume, source: db, target: "/yamtrack/db"}
+    depends_on:
+      redis:
+        condition: service_started
+    healthcheck:
+      disable: true
+  redis:
+    image: redis@sha256:b43d2dcbbdb1f9e1582e3a0f37e53bf79038522ccffb56a25858969d7a9b6c11 # tag: 8.0.2
+    volumes:
+      - {type: volume, source: redis, target: "/data"}
+volumes:
+  db: {}
+  redis: {}

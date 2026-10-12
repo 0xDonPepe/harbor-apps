@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "pinchflat",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "a848031ab3e3a9acdf673486bdfc21eb08740d21a6f41d5d6b99f787a82211ec"
+    },
+    "compose.yaml": {
+      "sha256": "d784320d6fa53597535cdff6bb185f759837dda56306ebf836148f7aef1d9d63"
+    },
+    "README.md": {
+      "sha256": "cb02a32538c8dae63013875ffc83fb1f247e95a83c2bc87e0525b2c7b8cee402"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/kieraneglin/pinchflat@sha256:4e975edf58f0861a5cbfe8fc6aac4851ff5a02dfc3f05ffeea4982e3084a5a4a",
+      "repository": "ghcr.io/kieraneglin/pinchflat",
+      "tag": "v2025.6.6",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:bda3091e59af351e5e928930c680a6ebe2cde728949e36c11000b9827ee2ed51",
+      "appVersion": "2025.6.6",
+      "imageCreated": "2025-06-06T21:42:50Z",
+      "source": "https://ghcr.io/kieraneglin/pinchflat"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "2025.6.6"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package pinchflat (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/kieraneglin/pinchflat@sha256:4e975edf58f0861a5cbfe8fc6aac4851ff5a02dfc3f05ffeea4982e3084a5a4a); image config: ExposedPorts 8945/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 55s; page title \"Pinchflat\"; health 200)"
+    ]
+  }
+}

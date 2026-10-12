@@ -1,0 +1,68 @@
+services:
+  proxy:
+    image: reallibrephotos/librephotos-proxy@sha256:c88c0a65b50ba7e4f65ccc9aa7d5002df9827cb79edb1f88a3a4c130d0b03be4 # tag: 2026w14
+    volumes:
+      - {type: volume, source: photos, target: "/data"}
+      - {type: volume, source: protected-media, target: "/protected_media"}
+    depends_on:
+      backend:
+        condition: service_started
+      frontend:
+        condition: service_started
+  db:
+    image: pgautoupgrade/pgautoupgrade@sha256:2ec008ae5f0a2e5dd8f4d2475df41cf3ccc9562acf49bd668fcc0c061944b9bf # tag: 17-alpine3.22
+    environment:
+      POSTGRES_USER: librephotos
+      POSTGRES_PASSWORD: librephotos
+      POSTGRES_DB: librephotos
+    volumes:
+      - {type: volume, source: db, target: "/var/lib/postgresql/data"}
+    healthcheck:
+      test:
+        - CMD
+        - psql
+        - -U
+        - librephotos
+        - -d
+        - librephotos
+        - -c
+        - SELECT 1;
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  frontend:
+    image: reallibrephotos/librephotos-frontend@sha256:e2fb909607b1d9552c033a9432446eadb6b693289af2b4b016da55d50724afcb # tag: 2026w14
+  backend:
+    image: reallibrephotos/librephotos@sha256:3f4d6fa163bf41f2cd496aca342307fec8b827fe4a7ced1e7773a050ef7a5dca # tag: 2026w14
+    environment:
+      BACKEND_HOST: backend
+      ADMIN_EMAIL: admin@admin.com
+      ADMIN_USERNAME: admin
+      DB_BACKEND: postgresql
+      DB_NAME: librephotos
+      DB_USER: librephotos
+      DB_PASS: librephotos
+      DB_HOST: db
+      DB_PORT: "5432"
+      MAPBOX_API_KEY: ""
+      WEB_CONCURRENCY: "2"
+      HEAVYWEIGHT_PROCESS: "1"
+      FIXPERMISSIONS: "true"
+      SKIP_PATTERNS: ""
+      ALLOW_UPLOAD: "true"
+      CSRF_TRUSTED_ORIGINS: ""
+      DEBUG: "0"
+    volumes:
+      - {type: volume, source: photos, target: "/data"}
+      - {type: volume, source: protected-media, target: "/protected_media"}
+      - {type: volume, source: logs, target: "/logs"}
+      - {type: volume, source: cache, target: "/root/.cache"}
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  photos: {}
+  protected-media: {}
+  db: {}
+  logs: {}
+  cache: {}

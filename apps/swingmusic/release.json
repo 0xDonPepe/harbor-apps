@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "swingmusic",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "8e827ae7b0fd147bd8ab71283ba73cc05496bfb5e51d88bca8057b4c82cfa8aa"
+    },
+    "compose.yaml": {
+      "sha256": "0aae5ab75855d1002f07a4f6cc507b9367f405af15281d730ccd2d24e03ff975"
+    },
+    "README.md": {
+      "sha256": "93c958dcf1ed2dcba2dfc9c3f52719c47e6b28a0939e6abec3388ac85bc1a817"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/swingmx/swingmusic@sha256:a49155d1809bc6ad09d87d76cc91648c149fc80146b5e10260e70fe1cfa78175",
+      "repository": "ghcr.io/swingmx/swingmusic",
+      "tag": "v3.0.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c84b3f094134b867b778de22bd3d796495a256d6f663ef319e603ca39079785e",
+      "appVersion": "3.0.0",
+      "imageCreated": "2026-06-12T00:15:47Z",
+      "source": "https://ghcr.io/swingmx/swingmusic"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "3.0.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package swingmusic (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/swingmx/swingmusic@sha256:a49155d1809bc6ad09d87d76cc91648c149fc80146b5e10260e70fe1cfa78175); image config: ExposedPorts 1970/tcp, Volumes /config,/music, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 53s; page title \"Swing Music\"; health 200)"
+    ]
+  }
+}

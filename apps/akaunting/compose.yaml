@@ -1,0 +1,29 @@
+services:
+  app:
+    image: akaunting/akaunting@sha256:918bbc77981e5b96ab6aa6838491cfa7c98cb4ee7bbf9532ee083e7e66d04255 # tag: 3.1.21
+    environment:
+      AKAUNTING_SETUP: "true"
+      LOCALE: en-US
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: akaunting
+      DB_USERNAME: admin
+      DB_PASSWORD: akaunting_password
+      DB_PREFIX: asd_
+      COMPANY_NAME: My Company
+      COMPANY_EMAIL: my@company.com
+      ADMIN_EMAIL: umbrel@umbrel.local
+    depends_on:
+      db:
+        condition: service_started
+  db:
+    image: mariadb@sha256:2bcbaec92bd9d4f6591bc8103d3a8e6d0512ee2235506e47a2e129d190444405 # tag: 11.8.2
+    environment:
+      MYSQL_DATABASE: akaunting
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: akaunting_password
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+    volumes:
+      - {type: volume, source: db, target: "/var/lib/mysql"}
+volumes:
+  db: {}

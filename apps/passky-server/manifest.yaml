@@ -1,0 +1,43 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: passky-server
+  name: Passky Server
+  description: Server for Passky (password manager)
+provisionedCredentials:
+  service: server
+  passwordEnv: ADMIN_PASSWORD
+  username: admin
+release:
+  revision: "1"
+  version: 8.1.8-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: passky
+    composeVolume: passky
+    purpose: Data at /var/www/html/databases (server)
+    retention: retain
+presentation:
+  tagline: Simple, modern, lightweight, open source and secure password manager
+  category: files
+  developer: Rabbit Company LLC
+  website: https://passky.org

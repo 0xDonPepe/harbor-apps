@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "seedtool",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "a5ea1a5241617055a0a7b9174b7d741f63869c2a242620b0b368769219a5802b"
+    },
+    "compose.yaml": {
+      "sha256": "46f55a4c0746ead9c5589fbcadc6a09141de21e3b61ea62f8e2e147d37e035fc"
+    },
+    "README.md": {
+      "sha256": "f793ec42e6119b150b19a13f18d74246f1186fa1eece014da28be8b99e8caf74"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "dennysubke/seedtool@sha256:ab5a3bd42d7d4d0afc9c77ea9448e5d34244b66d7064eac75247601934fb90cc",
+      "repository": "dennysubke/seedtool",
+      "tag": "2.3.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:cbb2a3a545e4965b1bae3e66a8793e466aac5273d96890eb3ef2e5b3cd339f00",
+      "appVersion": "2.3.0",
+      "imageCreated": "2026-06-26T20:34:07Z",
+      "source": "https://hub.docker.com/r/dennysubke/seedtool"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "2.3.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package seedtool (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dennysubke/seedtool@sha256:ab5a3bd42d7d4d0afc9c77ea9448e5d34244b66d7064eac75247601934fb90cc); image config: ExposedPorts 8080/tcp, Volumes none, User 101.",
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 30s; page title \"Seed Tool\"; health 200)"
+    ]
+  }
+}

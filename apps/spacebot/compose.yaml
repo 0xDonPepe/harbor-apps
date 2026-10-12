@@ -1,0 +1,11 @@
+services:
+  server:
+    image: ghcr.io/spacedriveapp/spacebot@sha256:ccd9411f72def62b192e44aed23446b94e6e4774d55d7100a94de1531029f6ed # tag: v0.5.0
+    environment:
+      TZ: UTC
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+    healthcheck:
+      disable: true
+volumes:
+  data: {}

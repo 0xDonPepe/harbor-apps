@@ -1,0 +1,50 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: pyload-ng
+  name: pyload-ng
+  description: The free and open-source Download Manager written in pure Python
+defaultCredentials:
+  username: pyload
+  password: pyload
+  note: Change it after the first login.
+release:
+  revision: "1"
+  version: 0.5.0-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 8000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (web)
+    retention: retain
+  - id: downloads
+    composeVolume: downloads
+    purpose: Data at /downloads (web)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
+      required: false
+presentation:
+  tagline: The free and open-source Download Manager
+  category: files
+  developer: pyload
+  website: https://pyload.net/

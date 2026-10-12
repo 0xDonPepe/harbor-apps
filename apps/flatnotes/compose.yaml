@@ -1,0 +1,14 @@
+services:
+  server:
+    image: dullage/flatnotes@sha256:ca4b40ee7491aabf6b52bbb20ab140145cb96981d4b3fe96ab1e797ac6cd93e5 # tag: v5.5.5
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      FLATNOTES_AUTH_TYPE: password
+      FLATNOTES_USERNAME: admin
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+    healthcheck:
+      disable: true
+volumes:
+  data: {}

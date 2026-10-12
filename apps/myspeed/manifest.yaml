@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: myspeed
+  name: MySpeed
+  description: A speed test analysis software that shows your internet speed for up to 30 days
+release:
+  revision: "1"
+  version: 1.0.9-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 5216
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: myspeed
+    composeVolume: myspeed
+    purpose: Data at /myspeed/data (web)
+    retention: retain
+presentation:
+  tagline: Speed test analysis software that shows your internet speed for up to 30 days
+  category: network
+  developer: Mathias Wagner
+  website: https://myspeed.dev

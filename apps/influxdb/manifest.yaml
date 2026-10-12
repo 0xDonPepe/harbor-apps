@@ -1,0 +1,55 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: influxdb
+  name: InfluxDB
+  description: Scalable datastore for metrics, events, and real-time analytics
+release:
+  revision: "1"
+  version: 1.13.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    influxdb: infrastructure
+    chronograf: application
+endpoints:
+  web:
+    service: chronograf
+    containerPort: 8888
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: influxdb
+    composeVolume: influxdb
+    purpose: Data at /var/lib/influxdb (influxdb)
+    retention: retain
+  - id: chronograf
+    composeVolume: chronograf
+    purpose: Data at /var/lib/chronograf (chronograf)
+    retention: retain
+secrets:
+  - id: app-password
+    bytes: 32
+    encoding: hex
+    retention: retain
+    showOnce: InfluxDB password (user admin)
+    bindings:
+      - service: influxdb
+        environment: INFLUXDB_ADMIN_PASSWORD
+      - service: chronograf
+        environment: INFLUXDB_PASSWORD
+presentation:
+  tagline: High performance time series database
+  category: developer
+  developer: InfluxData
+  website: https://www.influxdata.com/

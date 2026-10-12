@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: overseerr
+  name: Overseerr
+  description: Request management and media discovery tool for the Plex ecosystem
+release:
+  revision: "1"
+  version: 1.35.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 5055
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (server)
+    retention: retain
+presentation:
+  tagline: Beautiful media discovery
+  category: media
+  developer: Ryan Cohen
+  website: https://overseerr.dev/

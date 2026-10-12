@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "pyload-ng",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "166638d2ca7f1e9382b4bf3f41363ec4117d994063247effe949fe7f9cec17fe"
+    },
+    "compose.yaml": {
+      "sha256": "e12e23581f387cfef47556392c0d8e231a0806aa7ca9c2740bef3c2bd16f9464"
+    },
+    "README.md": {
+      "sha256": "c7d92af2db18b389a421db788cbaeb2941230ced85797fe5b329b5631ae6989e"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "linuxserver/pyload-ng@sha256:0ef3e1d15183eb7f517742afe2f75b42c1d58e14640f8d5741f6e88d2d7b9ab5",
+      "repository": "linuxserver/pyload-ng",
+      "tag": "0.5.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:4345b46de7c2cca37b970c55d68a4fc8d05d81770e784e93cdd82d1e49b14be9",
+      "appVersion": "0.5.0",
+      "imageCreated": "2026-04-15T23:03:49Z",
+      "source": "https://hub.docker.com/r/linuxserver/pyload-ng"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.5.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package pyload-ng (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/pyload-ng@sha256:0ef3e1d15183eb7f517742afe2f75b42c1d58e14640f8d5741f6e88d2d7b9ab5); image config: ExposedPorts 8000/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 44s; page title \"Login - pyLoad\"; health 302)"
+    ]
+  }
+}

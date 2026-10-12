@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: heimdall
+  name: Heimdall
+  description: An Application dashboard and launcher
+release:
+  revision: "1"
+  version: 2.8.3
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (server)
+    retention: retain
+presentation:
+  tagline: Organize your most used web sites in a simple way
+  category: files
+  developer: LinuxServer.io
+  website: https://heimdall.site

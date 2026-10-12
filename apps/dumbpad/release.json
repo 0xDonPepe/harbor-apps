@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "dumbpad",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "414c66469d19db29529f16416030e26938a7cbe346c98d555bf38b1c2ea3e31a"
+    },
+    "compose.yaml": {
+      "sha256": "aee9dc6ebc5a60d9bdd6b8205866d6ca7179f271833900c19dcb0eb8909d4607"
+    },
+    "README.md": {
+      "sha256": "97754d52a6b9eba1da1a76a027224145b2cff943b6e3c78b8fa5754d9462ec0f"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "dumbwareio/dumbpad@sha256:03e4216d7842958287bccf6c51dde1c41735b35235844fb87c70b4443143ada6",
+      "repository": "dumbwareio/dumbpad",
+      "tag": "1.0.4",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:ccd56da18d387602677f2c1f661809aa4dd16e441383b451a02bb9358fba328e",
+      "appVersion": "1.0.4",
+      "imageCreated": "2025-11-03T15:34:44Z",
+      "source": "https://hub.docker.com/r/dumbwareio/dumbpad"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.0.4"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package dumbpad (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dumbwareio/dumbpad@sha256:03e4216d7842958287bccf6c51dde1c41735b35235844fb87c70b4443143ada6); image config: ExposedPorts 3000/tcp, Volumes /app/data, User node.",
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 37s; page title \"DumbPad - Simple Notes\"; health 200)"
+    ]
+  }
+}

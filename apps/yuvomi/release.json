@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "yuvomi",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c4ffb3552ba23137a76a02e3404a9f2b684624a7e5038afa4a926a707f44db57"
+    },
+    "compose.yaml": {
+      "sha256": "b1ff018455b19815816d4585addc1cad19deff1c8d49cf049b77df6986a3f688"
+    },
+    "README.md": {
+      "sha256": "dfa5ea9c6c5f2d41643f04d1c259c16bb4df5d7b77a8654f8837fef0cb2dcb2b"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/ulsklyc/yuvomi@sha256:b1c126285d762698021b840116e17097339132b5d333df52522e983229c529c4",
+      "repository": "ghcr.io/ulsklyc/yuvomi",
+      "tag": "2.76.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:506ee1f35f6f291627693de761c13d17276f0c67fad65a2ec14b9e4fda087385",
+      "appVersion": "2.76.0",
+      "imageCreated": "2026-10-11T18:33:55Z",
+      "source": "https://ghcr.io/ulsklyc/yuvomi"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "2.76.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package yuvomi (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/ulsklyc/yuvomi@sha256:b1c126285d762698021b840116e17097339132b5d333df52522e983229c529c4); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 54s; page title \"Yuvomi\"; health 200)"
+    ]
+  }
+}

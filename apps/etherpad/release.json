@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "etherpad",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "61b30a349335c05672486d7f5fb834c2f0a2dcfa638b1d999c717411d50d9a48"
+    },
+    "compose.yaml": {
+      "sha256": "3fcc408545c5755948a7480c6952b1849e213433f2d3b2d6546ba06ef11be2a2"
+    },
+    "README.md": {
+      "sha256": "28e6189b1d623facf73bc068d7cf23637ca78408d0189a77fd5e91627ef77418"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "etherpad/etherpad@sha256:c5f4a44406fab46238ce8ea9a0fbf92b3f83a8fd079ec016ded8fdb7f4986d09",
+      "repository": "etherpad/etherpad",
+      "tag": "3.3.8",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:5e6fd922e86f68621b1e5d80c43b1c9c61e5b1a7a9e1a45308ad721e0d56ce32",
+      "appVersion": "3.3.8",
+      "imageCreated": "2026-10-11T14:55:28Z",
+      "source": "https://hub.docker.com/r/etherpad/etherpad"
+    },
+    "postgres": {
+      "reference": "postgres@sha256:93a6166360be8f1d116b7ea97ebb8dea9e2c9c746349e952738bbba72a961d7c",
+      "repository": "postgres",
+      "tag": "15-alpine",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:0301f40b663d79c296ea66ff2882198522ae24c5985d8ad99170e71784bee5d5",
+      "appVersion": "15-alpine",
+      "imageCreated": "2024-12-06T00:14:30Z",
+      "source": "https://hub.docker.com/_/postgres"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "3.3.8",
+      "postgres": "15-alpine"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package etherpad (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "service app: user 5001:0 dropped (named volumes keep the image's ownership)",
+      "service postgres: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; etherpad/etherpad@sha256:c5f4a44406fab46238ce8ea9a0fbf92b3f83a8fd079ec016ded8fdb7f4986d09); image config: ExposedPorts 9001/tcp, Volumes none, User etherpad.",
+      "Digest of postgres resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; postgres@sha256:93a6166360be8f1d116b7ea97ebb8dea9e2c9c746349e952738bbba72a961d7c); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 71s; page title \"Etherpad\"; health 200)"
+    ]
+  }
+}

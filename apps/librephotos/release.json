@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "librephotos",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "5fb247f2869234de932a4bf5dc2dcd8a7e8e74c98af5efd6deba710ab2415bcd"
+    },
+    "compose.yaml": {
+      "sha256": "f7eb453e58bc51cc42fb2e5456d119de659e1a8b301fdfd32f9c7fe67b534496"
+    },
+    "README.md": {
+      "sha256": "cc0263ce2cdf36cec6f386c099a33091ee186d0becfc218b1e2cac0fb7dc6f87"
+    }
+  },
+  "images": {
+    "proxy": {
+      "reference": "reallibrephotos/librephotos-proxy@sha256:c88c0a65b50ba7e4f65ccc9aa7d5002df9827cb79edb1f88a3a4c130d0b03be4",
+      "repository": "reallibrephotos/librephotos-proxy",
+      "tag": "2026w14",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:72300a7f04158fcea24c5eb1836de89edf2e99e4adc724572a4b2ce515734110",
+      "appVersion": "2026w14",
+      "imageCreated": "2026-04-05T16:08:27Z",
+      "source": "https://hub.docker.com/r/reallibrephotos/librephotos-proxy"
+    },
+    "db": {
+      "reference": "pgautoupgrade/pgautoupgrade@sha256:2ec008ae5f0a2e5dd8f4d2475df41cf3ccc9562acf49bd668fcc0c061944b9bf",
+      "repository": "pgautoupgrade/pgautoupgrade",
+      "tag": "17-alpine3.22",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:b7a5bf780bcb7c113aa8ae41c2aba13d067692782b39de3699dd8c74bd19fbef",
+      "appVersion": "17-alpine3.22",
+      "imageCreated": "2025-07-16T12:39:43Z",
+      "source": "https://hub.docker.com/r/pgautoupgrade/pgautoupgrade"
+    },
+    "frontend": {
+      "reference": "reallibrephotos/librephotos-frontend@sha256:e2fb909607b1d9552c033a9432446eadb6b693289af2b4b016da55d50724afcb",
+      "repository": "reallibrephotos/librephotos-frontend",
+      "tag": "2026w14",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:535b966b9b7d51bb8fb4af0780fbdb434abf0d23ab4efb6700cf7ce8655ad075",
+      "appVersion": "2026w14",
+      "imageCreated": "2026-04-05T16:09:52Z",
+      "source": "https://hub.docker.com/r/reallibrephotos/librephotos-frontend"
+    },
+    "backend": {
+      "reference": "reallibrephotos/librephotos@sha256:3f4d6fa163bf41f2cd496aca342307fec8b827fe4a7ced1e7773a050ef7a5dca",
+      "repository": "reallibrephotos/librephotos",
+      "tag": "2026w14",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c47cba1d227640dd53e7eca6559970df56c71bf2c1a860ed257015143294f6f1",
+      "appVersion": "2026w14",
+      "imageCreated": "2026-04-05T16:11:22Z",
+      "source": "https://hub.docker.com/r/reallibrephotos/librephotos"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "proxy": "2026w14",
+      "db": "17-alpine3.22",
+      "frontend": "2026w14",
+      "backend": "2026w14"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package librephotos (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of proxy resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; reallibrephotos/librephotos-proxy@sha256:c88c0a65b50ba7e4f65ccc9aa7d5002df9827cb79edb1f88a3a4c130d0b03be4); image config: ExposedPorts 80/tcp, Volumes none, User root.",
+      "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; pgautoupgrade/pgautoupgrade@sha256:2ec008ae5f0a2e5dd8f4d2475df41cf3ccc9562acf49bd668fcc0c061944b9bf); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Digest of frontend resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; reallibrephotos/librephotos-frontend@sha256:e2fb909607b1d9552c033a9432446eadb6b693289af2b4b016da55d50724afcb); image config: ExposedPorts 3000/tcp,8080/tcp, Volumes none, User static.",
+      "Digest of backend resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; reallibrephotos/librephotos@sha256:3f4d6fa163bf41f2cd496aca342307fec8b827fe4a7ced1e7773a050ef7a5dca); image config: ExposedPorts 8001/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 152s; page title \"LibrePhotos\"; health 200)"
+    ]
+  }
+}

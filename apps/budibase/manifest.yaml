@@ -1,0 +1,48 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: budibase
+  name: Budibase
+  description: AI agents, automations and apps that run your operations. Model agnostic.
+release:
+  revision: "1"
+  version: 3.41.3-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    budibase: application
+endpoints:
+  web:
+    service: budibase
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: budibase
+    composeVolume: budibase
+    purpose: Data at /data (budibase)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: budibase
+        environment: JWT_SECRET
+presentation:
+  tagline: The low code platform you'll enjoy using
+  category: developer
+  developer: Budibase
+  website: https://budibase.com

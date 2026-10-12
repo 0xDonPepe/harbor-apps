@@ -1,0 +1,11 @@
+services:
+  web:
+    image: savewithstash/stash@sha256:fdca95d75438eba149d31d303cfe7ed3b194a5938b10d1cca184b49cd8511271 # tag: 1.0.1
+    environment:
+      PORT: "5173"
+    volumes:
+      - {type: volume, source: app, target: "/app/data"}
+      - {type: volume, source: models, target: "/app/models"}
+volumes:
+  app: {}
+  models: {}

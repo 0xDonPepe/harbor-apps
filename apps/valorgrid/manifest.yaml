@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: valorgrid
+  name: ValorGrid
+  description: App local y privada para controlar, importar y visualizar tu cartera con Windows, Excel, SQLite y Docker.
+release:
+  revision: "1"
+  version: 3.36.3
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 1325
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (app)
+    retention: retain
+presentation:
+  tagline: Private and auditable investment portfolio tracking
+  category: finance
+  developer: aivm23
+  website: https://valorgrid.app

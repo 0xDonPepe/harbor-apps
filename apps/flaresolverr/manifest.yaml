@@ -1,0 +1,36 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: flaresolverr
+  name: flaresolverr
+  description: Proxy server to bypass Cloudflare protection
+release:
+  revision: "1"
+  version: 3.5.2
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    server: application
+endpoints:
+  web:
+    service: web
+    containerPort: 8000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+presentation:
+  tagline: Proxy server to bypass Cloudflare and DDoS-GUARD protection
+  category: network
+  developer: FlareSolverr
+  website: https://github.com/FlareSolverr/FlareSolverr

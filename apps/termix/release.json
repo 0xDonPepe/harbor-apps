@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "termix",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "916f8368b89798e751112ea3cd1b70d44fd98142bc2729864e134a5f1d3d9551"
+    },
+    "compose.yaml": {
+      "sha256": "9d520b98a39e9464b05b37a415fa274d17b95879cb2a7872bd3e346f75ad2861"
+    },
+    "README.md": {
+      "sha256": "b04adb3222baeafac79876fc161870c28cc3457cbb92e76dba37321711532702"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/lukegus/termix@sha256:d64c841a560c54aa7c27b0e6bbd2fbf8b51073565040d2a6bfbc127f0a72cf1e",
+      "repository": "ghcr.io/lukegus/termix",
+      "tag": "release-2.9.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:b3322549752cd0b5b3c72adee7ac727130365089de66743875d10225c17e0549",
+      "appVersion": "release-2.9.2",
+      "imageCreated": "2026-10-06T01:26:15Z",
+      "source": "https://ghcr.io/lukegus/termix"
+    },
+    "guacd": {
+      "reference": "guacamole/guacd@sha256:8974eaa9ba32f713daf311e7cc8cd7e4cdfba1edea39eed75524e78ef4b08f4f",
+      "repository": "guacamole/guacd",
+      "tag": "1.6.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:f39258e35244b6bf79bc6ac4e60eee176aea6f6a5adb13e8c3090e48df8ae515",
+      "appVersion": "1.6.0",
+      "imageCreated": "2025-06-19T21:55:19Z",
+      "source": "https://hub.docker.com/r/guacamole/guacd"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "release-2.9.2",
+      "guacd": "1.6.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package termix (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "service guacd: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/lukegus/termix@sha256:d64c841a560c54aa7c27b0e6bbd2fbf8b51073565040d2a6bfbc127f0a72cf1e); image config: ExposedPorts 8080/tcp, Volumes /app/data, User root.",
+      "Digest of guacd resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; guacamole/guacd@sha256:8974eaa9ba32f713daf311e7cc8cd7e4cdfba1edea39eed75524e78ef4b08f4f); image config: ExposedPorts 4822/tcp, Volumes none, User guacd.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 48s; page title \"Termix\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: swingmusic
+  name: Swing Music
+  description: Swing Music is a beautiful, self-hosted music player for your local audio files. Like a cooler Spotify ... but bring your own music.
+release:
+  revision: "1"
+  version: 3.0.0-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 1970
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (app)
+    retention: retain
+  - id: music
+    composeVolume: music
+    purpose: Data at /music (app)
+    retention: retain
+  - id: downloads
+    composeVolume: downloads
+    purpose: Data at /downloads (app)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
+      required: false
+presentation:
+  tagline: Self-hosted music streaming
+  category: media
+  developer: Mungai Njoroge
+  website: https://github.com/swingmx/swingmusic

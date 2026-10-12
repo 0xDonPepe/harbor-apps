@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "omnitools",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "b974986dcc8f63c34e5c7f5583ad4daeca512cf8d9432c0ed8b1c47839f8d885"
+    },
+    "compose.yaml": {
+      "sha256": "08d655ecd4af50b5facba246b9eb67666b7111655d60c430bc4b1ebc74903fa8"
+    },
+    "README.md": {
+      "sha256": "f7986645202eee8023072525923fc0d2fd0fde3f7591b569a5502da59c2334b5"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "iib0011/omni-tools@sha256:3f35a17d8d81caa33c7caec0198eb561dee212a5f48d8303d8f7b182c930fb71",
+      "repository": "iib0011/omni-tools",
+      "tag": "0.6.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:8bc0a81ea82ddfc3a789354552b6cd56381031bbd7fcec77428f608ac17b9a8c",
+      "appVersion": "0.6.0",
+      "imageCreated": "2025-10-02T22:41:33Z",
+      "source": "https://hub.docker.com/r/iib0011/omni-tools"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "0.6.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package omnitools (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: security_opt no-new-privileges dropped",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; iib0011/omni-tools@sha256:3f35a17d8d81caa33c7caec0198eb561dee212a5f48d8303d8f7b182c930fb71); image config: ExposedPorts 80/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 27s; page title \"OmniTools\"; health 200)"
+    ]
+  }
+}

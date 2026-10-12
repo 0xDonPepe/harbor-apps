@@ -1,0 +1,41 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: bark-wallet
+  name: Bark Wallet
+  description: One wallet for Lightning, Ark, and on-chain
+release:
+  revision: "1"
+  version: 0.8.0-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    api: application
+    barkd: application
+endpoints:
+  web:
+    service: web
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: wallet
+    composeVolume: wallet
+    purpose: Data at /wallet-data (api)
+    retention: retain
+presentation:
+  tagline: One wallet for Lightning, Ark, and on-chain
+  category: finance
+  developer: Second
+  website: https://second.tech

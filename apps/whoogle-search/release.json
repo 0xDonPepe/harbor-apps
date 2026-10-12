@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "whoogle-search",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "43328b93ef8dd8f797904c1db29b44fccca1a81df062bb67cb46bf342f27e1bb"
+    },
+    "compose.yaml": {
+      "sha256": "bab66199b0c0a9bbb674d6d6392c3716b09ad0eff50d318861763b97dd9d9f88"
+    },
+    "README.md": {
+      "sha256": "d66a6918dfeea63b40f8ba88cc5d5edf7c0b85d6432209902eab4cdf8625cffb"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "benbusby/whoogle-search@sha256:6ae072238642b7e5860c8fa7f68cf06be797eb4e2278fc41d17d3b5e8a051eea",
+      "repository": "benbusby/whoogle-search",
+      "tag": "1.2.4",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:5a74b26493da7d57bb952918740ce70f40d8c18b83325e01a6f2a3fedfe2490c",
+      "appVersion": "1.2.4",
+      "imageCreated": "2026-04-15T00:55:36Z",
+      "source": "https://hub.docker.com/r/benbusby/whoogle-search"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.2.4"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package whoogle-search (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "service web: user 927:927 dropped (named volumes keep the image's ownership)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; benbusby/whoogle-search@sha256:6ae072238642b7e5860c8fa7f68cf06be797eb4e2278fc41d17d3b5e8a051eea); image config: ExposedPorts 5000/tcp, Volumes /config, User whoogle:whoogle.",
+      "Live catalog run catalog-2026-10-12T18-21-55-harbor-q15: passed (healthy after 48s; page title \"Whoogle Search\"; health 200)"
+    ]
+  }
+}

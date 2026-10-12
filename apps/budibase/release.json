@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "budibase",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "0735edd18d6ed033854366ff9e2dc5ea85b2ff02c1e24970b6fcaa028390429c"
+    },
+    "compose.yaml": {
+      "sha256": "4d2c7178963443ff0159d010ceaa5c7dc2533b7758a06980b24a42c081b7f556"
+    },
+    "README.md": {
+      "sha256": "ce29a3da5f494f04b8d7a4f6dd4f166c37f9ece0728b83a480515decba65b949"
+    }
+  },
+  "images": {
+    "budibase": {
+      "reference": "budibase/budibase@sha256:f05b90c2b8afc951feb99931bb4646d2c94af37d9c576ef3c4e01d4fdc296dc1",
+      "repository": "budibase/budibase",
+      "tag": "3.41.3",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c0bfae0df346e481c67ee45a543a9e81efa5f387e489a4f79f9e2c9de2210af1",
+      "appVersion": "3.41.3",
+      "imageCreated": "2026-08-04T16:11:25Z",
+      "source": "https://hub.docker.com/r/budibase/budibase"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "budibase": "3.41.3"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package budibase (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service budibase: stop_grace_period 1m dropped (Docker's default applies)",
+      "service budibase: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of budibase resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; budibase/budibase@sha256:f05b90c2b8afc951feb99931bb4646d2c94af37d9c576ef3c4e01d4fdc296dc1); image config: ExposedPorts 2222/tcp,4000/tcp,4369/tcp,443/tcp,4984/tcp,5984/tcp,80/tcp,9100/tcp, Volumes /data, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 191s; page title \"Budibase\"; health 301)"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: autobrr
+  name: autobrr
+  description: Modern, easy to use download automation for torrents and usenet.
+release:
+  revision: "1"
+  version: 1.88.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 7474
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /config (web)
+    retention: retain
+presentation:
+  tagline: Modern, easy to use download automation for torrents and usenet
+  category: media
+  developer: autobrr
+  website: https://autobrr.com/

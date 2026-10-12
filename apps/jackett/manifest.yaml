@@ -1,0 +1,46 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: jackett
+  name: Jackett
+  description: API Support for your favorite torrent trackers
+release:
+  revision: "1"
+  version: 0.24.2816
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 9117
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /config (server)
+    retention: retain
+  - id: downloads
+    composeVolume: downloads
+    purpose: Data at /downloads (server)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
+      required: false
+presentation:
+  tagline: API support for your favorite torrent trackers
+  category: media
+  developer: Jackett
+  website: https://github.com/Jackett/Jackett/

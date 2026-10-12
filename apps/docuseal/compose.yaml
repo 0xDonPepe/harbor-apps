@@ -1,0 +1,21 @@
+services:
+  server:
+    image: docuseal/docuseal@sha256:e171808ce8dabb08491a49a6d8c477670a65ddce5e3de4764904b63a4487940f # tag: 3.3.1
+    environment:
+      DATABASE_URL: postgresql://docusealuser:docusealpass@db:5432/docuseal?sslmode=disable
+    volumes:
+      - {type: volume, source: app, target: "/data/docuseal"}
+    depends_on:
+      db:
+        condition: service_started
+  db:
+    image: postgres@sha256:0321e2252ebfeecb8bc1a899755084d29bce872953e1a5a3e25ec0860b739098 # tag: 17.3
+    environment:
+      POSTGRES_DB: docuseal
+      POSTGRES_USER: docusealuser
+      POSTGRES_PASSWORD: docusealpass
+    volumes:
+      - {type: volume, source: db, target: "/var/lib/postgresql/data"}
+volumes:
+  app: {}
+  db: {}

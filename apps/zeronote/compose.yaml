@@ -1,0 +1,5 @@
+services:
+  app:
+    image: ghcr.io/besoeasy/zeronote@sha256:208586649fcf38a86b73f2b7ed5888d71faac38729fd00c5a793ab90b09ecf2f # tag: 1.0.12
+    environment:
+      NODE_ENV: production

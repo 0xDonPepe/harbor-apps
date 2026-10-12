@@ -1,0 +1,13 @@
+services:
+  web:
+    image: linuxserver/pyload-ng@sha256:0ef3e1d15183eb7f517742afe2f75b42c1d58e14640f8d5741f6e88d2d7b9ab5 # tag: 0.5.0
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: Etc/UTC
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+      - {type: volume, source: downloads, target: "/downloads"}
+volumes:
+  config: {}
+  downloads: {}

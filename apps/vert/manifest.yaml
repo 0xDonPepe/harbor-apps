@@ -1,0 +1,44 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: vert
+  name: VERT
+  description: The next-generation file converter. Open source, fully local* and free forever.
+release:
+  revision: "1"
+  version: f5ecdec
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+configuration:
+  - service: web
+    environment: PUB_HOSTNAME
+    endpoint: web
+    format: origin
+  - service: web
+    environment: PUB_VERTD_URL
+    endpoint: web
+    format: origin
+presentation:
+  tagline: A file conversion utility
+  category: files
+  developer: VERT
+  website: https://vert.sh/

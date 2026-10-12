@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "pastefy",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c77c4bf6f0f7d2d595f7a63f014e1cd6d8612d7d487a474f1ada8a5d67b683f9"
+    },
+    "compose.yaml": {
+      "sha256": "7e97a23669b186eb1281dfecb3b742e31e4ba7996949d84252ea4863798ffdce"
+    },
+    "README.md": {
+      "sha256": "e04d76fcc6354938af1ed9bf4628f80da5b088009376077064068fe1b384d194"
+    }
+  },
+  "images": {
+    "db": {
+      "reference": "mariadb@sha256:5dfb3093333fa0ea53194ddef0a2bfa21d3b1e1353bd228b22610cd6fc0c04da",
+      "repository": "mariadb",
+      "tag": "11.4.5",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:8f0b045968f437f4a8dabd5f66fbe81472ebb0f2473e567819485427654a8e05",
+      "appVersion": "11.4.5",
+      "imageCreated": "2025-02-05T21:06:18Z",
+      "source": "https://hub.docker.com/_/mariadb"
+    },
+    "app": {
+      "reference": "interaapps/pastefy@sha256:353ce246ccf24ab1dec42e3c387744b47925065c207699f0bf1ce8e560619ca9",
+      "repository": "interaapps/pastefy",
+      "tag": "7.1.6",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:8a3bc26f5e5b638b8dfefb76e77e3da39b13c144f1a4f0469e778e05c9104f66",
+      "appVersion": "7.1.6",
+      "imageCreated": "2026-03-01T22:41:28Z",
+      "source": "https://hub.docker.com/r/interaapps/pastefy"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "db": "11.4.5",
+      "app": "7.1.6"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package pastefy (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:5dfb3093333fa0ea53194ddef0a2bfa21d3b1e1353bd228b22610cd6fc0c04da); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; interaapps/pastefy@sha256:353ce246ccf24ab1dec42e3c387744b47925065c207699f0bf1ce8e560619ca9); image config: ExposedPorts 1337/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q09: passed (healthy after 48s; page title \"Pastefy • Share your code snippets\"; health 200)"
+    ]
+  }
+}

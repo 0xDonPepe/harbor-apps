@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "telegrapho",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c264d916646c7bb8dbc155094012d7d83855a60aa75e71a640bcd6bc72ca34f5"
+    },
+    "compose.yaml": {
+      "sha256": "a0e8338a671d603347ce3ccc7a8d7c5adcd54e54fee4205c921a0e5acf9b9ea5"
+    },
+    "README.md": {
+      "sha256": "9a17898074de237f9d309fa01e65754177e825feec634c34098d6a3ea05a9d41"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/egzola/telegrapho@sha256:9486b185b993398cc651158a9292c2fa54eb83254c83d610759988fb20b413b8",
+      "repository": "ghcr.io/egzola/telegrapho",
+      "tag": "1.0.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c58eab1e8ea0e4eb6350a6b7c02bc872229e610c96cb4f584c254a2885e01f36",
+      "appVersion": "1.0.1",
+      "imageCreated": "2026-06-15T12:37:53Z",
+      "source": "https://ghcr.io/egzola/telegrapho"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "1.0.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package telegrapho (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: stop_grace_period 1m dropped (Docker's default applies)",
+      "service app: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/egzola/telegrapho@sha256:9486b185b993398cc651158a9292c2fa54eb83254c83d610759988fb20b413b8); image config: ExposedPorts 3712/tcp, Volumes none, User app.",
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 40s; page title \"Telegrapho\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "paperless",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "e26eaccf76278d396696bc2d13b41ff8aa50471ae557400d9a260da4ec6b714e"
+    },
+    "compose.yaml": {
+      "sha256": "955b8121d73851edb847443e98ecc545af75453147bc2f51445cf47222ebb724"
+    },
+    "README.md": {
+      "sha256": "0cad51819961658a056339bfd6875cb97de722650e0326fa034477bca0c5a559"
+    }
+  },
+  "images": {
+    "broker": {
+      "reference": "redis@sha256:d6ecc832969a4827645a083da38345327b3447772fe907e7d4311c79b4e3a06e",
+      "repository": "redis",
+      "tag": "7",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:370175fd0c43cc67ac208f08062e822e15b789e9eb75635ca7a54e31624a9ee2",
+      "appVersion": "7",
+      "imageCreated": "2024-04-05T21:53:10Z",
+      "source": "https://hub.docker.com/_/redis"
+    },
+    "db": {
+      "reference": "postgres@sha256:46aa2ee5d664b275f05d1a963b30fff60fb422b4b594d509765c42db46d48881",
+      "repository": "postgres",
+      "tag": "16",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:f5ce318a46d574a51dfde841c23f5cdc01e4affaf345a7201b0d6251b2538df1",
+      "appVersion": "16",
+      "imageCreated": "2024-05-09T18:58:11Z",
+      "source": "https://hub.docker.com/_/postgres"
+    },
+    "webserver": {
+      "reference": "ghcr.io/paperless-ngx/paperless-ngx@sha256:6b94799bc769a063b3340cc5847402e626d4d91d29a295a8e747f8e9bead4207",
+      "repository": "ghcr.io/paperless-ngx/paperless-ngx",
+      "tag": "3.3.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:d70526917791fb99ee61b40a91f111d60c59914f36cfd481af494107054aed06",
+      "appVersion": "3.3.0",
+      "imageCreated": "2026-10-06T03:41:24Z",
+      "source": "https://ghcr.io/paperless-ngx/paperless-ngx"
+    },
+    "gotenberg": {
+      "reference": "gotenberg/gotenberg@sha256:d03b8a04c6e6c5e568b38f57352266dee4674849b71818774025f8f48d869a9a",
+      "repository": "gotenberg/gotenberg",
+      "tag": "7.10",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:3dd8d88a52c1a881d52567d40523f1bff89ae5f416ebe4f06090cfa48e34e697",
+      "appVersion": "7.10",
+      "imageCreated": "2023-12-18T09:58:14Z",
+      "source": "https://hub.docker.com/r/gotenberg/gotenberg"
+    },
+    "tika": {
+      "reference": "apache/tika@sha256:90b7fa1dc018434075fce9e1d9b88b1e3d0ea6979d0cf86e116c79a8073ae973",
+      "repository": "apache/tika",
+      "tag": "3.3.1.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c9e60f15c1ff3f826e3102e18352ef21cf398a3f2505871913c3dc643dcc50ea",
+      "appVersion": "3.3.1.0",
+      "imageCreated": "2026-05-27T14:26:43Z",
+      "source": "https://hub.docker.com/r/apache/tika"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "broker": "7",
+      "db": "16",
+      "webserver": "3.3.0",
+      "gotenberg": "7.10",
+      "tika": "3.3.1.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package paperless (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "service webserver: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of broker resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; redis@sha256:d6ecc832969a4827645a083da38345327b3447772fe907e7d4311c79b4e3a06e); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
+      "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; postgres@sha256:46aa2ee5d664b275f05d1a963b30fff60fb422b4b594d509765c42db46d48881); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Digest of webserver resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/paperless-ngx/paperless-ngx@sha256:6b94799bc769a063b3340cc5847402e626d4d91d29a295a8e747f8e9bead4207); image config: ExposedPorts 8000/tcp, Volumes /usr/src/paperless/consume,/usr/src/paperless/data,/usr/src/paperless/export,/usr/src/paperless/media, User root.",
+      "Digest of gotenberg resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; gotenberg/gotenberg@sha256:d03b8a04c6e6c5e568b38f57352266dee4674849b71818774025f8f48d869a9a); image config: ExposedPorts 3000/tcp, Volumes none, User gotenberg.",
+      "Digest of tika resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; apache/tika@sha256:90b7fa1dc018434075fce9e1d9b88b1e3d0ea6979d0cf86e116c79a8073ae973); image config: ExposedPorts 9998/tcp, Volumes none, User 35002:35002.",
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 181s; page title \"Paperless-ngx sign in\"; health 302)"
+    ]
+  }
+}

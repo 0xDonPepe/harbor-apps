@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "notediscovery",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "cb7d9c1403da273d8fcc8ba27e8b8fef588d8c51f101dcf670559e520317ce0c"
+    },
+    "compose.yaml": {
+      "sha256": "9d749f5657a5cd52bf264a72984f7f037ace15feb27caf108220c0c8986e622e"
+    },
+    "README.md": {
+      "sha256": "f22b1c5061f54d211d78164581ac13410aa8d55bfc628defbbee8c8e1e6a05bc"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/gamosoft/notediscovery@sha256:13e3566146428db028ec0cfb3e0c0db6dc87b53cc475d19aefc2e2e6d1b37cc2",
+      "repository": "ghcr.io/gamosoft/notediscovery",
+      "tag": "0.31.7",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:e497a5e0e2c23f6a8dd4de3f4965e786f9ba6fdd2fb283b7c62ce793cccc711c",
+      "appVersion": "0.31.7",
+      "imageCreated": "2026-09-28T15:13:55Z",
+      "source": "https://ghcr.io/gamosoft/notediscovery"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.31.7"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package notediscovery (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/gamosoft/notediscovery@sha256:13e3566146428db028ec0cfb3e0c0db6dc87b53cc475d19aefc2e2e6d1b37cc2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-40-harbor-q02: passed (healthy after 36s; page title \"NoteDiscovery\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "metube",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "7a46d5fbcbc419800ca36b93443c7844ffba7d91e7e2ce5e200fb7168605eef0"
+    },
+    "compose.yaml": {
+      "sha256": "0e3937f91322b83cb986e46d1f8f959467e058aecfd2fae6722465e0ce78b0a3"
+    },
+    "README.md": {
+      "sha256": "80a53bfa1a03186b84aa129feb178f30255b8050f15cb908507654e61bbab5e3"
+    }
+  },
+  "images": {
+    "metube": {
+      "reference": "ghcr.io/alexta69/metube@sha256:df929ef2453fd75c1f1cbd8dafb309ee03ff18d8705c7c1e01642b1202d4a650",
+      "repository": "ghcr.io/alexta69/metube",
+      "tag": "2026.10.09",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:8d1b7f30e3c8c2aea82ad17b0428488661e376fd78e1b6e672d321478ace4cb4",
+      "appVersion": "2026.10.09",
+      "imageCreated": "2026-10-09T08:03:56Z",
+      "source": "https://ghcr.io/alexta69/metube"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "metube": "2026.10.09"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package metube (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service metube: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of metube resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/alexta69/metube@sha256:df929ef2453fd75c1f1cbd8dafb309ee03ff18d8705c7c1e01642b1202d4a650); image config: ExposedPorts 8081/tcp, Volumes /downloads, User root.",
+      "Live catalog run catalog-2026-10-12T18-49-30-harbor-q01: passed (healthy after 24s; page title \"MeTube\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: networkingtoolbox
+  name: Networking Toolbox
+  description: 🛜 100+ offline-first networking tools and utilities
+release:
+  revision: "1"
+  version: 1.6.0
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+endpoints:
+  web:
+    service: app
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+presentation:
+  tagline: The all-in-one offline-first networking toolbox for sysadmins
+  category: developer
+  developer: Alicia Sykes
+  website: https://www.networkingtoolbox.net/

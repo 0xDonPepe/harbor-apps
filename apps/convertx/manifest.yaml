@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: convertx
+  name: ConvertX
+  description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
+release:
+  revision: "1"
+  version: 0.19.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: app
+    composeVolume: app
+    purpose: Data at /app/data (server)
+    retention: retain
+presentation:
+  tagline: Self-hosted online file converter
+  category: files
+  developer: Emrik Östling
+  website: https://github.com/C4illin/ConvertX

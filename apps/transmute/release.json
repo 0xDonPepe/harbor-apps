@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "transmute",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "4d129c58a5b023e057cc799a065d4d1e8e953631c1094dd7f100106df577d91d"
+    },
+    "compose.yaml": {
+      "sha256": "d098e953b82a506a5aa744db015a18df9fa3ee4515d8fce324d6d6ab5a8f0c35"
+    },
+    "README.md": {
+      "sha256": "c7064c2ebd8109756c6ab10269f925e2a7d5fb4d38d606812fa5d17a7d66c9eb"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/transmute-app/transmute@sha256:87b669d835d9e68bdbc4082ab061cb361cd3ecee69c14ccfa9a3814d326b6707",
+      "repository": "ghcr.io/transmute-app/transmute",
+      "tag": "2.1.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:1f5fae5af0d28f7bd4859a09037396e428f9704d69e9786fae030d3740e6600e",
+      "appVersion": "2.1.1",
+      "imageCreated": "2026-10-03T13:50:14Z",
+      "source": "https://ghcr.io/transmute-app/transmute"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "2.1.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package transmute (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/transmute-app/transmute@sha256:87b669d835d9e68bdbc4082ab061cb361cd3ecee69c14ccfa9a3814d326b6707); image config: ExposedPorts 3313/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 121s; page title \"Transmute - Sign In\"; health 200)"
+    ]
+  }
+}

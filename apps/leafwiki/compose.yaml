@@ -1,0 +1,9 @@
+services:
+  web:
+    image: ghcr.io/perber/leafwiki@sha256:d11cf3c73760fef930b509dd52e69bd4c220ab612361d026714129d67251b535 # tag: v0.14.1
+    environment:
+      LEAFWIKI_ALLOW_INSECURE: "true"
+    volumes:
+      - {type: volume, source: data, target: "/app/data"}
+volumes:
+  data: {}

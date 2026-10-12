@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "shopstr",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "e235c301217ac2770a3cd3fe95369a48da90f628a0a5cd83710f30a612f1e7e4"
+    },
+    "compose.yaml": {
+      "sha256": "4dda05f77341124a822719643e77d9908f7249ab44430cf851c1d8eb0d1173d3"
+    },
+    "README.md": {
+      "sha256": "399e4943178b6c7f0647c7145ce00768f5d070da1d0dec1af7d57f5dd061c189"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "calvadev/shopstr@sha256:b123e9d16f4267ea766813cbc12ac0989afcea03a72b42edfa37b64951ececdb",
+      "repository": "calvadev/shopstr",
+      "tag": "v0.7.5",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:81704a3c6cfc41b1ba0f674ea761833dd5ecc612bb25366887f037fef67fa4c7",
+      "appVersion": "0.7.5",
+      "imageCreated": "2025-06-13T15:14:31Z",
+      "source": "https://hub.docker.com/r/calvadev/shopstr"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.7.5"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package shopstr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; calvadev/shopstr@sha256:b123e9d16f4267ea766813cbc12ac0989afcea03a72b42edfa37b64951ececdb); image config: ExposedPorts 3000/tcp, Volumes none, User nextjs.",
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 67s; page title \"Shopstr\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "grafana",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "22724bf3fc7126596d40076c13cf4eaf54ec2450dd5be0b05bda4f66802547a1"
+    },
+    "compose.yaml": {
+      "sha256": "159bfdfe1d17e6356d6f0988a50590383171c75e632bb30b1ca06b31e65c19fa"
+    },
+    "README.md": {
+      "sha256": "d013aeb8c11920963ffb904cbb759fa0a66c367e374fe53351aac8a3309dfc7d"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "grafana/grafana@sha256:b28bae15e219c998fb0e0424ed724930cc61b1f61fb404d47c862f9a23f9e572",
+      "repository": "grafana/grafana",
+      "tag": "13.2.3",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:d84563330dc9d2fd2bc096d0fb96021b5319c75bf6ed555566709998e823dec4",
+      "appVersion": "13.2.3",
+      "imageCreated": "2026-09-28T20:55:24Z",
+      "source": "https://hub.docker.com/r/grafana/grafana"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "13.2.3"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package grafana (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; grafana/grafana@sha256:b28bae15e219c998fb0e0424ed724930cc61b1f61fb404d47c862f9a23f9e572); image config: ExposedPorts 3000/tcp, Volumes none, User 472.",
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 58s; page title \"Grafana\"; health 302)"
+    ]
+  }
+}

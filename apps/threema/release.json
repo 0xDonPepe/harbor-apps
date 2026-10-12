@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "threema",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "762191006508a6ff26a6d8e1c69d2a8d121e75000aeef3eb9106cab70f0b47b7"
+    },
+    "compose.yaml": {
+      "sha256": "17f55a760b77f403812ee2ce79cea41dec5501416034e41f2867bb0bb72a4f2b"
+    },
+    "README.md": {
+      "sha256": "6ca831341124c30d916b35482a3c813654d10889f638c45c2342873652fcecb8"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "dennysubke/threema-web@sha256:01f8b0ca6322f11579610b012c3440001743efb593dd845668a4e1f3d881e1a2",
+      "repository": "dennysubke/threema-web",
+      "tag": "v2.6.5",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:3375c2948bf1db879198450006a250dc021375c15d756f682afd3db78a468b32",
+      "appVersion": "2.6.5",
+      "imageCreated": "2026-07-08T19:53:25Z",
+      "source": "https://hub.docker.com/r/dennysubke/threema-web"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "2.6.5"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package threema (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dennysubke/threema-web@sha256:01f8b0ca6322f11579610b012c3440001743efb593dd845668a4e1f3d881e1a2); image config: ExposedPorts 80/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-32-harbor-q06: passed (healthy after 29s; page title \"Threema Web\"; health 200)"
+    ]
+  }
+}

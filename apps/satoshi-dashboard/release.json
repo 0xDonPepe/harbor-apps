@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "satoshi-dashboard",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "96bd1aeb41145b2de9ba68297e830282904353572a57327559cabb6a0e1d42f6"
+    },
+    "compose.yaml": {
+      "sha256": "f7992b76c2c5bb034fc5f84ee6cbf1a0809109958eb2ad977c8b3ca8b32946ba"
+    },
+    "README.md": {
+      "sha256": "a2c1570cbd3abe44bcc58b916b6f09475071b4a25ba7c89873a858759ace2a23"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/satoshi-dashboard/main@sha256:35ae82af78d972aeb621689e0a1e7dd76fa1c2835dca054c489179a09a279506",
+      "repository": "ghcr.io/satoshi-dashboard/main",
+      "tag": "v1.1.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:81a14a7e95692c08bb46fc15902e401cd63cb07da24733c3fe46e5ef9a31c7da",
+      "appVersion": "1.1.0",
+      "imageCreated": "2026-05-14T15:13:54Z",
+      "source": "https://ghcr.io/satoshi-dashboard/main"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.1.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package satoshi-dashboard (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/satoshi-dashboard/main@sha256:35ae82af78d972aeb621689e0a1e7dd76fa1c2835dca054c489179a09a279506); image config: ExposedPorts 8787/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 42s; page title \"Bitcoin Dashboard - Live BTC Price, Market Cap & Network Stats\"; health 200)"
+    ]
+  }
+}

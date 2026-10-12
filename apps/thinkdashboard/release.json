@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "thinkdashboard",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c40722b3fe6db5706d6632a74c34192434f1eec246e546661f129c0e541c70ce"
+    },
+    "compose.yaml": {
+      "sha256": "ffb29a4e84e0817646ce90b35c5e3e3f6fb3f380dca987248a2e3c4a78a13bec"
+    },
+    "README.md": {
+      "sha256": "bd21b4fc8ea3087072128bce315554debb751549927a386a27d749c7a5ac42b4"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "ghcr.io/matiasdesuu/thinkdashboard@sha256:3bd3ac29fcd0329673a1b4946e4e63ecc55239e6221a00bd4b407a5343c55079",
+      "repository": "ghcr.io/matiasdesuu/thinkdashboard",
+      "tag": "v0.7.6",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:5d3a66a12ff1531955f9bced4b09362d074883e3e5de8a930003fb023c44417c",
+      "appVersion": "0.7.6",
+      "imageCreated": "2025-11-23T23:53:20Z",
+      "source": "https://ghcr.io/matiasdesuu/thinkdashboard"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "0.7.6"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package thinkdashboard (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service server: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/matiasdesuu/thinkdashboard@sha256:3bd3ac29fcd0329673a1b4946e4e63ecc55239e6221a00bd4b407a5343c55079); image config: ExposedPorts 8080/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 23s; page title \"Dashboard\"; health 200)"
+    ]
+  }
+}

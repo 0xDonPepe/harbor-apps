@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "stash",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "e826899b4e47c3f80da47d7bab0ac71543f40624b85876ffea33dede52678add"
+    },
+    "compose.yaml": {
+      "sha256": "5434bc03425a60d9c6000639bd9bf1be52c63ffb7d039f2cc1b3f2fd5ac1ad80"
+    },
+    "README.md": {
+      "sha256": "7b0bebaa2ec12bc936d1c92883416a20022fdc4156e4af0b83555fea6f15385c"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "savewithstash/stash@sha256:fdca95d75438eba149d31d303cfe7ed3b194a5938b10d1cca184b49cd8511271",
+      "repository": "savewithstash/stash",
+      "tag": "1.0.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:f8c3acc354047d4cf7508805ade9dd635969520535b9962174e30b12d6b72d1c",
+      "appVersion": "1.0.1",
+      "imageCreated": "2026-06-14T02:53:35Z",
+      "source": "https://hub.docker.com/r/savewithstash/stash"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "1.0.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package stash (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; savewithstash/stash@sha256:fdca95d75438eba149d31d303cfe7ed3b194a5938b10d1cca184b49cd8511271); image config: ExposedPorts 5173/tcp, Volumes /app/data,/app/models, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 140s; page title \"Stash\"; health 200)"
+    ]
+  }
+}

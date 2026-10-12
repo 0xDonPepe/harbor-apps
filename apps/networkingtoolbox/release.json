@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "networkingtoolbox",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "3cc0122396cb60ad75650748dcc12127d03e8eb9b158d5951535ecba978bf55d"
+    },
+    "compose.yaml": {
+      "sha256": "e1abe7d9a54a8ac5db6c137d41dcf202470122736f7227fb60187f837b7441b5"
+    },
+    "README.md": {
+      "sha256": "f034c8708f192c70bf2b123c58131bc8bfe7fa59f5348ae4591fd34b3b4a21cb"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/lissy93/networking-toolbox@sha256:4e97330fb310e1a5fbe185b1bf859270902ddef7934b88cecc6b3def98d21eaa",
+      "repository": "ghcr.io/lissy93/networking-toolbox",
+      "tag": "1.6.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:7431f0e78e8601981c810731d4d506adba9762534fcd2f9f3590916670ab5c02",
+      "appVersion": "1.6.0",
+      "imageCreated": "2025-11-16T01:28:46Z",
+      "source": "https://ghcr.io/lissy93/networking-toolbox"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "1.6.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package networkingtoolbox (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "service app: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/lissy93/networking-toolbox@sha256:4e97330fb310e1a5fbe185b1bf859270902ddef7934b88cecc6b3def98d21eaa); image config: ExposedPorts 3000/tcp, Volumes none, User sveltekit.",
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 21s; page title \"Networking Toolbox\"; health 200)"
+    ]
+  }
+}

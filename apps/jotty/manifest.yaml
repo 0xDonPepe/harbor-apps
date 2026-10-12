@@ -1,0 +1,47 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: jotty
+  name: Jotty
+  description: Lightweight but powerful alternative for managing your personal, file based, notes and checklists.
+release:
+  revision: "1"
+  version: 1.28.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: app
+    composeVolume: app
+    purpose: Data at /app/data (web)
+    retention: retain
+  - id: config
+    composeVolume: config
+    purpose: Data at /app/config (web)
+    retention: retain
+  - id: cache
+    composeVolume: cache
+    purpose: Data at /app/.next/cache (web)
+    retention: retain
+presentation:
+  tagline: A simple app, for your checklists and notes
+  category: files
+  developer: fccview
+  website: https://jotty.page

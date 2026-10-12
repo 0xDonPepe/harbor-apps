@@ -1,0 +1,43 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: perplexica
+  name: Vane
+  description: Vane is an AI-powered answering engine.
+release:
+  revision: "1"
+  version: 1.12.2-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: app-data
+    composeVolume: app-data
+    purpose: Data at /home/perplexica/data (web)
+    retention: retain
+  - id: uploads
+    composeVolume: uploads
+    purpose: Data at /home/perplexica/uploads (web)
+    retention: retain
+presentation:
+  tagline: An AI-powered answering engine
+  category: ai
+  developer: Kushagra Srivastava
+  website: https://github.com/ItzCrazyKns/Vane

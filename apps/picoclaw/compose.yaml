@@ -1,0 +1,9 @@
+services:
+  server:
+    image: sipeed/picoclaw@sha256:ed830c6cb71f59785062433159c45c2363465cd02046f8dd2822bd24a39510c2 # tag: v0.3.1-launcher
+    environment:
+      PICOCLAW_HOME: /data
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+volumes:
+  data: {}

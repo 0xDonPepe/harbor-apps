@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "fizzy",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "dab5690263c8052798c605825874890dfcf8271f9c86791e1dbb73e188f86176"
+    },
+    "compose.yaml": {
+      "sha256": "fc3bf2b6c509c83752da45a53e8ccf889129e7b468dd053ee9da284503cf62e2"
+    },
+    "README.md": {
+      "sha256": "76a91cdb516b862f583c2c8534cfc1251e2eeba2cfb41d1da6587b34a9b48236"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "ghcr.io/mauricewipf/fizzy-umbrel@sha256:2d7a493a8933aa784b4d06cc96bd8b047beaf19173d1eec04c767e9dd7f4c28b",
+      "repository": "ghcr.io/mauricewipf/fizzy-umbrel",
+      "tag": "5f45e54",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:9c3da925665279e01afdfa2346d8a8540c27acfd13bf3052bbc9428efc303287",
+      "appVersion": "5f45e54",
+      "imageCreated": "2026-05-13T16:13:29Z",
+      "source": "https://ghcr.io/mauricewipf/fizzy-umbrel"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "5f45e54"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package fizzy (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/mauricewipf/fizzy-umbrel@sha256:2d7a493a8933aa784b4d06cc96bd8b047beaf19173d1eec04c767e9dd7f4c28b); image config: ExposedPorts 80/tcp, Volumes none, User 1000:1000.",
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 45s; page title \"Enter your email | Fizzy\"; health 302)"
+    ]
+  }
+}

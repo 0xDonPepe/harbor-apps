@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "bazarr",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "fedaba31dbc0923b3c06cf37a0d424cbe82491452ddeb61a4bb2c0948d080c47"
+    },
+    "compose.yaml": {
+      "sha256": "5b6f8c8ef3f01f0aed349ff873e2756f34f9fa46000619e669d56e7b9bb45bbb"
+    },
+    "README.md": {
+      "sha256": "320110a5d5f7bd1712a127e1e0d0e38b8ad511787aab770045ece8bcd4aade2a"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/bazarr@sha256:8b30e81c4aec2991f469e78fae8afaa89ecc9b21a80e3897f50427216b55470c",
+      "repository": "linuxserver/bazarr",
+      "tag": "1.6.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:aefc283fd62f5a878074a13e87110c0ffb08719675c6e65c477ea57fd5871524",
+      "appVersion": "1.6.2",
+      "imageCreated": "2026-09-26T07:51:14Z",
+      "source": "https://hub.docker.com/r/linuxserver/bazarr"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "1.6.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package bazarr (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/bazarr@sha256:8b30e81c4aec2991f469e78fae8afaa89ecc9b21a80e3897f50427216b55470c); image config: ExposedPorts 6767/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 64s; page title \"General - Bazarr (Settings)\"; health 200)"
+    ]
+  }
+}

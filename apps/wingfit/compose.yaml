@@ -1,0 +1,13 @@
+services:
+  app:
+    image: ghcr.io/itskovacs/wingfit@sha256:fed5dcc1c8abdec6409f4272caa08f9a6f1d2a3c8e1f9a13b3459c2ffea8a360 # tag: 5.3.1
+    command:
+      - fastapi
+      - run
+      - /app/wingfit/main.py
+      - --host
+      - 0.0.0.0
+    volumes:
+      - {type: volume, source: data, target: "/app/storage"}
+volumes:
+  data: {}

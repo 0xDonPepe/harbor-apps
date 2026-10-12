@@ -1,0 +1,46 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: emby
+  name: Emby
+  description: Emby Server is a personal media server with apps on just about every device.
+release:
+  revision: "1"
+  version: 4.10.1.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 8096
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: config
+    composeVolume: config
+    purpose: Data at /config (server)
+    retention: retain
+  - id: downloads
+    composeVolume: downloads
+    purpose: Data at /downloads (server)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /downloads, such as a folder on a large drive"
+      required: false
+presentation:
+  tagline: A personal media server
+  category: media
+  developer: Emby LLC
+  website: https://emby.media/

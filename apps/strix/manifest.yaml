@@ -1,0 +1,35 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: strix
+  name: Strix
+  description: Smart IP camera stream finder. Tests 102K+ URL patterns in 30 seconds. Supports 67K camera models. Generates ready Frigate/go2rtc configs.
+release:
+  revision: "1"
+  version: 2.2.0
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 4567
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+presentation:
+  tagline: IP camera stream discovery tool for Frigate
+  category: automation
+  developer: eduard256
+  website: https://github.com/eduard256/Strix

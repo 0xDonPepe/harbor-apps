@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "chatbot-ui",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "45326cdcd07e2794265d25b66994af0ac82eb847e291641f5e2e429ff1ba2760"
+    },
+    "compose.yaml": {
+      "sha256": "f609433ba62a259cbe40a928091085b124ce0804490c9344efa14f9b25d3e089"
+    },
+    "README.md": {
+      "sha256": "0622130cdf8882efef0f63f1811944d853e855de1c6165fd66cb82f9429e325a"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/mckaywrigley/chatbot-ui@sha256:569dffe6043136f03de86bde38453a58d05150f29476239dc1da4ce2573b4101",
+      "repository": "ghcr.io/mckaywrigley/chatbot-ui",
+      "tag": "main",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:56a213a7cf852aa23500f6c249fa69482a1dbfa8ef5870318a88e366336bb237",
+      "appVersion": "main",
+      "imageCreated": "2023-04-20T14:36:07Z",
+      "source": "https://ghcr.io/mckaywrigley/chatbot-ui"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "main"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package chatbot-ui (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/mckaywrigley/chatbot-ui@sha256:569dffe6043136f03de86bde38453a58d05150f29476239dc1da4ce2573b4101); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 47s; page title \"Chatbot UI\"; health 200)"
+    ]
+  }
+}

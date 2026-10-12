@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "databag",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "2eebe844dac2fd6b6fc6c088bb8a829dde6a69c45803d853461367c522b2bc27"
+    },
+    "compose.yaml": {
+      "sha256": "65e70a2949d91554747ac94dc8be261365437f516f8354f57551039e097fb877"
+    },
+    "README.md": {
+      "sha256": "541c1ad6a482535faee663b8d9ee9fd47b2564b918682cc0c24e50570f1a587a"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "balzack/databag@sha256:37c4ab38f64842afa44ed8aea0e47271112795180708f0cb7be8ee7c7defebac",
+      "repository": "balzack/databag",
+      "tag": "0.1.18",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:1e36d8e969607de328a412a5820982e8ed7eb02afea5bdabd160abeef87fdbd5",
+      "appVersion": "0.1.18",
+      "imageCreated": "2025-10-15T20:59:03Z",
+      "source": "https://hub.docker.com/r/balzack/databag"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.1.18"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package databag (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; balzack/databag@sha256:37c4ab38f64842afa44ed8aea0e47271112795180708f0cb7be8ee7c7defebac); image config: ExposedPorts 7000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 51s; page title \"Databag\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: llama-gpt
+  name: LlamaGPT
+  description: "A self-hosted, offline, ChatGPT-like chatbot. Powered by Llama 2. 100% private, with no data leaving your device. New: Code Llama support!"
+release:
+  revision: "1"
+  version: 1.0.0
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    llama-gpt-api: application
+    llama-gpt-ui: application
+endpoints:
+  web:
+    service: llama-gpt-ui
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+presentation:
+  tagline: Self-hosted, offline ChatGPT-like chatbot powered by Llama 2
+  category: ai
+  developer: Umbrel
+  website: https://umbrel.com

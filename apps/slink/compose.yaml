@@ -1,0 +1,21 @@
+services:
+  web:
+    image: anirdev/slink@sha256:73b0f66bd474be47ee1e1f7be00e0aa55116cb3981a01f920c066ef38a9b9e46 # tag: v1.14.1
+    environment:
+      TZ: UTC
+      REQUIRE_SSL: "false"
+      USER_APPROVAL_REQUIRED: "false"
+      USER_PASSWORD_MIN_LENGTH: "8"
+      USER_PASSWORD_REQUIREMENTS: "15"
+      IMAGE_MAX_SIZE: 15M
+      IMAGE_STRIP_EXIF_METADATA: "true"
+      IMAGE_COMPRESSION_QUALITY: "80"
+      STORAGE_PROVIDER: local
+    volumes:
+      - {type: volume, source: var, target: "/app/var/data"}
+      - {type: volume, source: images, target: "/app/slink/images"}
+    healthcheck:
+      disable: true
+volumes:
+  var: {}
+  images: {}

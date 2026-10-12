@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "hortusfox",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "23be92af74acf04cb93f76e584c10dfa4556308495971efe0db364e0120c0f02"
+    },
+    "compose.yaml": {
+      "sha256": "97116bef5700a85a62c888aacbdafffb29c8f6fa3a2f284a17f2c86b8b587559"
+    },
+    "README.md": {
+      "sha256": "0c4802ce51ccc2ee305653c11d821d4b84a7d9126d712c010d44034735e09eda"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/danielbrendel/hortusfox-web@sha256:a26d2333a4c0c0786c9d384c176d45c3f15bb748d327c1340a64ce636555a51e",
+      "repository": "ghcr.io/danielbrendel/hortusfox-web",
+      "tag": "v6.3",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c2fe5a33bfb56de7ab583a4e10b3b95e365aa13b56bbe7ff6caa4a05d7ca42e8",
+      "appVersion": "6.3",
+      "imageCreated": "2026-10-05T15:08:20Z",
+      "source": "https://ghcr.io/danielbrendel/hortusfox-web"
+    },
+    "db": {
+      "reference": "mariadb@sha256:c5c82ddc074b9236fda87127934a1da726ecac68e9de083fd0e0d11a7bedc077",
+      "repository": "mariadb",
+      "tag": "11.4.7",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:b33b9078c70e635c4446075e37728299189dbab3c38271512703293110b54f2b",
+      "appVersion": "11.4.7",
+      "imageCreated": "2025-05-21T23:31:53Z",
+      "source": "https://hub.docker.com/_/mariadb"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "6.3",
+      "db": "11.4.7"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package hortusfox (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/danielbrendel/hortusfox-web@sha256:a26d2333a4c0c0786c9d384c176d45c3f15bb748d327c1340a64ce636555a51e); image config: ExposedPorts 80/tcp, Volumes /var/www/html/app/logs,/var/www/html/app/migrations,/var/www/html/public/attachments,/var/www/html/public/backup,/var/www/html/public/img,/var/www/html/public/themes, User root.",
+      "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; mariadb@sha256:c5c82ddc074b9236fda87127934a1da726ecac68e9de083fd0e0d11a7bedc077); image config: ExposedPorts 3306/tcp, Volumes /var/lib/mysql, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-22-harbor-q13: passed (healthy after 70s; page title \"My workspace\"; health 302)"
+    ]
+  }
+}

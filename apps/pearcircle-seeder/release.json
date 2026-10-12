@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "pearcircle-seeder",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "c849758bb07a1afefc3acf24ac3d73ed268d082d489650b4d2a9188afd1e093b"
+    },
+    "compose.yaml": {
+      "sha256": "a120a1919bad168e42933c601eace08e4729044bff84020b1654d68a63aa7cf8"
+    },
+    "README.md": {
+      "sha256": "d70a274a082ad6fafdedaa091e035200a828e8aba3e8997943b300ed5f89a43e"
+    }
+  },
+  "images": {
+    "app": {
+      "reference": "ghcr.io/peerloomllc/pearcircle-seeder@sha256:ad80eaa9156c19f13c02c19f0d70602724ec2bec8002dfb25cb580e18f35f400",
+      "repository": "ghcr.io/peerloomllc/pearcircle-seeder",
+      "tag": "1.1.4",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:ed6d934c01d44f43391deaa767fc60360fd4c6cb21b252e993b90d84fe43eb60",
+      "appVersion": "1.1.4",
+      "imageCreated": "2026-10-01T18:30:35Z",
+      "source": "https://ghcr.io/peerloomllc/pearcircle-seeder"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "app": "1.1.4"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package pearcircle-seeder (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service app: stop_grace_period 1m dropped (Docker's default applies)",
+      "service app: security_opt no-new-privileges dropped",
+      "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/peerloomllc/pearcircle-seeder@sha256:ad80eaa9156c19f13c02c19f0d70602724ec2bec8002dfb25cb580e18f35f400); image config: ExposedPorts 8730/tcp, Volumes /data, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 37s; page title \"PearCircle Seeder\"; health 200)"
+    ]
+  }
+}

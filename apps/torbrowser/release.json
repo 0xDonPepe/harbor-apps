@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "torbrowser",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "27a9fd8017a1d887a5bc2d7548fe5f362a557bf554379ab39148db16fca0c229"
+    },
+    "compose.yaml": {
+      "sha256": "b1e01df58b79a93ae81ceb338afb6eb1577a1099477aced1f89cf9399b1ea79e"
+    },
+    "README.md": {
+      "sha256": "c08a4f54bfa70f3c63bffb9e2912a918d85ed1e95867fe7de50c11c2557f4bfd"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "dennysubke/torbrowser@sha256:b0c12dbc6b93338ef02f57186f47a57952f864e31f015a9fb47fa6c5afc0d0b1",
+      "repository": "dennysubke/torbrowser",
+      "tag": "15.0.17",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:381694b12f29c4d7da247a55a22ded0d966d13a96f42876d56d4f8031340bf93",
+      "appVersion": "15.0.17",
+      "imageCreated": "2026-07-09T22:00:49Z",
+      "source": "https://hub.docker.com/r/dennysubke/torbrowser"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "15.0.17"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package torbrowser (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; dennysubke/torbrowser@sha256:b0c12dbc6b93338ef02f57186f47a57952f864e31f015a9fb47fa6c5afc0d0b1); image config: ExposedPorts 5800/tcp,5900/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-36-harbor-q07: passed (healthy after 49s; page title \"Tor Browser\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: whoogle-search
+  name: Whoogle Search
+  description: A self-hosted, ad-free, privacy-respecting metasearch engine
+release:
+  revision: "1"
+  version: 1.2.4
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 6420
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+presentation:
+  tagline: A self-hosted, ad-free, privacy-respecting metasearch engine
+  category: network
+  developer: Ben Busby
+  website: https://github.com/benbusby

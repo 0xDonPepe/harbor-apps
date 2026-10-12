@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "mstream",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "e82f23e98dd22f08d434ce1e13c2bcf8b31b039375bdc62788c0983c0f341e76"
+    },
+    "compose.yaml": {
+      "sha256": "c75e6332f5f8c809034edff8e544a1d4df6e2637c4fd86a15acef5049a7c401f"
+    },
+    "README.md": {
+      "sha256": "4cffa0ef442fd86524b5401761ad61ae73c1bff444e1e87573c1b6042f7ffc78"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/mstream@sha256:087024466308b1cb67b805c32b26613054c4c3705fc663bea7c790045c90ecb5",
+      "repository": "linuxserver/mstream",
+      "tag": "6.31.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:67bf0de262e8801c713cb461428e8316172af3f919413382d47b047a680ac555",
+      "appVersion": "6.31.1",
+      "imageCreated": "2026-10-04T19:12:33Z",
+      "source": "https://hub.docker.com/r/linuxserver/mstream"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "6.31.1"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package mstream (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/mstream@sha256:087024466308b1cb67b805c32b26613054c4c3705fc663bea7c790045c90ecb5); image config: ExposedPorts 3000/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 49s; page title \"mStream Music\"; health 200)"
+    ]
+  }
+}

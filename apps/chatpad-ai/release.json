@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "chatpad-ai",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "b3030feef90e4c83d1a6b8a28291754a9e1e0a8c4fede69d56cd434b52eec76e"
+    },
+    "compose.yaml": {
+      "sha256": "0c834e65468b40bac47276fdac0c19fc83f142a85b0bcf6a998be66bb29d5df3"
+    },
+    "README.md": {
+      "sha256": "9fa42511d4a9fb2dba7407e211ba3da2387dae1df7b820f5c0b2872f253bad82"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/deiucanta/chatpad@sha256:15155e3a09fd677d578583f6bd3848c991cf768997400e37bc4c27e62a918a7e",
+      "repository": "ghcr.io/deiucanta/chatpad",
+      "tag": "bb5f4abb36b45320df69dfccb64e734f36ca9bb3",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:61768b5cc8af3493c9f604e5ef0445d7e8726ef3be5c647b1a37ff5ebf92e870",
+      "appVersion": "bb5f4abb36b45320df69dfccb64e734f36ca9bb3",
+      "imageCreated": "2024-06-13T05:33:06Z",
+      "source": "https://ghcr.io/deiucanta/chatpad"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "bb5f4abb36b45320df69dfccb64e734f36ca9bb3"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package chatpad-ai (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/deiucanta/chatpad@sha256:15155e3a09fd677d578583f6bd3848c991cf768997400e37bc4c27e62a918a7e); image config: ExposedPorts 80/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 23s; page title \"Chatpad AI\"; health 200)"
+    ]
+  }
+}

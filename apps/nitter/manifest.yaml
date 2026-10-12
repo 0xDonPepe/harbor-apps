@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: nitter
+  name: Nitter
+  description: Alternative Twitter front-end
+release:
+  revision: "1"
+  version: 38985af
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+    redis: infrastructure
+endpoints:
+  web:
+    service: web
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: redis
+    composeVolume: redis
+    purpose: Data at /data (redis)
+    retention: retain
+presentation:
+  tagline: Browse Twitter without tracking or ads
+  category: other
+  developer: Zedeus
+  website: https://github.com/zedeus

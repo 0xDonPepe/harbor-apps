@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: bitaxe-sentry
+  name: Bitaxe Sentry
+  description: A monitoring system for Bitaxe miners that tracks performance metrics, sends alerts, and provides a web dashboard
+release:
+  revision: "1"
+  version: 0.8.0-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    sentry: application
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 7070
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: sentry
+    composeVolume: sentry
+    purpose: Data at /var/lib/bitaxe (sentry)
+    retention: retain
+presentation:
+  tagline: Bitaxe stats and alerts, all in one
+  category: finance
+  developer: Zach Price
+  website: https://github.com/zachchan105/bitaxe-sentry

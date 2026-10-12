@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: thinkdashboard
+  name: ThinkDashboard
+  description: A lightweight, self-hosted bookmark dashboard with keyboard shortcuts.
+release:
+  revision: "1"
+  version: 0.7.6-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /app/data (server)
+    retention: retain
+presentation:
+  tagline: A lightweight, bookmark dashboard with keyboard shortcuts
+  category: files
+  developer: MatiasDesuu
+  website: https://github.com/MatiasDesuu/ThinkDashboard

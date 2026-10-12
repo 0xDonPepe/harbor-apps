@@ -1,0 +1,39 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: fossflow
+  name: FossFLOW
+  description: Make beautiful isometric infrastructure diagrams
+release:
+  revision: "1"
+  version: b69fc2e-patch.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: diagrams
+    composeVolume: diagrams
+    purpose: Data at /data/diagrams (web)
+    retention: retain
+presentation:
+  tagline: Make beautiful isometric infrastructure diagrams
+  category: network
+  developer: stan-smith
+  website: https://github.com/stan-smith/FossFLOW

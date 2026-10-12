@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "heimdall",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "3d6e95b687079b950d5d8b2d0f462f60bb99f2debe0fb0d5f2ec90fea721705d"
+    },
+    "compose.yaml": {
+      "sha256": "d9ad2d38a1b27e86415f3703cf6b799d429c13aa71dd0037e472663399ba763a"
+    },
+    "README.md": {
+      "sha256": "6317b4fa0c27c8065727e4ed0ed1ccbcc25ce14261efc5f32ea42429473bc5fa"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "linuxserver/heimdall@sha256:287e48152967820922969ced1e990949063679d84c11ce988726c4195b52a47f",
+      "repository": "linuxserver/heimdall",
+      "tag": "2.8.3",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:42cbfd2806bc67d731664d4c30b29e428d411200dfa28b19b251a28ec3f8b9a0",
+      "appVersion": "2.8.3",
+      "imageCreated": "2026-09-05T16:16:13Z",
+      "source": "https://hub.docker.com/r/linuxserver/heimdall"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "2.8.3"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package heimdall (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; linuxserver/heimdall@sha256:287e48152967820922969ced1e990949063679d84c11ce988726c4195b52a47f); image config: ExposedPorts 443/tcp,80/tcp, Volumes /config, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q11: passed (healthy after 47s; page title \"Heimdall\"; health 200)"
+    ]
+  }
+}

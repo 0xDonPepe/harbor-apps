@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ghcr.io/zapomatic/bitwatch@sha256:e5f868dcb1a750fad48090b56301d36bc0b87f397d176b57d150e2d4edebd350 # tag: v1.8.0
+    volumes:
+      - {type: volume, source: data, target: "/app/server/data"}
+volumes:
+  data: {}

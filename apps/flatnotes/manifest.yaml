@@ -1,0 +1,52 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: flatnotes
+  name: flatnotes
+  description: A self-hosted, database-less note taking web app that utilises a flat folder of markdown files for storage.
+provisionedCredentials:
+  service: server
+  passwordEnv: FLATNOTES_PASSWORD
+  username: admin
+release:
+  revision: "1"
+  version: 5.5.5-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (server)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: server
+        environment: FLATNOTES_SECRET_KEY
+presentation:
+  tagline: A self-hosted, database-less markdown note-taking app
+  category: files
+  developer: Adam Dullage
+  website: https://github.com/dullage/flatnotes

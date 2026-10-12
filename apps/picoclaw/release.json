@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "picoclaw",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "980a46def79c1162d8fb694105b3da0a3b8b144b3140e8560f9d485aacdf035e"
+    },
+    "compose.yaml": {
+      "sha256": "1a83245d252397e90427aa73e2d47a762b8fac280ca129969e8258a50bbe97c0"
+    },
+    "README.md": {
+      "sha256": "0b72921c2eee95ee4896e440bce56342e29730205fbc56d7395023e6d8775550"
+    }
+  },
+  "images": {
+    "server": {
+      "reference": "sipeed/picoclaw@sha256:ed830c6cb71f59785062433159c45c2363465cd02046f8dd2822bd24a39510c2",
+      "repository": "sipeed/picoclaw",
+      "tag": "v0.3.1-launcher",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:ee2fd8808a7a575fef94af61ea694d0d7595789d57054e27924044fe224821dc",
+      "appVersion": "0.3.1-launcher",
+      "imageCreated": "2026-07-03T07:36:18Z",
+      "source": "https://hub.docker.com/r/sipeed/picoclaw"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "server": "0.3.1-launcher"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package picoclaw (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service server: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of server resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; sipeed/picoclaw@sha256:ed830c6cb71f59785062433159c45c2363465cd02046f8dd2822bd24a39510c2); image config: ExposedPorts none, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-00-harbor-q14: passed (healthy after 26s; page title \"PicoClaw\"; health 302)"
+    ]
+  }
+}

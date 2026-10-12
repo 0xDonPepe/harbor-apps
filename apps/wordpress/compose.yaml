@@ -1,0 +1,25 @@
+services:
+  app:
+    image: wordpress@sha256:8ecd8d8e374167ea22235acf30f80d1165b82f07ffa5bcef90c1cad8f7be251f # tag: 7.1.3
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: umbrel
+      WORDPRESS_DB_PASSWORD: umbrelwordpress
+    volumes:
+      - {type: volume, source: wordpress, target: "/var/www/html"}
+    depends_on:
+      db:
+        condition: service_started
+  db:
+    image: mariadb@sha256:2d50fe0f77dac919396091e527e5e148a9de690e58f32875f113bef6506a17f5 # tag: 11.5.2
+    environment:
+      MYSQL_ROOT_PASSWORD: umbrelwordpressroot
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: umbrel
+      MYSQL_PASSWORD: umbrelwordpress
+    volumes:
+      - {type: volume, source: db, target: "/var/lib/mysql"}
+volumes:
+  wordpress: {}
+  db: {}

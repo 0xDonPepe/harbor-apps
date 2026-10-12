@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "hermes-agent",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "73b45336c9e738b18f622d9e6e1cae6508ed961f8c37464a472e49ceee4d50d1"
+    },
+    "compose.yaml": {
+      "sha256": "f8e7ec56fc17aa5ebecc49e6a7cbc3c2d47e30fe919bdd2181ceeb26cb050217"
+    },
+    "README.md": {
+      "sha256": "ab1db74181cba971b339416432d60980143a4ba44a61637122a2a897052fb399"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/getumbrel/hermes-agent-umbrel@sha256:1cc27c346ccefe75c0cd52f281a231a47f864cab1c2cc26271ad8b8ad9531ad0",
+      "repository": "ghcr.io/getumbrel/hermes-agent-umbrel",
+      "tag": "v2026.9.24",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:587efa0a6333ff60c93274d6eb13a6cccfbbcb3eedb7895193f6e451cd9296a2",
+      "appVersion": "2026.9.24",
+      "imageCreated": "2026-10-02T12:21:04Z",
+      "source": "https://ghcr.io/getumbrel/hermes-agent-umbrel"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "2026.9.24"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package hermes-agent (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "dropped host hooks (pre-start): they only prepare Umbrel bind folders",
+      "service web: stop_grace_period 1m dropped (Docker's default applies)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/getumbrel/hermes-agent-umbrel@sha256:1cc27c346ccefe75c0cd52f281a231a47f864cab1c2cc26271ad8b8ad9531ad0); image config: ExposedPorts 18789/tcp, Volumes /opt/data, User root.",
+      "Live catalog run catalog-2026-10-12T18-22-14-harbor-q12: passed (healthy after 120s; page title \"Hermes Agent - Dashboard\"; health 200)"
+    ]
+  }
+}

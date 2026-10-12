@@ -1,0 +1,10 @@
+services:
+  server:
+    image: linuxserver/libreoffice@sha256:a62c7f094f2a7ed8145983d04f54ca80d85b557bbdda0f9aa784ccb6267b70e8 # tag: 7.6.7
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+volumes:
+  config: {}

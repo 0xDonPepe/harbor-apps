@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "skybro",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "f2347fff1473299963f5e38fe311b64713bb56f2dcd61dccbb3bfdb2c128429b"
+    },
+    "compose.yaml": {
+      "sha256": "d4c43838ba78df4aeba12970cbc0f6e325e41eee1197a242b73866f73d788b63"
+    },
+    "README.md": {
+      "sha256": "cb4c03acd751cc6be627fa6f87675ec6b7b36a5083154e8059e6fb9d00fbc955"
+    }
+  },
+  "images": {
+    "tracker": {
+      "reference": "xdeekay/skybro-tracker@sha256:9425a99b0f1cfbf8a4cf39ee4ca8876496d20750e9b960109fc9d5b1eeaa2c67",
+      "repository": "xdeekay/skybro-tracker",
+      "tag": "1.6.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:0ca6dc56f5a51872c20b330df9ae5aee3da2ae955cf61c68e30fd8c01bdaa837",
+      "appVersion": "1.6.2",
+      "imageCreated": "2026-09-07T16:07:36Z",
+      "source": "https://hub.docker.com/r/xdeekay/skybro-tracker"
+    },
+    "web": {
+      "reference": "xdeekay/skybro-dashboard@sha256:83ad07aee074ab3d827db00c081eea0e6bf17e7f104ff6ac635bc7dbe6ce2eea",
+      "repository": "xdeekay/skybro-dashboard",
+      "tag": "1.6.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:df49d10048ce7a9d20eec1d37c4e87c24baabe6e2b48d67648f9e737f5094744",
+      "appVersion": "1.6.2",
+      "imageCreated": "2026-09-07T16:07:37Z",
+      "source": "https://hub.docker.com/r/xdeekay/skybro-dashboard"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "tracker": "1.6.2",
+      "web": "1.6.2"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package skybro (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service tracker: /etc/localtime mount dropped (TZ is UTC)",
+      "service web: /etc/localtime mount dropped (TZ is UTC)",
+      "service tracker: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "service web: the image's own healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
+      "Digest of tracker resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; xdeekay/skybro-tracker@sha256:9425a99b0f1cfbf8a4cf39ee4ca8876496d20750e9b960109fc9d5b1eeaa2c67); image config: ExposedPorts none, Volumes none, User root.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; xdeekay/skybro-dashboard@sha256:83ad07aee074ab3d827db00c081eea0e6bf17e7f104ff6ac635bc7dbe6ce2eea); image config: ExposedPorts none, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-42-harbor-q10: passed (healthy after 35s; page title \"SkyBro\"; health 200)"
+    ]
+  }
+}

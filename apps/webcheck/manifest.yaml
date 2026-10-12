@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: webcheck
+  name: WebCheck
+  description: 🕵️‍♂️ All-in-one OSINT tool for analysing any website
+release:
+  revision: "1"
+  version: 2.3.0
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /app/data (server)
+    retention: retain
+presentation:
+  tagline: An all-in-one Open Source Intelligence tool for analyzing any website
+  category: network
+  developer: Alicia Sykes
+  website: https://web-check.xyz/

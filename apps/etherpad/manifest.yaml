@@ -1,0 +1,53 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: etherpad
+  name: Etherpad
+  description: "Etherpad: A modern really-real-time collaborative document editor."
+provisionedCredentials:
+  service: app
+  passwordEnv: ADMIN_PASSWORD
+  username: admin
+release:
+  revision: "1"
+  version: 3.3.8
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    app: application
+    postgres: infrastructure
+endpoints:
+  web:
+    service: app
+    containerPort: 9001
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: plugins
+    composeVolume: plugins
+    purpose: Data at /opt/etherpad-lite/src/plugin_packages (app)
+    retention: retain
+  - id: etherpad-var
+    composeVolume: etherpad-var
+    purpose: Data at /opt/etherpad-lite/var (app)
+    retention: retain
+  - id: postgres-data
+    composeVolume: postgres-data
+    purpose: Data at /var/lib/postgresql/data/pgdata (postgres)
+    retention: retain
+presentation:
+  tagline: An intuitive tool for real-time collaborative writing
+  category: files
+  developer: The Etherpad Foundation
+  website: https://etherpad.org/

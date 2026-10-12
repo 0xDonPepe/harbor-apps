@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "btctracker",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "efd9a3d42f443c146a13779f8b1231bca02d7d5046f1f131f9a8b4c01f1e2d9a"
+    },
+    "compose.yaml": {
+      "sha256": "6b13318576d60500421a6e628416af89c297cc29e7cbd7e5b46bc7537b559fe3"
+    },
+    "README.md": {
+      "sha256": "5ab65d2adb8da4f67347fb53b008ee01ce93e0ee105a6eaaffc53bc3a6a75488"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "thewilqq/btc-tracker@sha256:0c7beea5e0791cc39c9294f0a62faa24aa2ef42ed04571b63977c0afe085321b",
+      "repository": "thewilqq/btc-tracker",
+      "tag": "v0.7.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:14f19f3662e8bc72b4620b37722e13758be86555cef1b056830fc547f3191096",
+      "appVersion": "0.7.0",
+      "imageCreated": "2026-03-08T18:23:03Z",
+      "source": "https://hub.docker.com/r/thewilqq/btc-tracker"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.7.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package btctracker (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; thewilqq/btc-tracker@sha256:0c7beea5e0791cc39c9294f0a62faa24aa2ef42ed04571b63977c0afe085321b); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-21-41-harbor-q03: passed (healthy after 55s; page title \"BTC Tracker\"; health 307)"
+    ]
+  }
+}

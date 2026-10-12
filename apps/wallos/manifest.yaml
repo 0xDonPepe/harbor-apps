@@ -1,0 +1,44 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: wallos
+  name: Wallos
+  description: "Wallos: Open-source, self-hostable personal subscription tracker. Visualize your recurring expenses, manage your budget, and save money."
+release:
+  revision: "1"
+  version: 5.8.3
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 80
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: db
+    composeVolume: db
+    purpose: Data at /var/www/html/db (server)
+    retention: retain
+  - id: logos
+    composeVolume: logos
+    purpose: Data at /var/www/html/images/uploads/logos (server)
+    retention: retain
+presentation:
+  tagline: Track your recurring subscriptions and expenses
+  category: finance
+  developer: Wallos
+  website: https://wallosapp.com

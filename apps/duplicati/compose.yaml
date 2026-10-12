@@ -1,0 +1,13 @@
+services:
+  duplicati:
+    image: duplicati/duplicati@sha256:e32e280cc30e98ac5cea8d2b339cd19810b1b39e638fb9d39253786630104de0 # tag: 2.4.0.1
+    environment:
+      DUPLICATI__WEBSERVICE_PORT: "8200"
+      DUPLICATI__WEBSERVICE_INTERFACE: any
+      DUPLICATI__WEBSERVICE_ALLOWED_HOSTNAMES: "*"
+    volumes:
+      - {type: volume, source: data, target: "/data"}
+      - {type: volume, source: storage, target: "/umbrel"}
+volumes:
+  data: {}
+  storage: {}

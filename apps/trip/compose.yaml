@@ -1,0 +1,13 @@
+services:
+  app:
+    image: ghcr.io/itskovacs/trip@sha256:a554617e98f6431a1e1855ad4a7d7e61ccdf22e97c62285057d635ad52063afa # tag: 1.50.1
+    command:
+      - fastapi
+      - run
+      - /app/trip/main.py
+      - --host
+      - 0.0.0.0
+    volumes:
+      - {type: volume, source: app, target: "/app/storage"}
+volumes:
+  app: {}

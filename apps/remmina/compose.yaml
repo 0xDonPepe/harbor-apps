@@ -1,0 +1,10 @@
+services:
+  server:
+    image: linuxserver/remmina@sha256:ca2b6788bad28d864086649fc276ce696cac9cdf69e6976b85497b341ed07d8d # tag: 1.4.35
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+volumes:
+  config: {}

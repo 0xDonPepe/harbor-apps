@@ -1,0 +1,14 @@
+services:
+  web:
+    image: ghcr.io/kieraneglin/pinchflat@sha256:4e975edf58f0861a5cbfe8fc6aac4851ff5a02dfc3f05ffeea4982e3084a5a4a # tag: v2025.6.6
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - {type: volume, source: config, target: "/config"}
+      - {type: volume, source: downloads, target: "/downloads"}
+    healthcheck:
+      disable: true
+volumes:
+  config: {}
+  downloads: {}

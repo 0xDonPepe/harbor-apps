@@ -1,0 +1,40 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: spacebot
+  name: Spacebot
+  description: An AI agent for teams, communities, and multi-user environments.
+release:
+  revision: "1"
+  version: 0.5.0-patch.1
+  minHarbor: 0.28.4
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    server: application
+endpoints:
+  web:
+    service: server
+    containerPort: 19898
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /data (server)
+    retention: retain
+presentation:
+  tagline: AI agent for teams, communities, and multi-user environments
+  category: ai
+  developer: Spacedrive Technology Inc.
+  website: https://spacebot.sh

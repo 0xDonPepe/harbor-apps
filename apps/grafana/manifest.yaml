@@ -1,0 +1,43 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: grafana
+  name: Grafana
+  description: The open and composable observability and data visualization platform. Visualize metrics, logs, and traces from multiple sources like Prometheus, Loki, Elasticsearch, InfluxDB, Postgres and many more.
+defaultCredentials:
+  username: admin
+  password: admin
+  note: Change it after the first login.
+release:
+  revision: "1"
+  version: 13.2.3
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 3000
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /var/lib/grafana (web)
+    retention: retain
+presentation:
+  tagline: The open-source platform for monitoring and observability
+  category: network
+  developer: Grafana Labs
+  website: https://grafana.com

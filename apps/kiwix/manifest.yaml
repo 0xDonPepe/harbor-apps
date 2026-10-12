@@ -1,0 +1,42 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: kiwix
+  name: Kiwix
+  description: "Command line Kiwix tools: kiwix-serve, kiwix-manage, ..."
+release:
+  revision: "1"
+  version: 3.8.2-patch.2
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 8080
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: downloads
+    composeVolume: downloads
+    purpose: Data at /data (web)
+    retention: retain
+    external:
+      hint: "Optional: a folder on this machine to use for /data, such as a folder on a large drive"
+      required: false
+presentation:
+  tagline: Access knowledge anytime, anywhere without an internet connection
+  category: files
+  developer: Kiwix
+  website: https://kiwix.org

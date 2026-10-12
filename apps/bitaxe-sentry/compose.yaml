@@ -1,0 +1,27 @@
+services:
+  sentry:
+    image: zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb # tag: v0.8.0
+    environment:
+      DB_PATH: /var/lib/bitaxe/bitaxe_sentry.db
+      DB_DATA_DIR: /var/lib/bitaxe
+    volumes:
+      - {type: volume, source: sentry, target: "/var/lib/bitaxe"}
+  web:
+    image: zachprice105/bitaxe-sentry@sha256:c50dc141896314293ab4afc4fb4e1ce885cb5737c832b80adfc9cd5eb6f706cb # tag: v0.8.0
+    command:
+      - uvicorn
+      - bitaxe_sentry.sentry.webapp:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "7070"
+    environment:
+      DB_PATH: /var/lib/bitaxe/bitaxe_sentry.db
+      DB_DATA_DIR: /var/lib/bitaxe
+    volumes:
+      - {type: volume, source: sentry, target: "/var/lib/bitaxe"}
+    depends_on:
+      sentry:
+        condition: service_started
+volumes:
+  sentry: {}

@@ -1,0 +1,12 @@
+services:
+  web:
+    image: stnsmith/fossflow@sha256:c0813b19a9c8a3b8d13901de0e35edf7d9300ae8327a905ff520239d5624dafc # tag: master-b69fc2e
+    environment:
+      NODE_ENV: production
+      ENABLE_SERVER_STORAGE: "true"
+      STORAGE_PATH: /data/diagrams
+      ENABLE_GIT_BACKUP: "false"
+    volumes:
+      - {type: volume, source: diagrams, target: "/data/diagrams"}
+volumes:
+  diagrams: {}

@@ -1,0 +1,49 @@
+apiVersion: harbor/v1alpha1
+kind: Application
+metadata:
+  id: homarr
+  name: Homarr
+  description: A modern and easy to use dashboard. 80+ integrations. 20K+ icons built in. Authentication out of the box. No YAML, drag and drop configuration.
+release:
+  revision: "1"
+  version: 2.4.1
+deployment:
+  compose: compose.yaml
+  multiInstance: true
+  services:
+    web: application
+endpoints:
+  web:
+    service: web
+    containerPort: 7575
+    scheme: http
+    exposure: direct
+    browserContext: ordinary
+health:
+  endpoint: web
+  path: /
+  expectedStatus: [200, 301, 302, 303, 307, 308, 401]
+  timeoutSeconds: 5
+  deadlineSeconds: 300
+ui:
+  primaryEndpoint: web
+storage:
+  - id: data
+    composeVolume: data
+    purpose: Data at /appdata (web)
+    retention: retain
+secrets:
+  - id: app-seed
+    bytes: 32
+    encoding: hex
+    retention: retain
+    bindings:
+      - service: web
+        environment: AUTH_SECRET
+      - service: web
+        environment: SECRET_ENCRYPTION_KEY
+presentation:
+  tagline: A customizable browser home page
+  category: files
+  developer: homarr-labs
+  website: https://homarr.dev/

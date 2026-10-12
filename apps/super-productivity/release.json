@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "super-productivity",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "531c6fcb0487690a6b08940b4b97faadefc837185d181cdcaa8d070f401b1336"
+    },
+    "compose.yaml": {
+      "sha256": "63999d8229e672faf6b6409d71e817e111f032e0ab5f8c47ca91af8da0ee74d5"
+    },
+    "README.md": {
+      "sha256": "7ecb6e5da363004d9abc56b2d2804f1de984d8f0183b18dbabe7281121ec6948"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "johannesjo/super-productivity@sha256:5013128f5c8af8f7f836d6bfce9b7678f64aa4de803637f6d164a51162a3e33c",
+      "repository": "johannesjo/super-productivity",
+      "tag": "v19.2.0",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:841245cac77ea8e44ab0eb4d2e121c3737a5bb060de73dca0fa5405abac73a30",
+      "appVersion": "19.2.0",
+      "imageCreated": "2026-10-11T11:50:35Z",
+      "source": "https://hub.docker.com/r/johannesjo/super-productivity"
+    }
+  },
+  "qualification": {
+    "status": "passed",
+    "date": "2026-10-12",
+    "node": "v24.12.0",
+    "dockerEngine": "29.9.0",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "19.2.0"
+    },
+    "notes": [
+      "Drafted by scripts/umbrel-import.mjs from the Umbrel package super-productivity (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
+      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; johannesjo/super-productivity@sha256:5013128f5c8af8f7f836d6bfce9b7678f64aa4de803637f6d164a51162a3e33c); image config: ExposedPorts 80/tcp, Volumes none, User root.",
+      "Live catalog run catalog-2026-10-12T18-19-57-harbor-q01: passed (healthy after 32s; page title \"Super Productivity\"; health 200)"
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+services:
+  web:
+    image: rstmsn/cashu-me@sha256:46cf3752f58e20b7fd191b270208f6f41aa143ba950fddb0efb390ed3ea2851b # tag: 0.1.1

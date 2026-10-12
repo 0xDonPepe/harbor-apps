@@ -1,0 +1,132 @@
+# Verify every change with Harbor's own loader; publish every change to main as a signed catalog release.
+# Harbor boxes download releases/latest/download/{catalog.zip,catalog.json,catalog.json.sig} and only accept
+# a bundle whose signature verifies against the key pinned in Harbor (keys/harbor-apps.pub here).
+# The Harbor checkout comes from the ref in .harbor-ref (a branch, tag or sha of carlosalaniz/harbor).
+name: catalog
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/**'
+      - 'keys/**'
+      - 'scripts/**'
+      - '.harbor-ref'
+      - '.github/workflows/ci.yml'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read Harbor ref
+        id: harbor
+        run: echo "ref=$(tr -d '[:space:]' < .harbor-ref)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: carlosalaniz/harbor
+          ref: ${{ steps.harbor.outputs.ref }}
+          path: .harbor
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.16.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.12.0
+          cache: pnpm
+          cache-dependency-path: .harbor/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        working-directory: .harbor
+      - name: Validate every app as Harbor loads it
+        run: pnpm catalog:verify "$GITHUB_WORKSPACE/apps" --quiet
+        working-directory: .harbor
+      - name: release.json hashes are current
+        run: pnpm catalog:hash --catalog "$GITHUB_WORKSPACE/apps" --check
+        working-directory: .harbor
+
+  release:
+    needs: verify
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    # one release at a time, oldest first, so "latest" always ends on the newest catalog
+    concurrency:
+      group: catalog-release
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Serial and tag
+        id: serial
+        run: |
+          serial=$(git log -1 --format=%ct)
+          echo "serial=$serial" >> "$GITHUB_OUTPUT"
+          echo "tag=c$serial" >> "$GITHUB_OUTPUT"
+          echo "date=$(date -u -d "@$serial" +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+          echo "short=$(git rev-parse --short=12 HEAD)" >> "$GITHUB_OUTPUT"
+          if gh release view "c$serial" >/dev/null 2>&1; then
+            echo "c$serial is already released; nothing to do"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          latest=$(gh release view --json tagName --jq .tagName 2>/dev/null || true)
+          if [ -n "$latest" ] && [ "${latest#c}" -ge "$serial" ]; then
+            echo "::error::HEAD's committer time ($serial) is not newer than the latest release $latest; Harbor would never pick it up. Make a new commit."
+            exit 1
+          fi
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+      - name: Read Harbor ref
+        if: steps.serial.outputs.skip != 'true'
+        id: harbor
+        run: echo "ref=$(tr -d '[:space:]' < .harbor-ref)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.serial.outputs.skip != 'true'
+        with:
+          repository: carlosalaniz/harbor
+          ref: ${{ steps.harbor.outputs.ref }}
+          path: .harbor
+      - uses: pnpm/action-setup@v4
+        if: steps.serial.outputs.skip != 'true'
+        with:
+          version: 10.16.1
+      - uses: actions/setup-node@v4
+        if: steps.serial.outputs.skip != 'true'
+        with:
+          node-version: 24.12.0
+          cache: pnpm
+          cache-dependency-path: .harbor/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        if: steps.serial.outputs.skip != 'true'
+        working-directory: .harbor
+      - name: Bundle
+        if: steps.serial.outputs.skip != 'true'
+        working-directory: .harbor
+        run: |
+          pnpm -s catalog:bundle "$GITHUB_WORKSPACE/apps" --out "$GITHUB_WORKSPACE/dist" --commit "$GITHUB_SHA" --serial "${{ steps.serial.outputs.serial }}" | tee "$GITHUB_WORKSPACE/bundle.log"
+      - name: Sign
+        if: steps.serial.outputs.skip != 'true'
+        env:
+          CATALOG_SIGNING_KEY: ${{ secrets.CATALOG_SIGNING_KEY }}
+        run: node scripts/sign.mjs dist
+      - name: Publish release
+        if: steps.serial.outputs.skip != 'true'
+        run: |
+          {
+            echo "Signed app catalog for Harbor, built from ${GITHUB_SHA}."
+            echo
+            echo "Apps (id, revision, version):"
+            echo
+            awk '$1 == "ok" { split($2, a, "@"); v = $3; gsub(/[()]/, "", v); print "- " a[1] " r" a[2] (v != "" ? " (" v ")" : "") }' bundle.log
+          } > notes.md
+          gh release create "${{ steps.serial.outputs.tag }}" dist/catalog.zip dist/catalog.json dist/catalog.json.sig \
+            --target "$GITHUB_SHA" --latest \
+            --title "Catalog ${{ steps.serial.outputs.date }} (${{ steps.serial.outputs.short }})" \
+            --notes-file notes.md

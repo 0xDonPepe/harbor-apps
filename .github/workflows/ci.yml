@@ -4,7 +4,7 @@
 # catalog.zip by sha256 and size: an integrity check against truncated or mixed downloads, not a trust anchor.
 #
 # Two jobs:
-#   verify   every push/PR/dispatch: Harbor's tools at the commit pinned in .harbor-ref check every app.
+#   verify   every PR, manual run, and main push touching apps/, .harbor-ref or this file: Harbor's tools at the commit pinned in .harbor-ref check every app.
 #   release  main push/dispatch only: bundles with Harbor's tools at that commit, creates release c<serial>
 #            and marks it latest. The write token reaches only the two gh steps (never git, never pnpm).
 # Never put ${{ }} of commit or package text inside a run: script; pass values through env and quote them.

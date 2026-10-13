@@ -20,11 +20,11 @@ services:
       timeout: 3s
       retries: 30
   machine-learning:
-    image: ghcr.io/immich-app/immich-machine-learning@sha256:4f879e40da4910a174ce83c94f717e672dd5f0cb0b8cc2e6b0f47500d788b47e # tag: v3.2.1
+    image: ghcr.io/immich-app/immich-machine-learning@sha256:513c831cfb010ad319341a0c86b42c575a0d5b688d3e8cae346ee624074a58ed # tag: v3.3.1
     volumes:
       - {type: volume, source: model-cache, target: /cache}
   server:
-    image: ghcr.io/immich-app/immich-server@sha256:2ab6a6273755d9b8a5c4f25dbaa2d097fc4a2cc261b70bc73621e6405cc106fe # tag: v3.2.1
+    image: ghcr.io/immich-app/immich-server@sha256:db996e352359771c6a3db121a0ed8761516b22f727fc092a0f46dcfef82c1bc1 # tag: v3.3.1
     environment:
       DB_HOSTNAME: "database"
       DB_USERNAME: "postgres"

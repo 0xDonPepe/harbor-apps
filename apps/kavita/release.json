@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "kavita",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "231bfd5252ab6a9f257760b8148f9e092333797505c6eb2ba28dc24b717a7ba1"
+    },
+    "compose.yaml": {
+      "sha256": "0815cb2f32de6abbff32dbfe95b20ba2360e1bd391f3cc547b4618c948b4850f"
+    },
+    "README.md": {
+      "sha256": "b018afdba9e7bc736f774f80ef9d44bff13537f0608d7754f214aae0c1571ac9"
+    }
+  },
+  "images": {
+    "web": {
+      "reference": "ghcr.io/kareadita/kavita@sha256:31181a32f0dda73cae68721867028a7253d57881b58bea5754cd9e578e75421a",
+      "repository": "ghcr.io/kareadita/kavita",
+      "tag": "0.9.1",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:c3ccdc5b4d935cd3a50cfc3776a0cfa3d55e04abbf77015e0c31156f72347123",
+      "appVersion": "0.9.1",
+      "imageCreated": "2026-09-02T21:21:23Z",
+      "source": "https://ghcr.io/kareadita/kavita"
+    }
+  },
+  "qualification": {
+    "status": "pending",
+    "date": "2026-10-13",
+    "notes": [
+      "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/kareadita/kavita:0.9.1); image config: ExposedPorts 5000/tcp, Volumes none, User root."
+    ]
+  },
+  "assets": {
+    "icon.svg": {
+      "sha256": "f353f23f8a437f62cee3dbfdc9f96c2c63db01fd70a38b3cae8b5338711ae680"
+    }
+  }
+}

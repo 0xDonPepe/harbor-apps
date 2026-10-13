@@ -82,11 +82,13 @@ Every push to `main` that touches `apps/`, `scripts/` or the workflow runs four 
    commit and the serial) with the latest Harbor release's tools, plus a `summary.json` (each app's id,
    revision, version and minHarbor), and uploads them as a workflow artifact. It has read access only and
    no token.
-4. **publish** downloads that artifact, checks it is this commit's bundle, and creates a GitHub release
-   tagged `c<serial>` with `catalog.zip` and `catalog.json`, marked latest. The notes are built with `jq`
+4. **publish** downloads that artifact, checks it is this commit's bundle, signs `catalog.json` with
+   Harbor's release key (the secret `HARBOR_SIGNING_KEY`, openssl only; the job fails without the secret or
+   when it is not the key Harbor pins) and creates a GitHub release tagged `c<serial>` with `catalog.zip`,
+   `catalog.json` and `catalog.json.sig`, marked latest. The notes are built with `jq`
    from `summary.json` and list the apps and the Harbor versions that checked them. It is the only job that
-   may write to the repository, it never checks out Harbor or installs anything, and the write token is
-   passed only to its two `gh` steps.
+   may write to the repository, it never checks out Harbor or installs anything, the write token is
+   passed only to its two `gh` steps, and the signing key only to its signing step.
 
 The serial is the commit's committer time (unix seconds). Harbor only ever moves to a higher serial, so:
 
@@ -103,15 +105,14 @@ offline box has apps from the start.
 
 ## Trust
 
-There are no keys. A Harbor box downloads the catalog over HTTPS from this repository's GitHub releases,
-exactly the way it downloads its own updates from Harbor's releases: whoever can publish a release here is
-trusted, the same as for Harbor itself. Harbor runs as a root-equivalent service, so a signed catalog
-added little on top of that, for a lot of moving parts (key custody and rotation, more CI jobs); Harbor
-built signing and removed it before release (Harbor decision 158). Signing Harbor releases and this
-catalog together, with one key, is on Harbor's list for later (`docs/TODO.md`).
+One key signs Harbor releases and this catalog (Harbor decision 168; custody, rotation and what to do if it
+leaks: Harbor's `docs/design/SIGNING.md`). The publish job writes `catalog.json.sig`, the base64 Ed25519
+signature over the exact bytes of `catalog.json`. Harbor 0.32.0 and newer resolve the latest release to its
+tag once, download `catalog.json`, `catalog.json.sig` and `catalog.zip` from that tag, and use the catalog
+only when a key pinned in Harbor verifies the signature; an unsigned or badly signed catalog is refused and
+the box keeps the one it has. Older Harbors (0.28 to 0.31) ignore the signature and trust HTTPS to GitHub.
 
-`catalog.json` still pins `catalog.zip` by sha256 and size. That is an integrity check (a truncated
-download, or a zip from one release with the `catalog.json` of another), not a trust anchor. A box also
+`catalog.json` pins `catalog.zip` by sha256 and size, so the signature covers the archive too. A box also
 refuses a catalog that is older than the one it has, dated more than a day in the future, too large, or
 that does not validate, and keeps the one it has.
 

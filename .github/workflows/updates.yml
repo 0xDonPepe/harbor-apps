@@ -159,6 +159,9 @@ jobs:
     name: try ${{ matrix.id }} ${{ matrix.toVersion }} (${{ matrix.level }})
     runs-on: ubuntu-24.04
     timeout-minutes: 120
+    permissions:
+      contents: read
+      packages: read # read-only: pull from ghcr.io as this workflow (anonymous pulls get throttled)
     strategy:
       fail-fast: false
       max-parallel: 4
@@ -209,6 +212,25 @@ jobs:
           cd .harbor
           pnpm catalog:verify "$RUNNER_TEMP/subset" --quiet
           pnpm catalog:hash --catalog "$GITHUB_WORKSPACE/apps" --check
+      - name: Pull the images first
+        if: steps.verify.outcome == 'success'
+        env:
+          ID: ${{ matrix.id }}
+          GH_TOKEN: ${{ github.token }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          # Registries throttle bursts (ghcr.io answered toomanyrequests on Immich's four images, 2026-10-13). Pulled by
+          # digest ahead of time, with retries, Harbor's own pull then finds every image on the engine.
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin > /dev/null 2>&1 || echo "::warning::ghcr.io login failed; pulling anonymously"
+          jq -r '.images[].reference' "$RUNNER_TEMP/base/$ID/release.json" "apps/$ID/release.json" | sort -u | while read -r ref; do
+            [[ "$ref" =~ ^[a-z0-9./_-]+@sha256:[0-9a-f]{64}$ ]] || { echo "::error::unexpected image reference $ref"; exit 1; }
+            for i in 1 2 3 4 5; do
+              docker pull -q --platform linux/amd64 "$ref" > /dev/null && break
+              (( i == 5 )) && { echo "::warning::could not pull $ref; the smoke test tries again"; break; }
+              sleep $(( i * 15 ))
+            done
+          done
+          docker logout ghcr.io > /dev/null 2>&1 || true
       - name: Smoke test on this runner's Docker
         id: smoke
         if: steps.verify.outcome == 'success'

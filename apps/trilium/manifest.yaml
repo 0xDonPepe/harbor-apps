@@ -6,6 +6,7 @@ metadata:
   description: "A personal knowledge base: notes in a tree as deep as you like, with rich text, code, canvas and mind map notes, full-text search, per-note encryption and sync with the Trilium desktop app."
 release:
   revision: "1"
+  minHarbor: "0.33.2" # Harbor 0.33.2 drops the HSTS header Trilium sends, which on 0.33.1 and older pinned harbor.local to HTTPS (decision 178)
 deployment:
   compose: compose.yaml
   multiInstance: true

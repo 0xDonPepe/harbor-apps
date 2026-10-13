@@ -141,7 +141,7 @@ jobs:
             [.updates[]
               | . + {moves: ([.changes[] | "\(.service)=\(.to)"] | join(" "))}
               | . + {key: "\(.id) \(.moves)"}
-              | select($proposed | contains("<!-- harbor-update: \(.key) -->") | not)
+              | . as $u | select($proposed | contains("<!-- harbor-update: \($u.key) -->") | not)
               | {id, name, level, moves, key, revision, fromVersion, toVersion}]
             | sort_by({"patch": 0, "minor": 1, "major": 2}[.level], .id)
             | .[:$max]' "$RUNNER_TEMP/found.json" > "$RUNNER_TEMP/picked.json"

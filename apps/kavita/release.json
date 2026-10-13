@@ -28,10 +28,18 @@
     }
   },
   "qualification": {
-    "status": "pending",
+    "status": "passed",
     "date": "2026-10-13",
+    "node": "v24.21.0",
+    "dockerEngine": "28.0.4",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "web": "0.9.1"
+    },
     "notes": [
-      "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/kareadita/kavita:0.9.1); image config: ExposedPorts 5000/tcp, Volumes none, User root."
+      "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/kareadita/kavita:0.9.1); image config: ExposedPorts 5000/tcp, Volumes none, User root.",
+      "Smoke run 2026-10-13T22:44:35.718Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): fresh install of revision 1 healthy after 15 s, still healthy 60 s later."
     ]
   },
   "assets": {

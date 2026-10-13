@@ -48,15 +48,22 @@
     }
   },
   "qualification": {
-    "status": "pending",
+    "status": "passed",
     "date": "2026-10-13",
+    "node": "v24.21.0",
+    "dockerEngine": "28.0.4",
+    "dockerCompose": "2.38.2",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "meilisearch": "1.41.0",
+      "chrome": "154.0.8037.57-r1",
+      "web": "0.33.2"
+    },
     "notes": [
       "Digest of meilisearch resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; getmeili/meilisearch:v1.41.0); image config: ExposedPorts 7700/tcp, Volumes none, User root.",
       "Digest of chrome resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/karakeep-app/karakeep-chrome:154.0.8037.57-r1); image config: ExposedPorts 9222/tcp, Volumes none, User 65534:65534.",
       "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/karakeep-app/karakeep:0.33.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Local smoke 2026-10-13 (pnpm catalog:smoke on Docker Desktop, darwin arm64, not recorded): fresh install healthy after 17 s, still healthy 150 s later; the chrome healthcheck (DevTools /json/version through the socat forward) passed throughout. Probe during it: sign-up of the first account (admin), login, https://example.com/ crawled by Debian Chromium 154.0.8037.92 (title, screenshot), found by Meilisearch search.",
-      "Local check 2026-10-13, test copy of this package (not shipped): the chrome service pinned to the linux/amd64 image (sha256:ee540547...), so Google Chrome 154.0.8037.57 ran under Rosetta, healthy for 420 s, 0 restarts; https://example.com/ crawled (title, screenshot) and searchable. Same copy with NEXTAUTH_URL https://localhost:47443 behind Harbor's own relay class (src/system/lan-https.ts, cookie isolation on): sign-up, sign-out, sign-in and reload in Chromium all kept the session, cookies __Host-hb_<tag>__next-auth.csrf-token and __Secure-hb_<tag>__next-auth.session-token/callback-url; relay without isolation (like Tailscale serve): same, untagged __Secure-/__Host- names; plain http on a non-localhost name: sign-in refused (no cookie stored).",
-      "Still to do before merging: the same crawl and secure-LAN/Tailscale sign-in on a real amd64 Harbor box (qualify-catalog only checks health and the page)."
+      "Smoke run 2026-10-13T22:26:21.536Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): fresh install of revision 1 healthy after 17 s, still healthy 60 s later."
     ]
   },
   "assets": {

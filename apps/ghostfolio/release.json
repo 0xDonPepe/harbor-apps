@@ -48,12 +48,22 @@
     }
   },
   "qualification": {
-    "status": "pending",
+    "status": "passed",
     "date": "2026-10-13",
+    "node": "v24.21.0",
+    "dockerEngine": "28.0.4",
+    "dockerCompose": "2.38.2",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "db": "15.19-alpine",
+      "redis": "8.10.2-alpine",
+      "web": "3.84.2"
+    },
     "notes": [
       "Digest of db resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; postgres:15.19-alpine); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
       "Digest of redis resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; redis:8.10.2-alpine); image config: ExposedPorts 6379/tcp, Volumes none, User root.",
-      "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghostfolio/ghostfolio:3.84.2); image config: ExposedPorts 3333/tcp, Volumes none, User node."
+      "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghostfolio/ghostfolio:3.84.2); image config: ExposedPorts 3333/tcp, Volumes none, User node.",
+      "Smoke run 2026-10-13T22:26:18.048Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): fresh install of revision 1 healthy after 15 s, still healthy 60 s later."
     ]
   },
   "assets": {

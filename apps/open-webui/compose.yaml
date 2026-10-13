@@ -1,12 +1,12 @@
 services:
   ollama:
-    image: ollama/ollama@sha256:684d8674b4315fa18f4f0e973a118ec2652ed96f67563277839985175858e0ba # tag: 0.34.0
+    image: ollama/ollama@sha256:8262851b2846b87c649eddf3e76beb270c52f4d1bc94559f47efde16b0841551 # tag: 0.34.4
     environment:
       OLLAMA_KEEP_ALIVE: "5m"
     volumes:
       - {type: volume, source: models, target: /root/.ollama}
   web:
-    image: ghcr.io/open-webui/open-webui@sha256:41daa0cf2561a5d4c8d1ff31ee2a98d93ab4d3ac2605cac69366ff6a3374a933 # tag: v0.11.3
+    image: ghcr.io/open-webui/open-webui@sha256:1565038903151ced924b5a3226f73f40f16963df4b910441f6391f10144afdaa # tag: v0.12.0
     environment:
       OLLAMA_BASE_URL: "http://ollama:11434"
       ENABLE_SIGNUP: "true"

@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "package": {
     "id": "open-webui",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "29511bf845573a11816d375443d10415c49c028fed0c9b3bc1f21602345ed26f"
+      "sha256": "2e6933609b9cdf183aa3e1f64a9a50d696021d9cec510571673c0b9a0dbd0c52"
     },
     "compose.yaml": {
-      "sha256": "cc9102fea37c64165713f2756be58151c10f56f6eec2cafdec42fd8d94b6bde4"
+      "sha256": "75cb3b012ba45b4d6afdc5f5464266dfcf2ae8b31ec9e7b924afbe037186b186"
     },
     "README.md": {
       "sha256": "1bd2f5ecb3ae70f1880189ab2436682aa3de10dd13cdb51fd1310fcdcf69f6b2"
@@ -17,42 +17,41 @@
   },
   "images": {
     "ollama": {
-      "reference": "ollama/ollama@sha256:684d8674b4315fa18f4f0e973a118ec2652ed96f67563277839985175858e0ba",
+      "reference": "ollama/ollama@sha256:8262851b2846b87c649eddf3e76beb270c52f4d1bc94559f47efde16b0841551",
       "repository": "ollama/ollama",
-      "tag": "0.34.0",
+      "tag": "0.34.4",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:aa6f86f01fee264c81f1edd9083ebfb07c8116d95d8bedd1ad470874b66a40b4",
-      "appVersion": "0.34.0",
-      "imageCreated": "2026-09-09T23:17:47Z",
+      "platformDigest": "sha256:4be1eaabf0dd0152bfbb780347e2888b5fe86ec25d0faa3eb4b1a956173736fb",
+      "appVersion": "0.34.4",
+      "imageCreated": "2026-09-24T03:55:15Z",
       "source": "https://hub.docker.com/r/ollama/ollama"
     },
     "web": {
-      "reference": "ghcr.io/open-webui/open-webui@sha256:41daa0cf2561a5d4c8d1ff31ee2a98d93ab4d3ac2605cac69366ff6a3374a933",
+      "reference": "ghcr.io/open-webui/open-webui@sha256:1565038903151ced924b5a3226f73f40f16963df4b910441f6391f10144afdaa",
       "repository": "ghcr.io/open-webui/open-webui",
-      "tag": "v0.11.3",
+      "tag": "v0.12.0",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:9cd136effce6bb12a6a1988a35ab3b82cb40c48a6768fceeb17c83baf7cfac9c",
-      "appVersion": "0.11.3",
-      "imageCreated": "2026-09-04T19:28:58Z",
+      "platformDigest": "sha256:208e824dd445548da7bd655a5e24718bf88112a7f60a807b5adb09096f2fd10b",
+      "appVersion": "0.12.0",
+      "imageCreated": "2026-10-10T21:21:10Z",
       "source": "https://ghcr.io/open-webui/open-webui"
     }
   },
   "qualification": {
     "status": "passed",
-    "date": "2026-09-15",
-    "node": "v24.12.0",
-    "dockerEngine": "29.8.0",
-    "dockerCompose": "5.5.1",
-    "hostOs": "Ubuntu 24.04.4 LTS x86_64",
+    "date": "2026-10-13",
+    "node": "v24.21.0",
+    "dockerEngine": "28.0.4",
+    "dockerCompose": "2.38.2",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
     "appVersions": {
-      "ollama": "0.34.0",
-      "web": "0.11.3"
+      "ollama": "0.34.4",
+      "web": "0.12.0"
     },
     "notes": [
-      "Digest of ollama resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; ollama/ollama:0.34.0); image config: ExposedPorts 11434/tcp, Volumes none, User root.",
-      "Digest of web resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; ghcr.io/open-webui/open-webui:v0.11.3); image config: ExposedPorts 8080/tcp, Volumes none, User 0:0.",
-      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 211s; page title \"Open WebUI\"; health 200)",
-      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
+      "Digest of ollama resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ollama/ollama:0.34.4); image config: ExposedPorts 11434/tcp, Volumes none, User root.",
+      "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/open-webui/open-webui:v0.12.0); image config: ExposedPorts 8080/tcp, Volumes none, User 0:0.",
+      "Smoke run 2026-10-13T16:38:41.191Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 2 (0.11.3) healthy after 34 s, still healthy 60 s later; updated to revision 3 without a rollback, healthy after 35 s, still healthy 60 s later; fresh install of revision 3 healthy after 34 s, still healthy 60 s later."
     ]
   },
   "assets": {

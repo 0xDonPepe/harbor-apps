@@ -5,7 +5,7 @@ metadata:
   name: HomeBox
   description: A continuation of HomeBox the inventory and organization system built for the Home User
 release:
-  revision: "2"
+  revision: "3"
   version: 0.26.2-patch.1
   minHarbor: 0.28.4
 deployment:
@@ -43,6 +43,10 @@ secrets:
         environment: HBOX_AUTH_API_KEY_PEPPER
 presentation:
   icon: icon.png
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
+    - shot-3.jpg
   tagline: An inventory and organization system built for the home user
   category: files
   developer: SysAdmins Media

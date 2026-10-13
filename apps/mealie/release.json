@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "mealie",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "cb876abf881bb331a5a572ea985134de13ad65e5ddc2cbf9ba9978ea5023404f"
+      "sha256": "a466dc20804ef566d7337d0afbfd5fb0cf4cd40b71ad0462a43ef9c8d0d302a7"
     },
     "compose.yaml": {
       "sha256": "49fecffecde39f1ddf740e6d9a45ba8577a7ffda1ef5e194037b61568e1c2962"
@@ -39,12 +39,25 @@
     },
     "notes": [
       "Digest of web resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; ghcr.io/mealie-recipes/mealie:v3.26.0); image config: ExposedPorts 9000/tcp, Volumes /app/data/, User root.",
-      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 81s; page title \"Login\"; health 200)"
+      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 81s; page title \"Login\"; health 200)",
+      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, shot-3.jpg, shot-4.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
     ]
   },
   "assets": {
     "icon.svg": {
       "sha256": "24245fb444f3b8385511ea2e14d8cb1f58a456f4c9ae05de2888fb616fd237c7"
+    },
+    "shot-1.jpg": {
+      "sha256": "74f77a19a063caca18e16c75d327e8b1b6a673912b951d4ff8e0eecc0d7f5213"
+    },
+    "shot-2.jpg": {
+      "sha256": "2f12e04e837004ecb29fb01694df584cd2d2529d512a0cd9c07988dd4767fae5"
+    },
+    "shot-3.jpg": {
+      "sha256": "39c64b12015c632ecd234b4c43b939d299e2593a541569ac175328db4ec75154"
+    },
+    "shot-4.jpg": {
+      "sha256": "6d724cde26eeefbc258fe39633882d8cb6410774218ad3dd906db55c7062a394"
     }
   }
 }

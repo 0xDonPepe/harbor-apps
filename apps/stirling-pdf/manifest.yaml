@@ -5,7 +5,7 @@ metadata:
   name: Stirling PDF
   description: "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere"
 release:
-  revision: "2"
+  revision: "3"
   version: 3.1.0
   minHarbor: 0.28.4
 deployment:
@@ -47,6 +47,9 @@ storage:
     retention: retain
 presentation:
   icon: icon.png
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
   tagline: Merge, split, rotate, and convert PDFs with ease
   category: files
   developer: Stirling Tools

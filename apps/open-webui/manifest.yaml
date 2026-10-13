@@ -5,7 +5,7 @@ metadata:
   name: "Open WebUI"
   description: "Private ChatGPT-style assistant with a bundled Ollama model server. Chat with local models on this machine or connect your own API keys."
 release:
-  revision: "1"
+  revision: "2"
 deployment:
   compose: compose.yaml
   multiInstance: true
@@ -54,6 +54,9 @@ presentation:
   sizeHint: "About 6 GB, plus each model you download (1 to 40 GB)"
   category: ai
   icon: icon.png
+  gallery:
+    - shot-1.jpg
+    - shot-2.jpg
   developer: "Open WebUI contributors"
   website: https://openwebui.com
   releaseNotes: "Open WebUI v0.11.3 with Ollama 0.34.0 (CPU inference; bring your own GPU later). Telemetry off."

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "jellyfin",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "77150b3b264e49eba0727d074a188db620a87cf94ee82bbd15a1405dff5db26a"
+      "sha256": "f2f11cbaf00864ba957ef044d63e220af6290cb4f3c5e228fdba052d4d9e85bd"
     },
     "compose.yaml": {
       "sha256": "288318e62cf235c1845fa83f28fd0eb3f1c1c8cb433803945bf4c4f309ffda08"
@@ -39,12 +39,22 @@
     },
     "notes": [
       "Digest of web resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; jellyfin/jellyfin:10.11.11); image config: ExposedPorts 8096/tcp, Volumes /cache,/config, User root.",
-      "Live catalog run catalog-2026-09-15T00-42-58: passed (healthy after 31s; page title \"ddcb45c82584\"; health 200)"
+      "Live catalog run catalog-2026-09-15T00-42-58: passed (healthy after 31s; page title \"ddcb45c82584\"; health 200)",
+      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, shot-3.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
     ]
   },
   "assets": {
     "icon.svg": {
       "sha256": "236767c7c80470addced089a0b4879916738d64ff237422f16f06880d48bdb50"
+    },
+    "shot-1.jpg": {
+      "sha256": "8b9991f0da443cef5a37cdd3ac02f7af47adbae56a96bc6592bf2f876fff656c"
+    },
+    "shot-2.jpg": {
+      "sha256": "ba7634605f2c07a59335e2b90dea2b9b55c655eaf9b59feafffac361866b287d"
+    },
+    "shot-3.jpg": {
+      "sha256": "9128c0ebea81e7fb772d1a5f8668b263263719dd4c351895d18a7c29b9ce5e80"
     }
   }
 }

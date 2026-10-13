@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "docmost",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "2d34e40508815c3df6b4a4ec7daeb5bdf210757ad72cd6c9e7cc9d923ecd7109"
+      "sha256": "6dcc3d348e1066f311fd54911a0b8356a3203e65da95cc7fcfe0e7f0327c0b0b"
     },
     "compose.yaml": {
       "sha256": "b4229b8e6b34ed96b26845938366148886c68f34065e1044cee00f600a6faa0b"
@@ -68,12 +68,19 @@
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; postgres@sha256:0321e2252ebfeecb8bc1a899755084d29bce872953e1a5a3e25ec0860b739098); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
       "Digest of redis resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; redis@sha256:b3ad79880c88e302deb5e0fed6cee3e90c0031eb90cd936b01ef2f83ff5b3ff2); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
       "Live catalog run catalog-2026-10-12T18-21-22-harbor-q04: passed (healthy after 144s; page title \"Setup Workspace - Docmost\"; health 200)",
-      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
+      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1.",
+      "Revision 3 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 2."
     ]
   },
   "assets": {
     "icon.png": {
       "sha256": "bd26f935cba979e656492c187a56104607ab2bd86e50d9ebf91b3446967e26db"
+    },
+    "shot-1.jpg": {
+      "sha256": "e9e7ee9b6db6dd9307854342976271948fe0dd7a13bd1973d5ec90442d858738"
+    },
+    "shot-2.jpg": {
+      "sha256": "5ce46e86695170aad297c54954045ff666fe5b708a41af64f90fdc3e8b9ed4ea"
     }
   }
 }

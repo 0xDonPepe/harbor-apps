@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "uptime-kuma",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "acef28cedfef11c2036c230ab8e2961d478573af888e725d9a84ec9a22c8d7db"
+      "sha256": "e264a3ff031f9821ba5d51a2bfd062e0448b5ce16d89cd96c8ae907d33c498a2"
     },
     "compose.yaml": {
       "sha256": "df7fbf4c47316ce45c709fa619b0bb6a8f9ed8d7660509f5efe3bbe618c8739a"
@@ -39,12 +39,19 @@
     },
     "notes": [
       "Digest of web resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; louislam/uptime-kuma:2.5.4); image config: ExposedPorts 3001/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-09-15T00-40-44: passed (healthy after 23s; page title \"Uptime Kuma\"; health 302)"
+      "Live catalog run catalog-2026-09-15T00-40-44: passed (healthy after 23s; page title \"Uptime Kuma\"; health 302)",
+      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
     ]
   },
   "assets": {
     "icon.svg": {
       "sha256": "ff97ddeaf88b06142df87bcf597b28cbe76656f6a3aa688a9acc4ee47f53e25c"
+    },
+    "shot-1.jpg": {
+      "sha256": "d952a0e237a431a09650e650ebfc7a6b8cb8206ef2ddd104c4693d6065cc8c51"
+    },
+    "shot-2.jpg": {
+      "sha256": "faee8d898d54d42002f3e41b7c53df8435ee22c881771ed8bb2201484dcbde0c"
     }
   }
 }

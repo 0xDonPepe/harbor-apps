@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "packages": {
     "actual": {
-      "revision": "1",
+      "revision": "2",
       "dir": "actual"
     },
     "akaunting": {
@@ -14,7 +14,7 @@
       "dir": "anythingllm"
     },
     "audiobookshelf": {
-      "revision": "1",
+      "revision": "2",
       "dir": "audiobookshelf"
     },
     "autobrr": {
@@ -86,7 +86,7 @@
       "dir": "databag"
     },
     "docmost": {
-      "revision": "2",
+      "revision": "3",
       "dir": "docmost"
     },
     "docuseal": {
@@ -190,11 +190,11 @@
       "dir": "hermes-agent"
     },
     "homarr": {
-      "revision": "2",
+      "revision": "3",
       "dir": "homarr"
     },
     "homebox": {
-      "revision": "2",
+      "revision": "3",
       "dir": "homebox"
     },
     "hortusfox": {
@@ -202,7 +202,7 @@
       "dir": "hortusfox"
     },
     "immich": {
-      "revision": "1",
+      "revision": "2",
       "dir": "immich"
     },
     "influxdb": {
@@ -222,7 +222,7 @@
       "dir": "jackett"
     },
     "jellyfin": {
-      "revision": "1",
+      "revision": "2",
       "dir": "jellyfin"
     },
     "jotty": {
@@ -266,7 +266,7 @@
       "dir": "lubelogger"
     },
     "mealie": {
-      "revision": "1",
+      "revision": "2",
       "dir": "mealie"
     },
     "memos": {
@@ -294,11 +294,11 @@
       "dir": "myspeed"
     },
     "n8n": {
-      "revision": "1",
+      "revision": "2",
       "dir": "n8n"
     },
     "navidrome": {
-      "revision": "1",
+      "revision": "2",
       "dir": "navidrome"
     },
     "networkingtoolbox": {
@@ -306,7 +306,7 @@
       "dir": "networkingtoolbox"
     },
     "nextcloud": {
-      "revision": "4",
+      "revision": "5",
       "dir": "nextcloud"
     },
     "nitter": {
@@ -334,7 +334,7 @@
       "dir": "omnitools"
     },
     "open-webui": {
-      "revision": "1",
+      "revision": "2",
       "dir": "open-webui"
     },
     "opencode": {
@@ -350,7 +350,7 @@
       "dir": "palmr"
     },
     "paperless": {
-      "revision": "2",
+      "revision": "3",
       "dir": "paperless"
     },
     "papra": {
@@ -442,7 +442,7 @@
       "dir": "stash"
     },
     "stirling-pdf": {
-      "revision": "2",
+      "revision": "3",
       "dir": "stirling-pdf"
     },
     "strix": {
@@ -490,7 +490,7 @@
       "dir": "trip"
     },
     "uptime-kuma": {
-      "revision": "1",
+      "revision": "2",
       "dir": "uptime-kuma"
     },
     "valorgrid": {
@@ -506,7 +506,7 @@
       "dir": "vert"
     },
     "wallos": {
-      "revision": "2",
+      "revision": "3",
       "dir": "wallos"
     },
     "wavelog": {

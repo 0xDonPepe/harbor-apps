@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "open-webui",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "b0a4acff4fa8c379ebd220a8737adca08b0aef3a40fc84f9db61d917b20f412d"
+      "sha256": "29511bf845573a11816d375443d10415c49c028fed0c9b3bc1f21602345ed26f"
     },
     "compose.yaml": {
       "sha256": "cc9102fea37c64165713f2756be58151c10f56f6eec2cafdec42fd8d94b6bde4"
@@ -51,12 +51,19 @@
     "notes": [
       "Digest of ollama resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; ollama/ollama:0.34.0); image config: ExposedPorts 11434/tcp, Volumes none, User root.",
       "Digest of web resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; ghcr.io/open-webui/open-webui:v0.11.3); image config: ExposedPorts 8080/tcp, Volumes none, User 0:0.",
-      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 211s; page title \"Open WebUI\"; health 200)"
+      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 211s; page title \"Open WebUI\"; health 200)",
+      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
     ]
   },
   "assets": {
     "icon.png": {
       "sha256": "5698a3e39513e7b6304ec96c309373ab3af0f70fe794293461de395a94deaa65"
+    },
+    "shot-1.jpg": {
+      "sha256": "a12c06fe354b759a2b037c30cbdba7af26acbd08e958e9ff646998dfa93eaf48"
+    },
+    "shot-2.jpg": {
+      "sha256": "2de38b8a2175833b720cf71747d9ddd9e6935a7e5967d5661b8d26e13975aef0"
     }
   }
 }

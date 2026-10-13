@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "package": {
     "id": "navidrome",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "2e8bf18f426f41d706ab2840fcccce0e155deb5263937a26d18d1815fd53cb7a"
+      "sha256": "6df3250c5bea1748d5fe64693b730d4a53906658f8a7e412550945efc200708d"
     },
     "compose.yaml": {
       "sha256": "402140f16591092022152e166466aa40873e2c0fce9a69b6e9cac2478d5c0915"
@@ -39,12 +39,22 @@
     },
     "notes": [
       "Digest of web resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; deluan/navidrome:0.64.0); image config: ExposedPorts 4533/tcp, Volumes /data,/music, User root.",
-      "Live catalog run catalog-2026-10-04T03-29-24: passed (healthy after 33s; page title \"Navidrome\"; health 200)"
+      "Live catalog run catalog-2026-10-04T03-29-24: passed (healthy after 33s; page title \"Navidrome\"; health 200)",
+      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, shot-3.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
     ]
   },
   "assets": {
     "icon.png": {
       "sha256": "91d4a1d192bf18694a7c49b0966de9a83480492b5930e23e6a9d1e32ef0741a0"
+    },
+    "shot-1.jpg": {
+      "sha256": "d84e8ad1e8388761d7c6d8e23db3289b6d8a42256f91dcb8e6327c63b7e7a17d"
+    },
+    "shot-2.jpg": {
+      "sha256": "839a7767cf9534094cf4192b544a13abc4b508c7f6fc69053ed9d5c92b4d5541"
+    },
+    "shot-3.jpg": {
+      "sha256": "f271b8c1eb8cbed8f4ddc01ece396ede8fc7fa2cc08b7b64d198b58048b67781"
     }
   }
 }

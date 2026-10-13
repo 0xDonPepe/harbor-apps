@@ -1,0 +1,13 @@
+{
+  "$comment": "Rules for the automatic upstream updates (.github/workflows/updates.yml, Harbor decision 175). Every field is optional: apps.<id>.skip (a reason; the bot leaves the app alone), hold (services that never move), match (service -> regular expression the new tag must match), note (for people). defaults.minAgeDays: how old a release must be before the bot takes it (default 2).",
+  "schemaVersion": 1,
+  "defaults": {
+    "minAgeDays": 2
+  },
+  "apps": {
+    "immich": {
+      "hold": ["database"],
+      "note": "Immich names the exact Postgres (VectorChord) image each release needs in its own docker-compose.yml; move it by hand with the release notes open."
+    }
+  }
+}

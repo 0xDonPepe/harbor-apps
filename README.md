@@ -103,6 +103,45 @@ Harbor boxes (0.28.0 and newer) check for a new catalog every 6 hours, or right 
 console or `harbor catalog refresh`. Each Harbor release also ships the latest catalog, so a new or
 offline box has apps from the start.
 
+## Automatic upstream updates
+
+`.github/workflows/updates.yml` keeps the apps on their projects' releases (Harbor decision 175). Every day (or
+**Run workflow** in the Actions tab, optionally for some app ids, or as a dry run):
+
+1. **find** lists newer image tags with the latest Harbor release's `pnpm catalog:upstream check`: only tags of the
+   same shape as the pinned one (`v0.11.3` → `v0.12.0`, never `-cuda`, `latest` or a date tag), at least 2 days
+   old, with a linux/amd64 image newer than the pinned one. Images from one publisher on one tag move together
+   (Immich's server and machine-learning). Infrastructure services and databases stay on their major version.
+   Updates that already have an open pull request or issue are left out; at most 8 apps per run.
+2. **try**, one job per app: `catalog:upstream apply` re-pins the images, raises the revision and moves the version
+   in `release.version` and the release notes; `catalog:verify` checks it; `catalog:smoke` runs Harbor's own engine
+   on the runner's Docker: it installs the current revision, updates it to the new one (no rollback, still healthy a
+   minute later), then installs the new one from nothing. A pass becomes the app's qualification.
+3. **land**, the only job that writes (it runs no package or Harbor code):
+   - patch and minor updates that passed are committed to `main`, and the catalog workflow is started for it
+     (pushes made by a workflow start no workflow by themselves);
+   - major updates (a new major version, and 0.x minor versions such as 0.11 → 0.12) that passed go to a pull
+     request from `updates/<id>` for a person to merge after reading the project's upgrade notes;
+   - failures open an issue labelled `app-update` with what broke (Harbor's events and the containers' logs).
+
+Steer it per app in [`updates.json`](updates.json):
+
+```json
+{
+  "schemaVersion": 1,
+  "defaults": { "minAgeDays": 2 },
+  "apps": {
+    "immich": { "hold": ["database"], "note": "why" },
+    "some-app": { "skip": "why it is left alone" },
+    "other-app": { "match": { "web": "^2\\." } }
+  }
+}
+```
+
+`hold` lists services that never move, `skip` leaves the whole app alone (say why), `match` is a pattern a new tag
+must also match. For the pull requests, **Settings → Actions → General → Allow GitHub Actions to create and
+approve pull requests** must be on; without it the bot opens an issue with a link to the branch instead.
+
 ## Trust
 
 One key signs Harbor releases and this catalog (Harbor decision 168; custody, rotation and what to do if it

@@ -1,0 +1,399 @@
+# Automatic upstream updates (Harbor decision 175): every day, find newer releases of the apps' images, move
+# each app to its newest one in a copy of the catalog, and prove it on a real Docker host before anything lands.
+#
+# Three jobs:
+#   find   read-only. With the LATEST published Harbor release (like ci.yml), `pnpm catalog:upstream check` lists
+#          the apps whose images have newer tags of the same shape (updates.json holds services back, skips apps,
+#          narrows tags; infrastructure services and databases stay on their major). Updates that already have
+#          an open pull request or issue for the same versions are left out; at most `max` apps per run, smaller
+#          updates first.
+#   try    read-only, one job per app. `pnpm catalog:upstream apply` re-pins the images, raises the revision and
+#          moves the version words; `pnpm catalog:verify` validates the app as that Harbor release loads it; and
+#          `pnpm catalog:smoke` runs Harbor's own engine on the runner's Docker: install the current revision,
+#          update it to the new one (no rollback, still healthy a minute later), then a fresh install. A pass is
+#          recorded as the package's qualification (--record). The result leaves as an artifact: a patch of
+#          apps/<id>/ and a small JSON summary. Nothing is pushed from here.
+#   land   the only job that may write: no Harbor checkout, no install, no package code; only git, jq and gh.
+#          For each result: a patch that touches anything but plain files under apps/<id>/ is refused. A passed
+#          patch or minor update is committed to main (index.json's revision set with jq); a passed major
+#          update (0.x minor counts as major) goes to branch updates/<id> as a pull request for a person to
+#          merge; a failure opens an issue with what broke (events and container logs). Pushes made with
+#          GITHUB_TOKEN start no workflows, so land dispatches ci.yml itself: on main it checks, bundles,
+#          signs and publishes the catalog exactly like a push; on a pull request branch it runs the checks.
+# Never put ${{ }} of package or registry text inside a run: script; pass values through env and quote them.
+name: updates
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: App ids to check, comma-separated (empty = every app)
+        required: false
+        default: ''
+      max:
+        description: Most apps to try in this run
+        required: false
+        default: '8'
+      dry_run:
+        description: Find and test only; commit, open and dispatch nothing
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalog-updates
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  HARBOR_REPO: carlosalaniz/harbor
+
+jobs:
+  find:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      pull-requests: read # read-only: which updates already have a pull request
+      issues: read # ... or an issue
+    outputs:
+      sha: ${{ steps.latest.outputs.sha }}
+      version: ${{ steps.latest.outputs.version }}
+      matrix: ${{ steps.pick.outputs.matrix }}
+      count: ${{ steps.pick.outputs.count }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Latest Harbor release
+        id: latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          release=$(gh api "repos/$HARBOR_REPO/releases/latest")
+          tag=$(jq -r .tag_name <<<"$release")
+          if [[ ! "$tag" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)$ ]] || [[ "$(jq -r '.draft or .prerelease' <<<"$release")" != "false" ]]; then
+            echo "::error::the latest $HARBOR_REPO release ($tag) is not a published v<x.y.z> release"
+            exit 1
+          fi
+          sha=$(gh api "repos/$HARBOR_REPO/commits/$tag" --jq .sha)
+          status=$(gh api "repos/$HARBOR_REPO/compare/$sha...main" --jq .status)
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ || ( "$status" != "ahead" && "$status" != "identical" ) ]]; then
+            echo "::error::$HARBOR_REPO $tag ($sha) is not on its main"
+            exit 1
+          fi
+          echo "version=${BASH_REMATCH[1]}" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: carlosalaniz/harbor
+          ref: ${{ steps.latest.outputs.sha }}
+          path: .harbor
+          persist-credentials: false
+      - name: The latest Harbor release has the update tools
+        env:
+          VERSION: ${{ steps.latest.outputs.version }}
+        run: |
+          if ! jq -e '(.scripts["catalog:upstream"] | type == "string") and (.scripts["catalog:smoke"] | type == "string")' .harbor/package.json > /dev/null; then
+            echo "::error::Harbor v$VERSION has no catalog:upstream / catalog:smoke; release Harbor 0.33.0 or newer first"
+            exit 1
+          fi
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: .harbor/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .harbor/package.json
+          cache: pnpm
+          cache-dependency-path: .harbor/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        working-directory: .harbor
+      - name: Find newer upstream releases
+        working-directory: .harbor
+        env:
+          ONLY: ${{ inputs.only }}
+          HARBOR_DOCKERHUB_MIRROR: mirror.gcr.io # manifests through Google's Docker Hub mirror (Hub's anonymous pull limit); tag lists from Hub itself
+        run: |
+          only=()
+          if [[ -n "$ONLY" ]]; then
+            [[ "$ONLY" =~ ^[a-z][a-z0-9-]*(,[a-z][a-z0-9-]*)*$ ]] || { echo "::error::only must be app ids separated by commas"; exit 1; }
+            only=(--only "$ONLY")
+          fi
+          pnpm -s catalog:upstream check --catalog "$GITHUB_WORKSPACE/apps" --policy "$GITHUB_WORKSPACE/updates.json" "${only[@]}" --json "$RUNNER_TEMP/found.json"
+          jq -r '.errors[] | "::warning::\(.id): could not check: \(.message)"' "$RUNNER_TEMP/found.json"
+      - name: Leave out what is already proposed; pick this run's apps
+        id: pick
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MAX: ${{ inputs.max || '8' }}
+        run: |
+          [[ "$MAX" =~ ^[1-9][0-9]?$ ]] || { echo "::error::max must be 1 to 99"; exit 1; }
+          # every proposal carries <!-- harbor-update: <id> <service>=<tag>... --> in its body
+          { gh pr list --state open --limit 200 --json body --jq '.[].body'; gh issue list --state open --limit 200 --json body --jq '.[].body'; } \
+            | grep -oE '<!-- harbor-update: [a-z][a-z0-9-]*( [a-z0-9-]+=[A-Za-z0-9_.-]+)+ -->' | sort -u > "$RUNNER_TEMP/proposed.txt" || true
+          jq -c --rawfile proposed "$RUNNER_TEMP/proposed.txt" --argjson max "$MAX" '
+            [.updates[]
+              | . + {moves: ([.changes[] | "\(.service)=\(.to)"] | join(" "))}
+              | . + {key: "\(.id) \(.moves)"}
+              | select($proposed | contains("<!-- harbor-update: \(.key) -->") | not)
+              | {id, name, level, moves, key, revision, fromVersion, toVersion}]
+            | sort_by({"patch": 0, "minor": 1, "major": 2}[.level], .id)
+            | .[:$max]' "$RUNNER_TEMP/found.json" > "$RUNNER_TEMP/picked.json"
+          # values in the matrix come from registry and package text: check their shape before anyone uses them
+          jq -e 'all(.[]; (.id | test("^[a-z][a-z0-9-]{0,62}$")) and (.level | IN("patch", "minor", "major")) and (.revision | test("^[0-9]{1,9}$"))
+                 and (.moves | test("^[a-z0-9-]+=[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}( [a-z0-9-]+=[A-Za-z0-9_][A-Za-z0-9_.-]{0,127})*$")))' "$RUNNER_TEMP/picked.json" > /dev/null \
+            || { echo "::error::catalog:upstream printed an unexpected update"; exit 1; }
+          jq -r '.[] | "::notice::\(.id): \(.fromVersion // "?") -> \(.toVersion // "?") (\(.level); \(.moves))"' "$RUNNER_TEMP/picked.json"
+          echo "count=$(jq length "$RUNNER_TEMP/picked.json")" >> "$GITHUB_OUTPUT"
+          echo "matrix=$(jq -c '{include: .}' "$RUNNER_TEMP/picked.json")" >> "$GITHUB_OUTPUT"
+
+  try:
+    needs: find
+    if: needs.find.outputs.count != '0'
+    name: try ${{ matrix.id }} ${{ matrix.toVersion }} (${{ matrix.level }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.find.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: carlosalaniz/harbor
+          ref: ${{ needs.find.outputs.sha }}
+          path: .harbor
+          persist-credentials: false
+      - name: Make room for the images
+        run: |
+          # hosted runners ship ~30 GB of toolchains this job never uses; big apps (Immich, Open WebUI) pull two versions
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost || true
+          docker image prune -af > /dev/null || true
+          df -h / | tail -1
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: .harbor/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .harbor/package.json
+          cache: pnpm
+          cache-dependency-path: .harbor/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        working-directory: .harbor
+      - name: Apply the update
+        id: apply
+        working-directory: .harbor
+        env:
+          ID: ${{ matrix.id }}
+          MOVES: ${{ matrix.moves }}
+          HARBOR_DOCKERHUB_MIRROR: mirror.gcr.io
+        run: |
+          cp -R "$GITHUB_WORKSPACE/apps" "$RUNNER_TEMP/base"
+          read -ra moves <<<"$MOVES"
+          pnpm -s catalog:upstream apply --catalog "$GITHUB_WORKSPACE/apps" "$ID" "${moves[@]}"
+      - name: Validate it as this Harbor release loads it
+        id: verify
+        env:
+          ID: ${{ matrix.id }}
+        run: |
+          node scripts/subset.mjs apps "$RUNNER_TEMP/subset" "$ID"
+          cd .harbor
+          pnpm catalog:verify "$RUNNER_TEMP/subset" --quiet
+          pnpm catalog:hash --catalog "$GITHUB_WORKSPACE/apps" --check
+      - name: Smoke test on this runner's Docker
+        id: smoke
+        if: steps.verify.outcome == 'success'
+        working-directory: .harbor
+        env:
+          ID: ${{ matrix.id }}
+        run: |
+          set +e
+          pnpm -s catalog:smoke --docker-socket /var/run/docker.sock --catalog "$GITHUB_WORKSPACE/apps" --base "$RUNNER_TEMP/base" "$ID" --out "$RUNNER_TEMP/smoke.json" --record
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Package the result
+        if: always()
+        env:
+          ID: ${{ matrix.id }}
+          KEY: ${{ matrix.key }}
+          LEVEL: ${{ matrix.level }}
+          NAME: ${{ matrix.name }}
+          FROM: ${{ matrix.fromVersion }}
+          TO: ${{ matrix.toVersion }}
+          REVISION: ${{ matrix.revision }}
+          APPLIED: ${{ steps.apply.outcome }}
+          VERIFIED: ${{ steps.verify.outcome }}
+          SMOKE: ${{ steps.smoke.outputs.code }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/out"
+          # index.json is left out: land sets the revision there itself, on the main it lands on
+          git diff --binary -- "apps/$ID" > "$RUNNER_TEMP/out/change.patch"
+          [[ -f "$RUNNER_TEMP/smoke.json" ]] && cp "$RUNNER_TEMP/smoke.json" "$RUNNER_TEMP/out/smoke.json"
+          if [[ "$APPLIED" != "success" ]]; then result=apply-failed
+          elif [[ "$VERIFIED" != "success" ]]; then result=invalid
+          elif [[ "$SMOKE" == "0" ]]; then result=passed
+          elif [[ "$SMOKE" == "3" ]]; then result=skipped
+          else result=failed; fi
+          jq -n --arg id "$ID" --arg key "$KEY" --arg level "$LEVEL" --arg name "$NAME" --arg from "$FROM" --arg to "$TO" \
+            --arg revision "$REVISION" --arg result "$result" --arg run "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            '{id: $id, key: $key, level: $level, name: $name, fromVersion: $from, toVersion: $to, revision: $revision, result: $result, run: $run}' > "$RUNNER_TEMP/out/meta.json"
+          cat "$RUNNER_TEMP/out/meta.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: update-${{ matrix.id }}
+          path: ${{ runner.temp }}/out/
+          retention-days: 14
+
+  land:
+    needs: [find, try]
+    if: always() && needs.find.result == 'success' && needs.find.outputs.count != '0' && !inputs.dry_run
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: write
+    env:
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: update-*
+          path: ${{ runner.temp }}/results
+      - name: Land, propose or report each update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "harbor-apps updates"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          gh label create app-update --color 0e8a16 --description "Automatic upstream update (updates.yml)" --force > /dev/null || true
+          landed=0
+          branches=()
+
+          # a pull request or issue body: what moved, what the smoke run proved, how to reproduce
+          body() { # $1 dir, $2 headline
+            local dir=$1 head=$2
+            echo "$head"
+            echo
+            jq -r '"\(.name): \(.fromVersion) → \(.toVersion) (\(.level) update; revision \(.revision) → \((.revision | tonumber) + 1)). Images: `\(.key | split(" ")[1:] | join("`, `"))`."' "$dir/meta.json"
+            echo
+            if [[ -f "$dir/smoke.json" ]]; then
+              echo "Smoke run on a GitHub runner (Harbor's own engine on real Docker, \`pnpm catalog:smoke\`):"
+              echo
+              jq -r '.phases[] | "- \(if .ok then "✅" else "❌" end) **\(.name)** (revision \(.revision)\(if .version then ", " + .version else "" end), \(.seconds) s): \(.message)"' "$dir/smoke.json"
+              jq -r '.skipped // empty | "- skipped: \(.)"' "$dir/smoke.json"
+              jq -r '[.phases[] | select(.ok | not)][0] // empty
+                | (if .events then "\n<details><summary>Harbor events</summary>\n\n```\n" + (.events | join("\n")) + "\n```\n</details>" else "" end),
+                  (.logs // {} | to_entries[] | "\n<details><summary>Logs of \(.key) (last lines)</summary>\n\n```\n" + .value[-4000:] + "\n```\n</details>")' "$dir/smoke.json"
+            fi
+            echo
+            jq -r '"Run: \(.run)"' "$dir/meta.json"
+            echo
+            jq -r '"<!-- harbor-update: \(.key) -->"' "$dir/meta.json"
+            jq -r '"<!-- harbor-update-id: \(.id) -->"' "$dir/meta.json"
+          }
+          close_issues() { # older reports for this app go once a newer update landed or was proposed
+            gh issue list --state open --label app-update --limit 100 --json number,body \
+              --jq ".[] | select(.body | contains(\"<!-- harbor-update-id: $1 -->\")) | .number" \
+              | while read -r n; do gh issue close "$n" --comment "Superseded: $2" > /dev/null || true; done
+          }
+
+          git checkout -q -B main origin/main
+          for dir in "$RUNNER_TEMP"/results/update-*; do
+            meta="$dir/meta.json"
+            # package and registry text: check the shape before any value is used
+            if ! jq -e '(.id | test("^[a-z][a-z0-9-]{0,62}$")) and (.level | IN("patch", "minor", "major")) and (.revision | test("^[0-9]{1,9}$"))
+                        and (.result | IN("passed", "failed", "skipped", "invalid", "apply-failed"))
+                        and (.key | test("^[a-z][a-z0-9-]* [a-z0-9-]+=[A-Za-z0-9_.-]+( [a-z0-9-]+=[A-Za-z0-9_.-]+)*$"))' "$meta" > /dev/null 2>&1; then
+              echo "::error::$dir/meta.json is not an update summary; skipped"
+              continue
+            fi
+            id=$(jq -r .id "$meta"); level=$(jq -r .level "$meta"); result=$(jq -r .result "$meta")
+            title=$(jq -r '"\(.name) \(.fromVersion) → \(.toVersion)"' "$meta" | tr -d '\r\n' | cut -c1-120)
+
+            if [[ "$result" != "passed" ]]; then
+              case "$result" in
+                failed) why="failed its smoke test" ;;
+                skipped) why="needs a manual check" ;;
+                invalid) why="does not validate" ;;
+                *) why="could not be applied" ;;
+              esac
+              body "$dir" "The automatic update of **$id** $why. Nothing changed in the catalog." > "$RUNNER_TEMP/body.md"
+              gh issue create --title "Update $title $why" --label app-update --body-file "$RUNNER_TEMP/body.md" > /dev/null
+              echo "::warning::$id: $why (issue opened)"
+              continue
+            fi
+
+            # the patch may only change plain files of this one app
+            patch="$dir/change.patch"
+            if [[ ! -s "$patch" ]]; then echo "::error::$id: empty patch"; continue; fi
+            if git apply --numstat "$patch" | awk '{print $3}' | grep -vqE "^apps/$id/[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$" \
+               || grep -qE '^(new|old|deleted file|new file) mode (120000|160000)' "$patch"; then
+              echo "::error::$id: the patch touches something other than plain files under apps/$id/; refused"
+              continue
+            fi
+
+            want=$(jq -r .revision "$meta")
+            base_ref=origin/main
+            if [[ "$level" == "major" ]]; then git checkout -q -B "updates/$id" origin/main; else git checkout -q main; base_ref=main; fi
+            have=$(jq -r --arg id "$id" '.packages[$id].revision' apps/index.json)
+            if [[ "$have" != "$want" ]]; then
+              echo "::warning::$id is at revision $have on main now, not $want; skipped (the next run tries again)"
+              [[ "$level" == "major" ]] && git checkout -q main
+              continue
+            fi
+            if ! git apply --index "$patch"; then
+              echo "::warning::$id: the patch does not apply to $base_ref any more; skipped"
+              git checkout -q -- . ; [[ "$level" == "major" ]] && git checkout -q main
+              continue
+            fi
+            jq --arg id "$id" --arg rev "$((want + 1))" '.packages[$id].revision = $rev' apps/index.json > "$RUNNER_TEMP/index.json"
+            mv "$RUNNER_TEMP/index.json" apps/index.json
+            git add apps/index.json
+            body "$dir" "Automatic upstream update: smoke test passed." > "$RUNNER_TEMP/body.md"
+            git commit -q -m "Update $title (automatic, smoke test passed)" -m "$(jq -r '.key | split(" ")[1:] | join(", ")' "$meta")" -m "$(jq -r .run "$meta")"
+
+            if [[ "$level" == "major" ]]; then
+              git push -q -f origin "updates/$id"
+              existing=$(gh pr list --head "updates/$id" --state open --json number --jq '.[0].number // empty')
+              if [[ -n "$existing" ]]; then
+                gh pr edit "$existing" --title "Update $title (major)" --body-file "$RUNNER_TEMP/body.md" > /dev/null
+              elif ! gh pr create --base main --head "updates/$id" --title "Update $title (major)" --label app-update --body-file "$RUNNER_TEMP/body.md" > /dev/null; then
+                # GitHub refuses pull requests from workflows unless Settings → Actions → General allows it
+                body "$dir" "A major update of **$id** passed its smoke test and waits on branch \`updates/$id\`: $GITHUB_SERVER_URL/$GH_REPO/compare/main...updates/$id. (Open the pull request by hand, or allow GitHub Actions to create pull requests in Settings → Actions → General.)" > "$RUNNER_TEMP/issue.md"
+                gh issue create --title "Update $title (major) is ready for review" --label app-update --body-file "$RUNNER_TEMP/issue.md" > /dev/null
+              fi
+              branches+=("updates/$id")
+              git checkout -q main
+              echo "::notice::$id: major update proposed on updates/$id"
+            else
+              landed=$((landed + 1))
+              echo "::notice::$id: committed to main"
+            fi
+            close_issues "$id" "$title passed and was $([[ "$level" == "major" ]] && echo proposed || echo committed)."
+          done
+
+          if (( landed > 0 )); then
+            git checkout -q main
+            # someone may have pushed meanwhile: replay the bot's commits on top, once
+            git push -q origin main || { git pull -q --rebase origin main && git push -q origin main; }
+            gh workflow run ci.yml --ref main
+            echo "::notice::$landed update(s) on main; catalog workflow dispatched (it checks, bundles, signs and publishes)"
+          fi
+          for b in "${branches[@]}"; do gh workflow run ci.yml --ref "$b" || true; done

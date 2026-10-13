@@ -1,7 +1,8 @@
 # Check every change with real Harbor releases; publish every change to main as a catalog release.
-# Harbor boxes download releases/latest/download/{catalog.zip,catalog.json} over HTTPS. There is no signature
-# (Harbor decision 158): trust is HTTPS to GitHub, exactly like Harbor's own self-update. catalog.json pins
-# catalog.zip by sha256 and size: an integrity check against truncated or mixed downloads, not a trust anchor.
+# Harbor boxes resolve releases/latest to its tag c<serial> and download catalog.json, catalog.json.sig and
+# catalog.zip from releases/download/c<serial>/ over HTTPS. catalog.json.sig is Harbor's release key signing the
+# exact catalog.json bytes (Harbor decision 168, docs/design/SIGNING.md: the same key signs Harbor releases);
+# Harbor 0.32.0 and newer refuse a catalog without a valid one. catalog.json pins catalog.zip by sha256 and size.
 #
 # Each app declares the oldest Harbor it runs on in its manifest: release.minHarbor (absent = 0.28.0, the first
 # Harbor that downloads catalogs; when set, 0.28.2 or newer, the first release that knows the field; Harbor
@@ -18,7 +19,9 @@
 #   bundle   main push/dispatch only, after plan and every check: read-only, no token. Bundles with the latest
 #            release's tools (catalog.zip, catalog.json, summary.json) and uploads dist/ as a workflow artifact.
 #   publish  the only job that may write: no Harbor checkout, no install, no package code. Downloads the artifact,
-#            creates release c<serial> and marks it latest. GH_TOKEN is set only on its two gh steps.
+#            signs catalog.json with secrets.HARBOR_SIGNING_KEY (openssl only; fails without the secret or with a
+#            key Harbor does not pin), creates release c<serial> and marks it latest. GH_TOKEN is set only on its
+#            two gh steps; the signing key only on the signing step.
 # Harbor is always checked out at the commit sha that plan resolved and checked, never by a tag name that could move,
 # and each checkout gets the toolchain it names itself: Node from its package.json engines, pnpm from its
 # packageManager (every Harbor release since 0.28.0 has one).
@@ -363,6 +366,41 @@ jobs:
             echo "::error::dist/summary.json is not the summary of serial $SERIAL from $GITHUB_SHA (want {serial, commit, packages: [{id, revision, version, minHarbor}]})"
             exit 1
           fi
+      # Harbor decision 168: catalog.json.sig = base64 of the Ed25519 signature over the exact catalog.json bytes.
+      # The private key exists only in a 0600 file under $RUNNER_TEMP for this step. The result is checked
+      # against the public key Harbor pins (src/release-keys.ts, id harbor-2026-10), so a wrong secret fails here
+      # instead of publishing a catalog every box refuses. On a key rotation, update the public key below.
+      - name: Sign catalog.json
+        env:
+          HARBOR_SIGNING_KEY: ${{ secrets.HARBOR_SIGNING_KEY }}
+          HARBOR_RELEASE_PUBLIC_KEY: |
+            -----BEGIN PUBLIC KEY-----
+            MCowBQYDK2VwAyEAm1Nz4bx1UpDvo+pvgAweZveNPi8c9dH2ze/kPaLPtXA=
+            -----END PUBLIC KEY-----
+        run: |
+          if [[ -z "$HARBOR_SIGNING_KEY" ]]; then
+            echo "::error::the secret HARBOR_SIGNING_KEY is not set; Harbor 0.32.0 and newer refuse an unsigned catalog (Harbor docs/design/SIGNING.md)"
+            exit 1
+          fi
+          umask 077
+          key="$RUNNER_TEMP/harbor-signing-key.pem"
+          raw="$RUNNER_TEMP/catalog.json.sig.bin"
+          pub="$RUNNER_TEMP/harbor-release-key.pem"
+          trap 'rm -f "$key" "$raw" "$pub"' EXIT
+          printf '%s\n' "$HARBOR_SIGNING_KEY" > "$key"
+          printf '%s' "$HARBOR_RELEASE_PUBLIC_KEY" > "$pub"
+          if ! openssl pkeyutl -sign -inkey "$key" -rawin -in dist/catalog.json -out "$raw"; then
+            echo "::error::could not sign dist/catalog.json: HARBOR_SIGNING_KEY is not an Ed25519 private key in PEM form"
+            exit 1
+          fi
+          if ! openssl pkeyutl -verify -pubin -inkey "$pub" -rawin -in dist/catalog.json -sigfile "$raw" > /dev/null; then
+            echo "::error::HARBOR_SIGNING_KEY is not the release key Harbor pins (harbor-2026-10): boxes would refuse this catalog"
+            exit 1
+          fi
+          { base64 -w0 "$raw"; echo; } > dist/catalog.json.sig
+          umask 022
+          chmod 0644 dist/catalog.json.sig
+          echo "::notice::catalog.json signed (key harbor-2026-10)"
       - name: Decide
         id: decide
         env:
@@ -385,7 +423,7 @@ jobs:
               exit 1
             fi
             assets=$(gh release view "$tag" --json assets --jq '[.assets[].name] | sort | join(" ")' 2>/dev/null || true)
-            if [[ "$assets" != "catalog.json catalog.zip" ]]; then
+            if [[ "$assets" != "catalog.json catalog.json.sig catalog.zip" ]]; then
               echo "::error::$tag exists for this commit but its release is incomplete (assets: \"$assets\"). Delete the release and the tag, then re-run this workflow."
               exit 1
             fi
@@ -433,7 +471,7 @@ jobs:
           SERIAL: ${{ needs.bundle.outputs.serial }}
         run: |
           title="Catalog $(date -u -d "@$SERIAL" +%Y-%m-%d) (${GITHUB_SHA:0:12})"
-          gh release create "$TAG" dist/catalog.zip dist/catalog.json \
+          gh release create "$TAG" dist/catalog.zip dist/catalog.json dist/catalog.json.sig \
             --target "$GITHUB_SHA" --latest \
             --title "$title" \
             --notes-file notes.md

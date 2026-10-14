@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "package": {
     "id": "freshrss",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "fdda0c20bd7a908430e573d6089a99ce2d888e9a0f6f2728d819a1ae131b91f5"
+      "sha256": "dd78010d3b632a6ecda21692584bdef6ae62eeb6d21a71810b62f8f104e6c48e"
     },
     "compose.yaml": {
-      "sha256": "7437a521d86d074120deb0c7cc86fa34f8845e50f0852b343159ce898dcf44da"
+      "sha256": "dc2630dd21fa264dc4952e7f5f00c46242348646f7b03570f60bcaef37aebb05"
     },
     "README.md": {
       "sha256": "b4d5c18b83fa4bf28918bdef1dbb07db754ebdea22c925b3aa36196128beb5fb"
@@ -17,29 +17,29 @@
   },
   "images": {
     "web": {
-      "reference": "freshrss/freshrss@sha256:258b8edfc8a76a61f60d2d6a14d8f8d12495d78abf38646a2137612dfa264a21",
+      "reference": "freshrss/freshrss@sha256:48b63b9bc3d042a1301c32971b01af8841c7f059b452589c5bf77f475ba44c61",
       "repository": "freshrss/freshrss",
-      "tag": "1.30.0",
+      "tag": "1.30.1",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:e885cd223c96b895086f59d4e8642aa5d8eff83352619f65a56931e084fc2fdc",
-      "appVersion": "1.30.0",
-      "imageCreated": "2026-09-09T14:44:32Z",
+      "platformDigest": "sha256:b0dd8a83392471cb97bd66e93afc426d114ecf5027228eeec7c34c9964ab957e",
+      "appVersion": "1.30.1",
+      "imageCreated": "2026-10-05T20:19:27Z",
       "source": "https://hub.docker.com/r/freshrss/freshrss"
     }
   },
   "qualification": {
     "status": "passed",
-    "date": "2026-09-15",
-    "node": "v24.12.0",
-    "dockerEngine": "29.8.0",
-    "dockerCompose": "5.5.1",
-    "hostOs": "Ubuntu 24.04.4 LTS x86_64",
+    "date": "2026-10-14",
+    "node": "v24.21.0",
+    "dockerEngine": "28.0.4",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
     "appVersions": {
-      "web": "1.30.0"
+      "web": "1.30.1"
     },
     "notes": [
-      "Digest of web resolved 2026-09-14 via registry API (scripts/catalog-pin.mjs; freshrss/freshrss:1.30.0); image config: ExposedPorts 80/tcp, Volumes none, User root.",
-      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 25s; page title \"Installation · FreshRSS: step 1\"; health 200)"
+      "Digest of web resolved 2026-10-14 via registry API (scripts/catalog-pin.mjs; freshrss/freshrss:1.30.1); image config: ExposedPorts 80/tcp, Volumes none, User root.",
+      "Smoke run 2026-10-14T05:35:47.933Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 1 (1.30.0) healthy after 1 s, still healthy 60 s later; updated to revision 2 without a rollback, healthy after 2 s, still healthy 60 s later; fresh install of revision 2 healthy after 1 s, still healthy 60 s later."
     ]
   },
   "assets": {

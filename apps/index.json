@@ -10,7 +10,7 @@
       "dir": "akaunting"
     },
     "anythingllm": {
-      "revision": "1",
+      "revision": "2",
       "dir": "anythingllm"
     },
     "audiobookshelf": {
@@ -234,7 +234,7 @@
       "dir": "kiwix"
     },
     "langflow": {
-      "revision": "2",
+      "revision": "3",
       "dir": "langflow"
     },
     "leafwiki": {
@@ -378,7 +378,7 @@
       "dir": "pearcircle-seeder"
     },
     "perplexica": {
-      "revision": "2",
+      "revision": "3",
       "dir": "perplexica"
     },
     "picoclaw": {

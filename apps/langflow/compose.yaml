@@ -7,6 +7,9 @@ services:
       DO_NOT_TRACK: "true"
       LANGFLOW_AUTO_LOGIN: "true"
       LANGFLOW_DATABASE_URL: postgresql://langflow:langflow@db:5432/langflow
+      # Langflow refuses private addresses for model providers by default (SSRF protection). The ollama link's
+      # provider answers as ollama-link (Harbor decision 126) on a private network; allow that one host only.
+      LANGFLOW_SSRF_ALLOWED_HOSTS: ollama-link
     volumes:
       - {type: volume, source: app, target: "/app/langflow"}
   db:

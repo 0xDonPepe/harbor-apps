@@ -6,6 +6,8 @@ All-in-one AI workspace: chat with your documents, build agents and connect any 
 
 - Runs the AnythingLLM server on 127.0.0.1 with its storage in a retained volume.
 - Generates the three signing secrets once and keeps them as retained secrets.
+- With the optional Ollama link, joins a private network with just Ollama's server and hands its address to
+  AnythingLLM (`OLLAMA_BASE_PATH`).
 
 ## Storage
 
@@ -15,7 +17,10 @@ All-in-one AI workspace: chat with your documents, build agents and connect any 
 ## First run
 
 1. Open the app and complete onboarding: choose a model provider and an embedding provider.
-2. To use local models, install the Open WebUI package (it bundles Ollama) and point AnythingLLM at http://host.docker.internal is NOT available; use an API provider or run Ollama separately and enter its URL.
+2. For local models, install the **Ollama** app first and let AnythingLLM link to it at install (*Talks privately
+   to*; it is optional). Then pick Ollama as the LLM provider in the onboarding: the address
+   (`http://ollama-link:11434`) is already filled in, and the models you downloaded in Ollama are listed. Or use an
+   API provider.
 3. Create a workspace, upload documents, chat.
 
 ## Notes

@@ -9,7 +9,7 @@
       "sha256": "75a2bdb0d07810d6f17b0393629e940bd0c61749127221b1eeea649d4dcff8f2"
     },
     "compose.yaml": {
-      "sha256": "75cb3b012ba45b4d6afdc5f5464266dfcf2ae8b31ec9e7b924afbe037186b186"
+      "sha256": "4bbbeef0bd5e66fb25a02f7d28fc209b762e6f0806f59362dd7088927f534229"
     },
     "README.md": {
       "sha256": "2a601f1263674e2920366f4f73a6d15b4611841605229e509c8c3edc4f2d46c9"
@@ -44,7 +44,7 @@
       "Digest of ollama resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ollama/ollama:0.34.4); image config: ExposedPorts 11434/tcp, Volumes none, User root.",
       "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/open-webui/open-webui:v0.12.0); image config: ExposedPorts 8080/tcp, Volumes none, User 0:0.",
       "Revision 3 was passed (2026-10-13) on Docker 28.0.4.",
-      "Revision 4 (Harbor 0.34.0): gpu permission for the bundled ollama service; compose.yaml is byte-identical to revision 3. Not yet run on a real Harbor host."
+      "Revision 4 (Harbor 0.34.0): gpu permission for the bundled ollama service, and OLLAMA_IGPU_ENABLE=1 on it so Ollama uses integrated Intel/AMD graphics (Vulkan) instead of dropping them; otherwise compose.yaml is unchanged from revision 3. Not yet run on a real Harbor host."
     ]
   },
   "assets": {

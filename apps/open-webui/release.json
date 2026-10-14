@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "package": {
     "id": "open-webui",
-    "revision": "3"
+    "revision": "4"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "2e6933609b9cdf183aa3e1f64a9a50d696021d9cec510571673c0b9a0dbd0c52"
+      "sha256": "75a2bdb0d07810d6f17b0393629e940bd0c61749127221b1eeea649d4dcff8f2"
     },
     "compose.yaml": {
       "sha256": "75cb3b012ba45b4d6afdc5f5464266dfcf2ae8b31ec9e7b924afbe037186b186"
     },
     "README.md": {
-      "sha256": "1bd2f5ecb3ae70f1880189ab2436682aa3de10dd13cdb51fd1310fcdcf69f6b2"
+      "sha256": "2a601f1263674e2920366f4f73a6d15b4611841605229e509c8c3edc4f2d46c9"
     }
   },
   "images": {
@@ -38,20 +38,13 @@
     }
   },
   "qualification": {
-    "status": "passed",
-    "date": "2026-10-13",
-    "node": "v24.21.0",
-    "dockerEngine": "28.0.4",
-    "dockerCompose": "2.38.2",
-    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
-    "appVersions": {
-      "ollama": "0.34.4",
-      "web": "0.12.0"
-    },
+    "status": "pending",
+    "date": "2026-10-14",
     "notes": [
       "Digest of ollama resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ollama/ollama:0.34.4); image config: ExposedPorts 11434/tcp, Volumes none, User root.",
       "Digest of web resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/open-webui/open-webui:v0.12.0); image config: ExposedPorts 8080/tcp, Volumes none, User 0:0.",
-      "Smoke run 2026-10-13T16:38:41.191Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 2 (0.11.3) healthy after 34 s, still healthy 60 s later; updated to revision 3 without a rollback, healthy after 35 s, still healthy 60 s later; fresh install of revision 3 healthy after 34 s, still healthy 60 s later."
+      "Revision 3 was passed (2026-10-13) on Docker 28.0.4.",
+      "Revision 4 (Harbor 0.34.0): gpu permission for the bundled ollama service; compose.yaml is byte-identical to revision 3. Not yet run on a real Harbor host."
     ]
   },
   "assets": {

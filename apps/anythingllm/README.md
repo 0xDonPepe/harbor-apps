@@ -25,6 +25,12 @@ All-in-one AI workspace: chat with your documents, build agents and connect any 
 
 ## Notes
 
+- **Choose the Ollama link at install.** AnythingLLM keeps the provider choices and API keys you enter in its
+  settings (LLM provider, model, embedder, vector database) in a file inside its container, not in the `storage`
+  volume, and Harbor's package format cannot keep that file yet. Whenever the container is recreated, that file
+  goes back to the image's defaults and you choose the provider again: linking or unlinking Ollama later on the
+  app page, a Restart and an update all recreate it. Your workspaces, documents, chats and users are in `storage`
+  and stay.
 - Multi-user mode can be enabled in the app settings once you publish it.
 
 Upstream: https://anythingllm.com

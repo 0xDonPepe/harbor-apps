@@ -11,8 +11,10 @@ unchanged.
 ## What Harbor does
 
 - Runs Open WebUI on its own private network; only the web UI is published on 127.0.0.1.
-- Links it to Ollama (*Talks privately to*, picked for you when one Ollama is installed): a private network joined
-  only by this app and Ollama's server, with Ollama's address in `OLLAMA_BASE_URL` (`http://ollama-link:11434`).
+- Links it to Ollama (*Talks privately to*): a private network joined only by this app and Ollama's server, with
+  Ollama's address in `OLLAMA_BASE_URL` (`http://ollama-link:11434`). The link is required: with one Ollama
+  installed Harbor picks it for you; with several you choose one; with none the install asks you to install Ollama
+  first.
 - Generates the session signing key once and keeps it as a retained secret.
 - Hands the current address to Open WebUI (WEBUI_URL) and re-renders it when you publish the app.
 
@@ -25,13 +27,12 @@ unchanged.
    well, under Workspace, Models.
 3. Or add an API key under Admin Panel, Settings, Connections.
 
-## Linking Ollama later
+## Why the link is required
 
-The link is optional, so the app also installs without Ollama (API keys only). Open WebUI saves the Ollama address
-in its own database at its first start and keeps it after that. If you installed it without Ollama and link one
-later (app page, Links), Harbor hands it the address, but Open WebUI still uses the one it saved: enter
-`http://ollama-link:11434` once under Admin Panel, Settings, Connections, Ollama API. Picking another Ollama later
-needs nothing: the address stays the same.
+Open WebUI saves the Ollama address in its own database at its first start and keeps it after that, so the address
+has to be there from the first start. Picking another Ollama later (app page, Links) needs nothing: the address
+stays `http://ollama-link:11434`. If you only want API keys and no models on this machine, install the **Open
+WebUI** app instead.
 
 ## Storage
 

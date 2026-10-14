@@ -41,13 +41,13 @@ secrets:
     retention: retain
     bindings:
       - {service: web, environment: WEBUI_SECRET_KEY}
-# The shared model server. Optional, so Open WebUI also installs for API keys only. Open WebUI saves this address
-# in its own database at its first start; linking Ollama later needs the address once in Admin Panel, Settings,
-# Connections (README). Without a link the variable stays unset and Open WebUI finds no Ollama.
+# The shared model server. Required: Open WebUI saves this address in its own database at its first start, so it
+# must be there from the start (an optional link is not picked for you, and a later one would not reach the saved
+# address). Harbor picks the only Ollama itself; with none it asks you to install Ollama first. For API keys only,
+# the bundled open-webui app needs no Ollama app.
 links:
   - id: ollama
     purpose: "Ollama, the model server (shared by every AI app)"
-    optional: true
     provider:
       packages: [ollama]
       endpoint: web

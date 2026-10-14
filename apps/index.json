@@ -337,6 +337,10 @@
       "revision": "4",
       "dir": "open-webui"
     },
+    "open-webui-shared": {
+      "revision": "1",
+      "dir": "open-webui-shared"
+    },
     "opencode": {
       "revision": "2",
       "dir": "opencode"

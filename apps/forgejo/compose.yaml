@@ -1,6 +1,6 @@
 services:
   web:
-    image: codeberg.org/forgejo/forgejo@sha256:a3e33d03e771d3e58b27de5573c3a25dc4f670583a6724c1878a6d0bbecf3556 # tag: 16.0.4
+    image: codeberg.org/forgejo/forgejo@sha256:cf5f5ae6acf2ababca0ee3d255705b83a47f35b25e07fc931d694d60664053fe # tag: 16.0.5
     environment:
       FORGEJO__database__DB_TYPE: "sqlite3"
       FORGEJO__server__HTTP_PORT: "3000"

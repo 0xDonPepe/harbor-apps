@@ -44,7 +44,7 @@ The defaults are what this package did before (context length 8192) or Ollama's 
 ## Other apps
 
 Apps that can use a local model link to Ollama when you install them (*Talks privately to*): Open WebUI for Ollama,
-AnythingLLM, Vane, Langflow and Spacebot. Harbor joins just the two apps on a private network and hands the other
+AnythingLLM, Vane and Langflow. Harbor joins just the two apps on a private network and hands the other
 app the address `http://ollama-link:11434`. Ollama is not restarted for that. Its own address (the app's page) also
 works for programs on your network: anything that speaks the Ollama API, such as `OLLAMA_HOST=<address> ollama run`.
 

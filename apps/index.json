@@ -102,7 +102,7 @@
       "dir": "dropgate-server"
     },
     "dumbpad": {
-      "revision": "2",
+      "revision": "3",
       "dir": "dumbpad"
     },
     "duplicati": {

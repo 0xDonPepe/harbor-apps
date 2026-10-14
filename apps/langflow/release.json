@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "package": {
     "id": "langflow",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "12fc82abb3a92d0ca09946b8f8602fec77bd5b096027edb77c6efb1af64e1591"
+      "sha256": "655448f69b0f4868dd048e3b08e7a5516ab5b4f41f10efe9d31e77664b2642df"
     },
     "compose.yaml": {
-      "sha256": "eae4854b84d9eabe4cc5e3ba25cb9ef86261d064b95dfa491cc09f39dfb8e640"
+      "sha256": "e54782ef77ca138e8f3085207dabdbadbfdf0cf076f49f4a762ce5a8e5dae4e9"
     },
     "README.md": {
-      "sha256": "c113f9b2d01dcfd6b5551b1048b671a044d910e3e600815f8bf92e0bc23f4d7f"
+      "sha256": "1e3834cb647655023f7f385126d308f6ff625c4e2e0c6bd7e82a94ea00db8834"
     }
   },
   "images": {
@@ -38,24 +38,13 @@
     }
   },
   "qualification": {
-    "status": "passed",
-    "date": "2026-10-12",
-    "node": "v24.12.0",
-    "dockerEngine": "29.9.0",
-    "dockerCompose": "5.6.0",
-    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
-    "appVersions": {
-      "app": "1.12.5",
-      "db": "16.14-trixie"
-    },
+    "status": "pending",
+    "date": "2026-10-14",
     "notes": [
-      "Drafted by scripts/umbrel-import.mjs from the Umbrel package langflow (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
-      "service app: user 1000:1000 dropped (named volumes keep the image's ownership)",
-      "service db: user 1000:1000 dropped (named volumes keep the image's ownership)",
       "Digest of app resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; langflowai/langflow@sha256:25e13252fc3701ca16e2b9a6cf2d3edd720aafbbc297a701ec0b7a15a3287792); image config: ExposedPorts 8080/tcp, Volumes none, User user.",
       "Digest of db resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; postgres@sha256:4b7183ac05f8ef417db21fd72d71047a4238340c261d3cc3ddb6d579ab5071ae); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
-      "Live catalog run catalog-2026-10-12T18-21-31-harbor-q05: passed (healthy after 133s; page title \"Langflow\"; health 200)",
-      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
+      "Revision 2 was passed (2026-10-12) on Docker 29.9.0.",
+      "Revision 3: optional ollama link (OLLAMA_BASE_URL) and LANGFLOW_SSRF_ALLOWED_HOSTS=ollama-link in compose.yaml. Not yet run on a real Harbor host."
     ]
   },
   "assets": {

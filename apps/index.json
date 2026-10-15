@@ -494,7 +494,7 @@
       "dir": "trip"
     },
     "uptime-kuma": {
-      "revision": "2",
+      "revision": "3",
       "dir": "uptime-kuma"
     },
     "valorgrid": {

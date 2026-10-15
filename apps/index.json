@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "packages": {
     "actual": {
-      "revision": "2",
+      "revision": "3",
       "dir": "actual"
     },
     "akaunting": {

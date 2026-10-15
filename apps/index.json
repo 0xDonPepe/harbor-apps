@@ -170,7 +170,7 @@
       "dir": "gitea-mirror"
     },
     "grafana": {
-      "revision": "2",
+      "revision": "3",
       "dir": "grafana"
     },
     "grocy": {

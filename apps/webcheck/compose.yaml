@@ -1,6 +1,6 @@
 services:
   server:
-    image: ghcr.io/lissy93/web-check@sha256:1a99ed1b45bac7a1af40634ad25fe48d1fc5d97c3e7d9cc6a362f779a3211ad6 # tag: 2.3.4
+    image: ghcr.io/lissy93/web-check@sha256:114c14f2ce5a83a35274a6b87d5900e4dee0bd7cf4155227dd491afb2c036fef # tag: 2.3.5
     volumes:
       - {type: volume, source: data, target: "/app/data"}
     healthcheck:

@@ -1,6 +1,6 @@
 services:
   downtify:
-    image: ghcr.io/henriquesebastiao/downtify@sha256:6cd5efad47b86b77b5c4eb8930d183ac8d960dd3b0fd31275bbf93256eb78254 # tag: 3.4.0
+    image: ghcr.io/henriquesebastiao/downtify@sha256:e2b2aafcb5ea9fb34766c583b93911e78c262df92cbdb99858f28f2230a39240 # tag: 3.5.0
     volumes:
       - {type: volume, source: downloads-downtify, target: "/downloads"}
       - {type: volume, source: data, target: "/data"}

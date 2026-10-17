@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "package": {
     "id": "gitea-mirror",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "e57a8fc1229e1a5dc839263ecc43be15e8a59413d42ed8daf580cde815db4605"
+      "sha256": "de2143a3f6b10b10027b05e8c624d18e6a58fae8228bf2085037e5901b53e114"
     },
     "compose.yaml": {
-      "sha256": "8f9ff06f218fb64bb9416e3d6b3726fad0cb5870e42eb918b0e4b6980eac2317"
+      "sha256": "6df9723673e5cb274398a41bd8ebdfaa53b322afd057ecb136f995466dd8ef03"
     },
     "README.md": {
       "sha256": "562536fcf2f0713f2e94f3a953446f6d20d9a4b2423e0a22735bb607e3f0eb27"
@@ -17,33 +17,29 @@
   },
   "images": {
     "web": {
-      "reference": "ghcr.io/raylabshq/gitea-mirror@sha256:786b193599c60138a3fa04b8d7abc45faef9748af030d49da802c5a478314154",
+      "reference": "ghcr.io/raylabshq/gitea-mirror@sha256:5d375e4fa9d07597bec9fd563ce97e61c58770437e8a2e8661b4bc678b1ca9b9",
       "repository": "ghcr.io/raylabshq/gitea-mirror",
-      "tag": "v3.40.3",
+      "tag": "v3.40.4",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:a189ff4bae3ea878c82b0a4b647b61635dcc01b5ef1081580e00b024c3905f87",
-      "appVersion": "3.40.3",
-      "imageCreated": "2026-09-26T03:41:41Z",
+      "platformDigest": "sha256:b2e1f90854ce3ef8f2983bd2522c9a95d2eee05331c1353eef4960560c1fc1d4",
+      "appVersion": "3.40.4",
+      "imageCreated": "2026-10-14T12:13:16Z",
       "source": "https://ghcr.io/raylabshq/gitea-mirror"
     }
   },
   "qualification": {
     "status": "passed",
-    "date": "2026-10-12",
-    "node": "v24.12.0",
-    "dockerEngine": "29.9.0",
+    "date": "2026-10-17",
+    "node": "v24.21.0",
+    "dockerEngine": "28.0.4",
     "dockerCompose": "5.6.0",
     "hostOs": "Ubuntu 24.04.5 LTS x86_64",
     "appVersions": {
-      "web": "3.40.3"
+      "web": "3.40.4"
     },
     "notes": [
-      "Drafted by scripts/umbrel-import.mjs from the Umbrel package gitea-mirror (umbrel-apps 8c0026e); not yet run on a real Harbor host.",
-      "service web: user 1000:1000 dropped (named volumes keep the image's ownership)",
-      "service web: healthcheck switched off (nothing waits for it; Umbrel never acts on it)",
-      "Digest of web resolved 2026-10-12 via registry API (scripts/catalog-pin.mjs; ghcr.io/raylabshq/gitea-mirror@sha256:786b193599c60138a3fa04b8d7abc45faef9748af030d49da802c5a478314154); image config: ExposedPorts 4321/tcp, Volumes /app/data, User gitea-mirror.",
-      "Live catalog run catalog-2026-10-12T18-21-35-harbor-q08: passed (healthy after 46s; page title \"Setup Admin Account - Gitea Mirror\"; health 302)",
-      "Revision 2 adds the app icon only (icon.png, presentation.icon); compose.yaml is byte-identical to the qualified revision 1."
+      "Digest of web resolved 2026-10-17 via registry API (scripts/catalog-pin.mjs; ghcr.io/raylabshq/gitea-mirror:v3.40.4); image config: ExposedPorts 4321/tcp, Volumes /app/data, User gitea-mirror.",
+      "Smoke run 2026-10-17T05:35:26.140Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 2 (3.40.3) healthy after 2 s, still healthy 60 s later; updated to revision 3 without a rollback, healthy after 2 s, still healthy 60 s later; fresh install of revision 3 healthy after 2 s, still healthy 60 s later."
     ]
   },
   "assets": {

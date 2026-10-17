@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "package": {
     "id": "immich",
-    "revision": "3"
+    "revision": "4"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "7598ecc34572a9b41c0a46683bd2856ffc0e0069773f69067dc29c6baa4c75d9"
+      "sha256": "d853cbd4ffca92b0bd4fd1a24395ee491525b7bcf8553fd354ea4a655ecbb8ef"
     },
     "compose.yaml": {
-      "sha256": "f6e12f8dfff5c7c4b209f188f453f621dc39a007feb0db0cb6a8e22aa75cf300"
+      "sha256": "d32e64b8900e878a23cc9e447a535c3bb6d8f3756ccfcf57ba41f1859016a638"
     },
     "README.md": {
       "sha256": "981c11b41469cde611fc14aa0a4e22fb0cc210763c0ee9c6589bd77c144fc256"
@@ -37,45 +37,45 @@
       "source": "https://hub.docker.com/r/valkey/valkey"
     },
     "machine-learning": {
-      "reference": "ghcr.io/immich-app/immich-machine-learning@sha256:513c831cfb010ad319341a0c86b42c575a0d5b688d3e8cae346ee624074a58ed",
+      "reference": "ghcr.io/immich-app/immich-machine-learning@sha256:73915f07e1f4289ba45b174c58443db74cef47ddf502613f475fc5e52458ea42",
       "repository": "ghcr.io/immich-app/immich-machine-learning",
-      "tag": "v3.3.1",
+      "tag": "v3.3.3",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:df34e834183d6fe179877fe4f4822338bc9a1d9fc776a3c40966f17a09b0d30a",
-      "appVersion": "3.3.1",
-      "imageCreated": "2026-10-08T21:53:54Z",
+      "platformDigest": "sha256:0c0905ace426c490471e206707eb027c3ed46a5bd1fbf7e48f7c3536ec7384d0",
+      "appVersion": "3.3.3",
+      "imageCreated": "2026-10-14T16:58:06Z",
       "source": "https://ghcr.io/immich-app/immich-machine-learning"
     },
     "server": {
-      "reference": "ghcr.io/immich-app/immich-server@sha256:db996e352359771c6a3db121a0ed8761516b22f727fc092a0f46dcfef82c1bc1",
+      "reference": "ghcr.io/immich-app/immich-server@sha256:bae7664ff3aa4c2c1fcbdcdd86b40b105643c5f861f3e6a770fc760089f25862",
       "repository": "ghcr.io/immich-app/immich-server",
-      "tag": "v3.3.1",
+      "tag": "v3.3.3",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:96c6ec77cdea5a3c90539b81baf8c276b834deb595b1603c4aefc1903ab6a05b",
-      "appVersion": "3.3.1",
-      "imageCreated": "2026-10-08T21:55:30Z",
+      "platformDigest": "sha256:8c94984724f79503eb431dfd34ea58b57111c186df8030a66f39ffacf51d7c81",
+      "appVersion": "3.3.3",
+      "imageCreated": "2026-10-14T16:59:37Z",
       "source": "https://ghcr.io/immich-app/immich-server"
     }
   },
   "qualification": {
     "status": "passed",
-    "date": "2026-10-13",
+    "date": "2026-10-17",
     "node": "v24.21.0",
     "dockerEngine": "28.0.4",
-    "dockerCompose": "2.38.2",
+    "dockerCompose": "5.6.0",
     "hostOs": "Ubuntu 24.04.5 LTS x86_64",
     "appVersions": {
       "database": "14-vectorchord0.4.3-pgvectors0.2.0",
       "redis": "8.1.3-bookworm",
-      "machine-learning": "3.3.1",
-      "server": "3.3.1"
+      "machine-learning": "3.3.3",
+      "server": "3.3.3"
     },
     "notes": [
-      "Digest of database resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
-      "Digest of redis resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; valkey/valkey:8.1.3-bookworm); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
-      "Digest of machine-learning resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/immich-machine-learning:v3.3.1); image config: ExposedPorts none, Volumes none, User root.",
-      "Digest of server resolved 2026-10-13 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/immich-server:v3.3.1); image config: ExposedPorts 2283/tcp, Volumes /data, User root.",
-      "Smoke run 2026-10-13T16:33:37.217Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 2 (3.2.1) healthy after 37 s, still healthy 60 s later; updated to revision 3 without a rollback, healthy after 38 s, still healthy 60 s later; fresh install of revision 3 healthy after 37 s, still healthy 60 s later."
+      "Digest of database resolved 2026-10-17 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Digest of redis resolved 2026-10-17 via registry API (scripts/catalog-pin.mjs; valkey/valkey:8.1.3-bookworm); image config: ExposedPorts 6379/tcp, Volumes /data, User root.",
+      "Digest of machine-learning resolved 2026-10-17 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/immich-machine-learning:v3.3.3); image config: ExposedPorts none, Volumes none, User root.",
+      "Digest of server resolved 2026-10-17 via registry API (scripts/catalog-pin.mjs; ghcr.io/immich-app/immich-server:v3.3.3); image config: ExposedPorts 2283/tcp, Volumes /data, User root.",
+      "Smoke run 2026-10-17T05:35:37.955Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 3 (3.3.1) healthy after 37 s, still healthy 60 s later; updated to revision 4 without a rollback, healthy after 38 s, still healthy 60 s later; fresh install of revision 4 healthy after 37 s, still healthy 60 s later."
     ]
   },
   "assets": {

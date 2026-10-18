@@ -218,7 +218,7 @@
       "dir": "invio"
     },
     "jackett": {
-      "revision": "2",
+      "revision": "3",
       "dir": "jackett"
     },
     "jellyfin": {

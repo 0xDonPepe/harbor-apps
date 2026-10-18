@@ -20,7 +20,7 @@ services:
       db:
         condition: service_started
   db:
-    image: mariadb@sha256:c5c82ddc074b9236fda87127934a1da726ecac68e9de083fd0e0d11a7bedc077 # tag: 11.4.7
+    image: mariadb@sha256:24e76fcec8c003a0362d0dd53f4806e7e79458d7fdeaf47437760e19496f5a9c # tag: 11.8.8
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw
       MYSQL_DATABASE: hortusfox

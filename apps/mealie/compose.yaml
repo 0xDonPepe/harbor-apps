@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/mealie-recipes/mealie@sha256:a4d12ab3a009832cc94058345e22aea831c3e992e94783fefc1cd5a08544fe0c # tag: v3.26.0
+    image: ghcr.io/mealie-recipes/mealie@sha256:8b02290f4d1806f02acac6f25f6d48a3c965612fda1f8e914d5af533276f8688 # tag: v3.28.0
     environment:
       ALLOW_SIGNUP: "false"
       TZ: "UTC"

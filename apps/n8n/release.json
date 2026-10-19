@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "package": {
     "id": "n8n",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "a805830f11182b5d0d0024426e6adf756ea4231ea26945803ed1ac61688e76ed"
+      "sha256": "d4533ec184601dbd2a6028251d409de8e10176f362dc33c732bc8aff3e327ae1"
     },
     "compose.yaml": {
-      "sha256": "6fd2bb82776ee2ac89ecb162fba9d0f38a185fccf8865900bb7bfedde7f96973"
+      "sha256": "9115211fbfbdd9b9c2cbdabd8b3faabec73cf37186ee98e2ef1e08ef7e5cdf5f"
     },
     "README.md": {
       "sha256": "1f7c11c451cf693b0daa8128e8ca116794b2b5a356bd4d47becb9d2aa4528022"
@@ -17,45 +17,41 @@
   },
   "images": {
     "web": {
-      "reference": "n8nio/n8n@sha256:a8c95f75c6fdf65f5f2b7a7b354744eaa1c62bb911b5c00af6499c3f38e4cd32",
+      "reference": "n8nio/n8n@sha256:5032941f437e1daa421cad0cc3ea57cd054f0d44a7256b38a0a3fca1b460834a",
       "repository": "n8nio/n8n",
-      "tag": "2.38.7",
+      "tag": "2.44.3",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:ed31254f79d45ad1f565f3e9cca17c1b3a1710498c608ea856c2f69a2b443dcc",
-      "appVersion": "2.38.7",
-      "imageCreated": "2026-09-11T07:47:29Z",
-      "source": "https://github.com/n8n-io/n8n"
+      "platformDigest": "sha256:96b160da705e42f04c72535fc10d261856e519995a1e3e1a6031c78611b29a53",
+      "appVersion": "2.44.3",
+      "imageCreated": "2026-10-16T07:14:16Z",
+      "source": "https://hub.docker.com/r/n8nio/n8n"
     },
     "postgres": {
-      "reference": "postgres@sha256:f1c3376c26f2609ab9f29f71f824103fe2fcd8ee0346485cb6122a4f93df6f94",
+      "reference": "postgres@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
       "repository": "postgres",
       "tag": "16.15",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:485935f94cc7165afa896978809c37b592dc07f0a37d2c8f645f12412d0212c8",
+      "platformDigest": "sha256:75adc2a65806c96bc0e59030230bfe3f1c1b0d6d8f8181a8913e2b8b53bdc166",
       "appVersion": "16.15",
-      "imageCreated": "2026-08-25T00:42:01Z",
+      "imageCreated": "2026-10-06T01:33:18Z",
       "source": "https://hub.docker.com/_/postgres"
     }
   },
   "qualification": {
     "status": "passed",
-    "date": "2026-09-15",
-    "node": "v24.12.0",
-    "dockerEngine": "29.8.0",
-    "dockerCompose": "5.5.1",
-    "hostOs": "Ubuntu 24.04.4 LTS x86_64",
+    "date": "2026-10-19",
+    "node": "v24.21.0",
+    "dockerEngine": "28.0.4",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
     "appVersions": {
-      "web": "2.38.7",
+      "web": "2.44.3",
       "postgres": "16.15"
     },
     "notes": [
-      "Digests resolved 2026-09-14 via registry API (scripts/registry.mjs). n8n tag 2.38.7 == upstream `stable` tag at that time.",
-      "postgres image config declares VOLUME /var/lib/postgresql/data (claimed as storage `database`); n8n image declares no volumes, ExposedPorts 5678/tcp, User node.",
-      "n8n 2.x task runners: internal mode inside the web container; no sidecar. External runners not qualified.",
-      "Live run vm-2026-09-14T18-40-00: passed",
-      "Fresh Ubuntu 24.04 x86-64 DigitalOcean droplet; A01-A16 all passed; browser demos recorded in the run directory",
-      "Live catalog run catalog-2026-09-15T00-13-13: passed (healthy after 104s; page title \"n8n.io - Workflow Automation\"; health 200)",
-      "Revision 2 adds screenshots only (shot-1.jpg, shot-2.jpg, presentation.gallery); compose.yaml is byte-identical to the qualified revision 1."
+      "Digest of postgres resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; postgres:16.15); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Digest of web resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; n8nio/n8n:2.44.3); image config: ExposedPorts 5678/tcp, Volumes none, User node.",
+      "Smoke run 2026-10-19T05:45:42.147Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 2 (2.38.7) healthy after 17 s, still healthy 60 s later; updated to revision 3 without a rollback, healthy after 18 s, still healthy 60 s later; fresh install of revision 3 healthy after 17 s, still healthy 60 s later."
     ]
   },
   "assets": {

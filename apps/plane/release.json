@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "plane",
+    "revision": "1"
+  },
+  "files": {
+    "manifest.yaml": {
+      "sha256": "d364a559572a5084ea312cc08f68b88069a1ced2abc9dc687d05844337e6b012"
+    },
+    "compose.yaml": {
+      "sha256": "d3d18c408e3d91fdcc7193e0bc744a4ec69a1f7ca914a393bfe3cc854d458b6e"
+    },
+    "README.md": {
+      "sha256": "90eaf3c2535da0c31ce606465ca68981043579e9410822516118fde9316d6cd3"
+    }
+  },
+  "images": {
+    "proxy": {
+      "reference": "makeplane/plane-proxy@sha256:47e651c56749c287710cc26f82dc5d1046a2af76a332aa048ab7adb881cc4cd0",
+      "repository": "makeplane/plane-proxy",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:0647b6be3494571e7dbef862462cde0b5bf6a7c8b10303104234baa4e76b889b",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-10T12:05:59Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-proxy"
+    },
+    "web": {
+      "reference": "makeplane/plane-frontend@sha256:22fd2434fb8d6658439f669ab72f999ce0773abe587663da21a77d70bd63ff61",
+      "repository": "makeplane/plane-frontend",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:686faa25da4bb031ef5cbf8f6ad1fea60c416dcec11d113643c3d2bb99e70d44",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-23T14:35:00Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-frontend"
+    },
+    "space": {
+      "reference": "makeplane/plane-space@sha256:f8f842f05f41a16e9fe8c4f5e17a3bb175338ccdc094620e58ae49764ffbd671",
+      "repository": "makeplane/plane-space",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:69d0f9d545931e3c7195eb0335c3a7739da849a12c3827971e48e9f6babf2a54",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-16T18:09:24Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-space"
+    },
+    "admin": {
+      "reference": "makeplane/plane-admin@sha256:6e1bb1d800d3c7ce84a09f810d5588db8613b35d4464e722a1bec12556ca0ebb",
+      "repository": "makeplane/plane-admin",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:40c0f58f4de29f8e30d4fa4c5db2c8bc88e64e1ea14ea81c48368e8408b0a609",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-23T14:35:00Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-admin"
+    },
+    "live": {
+      "reference": "makeplane/plane-live@sha256:cbb630ccaea24bb9998040cb45c11619a7501e8b6c75d449df2f8fd9b9cddbd0",
+      "repository": "makeplane/plane-live",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:1e7c180f16e568db51b8739d9cccee8c450b52dab6335e06ed1c29fc45aecae9",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-16T18:08:33Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-live"
+    },
+    "api": {
+      "reference": "makeplane/plane-backend@sha256:90032ce088708889b60c00d491897916f4deb882facda27db59fd10fb68729ef",
+      "repository": "makeplane/plane-backend",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:01a159fa9947ec6cd553d360fcfdac63743f2b1503e631ca7e3e5deeb7346cae",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-16T18:07:19Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-backend"
+    },
+    "worker": {
+      "reference": "makeplane/plane-backend@sha256:90032ce088708889b60c00d491897916f4deb882facda27db59fd10fb68729ef",
+      "repository": "makeplane/plane-backend",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:01a159fa9947ec6cd553d360fcfdac63743f2b1503e631ca7e3e5deeb7346cae",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-16T18:07:19Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-backend"
+    },
+    "beat-worker": {
+      "reference": "makeplane/plane-backend@sha256:90032ce088708889b60c00d491897916f4deb882facda27db59fd10fb68729ef",
+      "repository": "makeplane/plane-backend",
+      "tag": "v1.4.2",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:01a159fa9947ec6cd553d360fcfdac63743f2b1503e631ca7e3e5deeb7346cae",
+      "appVersion": "1.4.2",
+      "imageCreated": "2026-08-16T18:07:19Z",
+      "source": "https://hub.docker.com/r/makeplane/plane-backend"
+    },
+    "plane-db": {
+      "reference": "postgres@sha256:468d34fefd6338031787c7b8e94078975b3aaf4d66c7ead25c39cd3ba46a15c6",
+      "repository": "postgres",
+      "tag": "15.7-alpine",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:cd323413f3ec037de622fdc2724215170f32045f6ac5a940d80e988862df45ea",
+      "appVersion": "15.7-alpine",
+      "imageCreated": "2024-06-03T20:57:56Z",
+      "source": "https://hub.docker.com/_/postgres"
+    },
+    "plane-redis": {
+      "reference": "valkey/valkey@sha256:10328d00120dc14fbc87b2ed61b7677ddbb0d011e705361b4788329a0ec69a93",
+      "repository": "valkey/valkey",
+      "tag": "7.2.11-alpine",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:4c8d459cc26a2a7f55109fcafea181df38eb63c3ea193c0db21263dd4d6240d9",
+      "appVersion": "7.2.11-alpine",
+      "imageCreated": "2026-02-05T01:29:17Z",
+      "source": "https://hub.docker.com/r/valkey/valkey"
+    },
+    "plane-mq": {
+      "reference": "rabbitmq@sha256:611107e29cce05c2acd968325d5dcbde7e2fee404970f1ead75fdb22be2821b3",
+      "repository": "rabbitmq",
+      "tag": "3.13.6-management-alpine",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:567378bee7c4b7401bc5165e3ff406c4481ae3cbd9daed4ad3c2821bd97ae3f4",
+      "appVersion": "3.13.6-management-alpine",
+      "imageCreated": "2024-02-22T21:58:15Z",
+      "source": "https://hub.docker.com/_/rabbitmq"
+    },
+    "plane-minio": {
+      "reference": "pgsty/minio@sha256:b6bfe7239bfc83fb90d31612d9704d86039dd714f7904b3f1ad68f211e602372",
+      "repository": "pgsty/minio",
+      "tag": "RELEASE.2026-08-04T00-00-00Z",
+      "platform": "linux/amd64",
+      "platformDigest": "sha256:2b36182f3479c58b5cba920f20479738ee85ce218de0596a244f9a1368268db9",
+      "appVersion": "RELEASE.2026-08-04T00-00-00Z",
+      "imageCreated": "2026-08-04T23:51:54Z",
+      "source": "https://hub.docker.com/r/pgsty/minio"
+    }
+  },
+  "qualification": {
+    "status": "pending",
+    "date": "2026-10-19",
+    "notes": [
+      "Digest of proxy resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-proxy:v1.4.2); image config: ExposedPorts 2019/tcp,443/tcp,443/udp,80/tcp, Volumes none, User root.",
+      "Digest of web resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-frontend:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
+      "Digest of space resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-space:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Digest of admin resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-admin:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
+      "Digest of live resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-live:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Digest of api resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of worker resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of beat-worker resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of plane-db resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; postgres:15.7-alpine); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Digest of plane-redis resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; valkey/valkey:7.2.11-alpine); image config: ExposedPorts 6379/tcp, Volumes none, User root.",
+      "Digest of plane-mq resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; rabbitmq:3.13.6-management-alpine); image config: ExposedPorts 15671/tcp,15672/tcp,15691/tcp,15692/tcp,25672/tcp,4369/tcp,5671/tcp,5672/tcp, Volumes /var/lib/rabbitmq, User root.",
+      "Digest of plane-minio resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; pgsty/minio:RELEASE.2026-08-04T00-00-00Z); image config: ExposedPorts 9000/tcp, Volumes /data, User root."
+    ]
+  },
+  "assets": {
+    "icon.svg": {
+      "sha256": "d664be5b0c3517098ac4cdecdd3d1f4c1f1350bddbf3ebe4cb094920b9ed0989"
+    },
+    "shot-1.jpg": {
+      "sha256": "0982662da9379ac3bcf83b4136412676413b1f84386d08bfac8adafaedceeb23"
+    },
+    "shot-2.jpg": {
+      "sha256": "1bf095854abf568a6a135abbf5c89ccac43710d79a4864027bbf8e98783b7c09"
+    }
+  }
+}

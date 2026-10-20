@@ -393,6 +393,10 @@
       "revision": "2",
       "dir": "pingvin-share"
     },
+    "plane": {
+      "revision": "1",
+      "dir": "plane"
+    },
     "pyload-ng": {
       "revision": "2",
       "dir": "pyload-ng"

@@ -1,6 +1,6 @@
 services:
   server:
-    image: linuxserver/jackett@sha256:d678a0fa9c40bc0405fc236c62b3ef5c4cdd1815df5ad0ffd1cb578994b771c8 # tag: 0.24.2864
+    image: linuxserver/jackett@sha256:4fcf3cc22dd3ee9718ac70db6edc8f805e5a74b315caccf1f699e3bd2d9fd0b2 # tag: 0.24.2865
     environment:
       PUID: "1000"
       PGID: "1000"

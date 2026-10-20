@@ -14,16 +14,20 @@ choose **Get started** and set up the instance in **God mode** (`/god-mode/`): t
 the instance administrator. Sign in and create your first workspace. Email (SMTP), sign-in methods and other
 instance settings are in God mode as well.
 
-## Use its main address
+## Every address works
 
-Plane sends you back to its main address after signing in, builds the links in its emails from it and accepts its
-sign-in cookies only there. Open it at the address Harbor shows as its main one; if you change the main address
-(publishing it on Tailscale or a domain and making that the main address), Harbor hands Plane the new one when it
-restarts the app.
+Open Plane at any address Harbor gives it: `localhost`, the home network, the secure home-network address,
+Tailscale or a domain. Signing in keeps you on the address you came from, and uploads go to it. Plane itself knows only
+one address (its main one, `WEB_URL`); its proxy in this package turns Plane's redirects to that address into paths,
+hands Plane the address the browser used (Harbor's secure LAN relay sends `127.0.0.1` as the host), and on plain http
+drops the Secure flag Plane puts on its cookies when the main address is https.
+
+Still on the main address: the links in Plane's emails (invites, notifications, password reset) and export
+downloads. Sign-in with GitHub, Google or GitLab works at the address you register with that provider.
 
 ## What runs
 
-Thirteen services from Plane's own self-host setup: the proxy (Plane's Caddy), the web app, Spaces (public boards),
+Thirteen services from Plane's own self-host setup: the proxy (Plane's Caddy, with Plane's own routes and the address handling above), the web app, Spaces (public boards),
 the God mode admin, the live (real-time) server, the API, a worker and a scheduler, PostgreSQL, Valkey (a cache, not
 kept across restarts), RabbitMQ (background tasks) and MinIO (uploaded files). Harbor generates every password and
 key. Plane's one-shot migrator runs as the first step of the API instead of as a service of its own.

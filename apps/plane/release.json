@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "package": {
     "id": "plane",
-    "revision": "1"
+    "revision": "2"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "d364a559572a5084ea312cc08f68b88069a1ced2abc9dc687d05844337e6b012"
+      "sha256": "d31f5963721b41ee14e4a82ca3f86c69653e2b77436b374c501a7ceb5d49d107"
     },
     "compose.yaml": {
-      "sha256": "d3d18c408e3d91fdcc7193e0bc744a4ec69a1f7ca914a393bfe3cc854d458b6e"
+      "sha256": "4754834ff1823f49792e4f73efe444f32101bf6ed72fbbb88ce0c8098e5a76f4"
     },
     "README.md": {
-      "sha256": "90eaf3c2535da0c31ce606465ca68981043579e9410822516118fde9316d6cd3"
+      "sha256": "eda148b000d0c5d3f69de367312a6ce1435542d9c94be6ddbcc7faffb484db5c"
     }
   },
   "images": {
@@ -141,18 +141,18 @@
     "status": "pending",
     "date": "2026-10-19",
     "notes": [
-      "Digest of proxy resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-proxy:v1.4.2); image config: ExposedPorts 2019/tcp,443/tcp,443/udp,80/tcp, Volumes none, User root.",
-      "Digest of web resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-frontend:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
-      "Digest of space resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-space:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Digest of admin resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-admin:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
-      "Digest of live resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-live:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Digest of api resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Digest of worker resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Digest of beat-worker resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Digest of plane-db resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; postgres:15.7-alpine); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
-      "Digest of plane-redis resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; valkey/valkey:7.2.11-alpine); image config: ExposedPorts 6379/tcp, Volumes none, User root.",
-      "Digest of plane-mq resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; rabbitmq:3.13.6-management-alpine); image config: ExposedPorts 15671/tcp,15672/tcp,15691/tcp,15692/tcp,25672/tcp,4369/tcp,5671/tcp,5672/tcp, Volumes /var/lib/rabbitmq, User root.",
-      "Digest of plane-minio resolved 2026-10-19 via registry API (scripts/catalog-pin.mjs; pgsty/minio:RELEASE.2026-08-04T00-00-00Z); image config: ExposedPorts 9000/tcp, Volumes /data, User root."
+      "Digest of proxy resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-proxy:v1.4.2); image config: ExposedPorts 2019/tcp,443/tcp,443/udp,80/tcp, Volumes none, User root.",
+      "Digest of web resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-frontend:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
+      "Digest of space resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-space:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Digest of admin resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-admin:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
+      "Digest of live resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-live:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Digest of api resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of worker resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of beat-worker resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of plane-db resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; postgres:15.7-alpine); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Digest of plane-redis resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; valkey/valkey:7.2.11-alpine); image config: ExposedPorts 6379/tcp, Volumes none, User root.",
+      "Digest of plane-mq resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; rabbitmq:3.13.6-management-alpine); image config: ExposedPorts 15671/tcp,15672/tcp,15691/tcp,15692/tcp,25672/tcp,4369/tcp,5671/tcp,5672/tcp, Volumes /var/lib/rabbitmq, User root.",
+      "Digest of plane-minio resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; pgsty/minio:RELEASE.2026-08-04T00-00-00Z); image config: ExposedPorts 9000/tcp, Volumes /data, User root."
     ]
   },
   "assets": {

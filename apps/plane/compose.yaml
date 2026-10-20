@@ -1,13 +1,67 @@
 services:
-  # Plane's own Caddy proxy (plane-proxy): one HTTP port, routes /api, /auth, /static to api, /spaces to space,
-  # /god-mode to admin, /live to live, /uploads to plane-minio and the rest to web. Plain HTTP on :80; Harbor's
-  # proxies add HTTPS. The routes name the services below, so their names stay Plane's.
+  # Plane's own Caddy proxy (plane-proxy) with Plane's v1.4.2 routes (apps/proxy/Caddyfile.ce: /api, /auth, /static to
+  # api, /spaces to space, /god-mode to admin, /live to live, /uploads to plane-minio, the rest to web), plain HTTP on
+  # :80 behind Harbor's proxies. The config comes on stdin (no bind mounts) so it can add what lets Plane work at
+  # every address Harbor gives it, not only the main one (WEB_URL):
+  #   - redirects to WEB_URL become path-only, so signing in keeps you on the address you came from;
+  #   - the api and MinIO see the address the browser used (X-Forwarded-Host, which Harbor's secure LAN relay sets
+  #     while it sends Host 127.0.0.1:<port>), so CSRF checks and presigned upload/download URLs match it;
+  #   - on plain http, Plane's cookies lose Secure (Plane marks them Secure when the main address is https).
+  # When plane-proxy moves to a new Plane release, compare its Caddyfile.ce with the routes below.
   proxy:
     image: makeplane/plane-proxy@sha256:47e651c56749c287710cc26f82dc5d1046a2af76a332aa048ab7adb881cc4cd0 # tag: v1.4.2
-    environment:
-      SITE_ADDRESS: ":80"
-      FILE_SIZE_LIMIT: "5242880"
-      BUCKET_NAME: uploads
+    command:
+      - sh
+      - -c
+      - |
+        exec caddy run --config - --adapter caddyfile <<'EOF'
+        {
+          servers {
+            max_header_size 25MB
+            client_ip_headers X-Forwarded-For X-Real-IP
+            trusted_proxies static 0.0.0.0/0
+          }
+        }
+
+        :80 {
+          request_body {
+            max_size 5242880
+          }
+
+          map {http.request.header.X-Forwarded-Host} {plane_host} {
+            "" {http.request.hostport}
+            default {http.request.header.X-Forwarded-Host}
+          }
+          header >Location "^{env.WEB_URL}/?" "/"
+          @plain not header X-Forwarded-Proto https
+          header @plain >Set-Cookie "(?i);\s*secure(;|$)" "$1"
+
+          redir /spaces /spaces/ permanent
+          reverse_proxy /spaces/* space:3000
+
+          redir /god-mode /god-mode/ permanent
+          reverse_proxy /god-mode/* admin:3000
+
+          reverse_proxy /live/* live:3000
+
+          reverse_proxy /api/* api:8000 {
+            header_up Host {plane_host}
+          }
+          reverse_proxy /auth/* api:8000 {
+            header_up Host {plane_host}
+          }
+          reverse_proxy /static/* api:8000
+
+          reverse_proxy /uploads/* plane-minio:9000 {
+            header_up Host {plane_host}
+          }
+          reverse_proxy /uploads plane-minio:9000 {
+            header_up Host {plane_host}
+          }
+
+          reverse_proxy /* web:3000
+        }
+        EOF
     depends_on:
       web: {condition: service_started}
       space: {condition: service_started}

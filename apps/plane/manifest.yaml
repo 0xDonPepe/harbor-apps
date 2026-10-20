@@ -5,7 +5,7 @@ metadata:
   name: Plane
   description: Open-source project management for tasks, sprints, docs and triage, an alternative to Jira, Linear and Asana.
 release:
-  revision: "1"
+  revision: "2"
   version: 1.4.2
   minHarbor: "0.30.0"
 deployment:
@@ -107,9 +107,10 @@ secrets:
       - {service: api, environment: AWS_SECRET_ACCESS_KEY}
       - {service: worker, environment: AWS_SECRET_ACCESS_KEY}
       - {service: beat-worker, environment: AWS_SECRET_ACCESS_KEY}
-# Plane sends people back to WEB_URL after signing in, builds links in emails from it and only trusts that origin
-# for its cookies (CORS_ALLOWED_ORIGINS), so it works at its main address.
+# WEB_URL is the main address: Plane builds the links in its emails from it and redirects there after signing in.
+# The proxy (compose.yaml) turns those redirects into paths, so Plane works at every address Harbor gives it.
 configuration:
+  - {service: proxy, environment: WEB_URL, endpoint: web, format: origin}
   - {service: api, environment: WEB_URL, endpoint: web, format: origin}
   - {service: api, environment: CORS_ALLOWED_ORIGINS, endpoint: web, format: origin}
   - {service: worker, environment: WEB_URL, endpoint: web, format: origin}
@@ -128,4 +129,4 @@ presentation:
   website: https://plane.so/
   source: https://github.com/makeplane/plane
   sizeHint: About 2.5 GB of images and 2 GB of memory, plus your files
-  releaseNotes: First release in the Harbor catalog (Plane Community Edition 1.4.2).
+  releaseNotes: Plane now works at every address Harbor gives it (localhost, the home network, the secure home-network address, Tailscale, a domain), not only the main one; signing in keeps you where you are. Uploads work at the secure home-network address too.

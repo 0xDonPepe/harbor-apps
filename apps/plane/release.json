@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "package": {
     "id": "plane",
-    "revision": "2"
+    "revision": "3"
   },
   "files": {
     "manifest.yaml": {
-      "sha256": "d31f5963721b41ee14e4a82ca3f86c69653e2b77436b374c501a7ceb5d49d107"
+      "sha256": "77ac6e26df0482203ee8a6065fb5b18a216c0e72ef5190efb5d3b8a380dcd6b7"
     },
     "compose.yaml": {
-      "sha256": "4754834ff1823f49792e4f73efe444f32101bf6ed72fbbb88ce0c8098e5a76f4"
+      "sha256": "64165d6042f7712792a8c82748a4c5d44aab7426a635e35c746fcab488c36626"
     },
     "README.md": {
       "sha256": "eda148b000d0c5d3f69de367312a6ce1435542d9c94be6ddbcc7faffb484db5c"
@@ -97,33 +97,33 @@
       "source": "https://hub.docker.com/r/makeplane/plane-backend"
     },
     "plane-db": {
-      "reference": "postgres@sha256:468d34fefd6338031787c7b8e94078975b3aaf4d66c7ead25c39cd3ba46a15c6",
+      "reference": "postgres@sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81",
       "repository": "postgres",
-      "tag": "15.7-alpine",
+      "tag": "15.19-alpine",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:cd323413f3ec037de622fdc2724215170f32045f6ac5a940d80e988862df45ea",
-      "appVersion": "15.7-alpine",
-      "imageCreated": "2024-06-03T20:57:56Z",
+      "platformDigest": "sha256:25d430274d8a31184f9435cc5b2f56aff254952065bbbcac0c51acedb5a1d1e7",
+      "appVersion": "15.19-alpine",
+      "imageCreated": "2026-09-17T21:32:10Z",
       "source": "https://hub.docker.com/_/postgres"
     },
     "plane-redis": {
-      "reference": "valkey/valkey@sha256:10328d00120dc14fbc87b2ed61b7677ddbb0d011e705361b4788329a0ec69a93",
+      "reference": "valkey/valkey@sha256:c6c2f0020be34bbf684a53a0ef716ab16ff70295186d4d9f2518435beb7afbff",
       "repository": "valkey/valkey",
-      "tag": "7.2.11-alpine",
+      "tag": "7.2.14-alpine",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:4c8d459cc26a2a7f55109fcafea181df38eb63c3ea193c0db21263dd4d6240d9",
-      "appVersion": "7.2.11-alpine",
-      "imageCreated": "2026-02-05T01:29:17Z",
+      "platformDigest": "sha256:f4690faabb30d8441a503187ad17721b27d26e2f11012b4e660d19962e4d1f16",
+      "appVersion": "7.2.14-alpine",
+      "imageCreated": "2026-09-21T07:40:50Z",
       "source": "https://hub.docker.com/r/valkey/valkey"
     },
     "plane-mq": {
-      "reference": "rabbitmq@sha256:611107e29cce05c2acd968325d5dcbde7e2fee404970f1ead75fdb22be2821b3",
+      "reference": "rabbitmq@sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
       "repository": "rabbitmq",
-      "tag": "3.13.6-management-alpine",
+      "tag": "3.13.7-management-alpine",
       "platform": "linux/amd64",
-      "platformDigest": "sha256:567378bee7c4b7401bc5165e3ff406c4481ae3cbd9daed4ad3c2821bd97ae3f4",
-      "appVersion": "3.13.6-management-alpine",
-      "imageCreated": "2024-02-22T21:58:15Z",
+      "platformDigest": "sha256:3c498e636fd64462480c5f9ff842eb224ab84160a8ada1ded5375e9569e9230c",
+      "appVersion": "3.13.7-management-alpine",
+      "imageCreated": "2025-12-02T03:08:25Z",
       "source": "https://hub.docker.com/_/rabbitmq"
     },
     "plane-minio": {
@@ -138,21 +138,40 @@
     }
   },
   "qualification": {
-    "status": "pending",
-    "date": "2026-10-19",
+    "status": "passed",
+    "date": "2026-10-21",
+    "node": "v24.22.0",
+    "dockerEngine": "28.0.4",
+    "dockerCompose": "5.6.0",
+    "hostOs": "Ubuntu 24.04.5 LTS x86_64",
+    "appVersions": {
+      "proxy": "1.4.2",
+      "web": "1.4.2",
+      "space": "1.4.2",
+      "admin": "1.4.2",
+      "live": "1.4.2",
+      "api": "1.4.2",
+      "worker": "1.4.2",
+      "beat-worker": "1.4.2",
+      "plane-db": "15.19-alpine",
+      "plane-redis": "7.2.14-alpine",
+      "plane-mq": "3.13.7-management-alpine",
+      "plane-minio": "RELEASE.2026-08-04T00-00-00Z"
+    },
     "notes": [
-      "Digest of proxy resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-proxy:v1.4.2); image config: ExposedPorts 2019/tcp,443/tcp,443/udp,80/tcp, Volumes none, User root.",
-      "Digest of web resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-frontend:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
-      "Digest of space resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-space:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Digest of admin resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-admin:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
-      "Digest of live resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-live:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
-      "Digest of api resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Digest of worker resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Digest of beat-worker resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
-      "Digest of plane-db resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; postgres:15.7-alpine); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
-      "Digest of plane-redis resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; valkey/valkey:7.2.11-alpine); image config: ExposedPorts 6379/tcp, Volumes none, User root.",
-      "Digest of plane-mq resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; rabbitmq:3.13.6-management-alpine); image config: ExposedPorts 15671/tcp,15672/tcp,15691/tcp,15692/tcp,25672/tcp,4369/tcp,5671/tcp,5672/tcp, Volumes /var/lib/rabbitmq, User root.",
-      "Digest of plane-minio resolved 2026-10-20 via registry API (scripts/catalog-pin.mjs; pgsty/minio:RELEASE.2026-08-04T00-00-00Z); image config: ExposedPorts 9000/tcp, Volumes /data, User root."
+      "Digest of proxy resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-proxy:v1.4.2); image config: ExposedPorts 2019/tcp,443/tcp,443/udp,80/tcp, Volumes none, User root.",
+      "Digest of web resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-frontend:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
+      "Digest of space resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-space:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Digest of admin resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-admin:v1.4.2); image config: ExposedPorts 3000/tcp,80/tcp, Volumes none, User root.",
+      "Digest of live resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-live:v1.4.2); image config: ExposedPorts 3000/tcp, Volumes none, User root.",
+      "Digest of api resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of worker resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of beat-worker resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; makeplane/plane-backend:v1.4.2); image config: ExposedPorts 8000/tcp, Volumes none, User root.",
+      "Digest of plane-db resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; postgres:15.19-alpine); image config: ExposedPorts 5432/tcp, Volumes /var/lib/postgresql/data, User root.",
+      "Digest of plane-redis resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; valkey/valkey:7.2.14-alpine); image config: ExposedPorts 6379/tcp, Volumes none, User root.",
+      "Digest of plane-mq resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; rabbitmq:3.13.7-management-alpine); image config: ExposedPorts 15671/tcp,15672/tcp,15691/tcp,15692/tcp,25672/tcp,4369/tcp,5671/tcp,5672/tcp, Volumes /var/lib/rabbitmq, User root.",
+      "Digest of plane-minio resolved 2026-10-21 via registry API (scripts/catalog-pin.mjs; pgsty/minio:RELEASE.2026-08-04T00-00-00Z); image config: ExposedPorts 9000/tcp, Volumes /data, User root.",
+      "Smoke run 2026-10-21T05:43:58.005Z (pnpm catalog:smoke, Harbor's engine on a real Docker host): installed revision 2 (1.4.2) healthy after 14 s, still healthy 60 s later; updated to revision 3 without a rollback, healthy after 64 s, still healthy 60 s later; fresh install of revision 3 healthy after 18 s, still healthy 60 s later."
     ]
   },
   "assets": {

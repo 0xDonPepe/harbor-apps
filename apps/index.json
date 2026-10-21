@@ -394,7 +394,7 @@
       "dir": "pingvin-share"
     },
     "plane": {
-      "revision": "2",
+      "revision": "3",
       "dir": "plane"
     },
     "pyload-ng": {
